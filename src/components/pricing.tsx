@@ -2,66 +2,69 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Check, Zap } from 'lucide-react'
+import { Check, ArrowRight } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const PLANS = [
   {
-    name: 'Starter',
+    name: 'New Website',
+    eyebrow: 'No website yet?',
     price: '$299',
     per: 'one-time',
-    hosting: '$49/mo hosting',
-    tag: 'For businesses with no website',
+    hosting: '+$49/mo hosting',
+    sub: 'Cancel anytime. No contracts.',
     badge: null,
     features: [
       'Luxury custom website',
-      'Mobile-first design',
-      'Contact form → your phone',
-      'Google Maps SEO setup',
-      '1 year free hosting included',
+      'Mobile-first, cinematic design',
+      'Contact form → your phone instantly',
+      'Google Maps SEO built-in',
+      'SSL + blazing-fast hosting',
       '24-hour delivery',
-      'Lifetime ownership',
+      'You own it forever',
     ],
-    cta: 'Claim Starter Site',
+    cta: 'Get My $299 Site',
     highlight: false,
   },
   {
-    name: 'Premium',
+    name: 'Site Upgrade',
+    eyebrow: 'Have a bad website?',
     price: '$599',
     per: 'one-time',
-    hosting: '$79/mo hosting',
-    tag: 'For businesses with a bad website',
+    hosting: '+$79/mo hosting',
+    sub: 'Most clients see leads within 72h.',
     badge: 'Most Popular',
     features: [
-      'Everything in Starter',
-      'Full site audit + rebuild',
-      'Advanced GSAP animations',
+      'Everything in New Website',
+      'Full audit of your current site',
+      'Luxury redesign from scratch',
+      'Advanced scroll animations',
       'Google Business integration',
-      'Review showcase section',
-      'Before/after comparison',
+      'Review showcase',
       'Priority 12-hour delivery',
     ],
-    cta: 'Get Premium Upgrade',
+    cta: 'Upgrade My Website',
     highlight: true,
   },
   {
     name: 'Enterprise',
+    eyebrow: 'Multi-location or franchise?',
     price: 'Custom',
     per: 'quote',
-    hosting: 'Custom hosting plan',
-    tag: 'Multi-location or franchise',
+    hosting: 'Custom hosting',
+    sub: 'Volume discounts available.',
     badge: null,
     features: [
-      'Everything in Premium',
+      'Everything in Upgrade',
       'Multi-location setup',
-      'Custom integrations',
-      'CRM + booking system',
-      'Monthly SEO reports',
+      'CRM + booking integration',
+      'Monthly SEO reporting',
+      'Custom analytics dashboard',
       'Dedicated account manager',
-      'Priority support',
+      'SLA + priority support',
     ],
-    cta: 'Contact Us',
+    cta: 'Talk to Us',
     highlight: false,
   },
 ]
@@ -74,117 +77,172 @@ export default function Pricing() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from(headingRef.current?.querySelectorAll('.word-inner') ?? [], {
-        yPercent: 110, opacity: 0, stagger: 0.05, duration: 0.7, ease: 'power3.out',
+        yPercent: 115, opacity: 0, stagger: 0.045, duration: 0.75, ease: 'power3.out',
         scrollTrigger: { trigger: headingRef.current, start: 'top 85%' },
       })
       gsap.from(cardsRef.current?.querySelectorAll('.pricing-card') ?? [], {
-        y: 48, opacity: 0, stagger: 0.12, duration: 0.7, ease: 'power3.out',
+        y: 56, opacity: 0, stagger: 0.12, duration: 0.75, ease: 'power3.out',
         scrollTrigger: { trigger: cardsRef.current, start: 'top 80%' },
       })
     })
     return () => ctx.revert()
   }, [])
 
-  const splitLine = (text: string) =>
+  const split = (text: string) =>
     text.split(' ').map((w, i) => (
-      <span key={i} className="word-wrap" style={{ display:'inline-block', marginRight:'0.25em' }}>
+      <span key={i} className="word-wrap" style={{ display: 'inline-block', marginRight: '0.22em' }}>
         <span className="word-inner">{w}</span>
       </span>
     ))
 
   return (
-    <section id="pricing" ref={sectionRef} style={{ padding:'120px 32px', maxWidth:'1100px', margin:'0 auto' }}>
-      <div style={{ textAlign:'center', marginBottom:'72px' }}>
-        <div className="section-label" style={{ justifyContent:'center' }}>
-          <span style={{ width:'20px', height:'1px', background:'var(--color-gold)' }} />
-          Pricing
-          <span style={{ width:'20px', height:'1px', background:'var(--color-gold)' }} />
+    <section
+      id="pricing"
+      ref={sectionRef}
+      style={{
+        padding: 'clamp(80px,12vw,140px) 32px',
+        background: 'var(--color-surface)',
+        borderTop: '1px solid var(--color-border)',
+      }}
+    >
+      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+
+        <div style={{ textAlign: 'center', marginBottom: '72px' }}>
+          <div className="section-label" style={{ justifyContent: 'center' }}>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-gold)' }} />
+            Pricing
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-gold)' }} />
+          </div>
+          <div ref={headingRef}>
+            <h2 style={{
+              fontFamily: 'var(--font-display)', fontWeight: 700,
+              fontSize: 'clamp(2.2rem,5.5vw,4rem)',
+              letterSpacing: '-0.03em', lineHeight: 1.0,
+            }}>
+              {split('One new customer')}
+              <span className="gradient-gold">{split(' pays for this.')}</span>
+            </h2>
+          </div>
+          <p style={{ color: 'var(--color-muted)', fontSize: '1.05rem', maxWidth: '440px', margin: '20px auto 0', lineHeight: 1.65 }}>
+            No retainers. No hidden fees. Pay once, own your site forever.
+          </p>
         </div>
-        <div ref={headingRef} style={{ overflow:'hidden' }}>
-          <h2 style={{
-            fontFamily:'var(--font-display)', fontWeight:800,
-            fontSize:'clamp(2rem,5vw,3.5rem)', letterSpacing:'-0.025em', lineHeight:1.1,
-          }}>
-            {splitLine('One new customer')}&nbsp;
-            <span className="gradient-gold">{splitLine('pays for it.')}</span>
-          </h2>
+
+        <div
+          ref={cardsRef}
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))',
+            gap: '24px',
+            alignItems: 'start',
+          }}
+        >
+          {PLANS.map(p => (
+            <div
+              key={p.name}
+              className="pricing-card"
+              style={{
+                background: p.highlight
+                  ? 'linear-gradient(160deg, rgba(196,164,76,0.06) 0%, var(--color-bg) 100%)'
+                  : 'var(--color-bg)',
+                border: p.highlight
+                  ? '1px solid rgba(196,164,76,0.4)'
+                  : '1px solid var(--color-border)',
+                borderRadius: '18px',
+                padding: '36px',
+                position: 'relative',
+                boxShadow: p.highlight ? '0 0 80px rgba(196,164,76,0.07)' : 'none',
+                transition: 'transform 0.35s var(--ease-out), box-shadow 0.35s',
+              }}
+              onMouseEnter={e => { const el = e.currentTarget; el.style.transform = 'translateY(-6px)'; el.style.boxShadow = p.highlight ? '0 24px 80px rgba(196,164,76,0.14)' : '0 16px 48px rgba(0,0,0,0.3)' }}
+              onMouseLeave={e => { const el = e.currentTarget; el.style.transform = 'translateY(0)'; el.style.boxShadow = p.highlight ? '0 0 80px rgba(196,164,76,0.07)' : 'none' }}
+            >
+              {p.badge && (
+                <div style={{
+                  position: 'absolute', top: '-14px', left: '50%', transform: 'translateX(-50%)',
+                  background: 'linear-gradient(135deg, var(--color-gold), var(--color-gold-light))',
+                  color: '#06060C', fontWeight: 700, fontSize: '0.68rem', letterSpacing: '0.12em',
+                  textTransform: 'uppercase', padding: '5px 18px', borderRadius: '100px',
+                  whiteSpace: 'nowrap',
+                }}>
+                  ✦ {p.badge}
+                </div>
+              )}
+
+              {/* Top accent line */}
+              {p.highlight && (
+                <div style={{
+                  position: 'absolute', top: 0, left: '20%', right: '20%', height: '1px',
+                  background: 'linear-gradient(90deg, transparent, var(--color-gold), transparent)',
+                }} />
+              )}
+
+              <div style={{
+                fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.18em',
+                textTransform: 'uppercase', color: 'var(--color-muted)',
+                marginBottom: '6px',
+              }}>
+                {p.eyebrow}
+              </div>
+
+              <div style={{
+                fontFamily: 'var(--font-display)', fontWeight: 700,
+                fontSize: '1.1rem', marginBottom: '20px',
+                color: 'var(--color-text)',
+              }}>
+                {p.name}
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px', marginBottom: '6px' }}>
+                <span style={{
+                  fontFamily: 'var(--font-display)', fontWeight: 700,
+                  fontSize: '3.2rem', letterSpacing: '-0.04em',
+                  color: p.highlight ? 'var(--color-gold)' : 'var(--color-text)',
+                }}>
+                  {p.price}
+                </span>
+                <span style={{ color: 'var(--color-muted)', fontSize: '0.85rem' }}>{p.per}</span>
+              </div>
+
+              <div style={{ color: 'var(--color-gold)', fontSize: '0.85rem', fontWeight: 600, marginBottom: '4px' }}>
+                {p.hosting}
+              </div>
+              <div style={{
+                color: 'var(--color-muted)', fontSize: '0.78rem',
+                paddingBottom: '24px', marginBottom: '24px',
+                borderBottom: '1px solid var(--color-border)',
+              }}>
+                {p.sub}
+              </div>
+
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '13px', marginBottom: '32px' }}>
+                {p.features.map(f => (
+                  <li key={f} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', fontSize: '0.88rem' }}>
+                    <Check size={14} color="var(--color-gold)" style={{ flexShrink: 0, marginTop: '3px' }} />
+                    <span style={{ color: 'var(--color-muted)' }}>{f}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href="#contact"
+                className={p.highlight ? 'btn-primary' : 'btn-ghost'}
+                style={{ width: '100%', justifyContent: 'center', textDecoration: 'none', display: 'flex' }}
+              >
+                {p.cta} {p.highlight && <ArrowRight size={16} />}
+              </a>
+            </div>
+          ))}
         </div>
-        <p style={{ color:'var(--color-muted)', fontSize:'1.05rem', maxWidth:'440px', margin:'16px auto 0', lineHeight:1.65 }}>
-          No retainers. No surprises. Pay once, own it forever.
+
+        <p style={{
+          textAlign: 'center', color: 'var(--color-muted)',
+          fontSize: '0.82rem', marginTop: '40px', lineHeight: 1.7,
+        }}>
+          All plans include SSL, mobile optimization, and contact form routing to your phone.
+          Hosting auto-renews monthly — cancel anytime, no questions asked.
         </p>
       </div>
-
-      <div
-        ref={cardsRef}
-        style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))', gap:'24px', alignItems:'start' }}
-      >
-        {PLANS.map(p => (
-          <div
-            key={p.name}
-            className="pricing-card"
-            style={{
-              background: p.highlight ? 'linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-2) 100%)' : 'var(--color-surface)',
-              border: p.highlight ? '1px solid rgba(196,164,76,0.4)' : '1px solid var(--color-border)',
-              borderRadius:'16px',
-              padding:'32px',
-              position:'relative',
-              boxShadow: p.highlight ? '0 0 60px rgba(196,164,76,0.08)' : 'none',
-            }}
-          >
-            {p.badge && (
-              <div style={{
-                position:'absolute', top:'-12px', left:'50%', transform:'translateX(-50%)',
-                background:'linear-gradient(135deg, var(--color-gold), var(--color-gold-light))',
-                color:'#08080F', fontWeight:700, fontSize:'0.7rem', letterSpacing:'0.1em',
-                textTransform:'uppercase', padding:'4px 16px', borderRadius:'100px',
-                display:'flex', alignItems:'center', gap:'4px',
-              }}>
-                <Zap size={10} /> {p.badge}
-              </div>
-            )}
-
-            <div style={{ marginBottom:'8px' }}>
-              <span style={{ fontFamily:'var(--font-display)', fontWeight:700, fontSize:'1rem', color:'var(--color-muted)', letterSpacing:'0.05em' }}>
-                {p.name}
-              </span>
-            </div>
-            <div style={{ display:'flex', alignItems:'baseline', gap:'4px', marginBottom:'4px' }}>
-              <span style={{ fontFamily:'var(--font-display)', fontWeight:800, fontSize:'2.8rem', color:'var(--color-text)' }}>
-                {p.price}
-              </span>
-              <span style={{ color:'var(--color-muted)', fontSize:'0.85rem' }}>{p.per}</span>
-            </div>
-            <div style={{ color:'var(--color-gold)', fontSize:'0.82rem', fontWeight:600, marginBottom:'4px' }}>
-              {p.hosting}
-            </div>
-            <div style={{ color:'var(--color-muted)', fontSize:'0.78rem', marginBottom:'28px', paddingBottom:'20px', borderBottom:'1px solid var(--color-border)' }}>
-              {p.tag}
-            </div>
-
-            <ul style={{ listStyle:'none', display:'flex', flexDirection:'column', gap:'12px', marginBottom:'32px' }}>
-              {p.features.map(f => (
-                <li key={f} style={{ display:'flex', gap:'10px', alignItems:'flex-start', fontSize:'0.9rem', color:'var(--color-muted)' }}>
-                  <Check size={15} color="var(--color-gold)" style={{ flexShrink:0, marginTop:'2px' }} />
-                  {f}
-                </li>
-              ))}
-            </ul>
-
-            <a
-              href="#contact"
-              className={p.highlight ? 'btn-primary' : 'btn-ghost'}
-              style={{ width:'100%', justifyContent:'center', textDecoration:'none' }}
-            >
-              {p.cta}
-            </a>
-          </div>
-        ))}
-      </div>
-
-      <p style={{ textAlign:'center', color:'var(--color-muted)', fontSize:'0.82rem', marginTop:'32px' }}>
-        All plans include SSL, mobile optimization, and contact form routing to your phone.
-        Hosting renews monthly — cancel anytime.
-      </p>
     </section>
   )
 }
