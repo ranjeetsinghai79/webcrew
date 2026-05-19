@@ -1,0 +1,205 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg:           #08080F;
+  --color-surface:      #0F0F1C;
+  --color-surface-2:    #16162A;
+  --color-border:       rgba(196,164,76,0.12);
+  --color-gold:         #C4A44C;
+  --color-gold-light:   #E8CC7A;
+  --color-gold-dim:     rgba(196,164,76,0.18);
+  --color-text:         #F0EFE8;
+  --color-muted:        #8A8A9A;
+  --color-blob-1:       rgba(196,164,76,0.07);
+  --color-blob-2:       rgba(100,80,200,0.08);
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
+
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Utility classes ─────────────────────────────────────── */
+
+.gradient-gold {
+  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 50%, var(--color-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light));
+  color: #08080F;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border-radius: 4px;
+  padding: 14px 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.3s, transform 0.3s var(--ease-out);
+  cursor: pointer;
+  border: none;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #fff3 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn-primary:hover { opacity: 0.92; transform: translateY(-2px); }
+.btn-primary:hover::before { opacity: 1; }
+
+.btn-ghost {
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  background: transparent;
+  border-radius: 4px;
+  padding: 13px 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: border-color 0.3s, background 0.3s, transform 0.3s var(--ease-out);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+.btn-ghost:hover {
+  border-color: var(--color-gold);
+  background: var(--color-gold-dim);
+  transform: translateY(-2px);
+}
+
+.gold-line {
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-gold), transparent);
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 32px;
+  transition: border-color 0.3s, transform 0.3s var(--ease-out), box-shadow 0.3s;
+}
+.card:hover {
+  border-color: rgba(196,164,76,0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(196,164,76,0.08);
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 16px;
+}
+
+/* ── Word-split animation ────────────────────────────────── */
+.word-wrap { overflow: hidden; display: inline-block; }
+.word-inner { display: inline-block; will-change: transform; }
+
+/* ── Scroll progress bar ─────────────────────────────────── */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-gold), var(--color-gold-light));
+  transform-origin: left;
+  transform: scaleX(var(--scroll-pct, 0));
+  z-index: 9999;
+  box-shadow: 0 0 8px var(--color-gold);
+}
+
+/* ── Aurora blobs ────────────────────────────────────────── */
+.aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+@keyframes aurora-drift {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  33%       { transform: translate(30px,-20px) scale(1.05); }
+  66%       { transform: translate(-20px,30px) scale(0.95); }
+}
+
+/* ── Loading screen ──────────────────────────────────────── */
+#loading-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--color-bg);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Particle canvas ─────────────────────────────────────── */
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* ── Image reveal ────────────────────────────────────────── */
+.img-reveal {
+  overflow: hidden;
+}
+.img-reveal img {
+  transform-origin: center;
+}
+
+/* ── Magnetic cursor ─────────────────────────────────────── */
+#cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  mix-blend-mode: difference;
+}
+#cursor-dot {
+  width: 8px; height: 8px;
+  background: var(--color-gold-light);
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%,-50%);
+}
+#cursor-ring {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(232,204,122,0.5);
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  transition: width 0.3s, height 0.3s, border-color 0.3s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
