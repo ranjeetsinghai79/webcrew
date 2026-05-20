@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(ScrollTrigger)
+if (typeof window !== "undefined") { gsap.registerPlugin(ScrollTrigger) }
 
 const BEFORE_PROBLEMS = [
   'Built in 2011 on Wix',

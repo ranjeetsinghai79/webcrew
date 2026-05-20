@@ -1,7 +1,8 @@
 import type { NextConfig } from 'next'
 
 const config: NextConfig = {
-  output: 'export',
+  // Static export for CF Pages — only in production (dev server needs SSR mode)
+  ...(process.env.NODE_ENV === 'production' ? { output: 'export' } : {}),
   images: { unoptimized: true },
 }
 

@@ -4,7 +4,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowRight } from 'lucide-react'
 
-gsap.registerPlugin(ScrollTrigger)
+if (typeof window !== "undefined") { gsap.registerPlugin(ScrollTrigger) }
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
