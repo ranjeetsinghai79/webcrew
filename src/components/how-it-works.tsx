@@ -7,47 +7,47 @@ if (typeof window !== 'undefined') { gsap.registerPlugin(ScrollTrigger) }
 
 // ── Mini UI mockups inside each step card ────────────────────────────────────
 
-function ScanUI() {
+function SignupUI() {
   return (
     <div style={{
       background: '#0a0a14', borderRadius: 10, padding: '14px 12px',
-      border: '1px solid rgba(196,164,76,0.12)', fontFamily: 'monospace',
+      border: '1px solid rgba(196,164,76,0.12)',
     }}>
-      <div style={{ fontSize: '0.58rem', color: 'rgba(196,164,76,0.5)', marginBottom: 8, letterSpacing: '0.1em' }}>
-        SCANNING GOOGLE MAPS · TRACY, CA
+      <div style={{ fontSize: '0.58rem', color: 'rgba(196,164,76,0.5)', marginBottom: 10, letterSpacing: '0.1em', fontFamily: 'monospace' }}>
+        GET MY FREE DEMO SITE
       </div>
       {[
-        { name: 'Peak Roofing LLC',      score: 32, bad: true  },
-        { name: 'Tracy HVAC Pros',       score: 19, bad: true  },
-        { name: 'Bright Cleaning Co.',   score: 41, bad: true  },
-        { name: 'Sunrise Auto Detail',   score: 28, bad: true  },
-      ].map((b, i) => (
-        <div key={b.name} style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          padding: '6px 8px', marginBottom: 4, borderRadius: 6,
-          background: i === 1 ? 'rgba(196,164,76,0.06)' : 'transparent',
-          border: i === 1 ? '1px solid rgba(196,164,76,0.15)' : '1px solid transparent',
-          transition: 'all 0.2s',
-        }}>
-          <div style={{ fontSize: '0.62rem', color: i === 1 ? '#F2F1EA' : 'rgba(255,255,255,0.45)', fontFamily: 'var(--font-body)' }}>
-            {b.name}
-          </div>
+        { label: 'Business name', value: 'Tracy HVAC Pros', filled: true },
+        { label: 'Phone number',  value: '(209) 555-0182',  filled: true },
+        { label: 'Industry',      value: 'HVAC',            filled: true },
+      ].map(f => (
+        <div key={f.label} style={{ marginBottom: 6 }}>
+          <div style={{ fontSize: '0.5rem', color: 'rgba(255,255,255,0.3)', marginBottom: 2, fontFamily: 'var(--font-body)' }}>{f.label}</div>
           <div style={{
-            fontSize: '0.58rem', fontWeight: 700, padding: '2px 7px', borderRadius: 4,
-            background: b.bad ? 'rgba(255,77,77,0.12)' : 'rgba(74,222,128,0.12)',
-            color: b.bad ? '#ff7070' : '#4ade80',
+            fontSize: '0.62rem', padding: '5px 8px', borderRadius: 5, fontFamily: 'var(--font-body)',
+            background: f.filled ? 'rgba(196,164,76,0.08)' : 'rgba(255,255,255,0.04)',
+            border: `1px solid ${f.filled ? 'rgba(196,164,76,0.2)' : 'rgba(255,255,255,0.06)'}`,
+            color: f.filled ? '#F2F1EA' : 'rgba(255,255,255,0.2)',
           }}>
-            Score: {b.score}
+            {f.value}
           </div>
         </div>
       ))}
       <div style={{
-        marginTop: 10, padding: '6px 8px', borderRadius: 6,
+        marginTop: 10, padding: '7px 10px', borderRadius: 6,
+        background: '#C4A44C', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+      }}>
+        <div style={{ fontSize: '0.62rem', fontWeight: 700, color: '#06060C', fontFamily: 'var(--font-display)' }}>
+          Build My FREE Site →
+        </div>
+      </div>
+      <div style={{
+        marginTop: 8, padding: '5px 8px', borderRadius: 6,
         background: 'rgba(74,222,128,0.06)', border: '1px solid rgba(74,222,128,0.15)',
         display: 'flex', alignItems: 'center', gap: 6,
       }}>
-        <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#4ade80', boxShadow: '0 0 4px #4ade80' }} />
-        <div style={{ fontSize: '0.6rem', color: '#4ade80' }}>4 opportunities found · building now</div>
+        <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#4ade80', boxShadow: '0 0 4px #4ade80', flexShrink: 0 }} />
+        <div style={{ fontSize: '0.55rem', color: '#4ade80', fontFamily: 'var(--font-body)' }}>Submitted · building starts now</div>
       </div>
     </div>
   )
@@ -173,25 +173,25 @@ function DemoUI() {
 const STEPS = [
   {
     n: '01',
-    eyebrow: 'Discovery',
-    headline: 'We find you.',
-    body: 'Every morning, our AI scans Google Maps for local businesses without a great web presence. If you qualify, you\'re already on our list — no sign-up needed.',
-    note: 'No action needed from you',
-    ui: <ScanUI />,
+    eyebrow: 'Step 1 — Free',
+    headline: '60 seconds to sign up.',
+    body: 'Tell us your business name, phone, and industry. That\'s it. No credit card. No meetings. No briefs. We handle everything else.',
+    note: 'Takes 60 seconds. Always free.',
+    ui: <SignupUI />,
   },
   {
     n: '02',
-    eyebrow: 'Build',
-    headline: 'We build it overnight.',
-    body: 'Brand colors, real services, your phone number, AI-generated photos, cinematic animations. Built, tested, and deployed to a live URL — while you sleep.',
+    eyebrow: 'Step 2 — Overnight',
+    headline: 'We build it while you sleep.',
+    body: 'Real brand colors, your services, your phone number, AI-generated photos, cinematic animations. Built, tested, and deployed to a live URL — in hours.',
     note: 'Average: 6 hours build time',
     ui: <BuildUI />,
   },
   {
     n: '03',
-    eyebrow: 'Launch',
-    headline: 'You wake up to a text.',
-    body: 'We send you a link. Browse your site on your phone. If it doesn\'t make you want to show every customer — don\'t pay. Zero risk.',
+    eyebrow: 'Step 3 — Leads',
+    headline: 'Wake up to calls and leads.',
+    body: 'You get a text with your live site link. Your new website is already ranked, indexed, and ready to convert. Customers find you. You get calls. Pay only if you love it.',
     note: 'Pay only if you love it',
     ui: <DemoUI />,
   },
@@ -253,17 +253,15 @@ export default function HowItWorks() {
                 letterSpacing: '-0.035em', lineHeight: 1.0,
               }}>
                 <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
-                  {split('From Google Maps to')}
+                  {split('Invisible today.')}
                 </div>
                 <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
-                  {split('live website')}
                   <span style={{
                     display: 'inline-block',
                     background: 'linear-gradient(135deg,#C4A44C,#E8CC7A)',
                     WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-                    marginLeft: '0.22em',
                   }}>
-                    {split('in 24 hours.')}
+                    {split('Fully booked tomorrow.')}
                   </span>
                 </div>
               </h2>

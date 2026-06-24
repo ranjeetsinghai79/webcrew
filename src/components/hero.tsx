@@ -1,8 +1,8 @@
 'use client'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowRight, Star, Zap, Clock, DollarSign, Search } from 'lucide-react'
+import { ArrowRight, Star, Zap, Clock, DollarSign } from 'lucide-react'
 
 if (typeof window !== 'undefined') { gsap.registerPlugin(ScrollTrigger) }
 
@@ -186,7 +186,7 @@ export default function Hero() {
   const trustRef   = useRef<HTMLDivElement>(null)
   const rightRef   = useRef<HTMLDivElement>(null)
   const countRef   = useRef<HTMLSpanElement>(null)
-  const [bizName, setBizName] = useState('')
+  // tab events handled by contact.tsx via wc:tab custom event
 
   // Particle canvas
   useEffect(() => {
@@ -342,7 +342,7 @@ export default function Hero() {
               color: '#16A34A',
             }}>
               <span className="live-dot" />
-              <span ref={countRef}>823</span> local sites built — 12 launched today
+              <span ref={countRef}>823</span> local businesses now getting leads online
             </span>
           </div>
 
@@ -359,10 +359,13 @@ export default function Hero() {
             }}
           >
             <div style={{ overflow: 'hidden', paddingBottom: '0.06em' }}>
-              {split('Your competitors')}
+              {split('No website?')}
             </div>
             <div style={{ overflow: 'hidden', paddingBottom: '0.06em' }}>
-              {split('already hired us.', true)}
+              {split('You\'re invisible.', true)}
+            </div>
+            <div style={{ overflow: 'hidden', paddingBottom: '0.06em' }}>
+              {split('We fix that. Free.')}
             </div>
           </h1>
 
@@ -377,55 +380,29 @@ export default function Hero() {
               marginBottom: '40px',
             }}
           >
-            We scan Google Maps every morning. Find businesses losing money to bad — or no — websites.
-            Build something{' '}
-            <span style={{ color: 'var(--color-text)', fontWeight: 600 }}>stunning overnight.</span>
-            {' '}Text you the link. You pay only if you&apos;re obsessed.
+            We build your business a{' '}
+            <span style={{ color: 'var(--color-text)', fontWeight: 600 }}>professional, lead-generating website</span>
+            {' '}overnight — for free. You wake up to a live site and incoming calls.
+            Pay only if you love it.
           </p>
 
-          {/* Business name input → CTA */}
-          <div ref={ctasRef} style={{ marginBottom: '48px' }}>
-            <form
-              onSubmit={e => {
-                e.preventDefault()
-                if (bizName.trim()) {
-                  window.dispatchEvent(new CustomEvent('wc:prefill', { detail: { business: bizName.trim() } }))
-                }
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-              }}
-              style={{
-                display: 'flex', gap: '10px', flexWrap: 'wrap',
-                background: 'rgba(255,255,255,0.06)',
-                border: '1px solid rgba(196,164,76,0.22)',
-                borderRadius: '14px',
-                padding: '8px 8px 8px 16px',
-                maxWidth: '500px',
-              }}
+          {/* CTAs */}
+          <div ref={ctasRef} style={{ marginBottom: '48px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+            <a
+              href="#contact"
+              onClick={e => { e.preventDefault(); window.dispatchEvent(new CustomEvent('wc:tab', { detail: { tab: 'demo' } })); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}
+              className="btn-primary"
+              style={{ fontSize: '0.95rem', padding: '15px 28px' }}
             >
-              <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: '8px', minWidth: '180px' }}>
-                <Search size={15} color="var(--color-muted)" style={{ flexShrink: 0 }} />
-                <input
-                  type="text"
-                  placeholder="Your business name…"
-                  value={bizName}
-                  onChange={e => setBizName(e.target.value)}
-                  style={{
-                    flex: 1, background: 'transparent', border: 'none', outline: 'none',
-                    color: 'var(--color-text)', fontSize: '0.92rem',
-                    fontFamily: 'var(--font-body)',
-                  }}
-                />
-              </div>
-              <button type="submit" className="btn-primary" style={{ fontSize: '0.88rem', padding: '12px 22px', whiteSpace: 'nowrap' }}>
-                See My Demo <ArrowRight size={14} />
-              </button>
-            </form>
-            <a href="#how-it-works" style={{
-              display: 'inline-block', marginTop: '14px',
-              fontSize: '0.82rem', color: 'var(--color-muted)',
-              textDecoration: 'underline', textUnderlineOffset: '3px',
-            }}>
-              How does this work?
+              Get My FREE Demo Site <ArrowRight size={16} />
+            </a>
+            <a
+              href="#contact"
+              onClick={e => { e.preventDefault(); window.dispatchEvent(new CustomEvent('wc:tab', { detail: { tab: 'audit' } })); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}
+              className="btn-ghost"
+              style={{ fontSize: '0.95rem' }}
+            >
+              Free Website Audit
             </a>
           </div>
 
@@ -451,11 +428,11 @@ export default function Hero() {
             </div>
             <div style={{ width: 1, height: 16, background: 'var(--color-border)' }} />
             <span style={{ fontSize: '0.75rem', color: 'var(--color-muted)' }}>
-              <span style={{ color: 'var(--color-text)', fontWeight: 600 }}>$0</span> upfront
+              <span style={{ color: 'var(--color-text)', fontWeight: 600 }}>$0</span> upfront. Ever.
             </span>
             <div style={{ width: 1, height: 16, background: 'var(--color-border)' }} />
             <span style={{ fontSize: '0.75rem', color: 'var(--color-muted)' }}>
-              <span style={{ color: 'var(--color-text)', fontWeight: 600 }}>100%</span> money-back
+              <span style={{ color: 'var(--color-text)', fontWeight: 600 }}>24hr</span> delivery
             </span>
           </div>
         </div>

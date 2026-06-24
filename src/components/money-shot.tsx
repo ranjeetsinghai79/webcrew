@@ -244,13 +244,13 @@ export default function MoneyShot() {
               letterSpacing: '-0.04em', lineHeight: 0.98,
             }}>
               <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
-                {split('A bad website')}
+                {split('No online presence')}
               </div>
               <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
-                {split('costs you more')}
+                {split('= customers going')}
               </div>
               <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
-                {split('than you think.', true)}
+                {split('to your competitor.', true)}
               </div>
             </h2>
           </div>
@@ -259,7 +259,7 @@ export default function MoneyShot() {
             color: 'var(--color-muted)', fontSize: '1rem',
             lineHeight: 1.75, maxWidth: 440, marginBottom: 36,
           }}>
-            Local businesses are invisible online. Thousands of people search your trade every month — and find your competitor instead. Here&apos;s what that silence is actually costing you:
+            Every day without a professional website, you&apos;re handing leads to competitors. People search your trade online right now — and choose whoever shows up first. Here&apos;s the real cost of being invisible:
           </p>
 
           <div ref={bulletsRef} style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 44 }}>
@@ -286,7 +286,7 @@ export default function MoneyShot() {
 
           <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
             <a href="#contact" className="btn-primary">
-              Fix This For $299 <ArrowRight size={16} />
+              Get My FREE Demo Site <ArrowRight size={16} />
             </a>
             <a href="#how-it-works" className="btn-ghost">
               See How It Works
