@@ -116,7 +116,7 @@ export default function Contact() {
           lastName:      demo.name.split(' ').slice(1).join(' '),
           businessName:  demo.business,
           phone:         demo.phone,
-          email:         demo.email || undefined,
+          email:         demo.email,
           businessNiche: demo.niche,
           currentWebsite: tab === 'upgrade' ? demo.currentUrl : undefined,
           flowType:      tab === 'upgrade' ? 'upgrade' : 'no-site',
@@ -367,7 +367,7 @@ export default function Contact() {
                   onFocus={onFocus} onBlur={onBlur} />
               </div>
 
-              <input style={inputStyle} type="email" placeholder="Email address (optional — for site link)"
+              <input style={inputStyle} type="email" placeholder="Email address *" required
                 value={demo.email} onChange={e => setDemo(f => ({ ...f, email: e.target.value }))}
                 onFocus={onFocus} onBlur={onBlur} />
 

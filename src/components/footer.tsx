@@ -41,7 +41,8 @@ export default function Footer() {
           ))}
         </div>
         <p style={{ color:'var(--color-muted)', fontSize:'0.78rem' }}>
-          © {year} WebCrew. All rights reserved.
+          © {year} WebCrew. All rights reserved.{' '}
+          <span style={{ opacity: 0.6 }}>· Sites built by webcrew.app</span>
         </p>
       </div>
     </footer>
