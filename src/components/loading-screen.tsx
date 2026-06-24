@@ -10,28 +10,39 @@ export default function LoadingScreen() {
   const barFillRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
+    const dismiss = () => {
+      gsap.to(screenRef.current, {
+        yPercent: -100, duration: 0.75, ease: 'power4.inOut',
         onComplete: () => {
-          gsap.to(screenRef.current, {
-            yPercent: -100,
-            duration: 0.75,
-            ease: 'power4.inOut',
-            onComplete: () => {
-              if (screenRef.current) screenRef.current.style.display = 'none'
-              document.body.style.overflow = ''
-            },
-          })
+          if (screenRef.current) screenRef.current.style.display = 'none'
+          document.body.style.overflow = ''
         },
       })
+    }
 
+    const ctx = gsap.context(() => {
       document.body.style.overflow = 'hidden'
 
-      tl.from(logoRef.current, { opacity: 0, y: 20, duration: 0.6, ease: 'power3.out' })
+      const tl = gsap.timeline({ onComplete: dismiss })
+      tl.from(logoRef.current,    { opacity: 0, y: 20, duration: 0.6, ease: 'power3.out' })
         .from(taglineRef.current, { opacity: 0, y: 12, duration: 0.5, ease: 'power3.out' }, '-=0.2')
-        .from(barRef.current, { opacity: 0, duration: 0.3 }, '-=0.1')
-        .to(barFillRef.current, { width: '100%', duration: 1.0, ease: 'power2.inOut' })
+        .from(barRef.current,     { opacity: 0, duration: 0.3 }, '-=0.1')
+        .to(barFillRef.current,   { width: '100%', duration: 1.0, ease: 'power2.inOut' })
         .to({}, { duration: 0.15 })
+
+      // If tab was hidden on load, resume timeline when it becomes visible
+      const onVisible = () => { if (!document.hidden) tl.play() }
+      document.addEventListener('visibilitychange', onVisible)
+
+      // Hard cap: skip loading screen after 2.5s regardless of tab focus
+      const cap = setTimeout(() => {
+        if (tl.progress() < 1) { tl.kill(); dismiss() }
+      }, 2500)
+
+      return () => {
+        document.removeEventListener('visibilitychange', onVisible)
+        clearTimeout(cap)
+      }
     })
     return () => ctx.revert()
   }, [])
@@ -82,7 +93,7 @@ export default function LoadingScreen() {
             marginBottom: '40px',
           }}
         >
-          Luxury websites. Overnight.
+          Professional websites. Overnight.
         </div>
         <div ref={barRef} style={{ width: '200px', height: '1px', background: 'var(--color-border)', margin: '0 auto' }}>
           <div

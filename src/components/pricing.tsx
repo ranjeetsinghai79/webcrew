@@ -16,7 +16,7 @@ const PLANS = [
     sub: 'Cancel anytime. No contracts.',
     badge: null,
     features: [
-      'Luxury custom website',
+      'Professional, cinematic website',
       'Mobile-first, cinematic design',
       'Contact form → your phone instantly',
       'Google Maps SEO built-in',
@@ -38,7 +38,7 @@ const PLANS = [
     features: [
       'Everything in New Website',
       'Full audit of your current site',
-      'Luxury redesign from scratch',
+      'Full redesign from scratch',
       'Advanced scroll animations',
       'Google Business integration',
       'Review showcase',
@@ -106,6 +106,38 @@ export default function Pricing() {
       }}
     >
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+
+        {/* Launch special banner */}
+        <div style={{
+          background: 'linear-gradient(135deg, rgba(196,164,76,0.1) 0%, rgba(196,164,76,0.04) 100%)',
+          border: '1px solid rgba(196,164,76,0.35)',
+          borderRadius: '12px',
+          padding: '14px 24px',
+          textAlign: 'center',
+          marginBottom: '48px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '12px',
+          flexWrap: 'wrap',
+        }}>
+          <span style={{
+            background: 'var(--color-gold)',
+            color: '#06060C',
+            fontWeight: 800,
+            fontSize: '0.65rem',
+            letterSpacing: '0.14em',
+            textTransform: 'uppercase',
+            padding: '3px 10px',
+            borderRadius: '100px',
+          }}>Launch Special</span>
+          <span style={{ fontSize: '0.9rem', color: 'var(--color-text)', fontWeight: 600 }}>
+            First 10 businesses this month — site build free.
+          </span>
+          <span style={{ fontSize: '0.82rem', color: 'var(--color-muted)' }}>
+            Pay hosting only ($49/mo). <span style={{ color: 'var(--color-gold)', fontWeight: 600 }}>6 spots left.</span>
+          </span>
+        </div>
 
         <div style={{ textAlign: 'center', marginBottom: '72px' }}>
           <div className="section-label" style={{ justifyContent: 'center' }}>

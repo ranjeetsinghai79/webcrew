@@ -82,11 +82,11 @@ function BrowserCard({ site }: { site: (typeof SITES)[0] }) {
       setRY(dx * 10)
       setRX(-dy * 7)
       setSC(1.02)
-      gsap.to(el, { duration: 0.3, borderColor: 'rgba(196,164,76,0.45)', boxShadow: `0 40px 100px rgba(0,0,0,0.7), 0 0 40px ${site.color}18` })
+      gsap.to(el, { duration: 0.3, borderColor: 'rgba(196,164,76,0.45)', boxShadow: `0 24px 60px rgba(0,0,0,0.28), 0 0 30px ${site.color}18` })
     }
     const onLeave = () => {
       setRX(0); setRY(0); setSC(1)
-      gsap.to(el, { duration: 0.4, borderColor: 'rgba(196,164,76,0.15)', boxShadow: '0 24px 80px rgba(0,0,0,0.6)' })
+      gsap.to(el, { duration: 0.4, borderColor: 'rgba(196,164,76,0.15)', boxShadow: '0 12px 40px rgba(0,0,0,0.18)' })
     }
 
     el.addEventListener('mousemove', onMove)
@@ -111,7 +111,7 @@ function BrowserCard({ site }: { site: (typeof SITES)[0] }) {
         borderRadius: '16px',
         border: '1px solid rgba(196,164,76,0.15)',
         overflow: 'hidden',
-        boxShadow: '0 24px 80px rgba(0,0,0,0.6)',
+        boxShadow: '0 12px 40px rgba(0,0,0,0.18)',
         cursor: 'pointer',
         willChange: 'transform',
       }}

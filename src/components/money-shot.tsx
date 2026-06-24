@@ -1,36 +1,199 @@
 'use client'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, TrendingDown, TrendingUp } from 'lucide-react'
 
-if (typeof window !== "undefined") { gsap.registerPlugin(ScrollTrigger) }
+if (typeof window !== 'undefined') { gsap.registerPlugin(ScrollTrigger) }
+
+const BULLETS = [
+  { stat: '~2,400', label: 'people search your trade in your city every month' },
+  { stat: 'Top 3',  label: 'results get 68% of all clicks — you\'re not in them' },
+  { stat: '$650',   label: 'average job value for a local trade business' },
+  { stat: '~$9.6K', label: 'in leads you\'re invisibly losing every month' },
+]
+
+function RevenueCard() {
+  const badRef  = useRef<HTMLSpanElement>(null)
+  const goodRef = useRef<HTMLSpanElement>(null)
+  const roiRef  = useRef<HTMLSpanElement>(null)
+  const triggered = useRef(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && !triggered.current) {
+        triggered.current = true
+        const countUp = (el: HTMLSpanElement | null, target: number, prefix = '', suffix = '') => {
+          if (!el) return
+          const obj = { val: 0 }
+          gsap.to(obj, {
+            val: target, duration: 2.2, ease: 'power2.out',
+            onUpdate: () => { el.textContent = prefix + Math.round(obj.val).toLocaleString() + suffix },
+          })
+        }
+        setTimeout(() => {
+          countUp(badRef.current, 9600, '-$', '/mo')
+          countUp(goodRef.current, 18200, '+$', '/mo')
+          countUp(roiRef.current, 60, '', 'x')
+        }, 300)
+      }
+    }, { threshold: 0.4 })
+    if (containerRef.current) observer.observe(containerRef.current)
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <div
+      ref={containerRef}
+      style={{
+        background: '#FFFFFF',
+        border: '1px solid rgba(0,0,0,0.09)',
+        borderRadius: 20,
+        overflow: 'hidden',
+        boxShadow: '0 8px 40px rgba(0,0,0,0.1)',
+      }}
+    >
+      {/* Card header */}
+      <div style={{
+        padding: '20px 24px',
+        borderBottom: '1px solid rgba(0,0,0,0.06)',
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+      }}>
+        <div>
+          <div style={{ fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: 2 }}>
+            Revenue Calculator
+          </div>
+          <div style={{ fontSize: '0.72rem', color: 'var(--color-muted)' }}>
+            Based on your local market · Tracy, CA
+          </div>
+        </div>
+        <div style={{
+          width: 36, height: 36, borderRadius: 10,
+          background: '#F3F4F6',
+          border: '1px solid rgba(0,0,0,0.08)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+        }}>
+          <TrendingUp size={16} color="#C4A44C" />
+        </div>
+      </div>
+
+      {/* Bad site row */}
+      <div style={{ padding: '20px 24px', borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+          <div style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            width: 24, height: 24, borderRadius: 6,
+            background: 'rgba(255,77,77,0.1)',
+          }}>
+            <TrendingDown size={13} color="#ff7070" />
+          </div>
+          <div style={{ fontSize: '0.72rem', fontWeight: 600, color: '#ff7070' }}>
+            With your current site
+          </div>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
+          {[
+            { label: 'Google rank',   val: 'Not found' },
+            { label: 'Leads/month',   val: '~2' },
+            { label: 'Avg job value', val: '$650' },
+            { label: 'Monthly loss',  val: <span ref={badRef} style={{ color: '#ff7070' }}>-$0/mo</span> },
+          ].map((r) => (
+            <div key={r.label} style={{
+              background: 'rgba(255,77,77,0.04)',
+              border: '1px solid rgba(255,77,77,0.08)',
+              borderRadius: 8, padding: '8px 10px',
+            }}>
+              <div style={{ fontSize: '0.58rem', color: 'var(--color-muted)', marginBottom: 2 }}>{r.label}</div>
+              <div style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--color-text)' }}>{r.val}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Good site row */}
+      <div style={{ padding: '20px 24px', borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+          <div style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            width: 24, height: 24, borderRadius: 6,
+            background: 'rgba(74,222,128,0.1)',
+          }}>
+            <TrendingUp size={13} color="#4ade80" />
+          </div>
+          <div style={{ fontSize: '0.72rem', fontWeight: 600, color: '#4ade80' }}>
+            With WebCrew
+          </div>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
+          {[
+            { label: 'Google rank',   val: 'Top 3' },
+            { label: 'Leads/month',   val: '~28' },
+            { label: 'Avg job value', val: '$650' },
+            { label: 'Monthly rev.',  val: <span ref={goodRef} style={{ color: '#4ade80' }}>+$0/mo</span> },
+          ].map((r) => (
+            <div key={r.label} style={{
+              background: 'rgba(74,222,128,0.04)',
+              border: '1px solid rgba(74,222,128,0.1)',
+              borderRadius: 8, padding: '8px 10px',
+            }}>
+              <div style={{ fontSize: '0.58rem', color: 'var(--color-muted)', marginBottom: 2 }}>{r.label}</div>
+              <div style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--color-text)' }}>{r.val}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ROI footer */}
+      <div style={{
+        padding: '16px 24px',
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        background: '#F9FAFB',
+      }}>
+        <div>
+          <div style={{ fontSize: '0.65rem', color: 'var(--color-muted)', marginBottom: 2 }}>
+            Your WebCrew cost
+          </div>
+          <div style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--color-text)' }}>
+            $299 one-time
+          </div>
+        </div>
+        <div style={{ textAlign: 'right' }}>
+          <div style={{ fontSize: '0.65rem', color: 'var(--color-muted)', marginBottom: 2 }}>
+            Month 1 ROI
+          </div>
+          <div style={{
+            fontFamily: 'var(--font-display)', fontWeight: 800,
+            fontSize: '1.6rem', letterSpacing: '-0.03em',
+            color: '#C4A44C',
+          }}>
+            <span ref={roiRef}>0x</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export default function MoneyShot() {
   const sectionRef = useRef<HTMLElement>(null)
-  const line1Ref   = useRef<HTMLDivElement>(null)
-  const line2Ref   = useRef<HTMLDivElement>(null)
-  const ctaRef     = useRef<HTMLDivElement>(null)
+  const headingRef = useRef<HTMLDivElement>(null)
+  const bulletsRef = useRef<HTMLDivElement>(null)
+  const cardRef    = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: { trigger: sectionRef.current, start: 'top 75%' },
-        defaults: { ease: 'power3.out' },
+      gsap.from(headingRef.current?.querySelectorAll('.word-inner') ?? [], {
+        yPercent: 115, opacity: 0, stagger: 0.035, duration: 0.75, ease: 'power3.out',
+        scrollTrigger: { trigger: headingRef.current, start: 'top 85%' },
       })
-
-      tl.from(line1Ref.current?.querySelectorAll('.word-inner') ?? [], {
-        yPercent: 115, opacity: 0, stagger: 0.04, duration: 0.8,
+      gsap.from(bulletsRef.current?.querySelectorAll('.math-bullet') ?? [], {
+        x: -24, opacity: 0, stagger: 0.1, duration: 0.6, ease: 'power3.out',
+        scrollTrigger: { trigger: bulletsRef.current, start: 'top 82%' },
       })
-      .from(line2Ref.current?.querySelectorAll('.word-inner') ?? [], {
-        yPercent: 115, opacity: 0, stagger: 0.04, duration: 0.8,
-      }, '-=0.5')
-      .from(ctaRef.current, { opacity: 0, y: 20, duration: 0.6 }, '-=0.3')
-
-      // Subtle parallax on the glow
-      gsap.to('.ms-glow', {
-        scale: 1.3, ease: 'none',
-        scrollTrigger: { trigger: sectionRef.current, start: 'top bottom', end: 'bottom top', scrub: 1 },
+      gsap.from(cardRef.current, {
+        x: 40, opacity: 0, duration: 0.9, ease: 'power4.out',
+        scrollTrigger: { trigger: cardRef.current, start: 'top 82%' },
       })
     })
     return () => ctx.revert()
@@ -39,7 +202,14 @@ export default function MoneyShot() {
   const split = (text: string, gold?: boolean) =>
     text.split(' ').map((w, i) => (
       <span key={i} className="word-wrap" style={{ display: 'inline-block', marginRight: '0.22em' }}>
-        <span className={`word-inner${gold ? ' gradient-gold' : ''}`}>{w}</span>
+        <span
+          className="word-inner"
+          style={gold ? {
+            display: 'inline-block',
+            background: 'linear-gradient(135deg,#C4A44C,#E8CC7A)',
+            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+          } : undefined}
+        >{w}</span>
       </span>
     ))
 
@@ -47,65 +217,94 @@ export default function MoneyShot() {
     <section
       ref={sectionRef}
       style={{
-        position: 'relative',
-        textAlign: 'center',
-        padding: 'clamp(80px,11vw,130px) 32px',
+        padding: 'clamp(80px,10vw,130px) clamp(24px,6vw,80px)',
         borderTop: '1px solid var(--color-border)',
         overflow: 'hidden',
       }}
     >
-      {/* Glow */}
-      <div className="ms-glow" style={{
-        position: 'absolute', top: '50%', left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: '600px', height: '300px',
-        background: 'radial-gradient(ellipse at center, rgba(196,164,76,0.08) 0%, transparent 70%)',
-        pointerEvents: 'none',
-        borderRadius: '50%',
-      }} />
-
-      {/* Grid lines */}
       <div style={{
-        position: 'absolute', inset: 0, pointerEvents: 'none',
-        backgroundImage: 'linear-gradient(rgba(196,164,76,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(196,164,76,0.018) 1px, transparent 1px)',
-        backgroundSize: '80px 80px',
-      }} />
+        maxWidth: '1200px', margin: '0 auto',
+        display: 'grid',
+        gridTemplateColumns: 'minmax(0,1fr) minmax(0,1fr)',
+        gap: 'clamp(40px,6vw,80px)',
+        alignItems: 'center',
+      }}
+      className="math-grid"
+      >
+        {/* Left: copy */}
+        <div>
+          <div className="section-label" style={{ marginBottom: 20 }}>
+            THE MATH
+          </div>
 
-      <div style={{ position: 'relative', zIndex: 1 }}>
-        <div ref={line1Ref} style={{ overflow: 'hidden', paddingBottom: '0.04em' }}>
-          <h2 style={{
-            fontFamily: 'var(--font-display)', fontWeight: 700,
-            fontSize: 'clamp(3.5rem,8vw,7.5rem)',
-            letterSpacing: '-0.045em', lineHeight: 0.95,
-            display: 'inline',
+          <div ref={headingRef} style={{ marginBottom: 28 }}>
+            <h2 style={{
+              fontFamily: 'var(--font-display)', fontWeight: 800,
+              fontSize: 'clamp(2.2rem,4.2vw,3.8rem)',
+              letterSpacing: '-0.04em', lineHeight: 0.98,
+            }}>
+              <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
+                {split('A bad website')}
+              </div>
+              <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
+                {split('costs you more')}
+              </div>
+              <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
+                {split('than you think.', true)}
+              </div>
+            </h2>
+          </div>
+
+          <p style={{
+            color: 'var(--color-muted)', fontSize: '1rem',
+            lineHeight: 1.75, maxWidth: 440, marginBottom: 36,
           }}>
-            {split('Your site.')}
-          </h2>
-        </div>
-        <div ref={line2Ref} style={{ overflow: 'hidden', paddingBottom: '0.06em' }}>
-          <h2 style={{
-            fontFamily: 'var(--font-display)', fontWeight: 700,
-            fontSize: 'clamp(3.5rem,8vw,7.5rem)',
-            letterSpacing: '-0.045em', lineHeight: 0.95,
-            display: 'inline',
-          }}>
-            {split('Live. Tomorrow.', true)}
-          </h2>
+            Local businesses are invisible online. Thousands of people search your trade every month — and find your competitor instead. Here&apos;s what that silence is actually costing you:
+          </p>
+
+          <div ref={bulletsRef} style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 44 }}>
+            {BULLETS.map((b) => (
+              <div
+                key={b.label}
+                className="math-bullet"
+                style={{ display: 'flex', alignItems: 'flex-start', gap: 14 }}
+              >
+                <div style={{
+                  flexShrink: 0, marginTop: 2,
+                  fontFamily: 'var(--font-display)', fontWeight: 800,
+                  fontSize: '1rem', color: 'var(--color-gold)',
+                  minWidth: 52,
+                }}>
+                  {b.stat}
+                </div>
+                <div style={{ color: 'var(--color-muted)', fontSize: '0.9rem', lineHeight: 1.5 }}>
+                  {b.label}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+            <a href="#contact" className="btn-primary">
+              Fix This For $299 <ArrowRight size={16} />
+            </a>
+            <a href="#how-it-works" className="btn-ghost">
+              See How It Works
+            </a>
+          </div>
         </div>
 
-        <p style={{
-          color: 'var(--color-muted)', fontSize: 'clamp(0.9rem,1.5vw,1.1rem)',
-          maxWidth: '400px', margin: '28px auto 0', lineHeight: 1.65,
-        }}>
-          No meetings. No waiting. No excuses.
-        </p>
-
-        <div ref={ctaRef} style={{ marginTop: '40px' }}>
-          <a href="#contact" className="btn-primary" style={{ fontSize: '1rem', padding: '17px 40px' }}>
-            Get My Free Demo <ArrowRight size={16} />
-          </a>
+        {/* Right: revenue calculator card */}
+        <div ref={cardRef}>
+          <RevenueCard />
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          .math-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </section>
   )
 }

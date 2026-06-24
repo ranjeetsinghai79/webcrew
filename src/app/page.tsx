@@ -7,7 +7,6 @@ import Hero             from '@/components/hero'
 import Ticker           from '@/components/ticker'
 import HowItWorks       from '@/components/how-it-works'
 import Showcase         from '@/components/showcase'
-import BeforeAfter      from '@/components/before-after'
 import Features         from '@/components/features'
 import MoneyShot        from '@/components/money-shot'
 import Results          from '@/components/results'
@@ -26,11 +25,10 @@ export default function Home() {
       <main>
         <Hero />
         <Ticker />
+        <MoneyShot />
         <HowItWorks />
         <Showcase />
-        <BeforeAfter />
         <Features />
-        <MoneyShot />
         <Results />
         <Pricing />
         <Contact />

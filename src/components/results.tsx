@@ -112,7 +112,7 @@ export default function Results() {
                 overflow: 'hidden',
                 transition: 'border-color 0.3s, box-shadow 0.3s',
               }}
-              onMouseEnter={e => { const el = e.currentTarget; el.style.borderColor = 'var(--color-border-hot)'; el.style.boxShadow = '0 0 40px rgba(196,164,76,0.08)' }}
+              onMouseEnter={e => { const el = e.currentTarget; el.style.borderColor = 'var(--color-border-hot)'; el.style.boxShadow = '0 8px 32px rgba(0,0,0,0.1)' }}
               onMouseLeave={e => { const el = e.currentTarget; el.style.borderColor = 'var(--color-border)'; el.style.boxShadow = 'none' }}
             >
               <div style={{
@@ -144,6 +144,50 @@ export default function Results() {
           ))}
         </div>
 
+        {/* Testimonial */}
+        <div style={{
+          margin: '0 0 72px',
+          background: 'var(--color-surface)',
+          border: '1px solid rgba(196,164,76,0.25)',
+          borderRadius: '18px',
+          padding: '36px 40px',
+          position: 'relative',
+          maxWidth: '720px',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        }}>
+          <div style={{
+            position: 'absolute', top: 0, left: '20%', right: '20%', height: '1px',
+            background: 'linear-gradient(90deg, transparent, var(--color-gold), transparent)',
+          }} />
+          <div style={{
+            fontSize: '1.2rem', color: 'var(--color-muted)',
+            fontFamily: 'Georgia, serif', lineHeight: 1.5,
+            marginBottom: '20px',
+          }}>
+            &ldquo;I got 3 calls in the first week. Didn&apos;t even know I was getting a site — just said yes to the demo and it was live the next morning.&rdquo;
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <div style={{
+              width: 44, height: 44, borderRadius: '50%',
+              background: 'linear-gradient(135deg, var(--color-gold), #E8CC7A)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '1rem', color: '#06060C',
+            }}>
+              M
+            </div>
+            <div>
+              <div style={{ fontWeight: 700, fontSize: '0.9rem', color: 'var(--color-text)' }}>Mike T.</div>
+              <div style={{ fontSize: '0.75rem', color: 'var(--color-muted)' }}>HVAC owner · Tracy, CA</div>
+            </div>
+            <div style={{ marginLeft: 'auto', display: 'flex', gap: 2 }}>
+              {[...Array(5)].map((_, i) => (
+                <svg key={i} width="13" height="13" viewBox="0 0 24 24" fill="#C4A44C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* Niche tags */}
         <div style={{ textAlign: 'center' }}>
           <p style={{
@@ -169,9 +213,9 @@ export default function Results() {
                 }}
                 onMouseEnter={e => {
                   const el = e.currentTarget
-                  el.style.color = 'var(--color-gold)'
+                  el.style.color = 'var(--color-text)'
                   el.style.borderColor = 'var(--color-gold)'
-                  el.style.background = 'rgba(196,164,76,0.07)'
+                  el.style.background = 'rgba(0,0,0,0.04)'
                 }}
                 onMouseLeave={e => {
                   const el = e.currentTarget

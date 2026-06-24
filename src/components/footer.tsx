@@ -20,7 +20,7 @@ export default function Footer() {
             WebCrew
           </span>
           <p style={{ color:'var(--color-muted)', fontSize:'0.8rem', marginTop:'4px' }}>
-            Luxury websites for local businesses. Built by AI. Overnight.
+            Professional websites that get you more jobs. Built overnight.
           </p>
         </div>
         <div style={{ display:'flex', gap:'24px', flexWrap:'wrap' }}>

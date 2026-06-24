@@ -29,8 +29,8 @@ export default function Nav() {
         padding: '0 40px', height: '68px',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         transition: 'background 0.4s, border-color 0.4s',
-        background: scrolled ? 'rgba(6,6,12,0.9)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(20px) saturate(1.5)' : 'none',
+        background: scrolled ? 'rgba(255,255,255,0.92)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(16px) saturate(1.8)' : 'none',
         borderBottom: scrolled ? '1px solid var(--color-border)' : '1px solid transparent',
       }}
     >
@@ -42,13 +42,12 @@ export default function Nav() {
           background: 'linear-gradient(135deg, var(--color-gold), var(--color-gold-light))',
           borderRadius: '6px',
           fontFamily: 'var(--font-display)', fontWeight: 700,
-          fontSize: '1rem', color: '#06060C',
+          fontSize: '1rem', color: '#FFFFFF',
         }}>
           W
         </span>
         <span
-          className="gradient-gold"
-          style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.25rem', letterSpacing: '-0.02em' }}
+          style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '1.25rem', letterSpacing: '-0.02em', color: 'var(--color-text)' }}
         >
           WebCrew
         </span>

@@ -15,9 +15,7 @@ type FormData = {
   name: string
   business: string
   phone: string
-  email: string
   niche: string
-  message: string
   smsConsent: boolean
   marketingConsent: boolean
 }
@@ -29,20 +27,25 @@ export default function Contact() {
   const [loading, setLoading] = useState(false)
   const [error,   setError]   = useState('')
   const [form,    setForm]    = useState<FormData>({
-    name: '', business: '', phone: '', email: '',
-    niche: '', message: '',
+    name: '', business: '', phone: '',
+    niche: '',
     smsConsent: false,
     marketingConsent: false,
   })
 
   useEffect(() => {
+    const handler = (e: Event) => {
+      const biz = (e as CustomEvent<{ business: string }>).detail.business
+      if (biz) setForm(f => ({ ...f, business: biz }))
+    }
+    window.addEventListener('wc:prefill', handler)
     const ctx = gsap.context(() => {
       gsap.from(formRef.current, {
         y: 56, opacity: 0, duration: 0.8, ease: 'power3.out',
         scrollTrigger: { trigger: formRef.current, start: 'top 82%' },
       })
     })
-    return () => ctx.revert()
+    return () => { window.removeEventListener('wc:prefill', handler); ctx.revert() }
   }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -63,9 +66,7 @@ export default function Contact() {
           lastName:      form.name.split(' ').slice(1).join(' '),
           businessName:  form.business,
           phone:         form.phone,
-          email:         form.email,
           businessNiche: form.niche,
-          message:       form.message,
           smsConsent:    form.smsConsent,
           marketingConsent: form.marketingConsent,
           source:        'webcrew.app',
@@ -84,7 +85,7 @@ export default function Contact() {
 
   const inputStyle: React.CSSProperties = {
     width: '100%',
-    background: 'rgba(255,255,255,0.04)',
+    background: '#FFFFFF',
     border: '1px solid var(--color-border)',
     borderRadius: '8px', padding: '14px 16px',
     color: 'var(--color-text)', fontSize: '0.9rem',
@@ -99,7 +100,7 @@ export default function Contact() {
   }
   const onBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     e.currentTarget.style.borderColor = 'var(--color-border)'
-    e.currentTarget.style.background  = 'rgba(255,255,255,0.04)'
+    e.currentTarget.style.background  = '#FFFFFF'
   }
 
   return (
@@ -185,13 +186,6 @@ export default function Contact() {
                 onFocus={onFocus} onBlur={onBlur}
               />
 
-              <input
-                style={inputStyle} type="email" placeholder="Email address (optional)"
-                value={form.email}
-                onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                onFocus={onFocus} onBlur={onBlur}
-              />
-
               <select
                 style={{
                   ...inputStyle,
@@ -208,20 +202,6 @@ export default function Contact() {
                   <option key={n} value={n.toLowerCase()} style={{ background: 'var(--color-surface)' }}>{n}</option>
                 ))}
               </select>
-
-              <textarea
-                style={{
-                  ...inputStyle,
-                  resize: 'vertical',
-                  fontFamily: 'var(--font-body)',
-                  minHeight: '88px',
-                } as React.CSSProperties}
-                placeholder="Current website URL (if you have one) or anything else we should know"
-                value={form.message}
-                rows={3}
-                onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-                onFocus={onFocus} onBlur={onBlur}
-              />
 
               {/* ── TCPA SMS Consent ──────────────────────── */}
               <div style={{

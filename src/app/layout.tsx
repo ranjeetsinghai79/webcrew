@@ -15,21 +15,21 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'WebCrew — Luxury Websites for Local Businesses',
+  title: 'WebCrew — Professional Websites That Get You More Jobs',
   description:
-    'AI-powered luxury websites for local businesses. We find businesses without great websites, build them overnight, and handle outreach. From $299.',
+    'We find local businesses without great websites, build one overnight, and text you the link. Pay only if you love it. From $299.',
   metadataBase: new URL('https://webcrew.app'),
   openGraph: {
-    title: 'WebCrew — Luxury Websites for Local Businesses',
-    description: 'AI-powered luxury websites delivered overnight. From $299.',
+    title: 'WebCrew — Professional Websites That Get You More Jobs',
+    description: 'Professional websites delivered overnight. Pay only if you love it. From $299.',
     url: 'https://webcrew.app',
     siteName: 'WebCrew',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'WebCrew — Luxury Websites for Local Businesses',
-    description: 'AI-powered luxury websites delivered overnight. From $299.',
+    title: 'WebCrew — Professional Websites That Get You More Jobs',
+    description: 'Professional websites delivered overnight. Pay only if you love it. From $299.',
   },
   robots: { index: true, follow: true },
 }

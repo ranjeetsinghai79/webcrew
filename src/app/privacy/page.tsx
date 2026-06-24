@@ -53,7 +53,9 @@ Carriers are not liable for delayed or undelivered messages.`,
 • Service providers who help us operate (hosting, SMS delivery via Twilio, email via Resend)
 • Law enforcement when required by law
 
-All service providers are bound by confidentiality agreements.`,
+All service providers are bound by confidentiality agreements.
+
+Mobile information, including SMS opt-in data and consent, will not be shared with third parties or affiliates for marketing or promotional purposes.`,
           },
           {
             title: 'Data Retention',
