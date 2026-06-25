@@ -278,7 +278,7 @@ export default function Contact() {
             Upgrade My Site
           </button>
           <button style={tabStyle(tab === 'audit')} onClick={() => setTab('audit')}>
-            Free Audit
+            Free Growth Audit
           </button>
         </div>
 
@@ -308,7 +308,7 @@ export default function Contact() {
                 borderRadius: '8px',
                 fontSize: '0.82rem', color: '#16a34a', fontWeight: 600,
               }}>
-                ● FREE audit report — delivered to your inbox in under 5 minutes
+                ● FREE website growth audit — delivered to your inbox in under 5 minutes
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>

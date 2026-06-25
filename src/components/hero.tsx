@@ -428,7 +428,7 @@ export default function Hero() {
               fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase',
               color: '#f97316',
             }}>
-              ⚡ 3 slots open tonight
+              ⚡ Tonight&apos;s queue: 7 built · 3 remaining
             </span>
           </div>
 
@@ -442,16 +442,29 @@ export default function Hero() {
               lineHeight: 0.97,
               letterSpacing: '-0.04em',
               marginBottom: '28px',
+              color: '#FFFFFF',
             }}
           >
             <div style={{ overflow: 'hidden', paddingBottom: '0.06em' }}>
-              {split('Customers search Google.')}
+              {split('You\'re losing')}
             </div>
             <div style={{ overflow: 'hidden', paddingBottom: '0.06em' }}>
-              {split('Competitors answer.', true)}
+              <span style={{ display: 'inline-flex', flexWrap: 'wrap', gap: '0 0.22em' }}>
+                {'$9,600/month'.split(' ').map((w, i) => (
+                  <span key={i} className="word-wrap" style={{ display: 'inline-block' }}>
+                    <span className="word-inner" style={{
+                      display: 'inline-block',
+                      background: 'linear-gradient(135deg, #FBBF24 0%, #F97316 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                    }}>{w}</span>
+                  </span>
+                ))}
+              </span>
             </div>
             <div style={{ overflow: 'hidden', paddingBottom: '0.06em' }}>
-              {split('Not anymore.')}
+              {split('to whoever ranks first.')}
             </div>
           </h1>
 
@@ -459,17 +472,16 @@ export default function Hero() {
           <p
             ref={subRef}
             style={{
-              color: 'rgba(255,255,255,0.6)',
+              color: 'rgba(255,255,255,0.75)',
               fontSize: 'clamp(0.95rem,1.6vw,1.1rem)',
               lineHeight: 1.75,
               maxWidth: '480px',
               marginBottom: '40px',
             }}
           >
-            We build a{' '}
-            <span style={{ color: '#FFFFFF', fontWeight: 600 }}>cinematic, Google-ranked website</span>
-            {' '}for your local business overnight — for free. Real brand. Real SEO. Real leads.{' '}
-            <span style={{ color: 'rgba(255,255,255,0.8)', fontWeight: 500 }}>Pay only if you love it.</span>
+            Every month you&apos;re not on Google, local customers are calling your competitor instead.{' '}
+            <span style={{ color: '#FFFFFF', fontWeight: 600 }}>We get you ranked — overnight, for free.</span>
+            {' '}You only pay if you love what you see.
           </p>
 
           {/* CTAs */}
@@ -480,15 +492,15 @@ export default function Hero() {
               className="btn-primary"
               style={{ fontSize: '0.95rem', padding: '15px 28px' }}
             >
-              Claim My Free Slot <ArrowRight size={16} />
+              Get FREE Demo Site <ArrowRight size={16} />
             </a>
             <a
-              href="#showcase"
-              onClick={e => { e.preventDefault(); document.getElementById('showcase')?.scrollIntoView({ behavior: 'smooth' }) }}
+              href="#contact"
+              onClick={e => { e.preventDefault(); window.dispatchEvent(new CustomEvent('wc:tab', { detail: { tab: 'audit' } })); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}
               className="btn-ghost"
-              style={{ fontSize: '0.95rem' }}
+              style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.85)', borderColor: 'rgba(255,255,255,0.2)' }}
             >
-              See Real Examples
+              Get FREE Growth Audit
             </a>
           </div>
 

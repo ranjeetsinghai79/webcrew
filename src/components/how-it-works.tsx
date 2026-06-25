@@ -67,7 +67,7 @@ function BuildUI() {
       {[
         { label: 'Brand analysis',   done: true  },
         { label: 'Generating config',done: true  },
-        { label: 'AI hero images',   done: true  },
+        { label: 'Custom hero images', done: true  },
         { label: 'Cinematic video',  done: true  },
         { label: 'SEO & schema',     done: true  },
         { label: 'Deploying live',   active: true },
@@ -183,7 +183,7 @@ const STEPS = [
     n: '02',
     eyebrow: 'Step 2 — Overnight',
     headline: 'We build your site while you sleep.',
-    body: 'AI extracts your brand, generates city-specific copy, creates cinematic hero images, and deploys everything to a live URL with a 97/100 PageSpeed score. Done before your alarm goes off.',
+    body: 'We write city-specific copy, build your pages with custom images, and deploy everything to a live URL with a 97/100 PageSpeed score. Done before your alarm goes off.',
     note: 'Avg 6hrs · zero involvement from you',
     ui: <BuildUI />,
   },
@@ -276,7 +276,7 @@ export default function HowItWorks() {
                 letterSpacing: '-0.035em', lineHeight: 1.0,
               }}>
                 <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
-                  {split('From invisible')}
+                  {split('Invisible today.')}
                 </div>
                 <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
                   <span style={{
@@ -284,11 +284,11 @@ export default function HowItWorks() {
                     background: 'linear-gradient(135deg,#2563EB,#7C3AED)',
                     WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
                   }}>
-                    {split('to fully booked.')}
+                    {split('Fully booked')}
                   </span>
                 </div>
                 <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
-                  {split('In 3 steps.')}
+                  {split('by tomorrow.')}
                 </div>
               </h2>
             </div>

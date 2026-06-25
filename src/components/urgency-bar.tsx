@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ArrowRight, X } from 'lucide-react'
 
-// Slots remaining — in prod, could be fetched from API
 const SLOTS_TONIGHT = 3
+const BUILT_TONIGHT = 7
 
 export default function UrgencyBar() {
   const [visible, setVisible]   = useState(false)
@@ -71,7 +71,7 @@ export default function UrgencyBar() {
             boxShadow: '0 0 6px rgba(249,115,22,0.7)',
             flexShrink: 0,
           }} />
-          {SLOTS_TONIGHT} slots open tonight
+          Tonight&apos;s queue: {BUILT_TONIGHT}/10 built · {SLOTS_TONIGHT} remaining
         </span>
       </div>
 
@@ -100,7 +100,7 @@ export default function UrgencyBar() {
         className="btn-primary"
         style={{ fontSize: '0.82rem', padding: '10px 20px', whiteSpace: 'nowrap', flexShrink: 0 }}
       >
-        Claim My Free Slot <ArrowRight size={14} />
+        Get My Free Demo Site <ArrowRight size={14} />
       </a>
 
       {/* Dismiss */}

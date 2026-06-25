@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Check, ArrowRight, Zap, Phone, BarChart2, Star, Globe, MessageSquare } from 'lucide-react'
+import { Check, ArrowRight, Zap, BarChart2, Star, Globe, MessageSquare } from 'lucide-react'
 
 if (typeof window !== "undefined") { gsap.registerPlugin(ScrollTrigger) }
 
@@ -14,21 +14,15 @@ const MONTHLY_ITEMS = [
     market: '$30/mo',
   },
   {
-    icon: Phone,
-    label: 'AI answers every call, 24/7',
-    detail: 'Books appointments, answers questions, never misses a lead',
-    market: '$250/mo',
-  },
-  {
     icon: Zap,
     label: 'Weekly Google Business posts',
-    detail: 'AI writes + publishes every week — stay visible on Google Maps',
+    detail: 'Written + published every week — stay visible on Google Maps',
     market: '$150/mo',
   },
   {
     icon: Star,
-    label: 'AI replies to every Google review',
-    detail: 'In your voice. Instant. Every single one.',
+    label: 'Reply to every Google review',
+    detail: 'In your voice. Prompt. Every single one.',
     market: '$150/mo',
   },
   {
@@ -45,7 +39,7 @@ const MONTHLY_ITEMS = [
   },
 ]
 
-const MARKET_TOTAL = 710
+const MARKET_TOTAL = 460
 
 export default function Pricing() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -112,7 +106,7 @@ export default function Pricing() {
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
             gap: '24px',
-            alignItems: 'start',
+            alignItems: 'stretch',
           }}
         >
 
@@ -127,6 +121,7 @@ export default function Pricing() {
               position: 'relative',
               boxShadow: '0 0 80px rgba(37,99,235,0.06)',
               transition: 'transform 0.35s var(--ease-out), box-shadow 0.35s',
+              display: 'flex', flexDirection: 'column',
             }}
             onMouseEnter={e => { const el = e.currentTarget; el.style.transform = 'translateY(-6px)'; el.style.boxShadow = '0 24px 80px rgba(37,99,235,0.12)' }}
             onMouseLeave={e => { const el = e.currentTarget; el.style.transform = 'translateY(0)'; el.style.boxShadow = '0 0 80px rgba(37,99,235,0.06)' }}
@@ -274,6 +269,7 @@ export default function Pricing() {
               padding: '40px',
               position: 'relative',
               transition: 'transform 0.35s var(--ease-out), box-shadow 0.35s',
+              display: 'flex', flexDirection: 'column',
             }}
             onMouseEnter={e => { const el = e.currentTarget; el.style.transform = 'translateY(-6px)'; el.style.boxShadow = '0 16px 48px rgba(0,0,0,0.08)' }}
             onMouseLeave={e => { const el = e.currentTarget; el.style.transform = 'translateY(0)'; el.style.boxShadow = 'none' }}
@@ -299,7 +295,7 @@ export default function Pricing() {
               Multi-location businesses, e-commerce, booking systems, CRM integrations, custom AI workflows — we scope it and quote it.
             </p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '36px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '36px', marginTop: 'auto' }}>
               {[
                 'Multi-location / franchise setup',
                 'Online booking + payment integration',
@@ -348,7 +344,7 @@ export default function Pricing() {
               The $49/mo plan replaces <span style={{ color: 'var(--color-blue)' }}>${MARKET_TOTAL}/mo</span> in agency services.
             </div>
             <div style={{ fontSize: '0.82rem', color: 'var(--color-muted)' }}>
-              Hosting · AI call answering · GBP posts · review replies · monthly traffic report · instant lead SMS. All included.
+              Hosting · weekly GBP posts · review replies · monthly traffic report · instant lead SMS. All included.
             </div>
           </div>
           <div style={{

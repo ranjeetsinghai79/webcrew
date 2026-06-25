@@ -13,7 +13,7 @@ const FAQS = [
   },
   {
     q: 'Is this just a template with my name swapped in?',
-    a: 'No. Our AI reads your trade, city, and competitor landscape — then generates custom brand colors, city-targeted SEO copy, service descriptions in your voice, and AI-created photos for your specific business type. A plumber in Dallas and a plumber in Chicago get completely different sites. Two HVAC companies in the same city get different designs, different copy, and different images.',
+    a: 'No. Every site is built from scratch for your specific trade and city. A plumber in Dallas gets a completely different site than a plumber in Chicago. Two HVAC companies in the same city get different designs, different copy, and different images. Nothing is copy-pasted.',
   },
   {
     q: 'How long does it actually take?',
@@ -25,15 +25,15 @@ const FAQS = [
   },
   {
     q: 'What if I hate it?',
-    a: 'Then you don\'t pay. We delete the demo. No hard feelings, no invoices, no guilt-trip emails. We\'ve never once pressured anyone into paying. We built over 800 sites this way — if someone doesn\'t love it, we\'d rather let them walk than chase a bad-fit client.',
+    a: 'Then you don\'t pay. We delete the demo. No hard feelings, no invoices, no follow-up guilt trips. Simple as that. We only make money when you love what we built — so we\'re extremely motivated to get it right.',
   },
   {
     q: 'Will this actually rank on Google?',
-    a: 'Every site ships with local SEO baked in: LocalBusiness + Service schema markup, city-specific keyword copy, sitemap.xml, robots.txt, and Google Business Profile integration. We target your exact city and trade combination. Most clients see their first Google-sourced call within the first 7 days of going live.',
+    a: 'Every site launches optimized for your exact city and trade — schema markup, city-specific keyword copy, and proper indexing signals. Your Google Business Profile automatically stays active with fresh posts. Most clients see their first Google-sourced call within 7 days of going live.',
   },
   {
     q: 'What does the $49/month actually include?',
-    a: 'Everything your site needs to stay ranked and converting: Cloudflare CDN hosting (99.9% uptime), 24/7 AI call answering that books appointments and answers questions, weekly Google Business Profile posts, AI-written replies to every Google review, monthly SEO + traffic report, and instant SMS alerts for every new lead. That same stack from a traditional agency runs $700+/month.',
+    a: 'Everything your site needs to stay ranked and converting: Cloudflare CDN hosting (99.9% uptime), weekly Google Business Profile posts, reply management for every Google review, monthly SEO + traffic report, and instant SMS alerts for every new lead. That same stack from a traditional agency runs $460+/month.',
   },
   {
     q: 'Do I own the site if I pay?',

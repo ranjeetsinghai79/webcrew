@@ -9,6 +9,7 @@ import MoneyShot        from '@/components/money-shot'
 import HowItWorks       from '@/components/how-it-works'
 import Showcase         from '@/components/showcase'
 import Features         from '@/components/features'
+import Comparison       from '@/components/comparison'
 import Results          from '@/components/results'
 import Pricing          from '@/components/pricing'
 import FAQ              from '@/components/faq'
@@ -31,6 +32,7 @@ export default function Home() {
         <HowItWorks />
         <Showcase />
         <Features />
+        <Comparison />
         <Results />
         <Pricing />
         <FAQ />

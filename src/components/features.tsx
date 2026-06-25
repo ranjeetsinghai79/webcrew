@@ -12,7 +12,7 @@ const TABS = [
     label: 'Stunning Design',
     icon: <Zap size={14} />,
     headline: 'Looks like a $20K agency built it.',
-    sub: 'AI-generated hero images or video. Animations that hold attention. A design so sharp, customers stop scrolling and call. Built overnight using your actual brand.',
+    sub: 'Custom hero images or video built from your actual brand. Animations that hold attention. A design so sharp, customers stop scrolling and call.',
     items: [
       'Hero image or video — built from your brand, not stock photos',
       'Your exact colors, fonts, and voice — never looks like a template',
@@ -69,7 +69,7 @@ const TABS = [
       'Form filled → your phone buzzes in under 30 seconds',
       'Every lead saved and tracked — nothing slips through',
       'Full lead details in your email — name, phone, message, all of it',
-      'AI reply suggestions so you close faster (coming soon)',
+      'Smart reply suggestions so you close faster (coming soon)',
       'Dashboard for businesses with multiple locations',
     ],
     metrics: ['Lead Alerts', 'Response Time', 'Lead Tracking', 'Conversion'],
