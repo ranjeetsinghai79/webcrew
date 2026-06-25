@@ -23,7 +23,7 @@ function Item({ biz, city, action }: { biz: string; city: string; action: string
       borderRight: '1px solid var(--color-border)',
       whiteSpace: 'nowrap',
     }}>
-      <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--color-gold)', flexShrink: 0 }} />
+      <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--color-blue)', flexShrink: 0 }} />
       <span style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: '0.88rem', color: 'var(--color-text)' }}>
         {biz}
       </span>

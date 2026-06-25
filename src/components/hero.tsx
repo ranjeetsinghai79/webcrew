@@ -2,127 +2,188 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowRight, Star, Zap, Clock, DollarSign } from 'lucide-react'
+import { ArrowRight, Star, Zap, Clock, TrendingUp } from 'lucide-react'
 
 if (typeof window !== 'undefined') { gsap.registerPlugin(ScrollTrigger) }
 
-// ── Browser mockup inside right column ──────────────────────────────────────
-function BrowserMockup() {
+// ── AI Pipeline Visualization ────────────────────────────────────────────────
+function AIPipelineCard() {
+  const steps = [
+    { id: 'scan',   label: 'Firecrawl Web Scan',    sub: '47 signals extracted',     done: true,   color: '#2563EB' },
+    { id: 'llm',    label: 'LLM Brand Analysis',    sub: 'Colors, services, voice',   done: true,   color: '#4F46E5' },
+    { id: 'build',  label: 'AI Site Builder',        sub: 'Config + images generated', done: true,   color: '#7C3AED' },
+    { id: 'deploy', label: 'Deploy to Cloudflare',   sub: '99.9% uptime, global CDN', active: true,  color: '#10B981' },
+  ]
+
   return (
     <div style={{
-      background: '#0E0E1A',
-      border: '1px solid rgba(196,164,76,0.2)',
-      borderRadius: '14px',
+      background: '#FFFFFF',
+      borderRadius: 20,
+      border: '1.5px solid rgba(99, 102, 241, 0.15)',
       overflow: 'hidden',
-      boxShadow: '0 40px 120px rgba(0,0,0,0.6), 0 0 0 1px rgba(196,164,76,0.08), inset 0 1px 0 rgba(255,255,255,0.05)',
+      boxShadow: '0 32px 80px rgba(37, 99, 235, 0.12), 0 4px 16px rgba(0,0,0,0.06)',
     }}>
-      {/* Chrome bar */}
+      {/* Header bar */}
       <div style={{
-        background: '#13131F',
-        borderBottom: '1px solid rgba(196,164,76,0.1)',
-        padding: '12px 16px',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '12px',
+        background: 'linear-gradient(135deg, #2563EB 0%, #7C3AED 100%)',
+        padding: '16px 20px',
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
-        <div style={{ display: 'flex', gap: '6px' }}>
-          {['#FF5F57','#FEBC2E','#28C840'].map((c, i) => (
-            <div key={i} style={{ width: 10, height: 10, borderRadius: '50%', background: c, opacity: 0.85 }} />
-          ))}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div style={{
+            width: 32, height: 32, borderRadius: 8,
+            background: 'rgba(255,255,255,0.15)',
+            backdropFilter: 'blur(8px)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
+            <Zap size={15} color="#fff" />
+          </div>
+          <div>
+            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '0.82rem', color: '#fff' }}>
+              WebCrew AI Pipeline
+            </div>
+            <div style={{ fontSize: '0.6rem', color: 'rgba(255,255,255,0.65)', marginTop: 1 }}>
+              Building your site now...
+            </div>
+          </div>
         </div>
         <div style={{
-          flex: 1,
-          background: 'rgba(255,255,255,0.05)',
-          borderRadius: '6px',
-          padding: '5px 12px',
-          fontSize: '0.68rem',
-          color: 'rgba(255,255,255,0.3)',
-          fontFamily: 'monospace',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '6px',
+          display: 'flex', alignItems: 'center', gap: 5,
+          background: 'rgba(16, 185, 129, 0.2)',
+          border: '1px solid rgba(16, 185, 129, 0.4)',
+          borderRadius: 100, padding: '4px 10px',
         }}>
-          <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#4ade80' }} />
-          peaksroofingtracy.com
+          <span className="live-dot" />
+          <span style={{ fontSize: '0.58rem', fontWeight: 700, color: '#6ee7b7', letterSpacing: '0.08em' }}>RUNNING</span>
         </div>
       </div>
 
-      {/* Site preview */}
-      <div style={{ padding: '0', position: 'relative' }}>
-        {/* Hero section mock */}
+      {/* Business input */}
+      <div style={{ padding: '16px 20px', borderBottom: '1px solid rgba(99,102,241,0.08)', background: '#FAFAFF' }}>
+        <div style={{ fontSize: '0.58rem', fontWeight: 700, color: 'var(--color-indigo)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 8 }}>
+          Target Business
+        </div>
         <div style={{
-          background: 'linear-gradient(160deg, #0a0a14 0%, #111124 100%)',
-          padding: '28px 24px 24px',
-          position: 'relative',
-          overflow: 'hidden',
+          display: 'flex', alignItems: 'center', gap: 10,
+          background: '#fff', border: '1.5px solid rgba(99,102,241,0.2)',
+          borderRadius: 10, padding: '10px 14px',
         }}>
-          {/* Blobs */}
-          <div style={{ position: 'absolute', top: -40, right: -40, width: 200, height: 200, background: 'rgba(196,164,76,0.06)', borderRadius: '50%', filter: 'blur(60px)' }} />
-          <div style={{ position: 'absolute', bottom: -20, left: 0, width: 150, height: 150, background: 'rgba(90,60,200,0.08)', borderRadius: '50%', filter: 'blur(50px)' }} />
+          <div style={{
+            width: 28, height: 28, borderRadius: 7,
+            background: 'linear-gradient(135deg, #EFF6FF, #EDE9FE)',
+            border: '1px solid rgba(99,102,241,0.15)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: '0.7rem', fontWeight: 800, color: '#4F46E5',
+          }}>
+            T
+          </div>
+          <div>
+            <div style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--color-text)', fontFamily: 'var(--font-display)' }}>
+              Tracy HVAC Pros
+            </div>
+            <div style={{ fontSize: '0.6rem', color: 'var(--color-muted)', marginTop: 1 }}>
+              Tracy, CA · HVAC & Cooling
+            </div>
+          </div>
+          <div style={{ marginLeft: 'auto', fontSize: '0.55rem', fontWeight: 600, color: '#10B981' }}>
+            ✓ Queued
+          </div>
+        </div>
+      </div>
 
-          <div style={{ position: 'relative', zIndex: 1 }}>
+      {/* Pipeline steps */}
+      <div style={{ padding: '14px 20px', display: 'flex', flexDirection: 'column', gap: 0 }}>
+        {steps.map((step, i) => (
+          <div key={step.id}>
             <div style={{
-              display: 'inline-flex', alignItems: 'center', gap: 5,
-              background: 'rgba(196,164,76,0.1)', border: '1px solid rgba(196,164,76,0.2)',
-              borderRadius: 100, padding: '3px 10px',
-              fontSize: '0.58rem', fontWeight: 700, letterSpacing: '0.12em',
-              color: '#C4A44C', marginBottom: 10, textTransform: 'uppercase',
+              display: 'flex', alignItems: 'center', gap: 12,
+              padding: '10px 0',
+              borderBottom: i < steps.length - 1 ? '1px solid rgba(99,102,241,0.06)' : 'none',
             }}>
-              <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#C4A44C', boxShadow: '0 0 4px #C4A44C' }} />
-              Tracy, CA · Est. 2008
-            </div>
-            <div style={{ fontSize: '1.05rem', fontWeight: 800, lineHeight: 1.15, letterSpacing: '-0.02em', marginBottom: 8 }}>
-              Peaks Roofing
-              <br />
-              <span style={{ color: '#C4A44C' }}>& Gutters</span>
-            </div>
-            <div style={{ fontSize: '0.62rem', color: 'rgba(255,255,255,0.45)', lineHeight: 1.5, maxWidth: 200, marginBottom: 14 }}>
-              Licensed contractor serving Tri-Valley since 2008. Free inspections, same-week estimates.
-            </div>
-            <div style={{ display: 'flex', gap: 8 }}>
-              <div style={{ background: '#C4A44C', borderRadius: 5, padding: '6px 14px', fontSize: '0.6rem', fontWeight: 700, color: '#06060C' }}>
-                Free Estimate
+              {/* Step indicator */}
+              <div style={{
+                width: 28, height: 28, borderRadius: 8, flexShrink: 0,
+                background: step.done
+                  ? `linear-gradient(135deg, ${step.color}22, ${step.color}11)`
+                  : step.active
+                    ? 'linear-gradient(135deg, rgba(16,185,129,0.1), rgba(16,185,129,0.06))'
+                    : 'rgba(241,245,249,1)',
+                border: step.done
+                  ? `1.5px solid ${step.color}44`
+                  : step.active
+                    ? '1.5px solid rgba(16,185,129,0.35)'
+                    : '1.5px solid rgba(226,232,240,1)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                {step.done && (
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M2.5 6L5 8.5L9.5 3.5" stroke={step.color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                )}
+                {step.active && (
+                  <div style={{
+                    width: 8, height: 8, borderRadius: 2,
+                    background: '#10B981',
+                    animation: 'pulse-ring 1.2s ease-out infinite',
+                  }} />
+                )}
               </div>
-              <div style={{ border: '1px solid rgba(196,164,76,0.3)', borderRadius: 5, padding: '6px 14px', fontSize: '0.6rem', color: 'rgba(255,255,255,0.6)' }}>
-                Our Work
+
+              {/* Step copy */}
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{
+                  fontSize: '0.74rem', fontWeight: 600,
+                  color: step.active ? '#10B981' : step.done ? 'var(--color-text)' : 'var(--color-muted)',
+                  fontFamily: 'var(--font-display)',
+                }}>
+                  {step.label}
+                </div>
+                <div style={{ fontSize: '0.6rem', color: 'var(--color-muted)', marginTop: 2 }}>
+                  {step.sub}
+                </div>
+              </div>
+
+              {/* Status */}
+              <div style={{
+                fontSize: '0.58rem', fontWeight: 700,
+                color: step.active ? '#10B981' : step.done ? step.color : '#CBD5E1',
+                letterSpacing: '0.06em',
+                whiteSpace: 'nowrap',
+              }}>
+                {step.active ? '●  Live' : step.done ? '✓' : '—'}
               </div>
             </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Live URL footer */}
+      <div style={{
+        padding: '14px 20px',
+        background: 'linear-gradient(135deg, rgba(16,185,129,0.06), rgba(16,185,129,0.03))',
+        borderTop: '1px solid rgba(16,185,129,0.12)',
+        display: 'flex', alignItems: 'center', gap: 10,
+      }}>
+        <div style={{
+          width: 8, height: 8, borderRadius: '50%',
+          background: '#10B981',
+          boxShadow: '0 0 8px rgba(16,185,129,0.6)',
+          flexShrink: 0,
+        }} />
+        <div style={{ flex: 1 }}>
+          <div style={{ fontSize: '0.65rem', fontWeight: 600, color: '#059669', fontFamily: 'monospace' }}>
+            tracyhvacpros.pages.dev
+          </div>
+          <div style={{ fontSize: '0.55rem', color: 'var(--color-muted)', marginTop: 1 }}>
+            PageSpeed 97/100 · Deployed in 6h
           </div>
         </div>
-
-        {/* Services row */}
         <div style={{
-          display: 'grid', gridTemplateColumns: 'repeat(3,1fr)',
-          borderTop: '1px solid rgba(196,164,76,0.08)',
+          fontSize: '0.6rem', fontWeight: 700,
+          background: 'linear-gradient(135deg, #2563EB, #7C3AED)',
+          WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
         }}>
-          {['Roof Repair', 'New Install', 'Gutters'].map((s, i) => (
-            <div key={s} style={{
-              padding: '12px 10px',
-              borderRight: i < 2 ? '1px solid rgba(196,164,76,0.08)' : 'none',
-              textAlign: 'center',
-            }}>
-              <div style={{ fontSize: '0.58rem', fontWeight: 700, color: '#C4A44C', marginBottom: 2 }}>{s}</div>
-              <div style={{ fontSize: '0.52rem', color: 'rgba(255,255,255,0.3)' }}>Licensed & Insured</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Review strip */}
-        <div style={{
-          padding: '10px 16px',
-          borderTop: '1px solid rgba(196,164,76,0.08)',
-          display: 'flex', alignItems: 'center', gap: 8,
-          background: 'rgba(196,164,76,0.02)',
-        }}>
-          <div style={{ display: 'flex', gap: 1 }}>
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} size={9} fill="#C4A44C" color="#C4A44C" />
-            ))}
-          </div>
-          <div style={{ fontSize: '0.58rem', color: 'rgba(255,255,255,0.5)' }}>
-            <span style={{ color: '#fff', fontWeight: 600 }}>4.9</span> · 138 Google reviews
-          </div>
-          <div style={{ marginLeft: 'auto', fontSize: '0.52rem', color: '#4ade80', fontWeight: 600 }}>● Live</div>
+          VIEW LIVE →
         </div>
       </div>
     </div>
@@ -130,32 +191,31 @@ function BrowserMockup() {
 }
 
 // ── Floating stat card ───────────────────────────────────────────────────────
-function StatCard({ value, label, icon, style }: {
-  value: string
-  label: string
-  icon: React.ReactNode
-  style?: React.CSSProperties
+function StatCard({ value, label, icon, gradient, style }: {
+  value: string; label: string; icon: React.ReactNode
+  gradient?: boolean; style?: React.CSSProperties
 }) {
   return (
     <div style={{
       position: 'absolute',
-      background: '#FFFFFF',
-      border: '1px solid rgba(0,0,0,0.08)',
-      borderRadius: '12px',
+      background: gradient ? 'linear-gradient(135deg, #2563EB, #7C3AED)' : '#FFFFFF',
+      border: gradient ? 'none' : '1.5px solid rgba(99,102,241,0.12)',
+      borderRadius: 14,
       padding: '14px 18px',
       display: 'flex',
       alignItems: 'center',
-      gap: '12px',
-      boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
-      minWidth: '160px',
+      gap: 12,
+      boxShadow: gradient
+        ? '0 12px 40px rgba(37,99,235,0.35)'
+        : '0 8px 32px rgba(99,102,241,0.1)',
+      minWidth: '155px',
       ...style,
     }}>
       <div style={{
-        width: 36, height: 36, borderRadius: '10px',
-        background: '#F3F4F6',
-        border: '1px solid rgba(0,0,0,0.06)',
+        width: 36, height: 36, borderRadius: 10,
+        background: gradient ? 'rgba(255,255,255,0.2)' : 'rgba(99,102,241,0.08)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        color: '#111827', flexShrink: 0,
+        color: gradient ? '#fff' : 'var(--color-indigo)', flexShrink: 0,
       }}>
         {icon}
       </div>
@@ -163,11 +223,16 @@ function StatCard({ value, label, icon, style }: {
         <div style={{
           fontFamily: 'var(--font-display)',
           fontWeight: 800, fontSize: '1.25rem',
-          color: '#111827', letterSpacing: '-0.02em', lineHeight: 1,
+          color: gradient ? '#fff' : 'var(--color-text)',
+          letterSpacing: '-0.02em', lineHeight: 1,
         }}>
           {value}
         </div>
-        <div style={{ fontSize: '0.68rem', color: 'var(--color-muted)', marginTop: 3 }}>
+        <div style={{
+          fontSize: '0.68rem',
+          color: gradient ? 'rgba(255,255,255,0.75)' : 'var(--color-muted)',
+          marginTop: 3,
+        }}>
           {label}
         </div>
       </div>
@@ -186,9 +251,8 @@ export default function Hero() {
   const trustRef   = useRef<HTMLDivElement>(null)
   const rightRef   = useRef<HTMLDivElement>(null)
   const countRef   = useRef<HTMLSpanElement>(null)
-  // tab events handled by contact.tsx via wc:tab custom event
 
-  // Particle canvas
+  // Particle canvas — blue/purple tones
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -198,13 +262,15 @@ export default function Hero() {
     resize()
     window.addEventListener('resize', resize)
 
-    const dots = Array.from({ length: 50 }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 1.0 + 0.2,
-      vx: (Math.random() - 0.5) * 0.15,
-      vy: (Math.random() - 0.5) * 0.15,
-      a: Math.random() * 0.12 + 0.03,
+    const COLORS = ['rgba(37,99,235,', 'rgba(124,58,237,', 'rgba(99,102,241,']
+    const dots = Array.from({ length: 60 }, () => ({
+      x: Math.random() * 1000,
+      y: Math.random() * 800,
+      r: Math.random() * 1.2 + 0.3,
+      vx: (Math.random() - 0.5) * 0.18,
+      vy: (Math.random() - 0.5) * 0.18,
+      a: Math.random() * 0.15 + 0.04,
+      c: COLORS[Math.floor(Math.random() * COLORS.length)],
     }))
 
     const tick = () => {
@@ -217,7 +283,7 @@ export default function Hero() {
         if (d.y > canvas.height) d.y = 0
         ctx.beginPath()
         ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(0,0,0,${d.a})`
+        ctx.fillStyle = `${d.c}${d.a})`
         ctx.fill()
       }
       for (let i = 0; i < dots.length; i++) {
@@ -225,12 +291,12 @@ export default function Hero() {
           const dx = dots[i].x - dots[j].x
           const dy = dots[i].y - dots[j].y
           const dist = Math.sqrt(dx * dx + dy * dy)
-          if (dist < 90) {
+          if (dist < 100) {
             ctx.beginPath()
             ctx.moveTo(dots[i].x, dots[i].y)
             ctx.lineTo(dots[j].x, dots[j].y)
-            ctx.strokeStyle = `rgba(0,0,0,${0.03 * (1 - dist / 90)})`
-            ctx.lineWidth = 0.4
+            ctx.strokeStyle = `rgba(99,102,241,${0.04 * (1 - dist / 100)})`
+            ctx.lineWidth = 0.5
             ctx.stroke()
           }
         }
@@ -267,7 +333,14 @@ export default function Hero() {
         .from(trustRef.current, { opacity: 0, y: 10, duration: 0.45 }, '-=0.3')
         .from(rightRef.current, { opacity: 0, x: 40, duration: 0.9, ease: 'power4.out' }, '-=1.2')
 
-      // Scroll parallax on left content
+      if (rightRef.current) {
+        gsap.from(rightRef.current.querySelectorAll('img'), {
+          clipPath: 'inset(0 100% 0 0)',
+          duration: 0.9, ease: 'power4.inOut', stagger: 0.1,
+          scrollTrigger: { trigger: rightRef.current, start: 'top 85%' }
+        })
+      }
+
       gsap.to(sectionRef.current, {
         yPercent: -8, ease: 'none',
         scrollTrigger: { trigger: sectionRef.current, start: 'top top', end: 'bottom top', scrub: 1.5 },
@@ -276,14 +349,14 @@ export default function Hero() {
     return () => ctx.revert()
   }, [])
 
-  const split = (text: string, gold?: boolean) =>
+  const split = (text: string, gradient?: boolean) =>
     text.split(' ').map((w, i) => (
       <span key={i} className="word-wrap" style={{ display: 'inline-block', marginRight: '0.22em' }}>
         <span
           className="word-inner"
-          style={gold ? {
+          style={gradient ? {
             display: 'inline-block',
-            background: 'linear-gradient(135deg, #C4A44C 0%, #E8CC7A 50%, #C4A44C 100%)',
+            background: 'linear-gradient(135deg, #2563EB 0%, #7C3AED 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
@@ -302,18 +375,21 @@ export default function Hero() {
         alignItems: 'center',
         padding: 'clamp(100px,12vh,140px) clamp(24px,6vw,80px) clamp(60px,8vh,100px)',
         overflow: 'hidden',
+        background: 'linear-gradient(160deg, #04040E 0%, #080820 55%, #0D0B28 100%)',
       }}
     >
       <canvas ref={canvasRef} id="hero-canvas" />
+      <div className="noise-overlay" />
 
-      {/* Aurora blobs */}
-      <div className="aurora-blob" style={{ width: '600px', height: '600px', background: 'rgba(181,136,14,0.07)', top: '-5%', left: '-5%', animation: 'aurora-drift 14s ease-in-out infinite' }} />
-      <div className="aurora-blob" style={{ width: '450px', height: '450px', background: 'rgba(99,102,241,0.06)', bottom: '5%', right: '5%', animation: 'aurora-drift 18s ease-in-out infinite reverse' }} />
+      {/* Aurora blobs — vivid on dark */}
+      <div className="aurora-blob" style={{ width: '600px', height: '600px', background: 'rgba(37,99,235,0.18)', top: '-5%', left: '-5%', animation: 'aurora-drift 14s ease-in-out infinite' }} />
+      <div className="aurora-blob" style={{ width: '500px', height: '500px', background: 'rgba(124,58,237,0.14)', bottom: '5%', right: '0%', animation: 'aurora-drift 18s ease-in-out infinite reverse' }} />
+      <div className="aurora-blob" style={{ width: '300px', height: '300px', background: 'rgba(99,102,241,0.12)', top: '40%', left: '40%', animation: 'aurora-drift 22s ease-in-out infinite' }} />
 
       {/* Grid overlay */}
       <div style={{
         position: 'absolute', inset: 0, pointerEvents: 'none',
-        backgroundImage: 'linear-gradient(rgba(0,0,0,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.025) 1px, transparent 1px)',
+        backgroundImage: 'linear-gradient(rgba(99,102,241,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.07) 1px, transparent 1px)',
         backgroundSize: '72px 72px',
         maskImage: 'radial-gradient(ellipse 80% 80% at 30% 50%, black 20%, transparent 75%)',
       }} />
@@ -335,11 +411,11 @@ export default function Hero() {
           <div ref={badgeRef} style={{ marginBottom: '28px' }}>
             <span style={{
               display: 'inline-flex', alignItems: 'center', gap: '8px',
-              border: '1px solid rgba(22,163,74,0.25)',
-              background: 'rgba(22,163,74,0.06)',
+              border: '1px solid rgba(16,185,129,0.3)',
+              background: 'rgba(16,185,129,0.06)',
               borderRadius: '100px', padding: '7px 16px',
-              fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
-              color: '#16A34A',
+              fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
+              color: '#059669',
             }}>
               <span className="live-dot" />
               <span ref={countRef}>823</span> local businesses now getting leads online
@@ -352,7 +428,7 @@ export default function Hero() {
             style={{
               fontFamily: 'var(--font-display)',
               fontWeight: 800,
-              fontSize: 'clamp(2.4rem,4.2vw,4rem)',
+              fontSize: 'clamp(2.6rem,4.5vw,4.4rem)',
               lineHeight: 0.97,
               letterSpacing: '-0.04em',
               marginBottom: '28px',
@@ -362,10 +438,10 @@ export default function Hero() {
               {split('No website?')}
             </div>
             <div style={{ overflow: 'hidden', paddingBottom: '0.06em' }}>
-              {split('You\'re invisible.', true)}
+              {split('AI builds one.', true)}
             </div>
             <div style={{ overflow: 'hidden', paddingBottom: '0.06em' }}>
-              {split('We fix that. Free.')}
+              {split('Tonight. Free.')}
             </div>
           </h1>
 
@@ -373,17 +449,16 @@ export default function Hero() {
           <p
             ref={subRef}
             style={{
-              color: 'var(--color-muted)',
+              color: 'rgba(255,255,255,0.6)',
               fontSize: 'clamp(0.95rem,1.6vw,1.1rem)',
               lineHeight: 1.75,
               maxWidth: '480px',
               marginBottom: '40px',
             }}
           >
-            We build your business a{' '}
-            <span style={{ color: 'var(--color-text)', fontWeight: 600 }}>professional, lead-generating website</span>
-            {' '}overnight — for free. You wake up to a live site and incoming calls.
-            Pay only if you love it.
+            Our AI scans your web presence, extracts your brand, and deploys a{' '}
+            <span style={{ color: '#FFFFFF', fontWeight: 600 }}>cinematic, lead-generating website</span>
+            {' '}overnight — for free. Pay only if you love it.
           </p>
 
           {/* CTAs */}
@@ -394,90 +469,84 @@ export default function Hero() {
               className="btn-primary"
               style={{ fontSize: '0.95rem', padding: '15px 28px' }}
             >
-              Get My FREE Demo Site <ArrowRight size={16} />
+              Get My FREE Site <ArrowRight size={16} />
             </a>
             <a
-              href="#contact"
-              onClick={e => { e.preventDefault(); window.dispatchEvent(new CustomEvent('wc:tab', { detail: { tab: 'audit' } })); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}
+              href="#showcase"
+              onClick={e => { e.preventDefault(); document.getElementById('showcase')?.scrollIntoView({ behavior: 'smooth' }) }}
               className="btn-ghost"
               style={{ fontSize: '0.95rem' }}
             >
-              Free Website Audit
+              See Live Examples
             </a>
           </div>
 
           {/* Trust row */}
           <div
             ref={trustRef}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '24px',
-              flexWrap: 'wrap',
-            }}
+            style={{ display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap' }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <div style={{ display: 'flex', gap: 2 }}>
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={14} fill="#C4A44C" color="#C4A44C" />
+                  <Star key={i} size={14} fill="#F59E0B" color="#F59E0B" />
                 ))}
               </div>
-              <span style={{ fontSize: '0.75rem', color: 'var(--color-muted)' }}>
-                <span style={{ color: 'var(--color-text)', fontWeight: 600 }}>4.9</span> · 47 client reviews
+              <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>
+                <span style={{ color: '#FFFFFF', fontWeight: 600 }}>4.9</span> · 47 client reviews
               </span>
             </div>
-            <div style={{ width: 1, height: 16, background: 'var(--color-border)' }} />
-            <span style={{ fontSize: '0.75rem', color: 'var(--color-muted)' }}>
-              <span style={{ color: 'var(--color-text)', fontWeight: 600 }}>$0</span> upfront. Ever.
+            <div style={{ width: 1, height: 16, background: 'rgba(255,255,255,0.12)' }} />
+            <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>
+              <span style={{ color: '#FFFFFF', fontWeight: 600 }}>$0</span> upfront. Ever.
             </span>
-            <div style={{ width: 1, height: 16, background: 'var(--color-border)' }} />
-            <span style={{ fontSize: '0.75rem', color: 'var(--color-muted)' }}>
-              <span style={{ color: 'var(--color-text)', fontWeight: 600 }}>24hr</span> delivery
+            <div style={{ width: 1, height: 16, background: 'rgba(255,255,255,0.12)' }} />
+            <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>
+              <span style={{ color: '#FFFFFF', fontWeight: 600 }}>24hr</span> delivery
             </span>
           </div>
         </div>
 
-        {/* ── RIGHT: Mockup + floating stats ── */}
+        {/* ── RIGHT: AI Pipeline + floating stats ── */}
         <div ref={rightRef} className="hero-right" style={{ position: 'relative', paddingTop: '20px', paddingBottom: '20px' }}>
 
-          {/* Stat card: top-right */}
+          {/* Stat card: top-right — gradient */}
           <StatCard
             value="847"
-            label="Local sites live"
+            label="Sites deployed"
             icon={<Zap size={16} />}
+            gradient
             style={{ top: -10, right: -16, zIndex: 10 }}
           />
 
-          {/* Browser mockup */}
+          {/* AI Pipeline card */}
           <div style={{ marginTop: '28px', marginBottom: '28px' }}>
-            <BrowserMockup />
+            <AIPipelineCard />
           </div>
 
           {/* Stat card: bottom-left */}
           <StatCard
-            value="24h"
-            label="Avg. delivery"
+            value="6h"
+            label="Avg build time"
             icon={<Clock size={16} />}
             style={{ bottom: -10, left: -16, zIndex: 10 }}
           />
 
-          {/* Stat card: bottom-right (slightly inset) */}
+          {/* Stat card: bottom-right */}
           <StatCard
-            value="$0"
-            label="Upfront cost"
-            icon={<DollarSign size={16} />}
+            value="97/100"
+            label="PageSpeed score"
+            icon={<TrendingUp size={16} />}
             style={{ bottom: 60, right: -16, zIndex: 10 }}
           />
 
-          {/* Glow behind mockup */}
+          {/* Glow behind card */}
           <div style={{
             position: 'absolute',
             top: '50%', left: '50%',
             transform: 'translate(-50%, -50%)',
-            width: '60%', height: '60%',
-            background: 'rgba(181,136,14,0.06)',
-            borderRadius: '50%',
-            filter: 'blur(60px)',
+            width: '70%', height: '60%',
+            background: 'radial-gradient(ellipse, rgba(37,99,235,0.08) 0%, transparent 70%)',
             pointerEvents: 'none',
             zIndex: 0,
           }} />
@@ -489,9 +558,12 @@ export default function Hero() {
         position: 'absolute', bottom: '28px', left: '50%',
         transform: 'translateX(-50%)',
         display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px',
-        opacity: 0.3,
+        color: 'rgba(255,255,255,0.3)',
       }}>
-        <div style={{ width: '1px', height: '40px', background: 'linear-gradient(to bottom, var(--color-gold), transparent)' }} />
+        <div style={{
+          width: '1px', height: '40px',
+          background: 'linear-gradient(to bottom, rgba(255,255,255,0.3), transparent)',
+        }} />
       </div>
     </section>
   )

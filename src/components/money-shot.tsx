@@ -61,7 +61,7 @@ function RevenueCard() {
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
         <div>
-          <div style={{ fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: 2 }}>
+          <div style={{ fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-blue)', marginBottom: 2 }}>
             Revenue Calculator
           </div>
           <div style={{ fontSize: '0.72rem', color: 'var(--color-muted)' }}>
@@ -74,7 +74,7 @@ function RevenueCard() {
           border: '1px solid rgba(0,0,0,0.08)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
         }}>
-          <TrendingUp size={16} color="#C4A44C" />
+          <TrendingUp size={16} color="#2563EB" />
         </div>
       </div>
 
@@ -165,7 +165,7 @@ function RevenueCard() {
           <div style={{
             fontFamily: 'var(--font-display)', fontWeight: 800,
             fontSize: '1.6rem', letterSpacing: '-0.03em',
-            color: '#C4A44C',
+            color: 'var(--color-blue)',
           }}>
             <span ref={roiRef}>0x</span>
           </div>
@@ -206,7 +206,7 @@ export default function MoneyShot() {
           className="word-inner"
           style={gold ? {
             display: 'inline-block',
-            background: 'linear-gradient(135deg,#C4A44C,#E8CC7A)',
+            background: 'linear-gradient(135deg,#2563EB,#7C3AED)',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
           } : undefined}
         >{w}</span>
@@ -272,7 +272,7 @@ export default function MoneyShot() {
                 <div style={{
                   flexShrink: 0, marginTop: 2,
                   fontFamily: 'var(--font-display)', fontWeight: 800,
-                  fontSize: '1rem', color: 'var(--color-gold)',
+                  fontSize: '1rem', color: 'var(--color-blue)',
                   minWidth: 52,
                 }}>
                   {b.stat}

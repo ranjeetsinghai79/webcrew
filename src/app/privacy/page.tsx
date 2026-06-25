@@ -9,7 +9,7 @@ export default function Privacy() {
   return (
     <div style={{ minHeight:'100vh', background:'var(--color-bg)', padding:'120px 32px 80px' }}>
       <div style={{ maxWidth:'720px', margin:'0 auto' }}>
-        <a href="/" style={{ color:'var(--color-gold)', textDecoration:'none', fontSize:'0.85rem', display:'block', marginBottom:'32px' }}>
+        <a href="/" style={{ color:'var(--color-blue)', textDecoration:'none', fontSize:'0.85rem', display:'block', marginBottom:'32px' }}>
           ← Back to WebCrew
         </a>
         <h1 style={{ fontFamily:'var(--font-display)', fontWeight:800, fontSize:'2.5rem', letterSpacing:'-0.02em', marginBottom:'8px' }}>
@@ -41,9 +41,11 @@ We do not sell your personal information to third parties.`,
           },
           {
             title: 'SMS Communications',
-            body: `By providing your phone number, you consent to receive SMS messages from WebCrew about your website demo and related services. Message and data rates may apply. Message frequency varies.
+            body: `End-users provide explicit consent by visiting webcrew.app and entering their phone number into our contact or website audit request form. By checking the consent checkbox, users opt into receiving text messages from WebCrew regarding website design and related services. We do not engage in unsolicited cold texting.
 
-To opt out, reply STOP to any SMS message. To get help, reply HELP. For more information, text HELP to our number or email hello@webcrew.app.
+Message and data rates may apply. Message frequency varies. Consent is not a condition of purchase.
+
+To opt out, reply STOP to any SMS message. To get help, reply HELP. For more information, email hello@webcrew.app.
 
 Carriers are not liable for delayed or undelivered messages.`,
           },
@@ -55,7 +57,7 @@ Carriers are not liable for delayed or undelivered messages.`,
 
 All service providers are bound by confidentiality agreements.
 
-Mobile information, including SMS opt-in data and consent, will not be shared with third parties or affiliates for marketing or promotional purposes.`,
+No mobile information will be shared with third parties/affiliates for marketing/promotional purposes. All the above categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.`,
           },
           {
             title: 'Data Retention',

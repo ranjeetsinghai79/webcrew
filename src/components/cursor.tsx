@@ -16,8 +16,8 @@ export default function Cursor() {
       gsap.to(ring, { x:mx, y:my, duration:0.18, ease:'power2.out' })
     }
 
-    const onEnter = () => gsap.to(ring, { width:56, height:56, borderColor:'var(--color-gold)', duration:0.3 })
-    const onLeave = () => gsap.to(ring, { width:32, height:32, borderColor:'rgba(196,164,76,0.45)', duration:0.3 })
+    const onEnter = () => gsap.to(ring, { width:56, height:56, borderColor:'var(--color-blue)', duration:0.3 })
+    const onLeave = () => gsap.to(ring, { width:32, height:32, borderColor:'rgba(37,99,235,0.35)', duration:0.3 })
 
     document.addEventListener('mousemove', onMove)
     document.querySelectorAll('a,button,.card,.pricing-card').forEach(el => {

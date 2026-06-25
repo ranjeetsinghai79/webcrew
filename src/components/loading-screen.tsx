@@ -74,11 +74,11 @@ export default function LoadingScreen() {
           <span
             style={{
               fontFamily: 'var(--font-display)',
-              fontSize: '2.5rem',
+              fontSize: '3.2rem',
               fontWeight: 800,
-              letterSpacing: '-0.02em',
+              letterSpacing: '-0.03em',
             }}
-            className="gradient-gold"
+            className="gradient-brand"
           >
             WebCrew
           </span>
@@ -87,22 +87,32 @@ export default function LoadingScreen() {
           ref={taglineRef}
           style={{
             color: 'var(--color-muted)',
-            fontSize: '0.8rem',
-            letterSpacing: '0.18em',
+            fontSize: '0.72rem',
+            letterSpacing: '0.28em',
             textTransform: 'uppercase',
-            marginBottom: '40px',
+            marginBottom: '8px',
           }}
         >
-          Professional websites. Overnight.
+          AI builds your local business website. Overnight.
         </div>
-        <div ref={barRef} style={{ width: '200px', height: '1px', background: 'var(--color-border)', margin: '0 auto' }}>
+        <div style={{
+          color: 'rgba(255,255,255,0.25)',
+          fontSize: '0.62rem',
+          letterSpacing: '0.18em',
+          textTransform: 'uppercase',
+          marginBottom: '40px',
+        }}>
+          Overnight. For free.
+        </div>
+        <div ref={barRef} style={{ width: '240px', height: '3px', background: 'var(--color-border)', margin: '0 auto', borderRadius: '4px' }}>
           <div
             ref={barFillRef}
             style={{
               width: '0%',
               height: '100%',
-              background: 'linear-gradient(90deg, var(--color-gold), var(--color-gold-light))',
-              boxShadow: '0 0 8px var(--color-gold)',
+              background: 'linear-gradient(90deg, #2563EB, #7C3AED)',
+              boxShadow: '0 0 12px rgba(124, 58, 237, 0.6)',
+              borderRadius: '4px',
             }}
           />
         </div>

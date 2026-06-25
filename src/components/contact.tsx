@@ -47,8 +47,8 @@ const inputStyle: React.CSSProperties = {
 }
 
 const onFocus = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => {
-  e.currentTarget.style.borderColor = 'var(--color-gold)'
-  e.currentTarget.style.background = 'rgba(181,136,14,0.03)'
+  e.currentTarget.style.borderColor = 'var(--color-blue)'
+  e.currentTarget.style.background = 'rgba(37,99,235,0.03)'
 }
 const onBlur = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => {
   e.currentTarget.style.borderColor = 'var(--color-border)'
@@ -146,7 +146,7 @@ export default function Contact() {
         body: JSON.stringify({
           name:       audit.name,
           email:      audit.email,
-          phone:      audit.phone || undefined,
+          phone:      audit.phone,
           websiteUrl: audit.websiteUrl,
           source:     'webcrew.app',
           submittedAt: new Date().toISOString(),
@@ -170,8 +170,9 @@ export default function Contact() {
     cursor: 'pointer',
     border: 'none',
     transition: 'all 0.2s',
-    background: active ? 'var(--color-text)' : 'transparent',
+    background: active ? 'linear-gradient(135deg, #2563EB, #7C3AED)' : 'transparent',
     color: active ? '#fff' : 'var(--color-muted)',
+    boxShadow: active ? '0 4px 16px rgba(37,99,235,0.25)' : 'none',
     letterSpacing: '0.01em',
   })
 
@@ -179,11 +180,11 @@ export default function Contact() {
     <div style={{
       textAlign: 'center', padding: '56px 40px',
       background: 'var(--color-surface)',
-      border: '1px solid rgba(196,164,76,0.3)',
+      border: '1px solid rgba(99,102,241,0.25)',
       borderRadius: '20px',
-      boxShadow: '0 0 80px rgba(196,164,76,0.06)',
+      boxShadow: '0 0 80px rgba(37,99,235,0.08)',
     }}>
-      <CheckCircle size={52} color="var(--color-gold)" style={{ margin: '0 auto 20px' }} />
+      <CheckCircle size={52} color="var(--color-blue)" style={{ margin: '0 auto 20px' }} />
       <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.7rem', letterSpacing: '-0.02em', marginBottom: '12px' }}>
         {tab === 'audit' ? 'Audit running now.' : 'We\'re building it now.'}
       </h3>
@@ -195,13 +196,13 @@ export default function Contact() {
 
   const ConsentBox = ({ children }: { children: React.ReactNode }) => (
     <div style={{
-      background: 'rgba(181,136,14,0.04)',
-      border: '1px solid rgba(181,136,14,0.15)',
+      background: 'rgba(37,99,235,0.04)',
+      border: '1px solid rgba(37,99,235,0.15)',
       borderRadius: '10px',
       padding: '18px',
       display: 'flex', flexDirection: 'column', gap: '12px',
     }}>
-      <p style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-gold)', margin: 0 }}>
+      <p style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-blue)', margin: 0 }}>
         Communication Consent
       </p>
       {children}
@@ -218,9 +219,9 @@ export default function Contact() {
 
         <div style={{ textAlign: 'center', marginBottom: '48px' }}>
           <div className="section-label" style={{ justifyContent: 'center' }}>
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-gold)' }} />
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-blue)' }} />
             Get Started — Free
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-gold)' }} />
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-blue)' }} />
           </div>
           <h2 style={{
             fontFamily: 'var(--font-display)', fontWeight: 700,
@@ -229,7 +230,7 @@ export default function Contact() {
             marginBottom: '16px',
           }}>
             Your demo site will be{' '}
-            <span className="gradient-gold">live by tomorrow.</span>
+            <span className="gradient-brand">live by tomorrow.</span>
           </h2>
           <p style={{ color: 'var(--color-muted)', lineHeight: 1.7, fontSize: '1rem' }}>
             No payment. No contract. Just a free professional website — built overnight.
@@ -293,7 +294,7 @@ export default function Contact() {
                   onFocus={onFocus} onBlur={onBlur} />
               </div>
 
-              <input style={inputStyle} type="tel" placeholder="Phone number (optional)"
+              <input style={inputStyle} type="tel" placeholder="Phone number *" required
                 value={audit.phone} onChange={e => setAudit(f => ({ ...f, phone: e.target.value }))}
                 onFocus={onFocus} onBlur={onBlur} />
 
@@ -307,14 +308,14 @@ export default function Contact() {
                     type="checkbox"
                     checked={audit.emailConsent}
                     onChange={e => { setAudit(f => ({ ...f, emailConsent: e.target.checked })); setError('') }}
-                    style={{ width: '18px', height: '18px', minWidth: '18px', accentColor: 'var(--color-gold)', cursor: 'pointer', marginTop: '2px' }}
+                    style={{ width: '18px', height: '18px', minWidth: '18px', accentColor: 'var(--color-blue)', cursor: 'pointer', marginTop: '2px' }}
                   />
                   <span style={{ fontSize: '0.82rem', lineHeight: 1.6, color: 'var(--color-text)' }}>
-                    <strong>I agree to receive my free audit report</strong> and occasional follow-up from WebCrew at the email above.{' '}
-                    <a href="/privacy" style={{ color: 'var(--color-gold)', textDecoration: 'underline' }}>Privacy Policy</a>
+                    <strong>I agree to receive my free audit report</strong> and text/email follow-up from WebCrew at the contact info provided. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply <strong>STOP</strong> to unsubscribe.{' '}
+                    <a href="/privacy" style={{ color: 'var(--color-blue)', textDecoration: 'underline' }}>Privacy Policy</a>
                     {' '}&amp;{' '}
-                    <a href="/terms" style={{ color: 'var(--color-gold)', textDecoration: 'underline' }}>Terms of Service</a>.
-                    <span style={{ color: 'var(--color-gold)', fontWeight: 600 }}> (Required)</span>
+                    <a href="/terms" style={{ color: 'var(--color-blue)', textDecoration: 'underline' }}>Terms</a>.{' '}
+                    <span style={{ color: 'var(--color-blue)', fontWeight: 600 }}>(Required)</span>
                   </span>
                 </label>
               </ConsentBox>
@@ -396,16 +397,14 @@ export default function Contact() {
                     type="checkbox"
                     checked={demo.smsConsent}
                     onChange={e => { setDemo(f => ({ ...f, smsConsent: e.target.checked })); setError('') }}
-                    style={{ width: '18px', height: '18px', minWidth: '18px', accentColor: 'var(--color-gold)', cursor: 'pointer', marginTop: '2px' }}
+                    style={{ width: '18px', height: '18px', minWidth: '18px', accentColor: 'var(--color-blue)', cursor: 'pointer', marginTop: '2px' }}
                   />
                   <span style={{ fontSize: '0.82rem', lineHeight: 1.6, color: 'var(--color-text)' }}>
-                    <strong>I agree to receive SMS messages</strong> about my website demo from WebCrew
-                    (webcrew.app). Message frequency varies. Message &amp; data rates may apply.
-                    Reply <strong>STOP</strong> to opt out. Reply <strong>HELP</strong> for help.{' '}
-                    <a href="/privacy" style={{ color: 'var(--color-gold)', textDecoration: 'underline' }}>Privacy Policy</a>
+                    <strong>I agree to receive text messages from WebCrew</strong> regarding my website demo and related services at the number provided. Consent is not a condition of purchase. Message frequency varies. Msg &amp; data rates may apply. Reply <strong>STOP</strong> to unsubscribe. Reply <strong>HELP</strong> for help.{' '}
+                    <a href="/privacy" style={{ color: 'var(--color-blue)', textDecoration: 'underline' }}>Privacy Policy</a>
                     {' '}&amp;{' '}
-                    <a href="/terms" style={{ color: 'var(--color-gold)', textDecoration: 'underline' }}>Terms of Service</a>.{' '}
-                    <span style={{ color: 'var(--color-gold)', fontWeight: 600 }}>(Required)</span>
+                    <a href="/terms" style={{ color: 'var(--color-blue)', textDecoration: 'underline' }}>Terms</a>.{' '}
+                    <span style={{ color: 'var(--color-blue)', fontWeight: 600 }}>(Required)</span>
                   </span>
                 </label>
               </ConsentBox>

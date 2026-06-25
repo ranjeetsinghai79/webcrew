@@ -8,7 +8,7 @@ if (typeof window !== "undefined") { gsap.registerPlugin(ScrollTrigger) }
 const STATS = [
   { n: 847,  suffix: '+',  label: 'Sites built',          note: 'and counting' },
   { n: 6,    suffix: 'h',  label: 'Avg build time',       note: 'while you sleep' },
-  { n: 299,  prefix: '$',  suffix: '', label: 'Starting price', note: 'one-time' },
+  { n: 49,   prefix: '$',  suffix: '/mo', label: 'All-in monthly', note: 'AI team included' },
   { n: 94,   suffix: '%',  label: 'Client retention',     note: 'keep hosting' },
 ]
 
@@ -74,9 +74,9 @@ export default function Results() {
 
         <div style={{ textAlign: 'center', marginBottom: '72px' }}>
           <div className="section-label" style={{ justifyContent: 'center' }}>
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-gold)' }} />
+            <span style={{ width: '24px', height: '1px', background: 'linear-gradient(135deg, #2563EB, #7C3AED)' }} />
             The Numbers
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-gold)' }} />
+            <span style={{ width: '24px', height: '1px', background: 'linear-gradient(135deg, #2563EB, #7C3AED)' }} />
           </div>
           <div ref={headingRef}>
             <h2 style={{
@@ -85,7 +85,7 @@ export default function Results() {
               letterSpacing: '-0.03em', lineHeight: 1.0,
             }}>
               {split('An agency that')}
-              <span className="gradient-gold">{split(' never clocks out.')}</span>
+              <span className="gradient-brand">{split(' never clocks out.')}</span>
             </h2>
           </div>
           <p style={{ color: 'var(--color-muted)', fontSize: '1.05rem', maxWidth: '420px', margin: '20px auto 0', lineHeight: 1.65 }}>
@@ -112,13 +112,13 @@ export default function Results() {
                 overflow: 'hidden',
                 transition: 'border-color 0.3s, box-shadow 0.3s',
               }}
-              onMouseEnter={e => { const el = e.currentTarget; el.style.borderColor = 'var(--color-border-hot)'; el.style.boxShadow = '0 8px 32px rgba(0,0,0,0.1)' }}
+              onMouseEnter={e => { const el = e.currentTarget; el.style.borderColor = 'rgba(37,99,235,0.35)'; el.style.boxShadow = '0 8px 32px rgba(0,0,0,0.1)' }}
               onMouseLeave={e => { const el = e.currentTarget; el.style.borderColor = 'var(--color-border)'; el.style.boxShadow = 'none' }}
             >
               <div style={{
                 position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)',
                 width: '60%', height: '1px',
-                background: 'linear-gradient(90deg, transparent, var(--color-gold), transparent)',
+                background: 'linear-gradient(90deg, transparent, rgba(99,102,241,0.4), transparent)',
               }} />
               <div
                 className="stat-num"
@@ -127,7 +127,7 @@ export default function Results() {
                 data-suffix={s.suffix}
                 style={{
                   fontFamily: 'var(--font-display)', fontWeight: 700,
-                  fontSize: '3rem', color: 'var(--color-gold)',
+                  fontSize: '3rem', color: 'var(--color-blue)',
                   letterSpacing: '-0.03em', lineHeight: 1,
                   marginBottom: '10px',
                 }}
@@ -148,7 +148,7 @@ export default function Results() {
         <div style={{
           margin: '0 0 72px',
           background: 'var(--color-surface)',
-          border: '1px solid rgba(196,164,76,0.25)',
+          border: '1px solid rgba(99,102,241,0.2)',
           borderRadius: '18px',
           padding: '36px 40px',
           position: 'relative',
@@ -158,7 +158,7 @@ export default function Results() {
         }}>
           <div style={{
             position: 'absolute', top: 0, left: '20%', right: '20%', height: '1px',
-            background: 'linear-gradient(90deg, transparent, var(--color-gold), transparent)',
+            background: 'linear-gradient(90deg, transparent, rgba(99,102,241,0.4), transparent)',
           }} />
           <div style={{
             fontSize: '1.2rem', color: 'var(--color-muted)',
@@ -170,7 +170,7 @@ export default function Results() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
             <div style={{
               width: 44, height: 44, borderRadius: '50%',
-              background: 'linear-gradient(135deg, var(--color-gold), #E8CC7A)',
+              background: 'linear-gradient(135deg, #2563EB, #7C3AED)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '1rem', color: '#06060C',
             }}>
@@ -182,7 +182,7 @@ export default function Results() {
             </div>
             <div style={{ marginLeft: 'auto', display: 'flex', gap: 2 }}>
               {[...Array(5)].map((_, i) => (
-                <svg key={i} width="13" height="13" viewBox="0 0 24 24" fill="#C4A44C"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg key={i} width="13" height="13" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
               ))}
             </div>
           </div>
@@ -214,7 +214,7 @@ export default function Results() {
                 onMouseEnter={e => {
                   const el = e.currentTarget
                   el.style.color = 'var(--color-text)'
-                  el.style.borderColor = 'var(--color-gold)'
+                  el.style.borderColor = 'var(--color-blue)'
                   el.style.background = 'rgba(0,0,0,0.04)'
                 }}
                 onMouseLeave={e => {

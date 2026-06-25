@@ -2,72 +2,50 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Check, ArrowRight } from 'lucide-react'
+import { Check, ArrowRight, Zap, Phone, BarChart2, Star, Globe, MessageSquare } from 'lucide-react'
 
 if (typeof window !== "undefined") { gsap.registerPlugin(ScrollTrigger) }
 
-const PLANS = [
+const MONTHLY_ITEMS = [
   {
-    name: 'New Website',
-    eyebrow: 'No website yet?',
-    price: '$299',
-    per: 'one-time',
-    hosting: '+$49/mo hosting',
-    sub: 'Cancel anytime. No contracts.',
-    badge: null,
-    features: [
-      'Professional, cinematic website',
-      'Mobile-first, cinematic design',
-      'Contact form → your phone instantly',
-      'Google Maps SEO built-in',
-      'SSL + blazing-fast hosting',
-      '24-hour delivery',
-      'You own it forever',
-    ],
-    cta: 'Get My $299 Site',
-    highlight: false,
+    icon: Globe,
+    label: 'Global CDN hosting',
+    detail: 'Cloudflare Pages — 200+ cities, 99.99% uptime',
+    market: '$30/mo',
   },
   {
-    name: 'Site Upgrade',
-    eyebrow: 'Have a bad website?',
-    price: '$599',
-    per: 'one-time',
-    hosting: '+$79/mo hosting',
-    sub: 'Most clients see leads within 72h.',
-    badge: 'Most Popular',
-    features: [
-      'Everything in New Website',
-      'Full audit of your current site',
-      'Full redesign from scratch',
-      'Advanced scroll animations',
-      'Google Business integration',
-      'Review showcase',
-      'Priority 12-hour delivery',
-    ],
-    cta: 'Upgrade My Website',
-    highlight: true,
+    icon: Phone,
+    label: 'AI answers every call, 24/7',
+    detail: 'Books appointments, answers questions, never misses a lead',
+    market: '$250/mo',
   },
   {
-    name: 'Enterprise',
-    eyebrow: 'Multi-location or franchise?',
-    price: 'Custom',
-    per: 'quote',
-    hosting: 'Custom hosting',
-    sub: 'Volume discounts available.',
-    badge: null,
-    features: [
-      'Everything in Upgrade',
-      'Multi-location setup',
-      'CRM + booking integration',
-      'Monthly SEO reporting',
-      'Custom analytics dashboard',
-      'Dedicated account manager',
-      'SLA + priority support',
-    ],
-    cta: 'Talk to Us',
-    highlight: false,
+    icon: Zap,
+    label: 'Weekly Google Business posts',
+    detail: 'AI writes + publishes every week — keep your GBP active',
+    market: '$150/mo',
+  },
+  {
+    icon: Star,
+    label: 'AI replies to every Google review',
+    detail: 'In your voice. Instant. Every single one.',
+    market: '$150/mo',
+  },
+  {
+    icon: BarChart2,
+    label: 'Monthly SEO + traffic report',
+    detail: 'Google Search Console data emailed to you — know what\'s working',
+    market: '$100/mo',
+  },
+  {
+    icon: MessageSquare,
+    label: 'Every lead texted to your phone',
+    detail: 'Contact form → instant SMS + email. Never miss a customer.',
+    market: '$30/mo',
   },
 ]
+
+const MARKET_TOTAL = 710
 
 export default function Pricing() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -81,7 +59,7 @@ export default function Pricing() {
         scrollTrigger: { trigger: headingRef.current, start: 'top 85%' },
       })
       gsap.from(cardsRef.current?.querySelectorAll('.pricing-card') ?? [], {
-        y: 56, opacity: 0, stagger: 0.12, duration: 0.75, ease: 'power3.out',
+        y: 56, opacity: 0, stagger: 0.14, duration: 0.75, ease: 'power3.out',
         scrollTrigger: { trigger: cardsRef.current, start: 'top 80%' },
       })
     })
@@ -107,43 +85,11 @@ export default function Pricing() {
     >
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
 
-        {/* Launch special banner */}
-        <div style={{
-          background: 'linear-gradient(135deg, rgba(196,164,76,0.1) 0%, rgba(196,164,76,0.04) 100%)',
-          border: '1px solid rgba(196,164,76,0.35)',
-          borderRadius: '12px',
-          padding: '14px 24px',
-          textAlign: 'center',
-          marginBottom: '48px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '12px',
-          flexWrap: 'wrap',
-        }}>
-          <span style={{
-            background: 'var(--color-gold)',
-            color: '#06060C',
-            fontWeight: 800,
-            fontSize: '0.65rem',
-            letterSpacing: '0.14em',
-            textTransform: 'uppercase',
-            padding: '3px 10px',
-            borderRadius: '100px',
-          }}>Launch Special</span>
-          <span style={{ fontSize: '0.9rem', color: 'var(--color-text)', fontWeight: 600 }}>
-            First 10 businesses this month — site build free.
-          </span>
-          <span style={{ fontSize: '0.82rem', color: 'var(--color-muted)' }}>
-            Pay hosting only ($49/mo). <span style={{ color: 'var(--color-gold)', fontWeight: 600 }}>6 spots left.</span>
-          </span>
-        </div>
-
         <div style={{ textAlign: 'center', marginBottom: '72px' }}>
           <div className="section-label" style={{ justifyContent: 'center' }}>
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-gold)' }} />
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-blue)' }} />
             Pricing
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-gold)' }} />
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-blue)' }} />
           </div>
           <div ref={headingRef}>
             <h2 style={{
@@ -152,11 +98,11 @@ export default function Pricing() {
               letterSpacing: '-0.03em', lineHeight: 1.0,
             }}>
               {split('One new customer')}
-              <span className="gradient-gold">{split(' pays for this.')}</span>
+              <span className="gradient-brand">{split(' pays for this.')}</span>
             </h2>
           </div>
-          <p style={{ color: 'var(--color-muted)', fontSize: '1.05rem', maxWidth: '440px', margin: '20px auto 0', lineHeight: 1.65 }}>
-            No retainers. No hidden fees. Pay once, own your site forever.
+          <p style={{ color: 'var(--color-muted)', fontSize: '1.05rem', maxWidth: '480px', margin: '20px auto 0', lineHeight: 1.65 }}>
+            Free demo. $299 if you love it. $49/mo keeps your site — and your AI team — running.
           </p>
         </div>
 
@@ -164,116 +110,248 @@ export default function Pricing() {
           ref={cardsRef}
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
             gap: '24px',
             alignItems: 'start',
           }}
         >
-          {PLANS.map(p => (
-            <div
-              key={p.name}
-              className="pricing-card"
-              style={{
-                background: p.highlight
-                  ? 'linear-gradient(160deg, rgba(196,164,76,0.06) 0%, var(--color-bg) 100%)'
-                  : 'var(--color-bg)',
-                border: p.highlight
-                  ? '1px solid rgba(196,164,76,0.4)'
-                  : '1px solid var(--color-border)',
-                borderRadius: '18px',
-                padding: '36px',
-                position: 'relative',
-                boxShadow: p.highlight ? '0 0 80px rgba(196,164,76,0.07)' : 'none',
-                transition: 'transform 0.35s var(--ease-out), box-shadow 0.35s',
-              }}
-              onMouseEnter={e => { const el = e.currentTarget; el.style.transform = 'translateY(-6px)'; el.style.boxShadow = p.highlight ? '0 24px 80px rgba(196,164,76,0.14)' : '0 16px 48px rgba(0,0,0,0.3)' }}
-              onMouseLeave={e => { const el = e.currentTarget; el.style.transform = 'translateY(0)'; el.style.boxShadow = p.highlight ? '0 0 80px rgba(196,164,76,0.07)' : 'none' }}
-            >
-              {p.badge && (
-                <div style={{
-                  position: 'absolute', top: '-14px', left: '50%', transform: 'translateX(-50%)',
-                  background: 'linear-gradient(135deg, var(--color-gold), var(--color-gold-light))',
-                  color: '#06060C', fontWeight: 700, fontSize: '0.68rem', letterSpacing: '0.12em',
-                  textTransform: 'uppercase', padding: '5px 18px', borderRadius: '100px',
-                  whiteSpace: 'nowrap',
+
+          {/* ── STANDARD CARD ── */}
+          <div
+            className="pricing-card"
+            style={{
+              background: 'linear-gradient(160deg, rgba(37,99,235,0.04) 0%, var(--color-bg) 100%)',
+              border: '1px solid rgba(37,99,235,0.3)',
+              borderRadius: '20px',
+              padding: '40px',
+              position: 'relative',
+              boxShadow: '0 0 80px rgba(37,99,235,0.06)',
+              transition: 'transform 0.35s var(--ease-out), box-shadow 0.35s',
+            }}
+            onMouseEnter={e => { const el = e.currentTarget; el.style.transform = 'translateY(-6px)'; el.style.boxShadow = '0 24px 80px rgba(37,99,235,0.12)' }}
+            onMouseLeave={e => { const el = e.currentTarget; el.style.transform = 'translateY(0)'; el.style.boxShadow = '0 0 80px rgba(37,99,235,0.06)' }}
+          >
+            {/* Most Popular badge */}
+            <div style={{
+              position: 'absolute', top: '-14px', left: '50%', transform: 'translateX(-50%)',
+              background: 'linear-gradient(135deg, #2563EB, #7C3AED)',
+              color: '#fff', fontWeight: 700, fontSize: '0.68rem', letterSpacing: '0.12em',
+              textTransform: 'uppercase', padding: '5px 18px', borderRadius: '100px',
+              whiteSpace: 'nowrap',
+            }}>
+              ✦ Most Popular
+            </div>
+
+            {/* Top glow line */}
+            <div style={{
+              position: 'absolute', top: 0, left: '20%', right: '20%', height: '1px',
+              background: 'linear-gradient(90deg, transparent, var(--color-blue), transparent)',
+            }} />
+
+            {/* How it works — 3 steps */}
+            <div style={{
+              display: 'flex', gap: '0', marginBottom: '32px', marginTop: '8px',
+              background: 'rgba(37,99,235,0.04)', borderRadius: '12px',
+              border: '1px solid rgba(37,99,235,0.1)',
+              overflow: 'hidden',
+            }}>
+              {[
+                { step: '1', label: 'We build', sub: 'FREE demo' },
+                { step: '2', label: 'You approve', sub: '$299 once' },
+                { step: '3', label: 'We run it', sub: '$49/mo' },
+              ].map((s, i) => (
+                <div key={i} style={{
+                  flex: 1, padding: '14px 12px', textAlign: 'center',
+                  borderRight: i < 2 ? '1px solid rgba(37,99,235,0.1)' : 'none',
                 }}>
-                  ✦ {p.badge}
+                  <div style={{
+                    width: '22px', height: '22px', borderRadius: '50%',
+                    background: 'linear-gradient(135deg, #2563EB, #7C3AED)',
+                    color: '#fff', fontSize: '0.65rem', fontWeight: 800,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    margin: '0 auto 6px',
+                  }}>{s.step}</div>
+                  <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--color-text)' }}>{s.label}</div>
+                  <div style={{ fontSize: '0.68rem', color: 'var(--color-blue)', fontWeight: 600, marginTop: '2px' }}>{s.sub}</div>
                 </div>
-              )}
+              ))}
+            </div>
 
-              {/* Top accent line */}
-              {p.highlight && (
-                <div style={{
-                  position: 'absolute', top: 0, left: '20%', right: '20%', height: '1px',
-                  background: 'linear-gradient(90deg, transparent, var(--color-gold), transparent)',
-                }} />
-              )}
-
-              <div style={{
-                fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.18em',
-                textTransform: 'uppercase', color: 'var(--color-muted)',
-                marginBottom: '6px',
-              }}>
-                {p.eyebrow}
+            {/* Price block */}
+            <div style={{ marginBottom: '28px' }}>
+              <div style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--color-muted)', marginBottom: '8px' }}>
+                Site ownership
               </div>
-
-              <div style={{
-                fontFamily: 'var(--font-display)', fontWeight: 700,
-                fontSize: '1.1rem', marginBottom: '20px',
-                color: 'var(--color-text)',
-              }}>
-                {p.name}
-              </div>
-
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px', marginBottom: '6px' }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '4px' }}>
                 <span style={{
                   fontFamily: 'var(--font-display)', fontWeight: 700,
-                  fontSize: '3.2rem', letterSpacing: '-0.04em',
-                  color: p.highlight ? 'var(--color-gold)' : 'var(--color-text)',
-                }}>
-                  {p.price}
-                </span>
-                <span style={{ color: 'var(--color-muted)', fontSize: '0.85rem' }}>{p.per}</span>
+                  fontSize: '3.4rem', letterSpacing: '-0.04em',
+                  color: 'var(--color-blue)',
+                }}>$299</span>
+                <span style={{ color: 'var(--color-muted)', fontSize: '0.88rem' }}>one-time · yours forever</span>
               </div>
-
-              <div style={{ color: 'var(--color-gold)', fontSize: '0.85rem', fontWeight: 600, marginBottom: '4px' }}>
-                {p.hosting}
+              <div style={{ fontSize: '0.82rem', color: 'var(--color-muted)' }}>
+                $0 upfront — pay only after you see it live and love it.
               </div>
-              <div style={{
-                color: 'var(--color-muted)', fontSize: '0.78rem',
-                paddingBottom: '24px', marginBottom: '24px',
-                borderBottom: '1px solid var(--color-border)',
-              }}>
-                {p.sub}
-              </div>
-
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '13px', marginBottom: '32px' }}>
-                {p.features.map(f => (
-                  <li key={f} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', fontSize: '0.88rem' }}>
-                    <Check size={14} color="var(--color-gold)" style={{ flexShrink: 0, marginTop: '3px' }} />
-                    <span style={{ color: 'var(--color-muted)' }}>{f}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <a
-                href="#contact"
-                className={p.highlight ? 'btn-primary' : 'btn-ghost'}
-                style={{ width: '100%', justifyContent: 'center', textDecoration: 'none', display: 'flex' }}
-              >
-                {p.cta} {p.highlight && <ArrowRight size={16} />}
-              </a>
             </div>
-          ))}
+
+            <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '28px', marginBottom: '24px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px' }}>
+                <div>
+                  <div style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--color-muted)' }}>
+                    Monthly plan
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px', marginTop: '4px' }}>
+                    <span style={{
+                      fontFamily: 'var(--font-display)', fontWeight: 700,
+                      fontSize: '2rem', letterSpacing: '-0.03em',
+                      color: 'var(--color-text)',
+                    }}>$49</span>
+                    <span style={{ color: 'var(--color-muted)', fontSize: '0.82rem' }}>/mo · cancel anytime</span>
+                  </div>
+                </div>
+                {/* Value badge */}
+                <div style={{
+                  background: 'rgba(37,99,235,0.08)',
+                  border: '1px solid rgba(37,99,235,0.2)',
+                  borderRadius: '10px', padding: '8px 14px', textAlign: 'right',
+                }}>
+                  <div style={{ fontSize: '0.65rem', color: 'var(--color-muted)', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Worth</div>
+                  <div style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--color-blue)' }}>${MARKET_TOTAL}/mo</div>
+                  <div style={{ fontSize: '0.6rem', color: 'var(--color-muted)' }}>at any agency</div>
+                </div>
+              </div>
+
+              {/* Monthly items */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                {MONTHLY_ITEMS.map(item => {
+                  const Icon = item.icon
+                  return (
+                    <div key={item.label} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                      <div style={{
+                        width: '32px', height: '32px', flexShrink: 0,
+                        background: 'rgba(37,99,235,0.08)', borderRadius: '8px',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      }}>
+                        <Icon size={14} color="var(--color-blue)" />
+                      </div>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '8px' }}>
+                          <span style={{ fontSize: '0.84rem', fontWeight: 600, color: 'var(--color-text)' }}>{item.label}</span>
+                          <span style={{
+                            fontSize: '0.68rem', color: 'var(--color-muted)',
+                            background: 'var(--color-surface)', border: '1px solid var(--color-border)',
+                            borderRadius: '6px', padding: '1px 7px', whiteSpace: 'nowrap', flexShrink: 0,
+                          }}>{item.market}</span>
+                        </div>
+                        <div style={{ fontSize: '0.75rem', color: 'var(--color-muted)', marginTop: '2px', lineHeight: 1.4 }}>{item.detail}</div>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+
+            <a
+              href="#contact"
+              className="btn-primary"
+              style={{ width: '100%', justifyContent: 'center', textDecoration: 'none', display: 'flex' }}
+            >
+              Get My FREE Demo Site <ArrowRight size={16} />
+            </a>
+            <p style={{ textAlign: 'center', fontSize: '0.72rem', color: 'var(--color-muted)', marginTop: '12px' }}>
+              No card. No contract. See it live first.
+            </p>
+          </div>
+
+          {/* ── CUSTOM CARD ── */}
+          <div
+            className="pricing-card"
+            style={{
+              background: 'var(--color-bg)',
+              border: '1px solid var(--color-border)',
+              borderRadius: '20px',
+              padding: '40px',
+              position: 'relative',
+              transition: 'transform 0.35s var(--ease-out), box-shadow 0.35s',
+            }}
+            onMouseEnter={e => { const el = e.currentTarget; el.style.transform = 'translateY(-6px)'; el.style.boxShadow = '0 16px 48px rgba(0,0,0,0.08)' }}
+            onMouseLeave={e => { const el = e.currentTarget; el.style.transform = 'translateY(0)'; el.style.boxShadow = 'none' }}
+          >
+            <div style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--color-muted)', marginBottom: '6px' }}>
+              Custom build
+            </div>
+            <div style={{
+              fontFamily: 'var(--font-display)', fontWeight: 700,
+              fontSize: '1.4rem', marginBottom: '16px', color: 'var(--color-text)',
+            }}>
+              Need something bigger?
+            </div>
+
+            <div style={{
+              fontFamily: 'var(--font-display)', fontWeight: 700,
+              fontSize: '2.8rem', letterSpacing: '-0.03em',
+              marginBottom: '8px', color: 'var(--color-text)',
+            }}>
+              Let&apos;s talk.
+            </div>
+            <p style={{ color: 'var(--color-muted)', fontSize: '0.88rem', lineHeight: 1.65, marginBottom: '32px' }}>
+              Multi-location businesses, e-commerce, booking systems, CRM integrations, custom AI workflows — we scope it and quote it.
+            </p>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '36px' }}>
+              {[
+                'Multi-location / franchise setup',
+                'Online booking + payment integration',
+                'E-commerce storefront',
+                'CRM sync (HubSpot, Salesforce, etc.)',
+                'Custom AI receptionist training',
+                'Dedicated account manager + SLA',
+                'Volume discounts for agency partners',
+              ].map(f => (
+                <div key={f} style={{ display: 'flex', gap: '10px', alignItems: 'center', fontSize: '0.86rem' }}>
+                  <Check size={14} color="var(--color-blue)" style={{ flexShrink: 0 }} />
+                  <span style={{ color: 'var(--color-muted)' }}>{f}</span>
+                </div>
+              ))}
+            </div>
+
+            <a
+              href="#contact"
+              className="btn-ghost"
+              style={{ width: '100%', justifyContent: 'center', textDecoration: 'none', display: 'flex' }}
+            >
+              Talk to Us
+            </a>
+            <p style={{ textAlign: 'center', fontSize: '0.72rem', color: 'var(--color-muted)', marginTop: '12px' }}>
+              Usually respond within 2 hours.
+            </p>
+          </div>
+
         </div>
 
-        <p style={{
-          textAlign: 'center', color: 'var(--color-muted)',
-          fontSize: '0.82rem', marginTop: '40px', lineHeight: 1.7,
+        {/* Bottom value bar */}
+        <div style={{
+          marginTop: '48px',
+          padding: '20px 28px',
+          background: 'linear-gradient(135deg, rgba(37,99,235,0.06) 0%, rgba(124,58,237,0.04) 100%)',
+          border: '1px solid rgba(37,99,235,0.15)',
+          borderRadius: '14px',
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '12px',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center',
         }}>
-          All plans include SSL, mobile optimization, and contact form routing to your phone.
-          Hosting auto-renews monthly — cancel anytime, no questions asked.
-        </p>
+          <span style={{ fontSize: '0.88rem', color: 'var(--color-text)', fontWeight: 600 }}>
+            Everything in $49/mo would cost you <span style={{ color: 'var(--color-blue)', fontWeight: 800 }}>${MARKET_TOTAL}/mo</span> if you hired it out separately.
+          </span>
+          <span style={{ fontSize: '0.82rem', color: 'var(--color-muted)' }}>
+            · SSL + hosting + AI receptionist + GBP management + review replies + analytics. All included.
+          </span>
+        </div>
+
       </div>
     </section>
   )

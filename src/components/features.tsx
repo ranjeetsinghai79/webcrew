@@ -54,7 +54,7 @@ const TABS = [
       'Google Business Profile integration',
       'Service area pages for surrounding cities',
     ],
-    preview: { label: 'Rank: Top 3', score: 95, color: '#C4A44C' },
+    preview: { label: 'Rank: Top 3', score: 95, color: '#7C3AED' },
   },
   {
     id: 'leads',
@@ -84,7 +84,7 @@ const TABS = [
       'Custom domain setup included',
       'No platform lock-in, ever',
     ],
-    preview: { label: '99.9% uptime', score: 99, color: '#C4A44C' },
+    preview: { label: '99.9% uptime', score: 99, color: '#4F46E5' },
   },
 ]
 
@@ -195,6 +195,23 @@ export default function Features() {
         y: 40, opacity: 0, stagger: 0.1, duration: 0.7, ease: 'power3.out',
         scrollTrigger: { trigger: testiRef.current, start: 'top 82%' },
       })
+
+      // 3D tilt on testimonial cards
+      testiRef.current?.querySelectorAll('.testi-card').forEach(card => {
+        const el = card as HTMLElement
+        const setRX = gsap.quickTo(el, 'rotationX', { duration: 0.4, ease: 'power2.out' })
+        const setRY = gsap.quickTo(el, 'rotationY', { duration: 0.4, ease: 'power2.out' })
+        gsap.set(el, { transformPerspective: 900, transformStyle: 'preserve-3d' })
+        const onMove = (e: MouseEvent) => {
+          const rect = el.getBoundingClientRect()
+          const dx = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2)
+          const dy = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2)
+          setRY(dx * 7); setRX(-dy * 5)
+        }
+        const onLeave = () => { setRX(0); setRY(0) }
+        el.addEventListener('mousemove', onMove)
+        el.addEventListener('mouseleave', onLeave)
+      })
     })
     return () => ctx.revert()
   }, [])
@@ -246,7 +263,7 @@ export default function Features() {
                 {split('to')}
                 {' '}
                 <span style={{
-                  background: 'linear-gradient(135deg,#C4A44C,#E8CC7A)',
+                  background: 'linear-gradient(135deg,#2563EB,#7C3AED)',
                   WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
                 }}>
                   {split('dominate locally.')}
@@ -271,9 +288,9 @@ export default function Features() {
                 display: 'flex', alignItems: 'center', gap: 6,
                 padding: '9px 18px',
                 borderRadius: 100,
-                border: i === active ? '1px solid rgba(0,0,0,0.3)' : '1px solid var(--color-border)',
-                background: i === active ? 'rgba(0,0,0,0.06)' : 'transparent',
-                color: i === active ? 'var(--color-text)' : 'var(--color-muted)',
+                border: i === active ? '1.5px solid rgba(37,99,235,0.4)' : '1px solid var(--color-border)',
+                background: i === active ? 'rgba(37,99,235,0.06)' : 'transparent',
+                color: i === active ? 'var(--color-blue)' : 'var(--color-muted)',
                 fontSize: '0.8rem', fontWeight: i === active ? 600 : 500,
                 fontFamily: 'var(--font-body)',
                 cursor: 'pointer',
@@ -354,7 +371,7 @@ export default function Features() {
           }}>
             Real owners.{' '}
             <span style={{
-              background: 'linear-gradient(135deg,#C4A44C,#E8CC7A)',
+              background: 'linear-gradient(135deg,#2563EB,#7C3AED)',
               WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
             }}>
               Real revenue.
@@ -379,15 +396,12 @@ export default function Features() {
                   border: '1px solid rgba(0,0,0,0.07)',
                   borderRadius: 16, padding: 28,
                   position: 'relative', overflow: 'hidden',
-                  transition: 'border-color 0.3s, transform 0.3s',
                   cursor: 'default',
                 }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.2)'; e.currentTarget.style.transform = 'translateY(-4px)' }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.07)'; e.currentTarget.style.transform = 'translateY(0)' }}
               >
                 <div style={{ position: 'absolute', top: 0, left: '15%', right: '15%', height: 1, background: 'linear-gradient(90deg,transparent,rgba(0,0,0,0.1),transparent)' }} />
                 <div style={{ display: 'flex', gap: 2, marginBottom: 12 }}>
-                  {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="#C4A44C" color="#C4A44C" />)}
+                  {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="#F59E0B" color="#F59E0B" />)}
                 </div>
                 <p style={{ color: 'var(--color-text)', fontSize: '0.88rem', lineHeight: 1.75, marginBottom: 20 }}>
                   &ldquo;{t.quote}&rdquo;

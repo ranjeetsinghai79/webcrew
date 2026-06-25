@@ -93,15 +93,28 @@ function BrowserCard({ site }: { site: (typeof SITES)[0] }) {
       setRY(dx * 10)
       setRX(-dy * 7)
       setSC(1.02)
-      gsap.to(el, { duration: 0.3, borderColor: 'rgba(196,164,76,0.45)', boxShadow: `0 24px 60px rgba(0,0,0,0.28), 0 0 30px ${site.color}18` })
+      gsap.to(el, { duration: 0.3, borderColor: 'rgba(99,102,241,0.45)', boxShadow: `0 24px 60px rgba(0,0,0,0.28), 0 0 30px ${site.color}18` })
     }
     const onLeave = () => {
       setRX(0); setRY(0); setSC(1)
-      gsap.to(el, { duration: 0.4, borderColor: 'rgba(196,164,76,0.15)', boxShadow: '0 12px 40px rgba(0,0,0,0.18)' })
+      gsap.to(el, { duration: 0.4, borderColor: 'rgba(99,102,241,0.15)', boxShadow: '0 12px 40px rgba(0,0,0,0.18)' })
     }
 
     el.addEventListener('mousemove', onMove)
     el.addEventListener('mouseleave', onLeave)
+
+    // Clip-path image reveal on scroll
+    const img = el.querySelector('img')
+    if (img) {
+      gsap.fromTo(img,
+        { clipPath: 'inset(0 100% 0 0)' },
+        {
+          clipPath: 'inset(0 0% 0 0)', duration: 0.9, ease: 'power4.inOut',
+          scrollTrigger: { trigger: el, start: 'top 85%', once: true }
+        }
+      )
+    }
+
     return () => { el.removeEventListener('mousemove', onMove); el.removeEventListener('mouseleave', onLeave) }
   }, [site.color])
 
@@ -115,7 +128,7 @@ function BrowserCard({ site }: { site: (typeof SITES)[0] }) {
           width: '340px',
           background: 'linear-gradient(135deg, #1a1a28, #12121e)',
           borderRadius: '16px',
-          border: '1px solid rgba(196,164,76,0.15)',
+          border: '1px solid rgba(99,102,241,0.15)',
           overflow: 'hidden',
           boxShadow: '0 12px 40px rgba(0,0,0,0.18)',
           cursor: 'pointer',
@@ -126,7 +139,7 @@ function BrowserCard({ site }: { site: (typeof SITES)[0] }) {
         <div style={{
           background: '#0e0e1c', padding: '8px 12px',
           display: 'flex', alignItems: 'center', gap: '8px',
-          borderBottom: '1px solid rgba(196,164,76,0.08)',
+          borderBottom: '1px solid rgba(99,102,241,0.08)',
         }}>
           <div style={{ display: 'flex', gap: '5px' }}>
             {['#ff5f57','#febc2e','#28c840'].map((c, i) => (
@@ -168,7 +181,7 @@ function BrowserCard({ site }: { site: (typeof SITES)[0] }) {
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
             background: 'rgba(6,6,12,0.55)', backdropFilter: 'blur(6px)',
           }}>
-            <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '0.75rem', color: 'var(--color-gold)' }}>
+            <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '0.75rem', color: 'var(--color-blue)' }}>
               {site.biz}
             </span>
             <div style={{
@@ -202,7 +215,7 @@ function BrowserCard({ site }: { site: (typeof SITES)[0] }) {
               ● {site.result}
             </div>
             <div style={{ fontSize: '0.68rem', color: 'var(--color-muted)' }}>
-              PageSpeed: <span style={{ color: 'var(--color-gold)', fontWeight: 600 }}>{site.score}/100</span>
+              PageSpeed: <span style={{ color: 'var(--color-blue)', fontWeight: 600 }}>{site.score}/100</span>
             </div>
           </div>
         </div>
@@ -233,6 +246,30 @@ export default function Showcase() {
         y: 70, opacity: 0, scale: 0.95, stagger: 0.08, duration: 0.85, ease: 'power3.out',
         scrollTrigger: { trigger: trackRef.current, start: 'top 82%' },
       })
+
+      // Horizontal pin — desktop only
+      const mm = gsap.matchMedia()
+      mm.add('(min-width: 768px)', () => {
+        const track = trackRef.current
+        const section = sectionRef.current
+        if (!track || !section) return
+
+        const getScrollAmount = () => -(track.scrollWidth - window.innerWidth)
+
+        gsap.to(track, {
+          x: getScrollAmount,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: section,
+            pin: true,
+            start: 'top top',
+            end: () => `+=${Math.abs(getScrollAmount())}`,
+            scrub: 1.2,
+            invalidateOnRefresh: true,
+            anticipatePin: 1,
+          }
+        })
+      })
     })
     return () => ctx.revert()
   }, [])
@@ -252,9 +289,9 @@ export default function Showcase() {
     >
       <div style={{ textAlign: 'center', marginBottom: '64px', padding: '0 32px' }}>
         <div className="section-label" style={{ justifyContent: 'center' }}>
-          <span style={{ width: '24px', height: '1px', background: 'var(--color-gold)' }} />
+          <span style={{ width: '24px', height: '1px', background: 'var(--color-blue)' }} />
           Live Sites. Real Leads.
-          <span style={{ width: '24px', height: '1px', background: 'var(--color-gold)' }} />
+          <span style={{ width: '24px', height: '1px', background: 'var(--color-blue)' }} />
         </div>
         <div ref={headingRef}>
           <h2 style={{
@@ -264,7 +301,7 @@ export default function Showcase() {
           }}>
             {split('These businesses went from')}
             <br />
-            <span className="gradient-gold">{split('invisible → fully booked.')}</span>
+            <span className="gradient-brand">{split('invisible → fully booked.')}</span>
           </h2>
         </div>
         <p style={{ color: 'var(--color-muted)', fontSize: '1.05rem', maxWidth: '480px', margin: '20px auto 0', lineHeight: 1.65 }}>
@@ -273,7 +310,7 @@ export default function Showcase() {
         </p>
       </div>
 
-      <div style={{ position: 'relative' }}>
+      <div style={{ position: 'relative', overflow: 'hidden' }}>
         <div style={{
           position: 'absolute', left: 0, top: 0, bottom: 0, width: '120px', zIndex: 2,
           background: 'linear-gradient(90deg, var(--color-bg), transparent)',
@@ -286,13 +323,7 @@ export default function Showcase() {
         }} />
         <div
           ref={trackRef}
-          style={{
-            display: 'flex', gap: '24px',
-            padding: '24px 120px 48px',
-            overflowX: 'auto',
-            scrollbarWidth: 'none',
-            msOverflowStyle: 'none',
-          }}
+          className="h-scroll-track"
         >
           {SITES.map(s => <BrowserCard key={s.biz} site={s} />)}
         </div>

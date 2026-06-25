@@ -5,8 +5,9 @@ import { ArrowRight } from 'lucide-react'
 
 const LINKS = [
   { label: 'How It Works', href: '#how-it-works' },
+  { label: 'Showcase',     href: '#showcase' },
+  { label: 'Features',     href: '#features' },
   { label: 'Pricing',      href: '#pricing' },
-  { label: 'Contact',      href: '#contact' },
 ]
 
 export default function Nav() {
@@ -28,10 +29,10 @@ export default function Nav() {
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 900,
         padding: '0 40px', height: '68px',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        transition: 'background 0.4s, border-color 0.4s',
-        background: scrolled ? 'rgba(255,255,255,0.92)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(16px) saturate(1.8)' : 'none',
-        borderBottom: scrolled ? '1px solid var(--color-border)' : '1px solid transparent',
+        transition: 'background 0.4s, border-color 0.4s, backdrop-filter 0.4s',
+        background: scrolled ? 'rgba(6,6,12,0.88)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(20px) saturate(1.8)' : 'none',
+        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
       }}
     >
       {/* Logo */}
@@ -39,7 +40,7 @@ export default function Nav() {
         <span style={{
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
           width: '30px', height: '30px',
-          background: 'linear-gradient(135deg, var(--color-gold), var(--color-gold-light))',
+          background: 'linear-gradient(135deg, #2563EB, #7C3AED)',
           borderRadius: '6px',
           fontFamily: 'var(--font-display)', fontWeight: 700,
           fontSize: '1rem', color: '#FFFFFF',
@@ -47,7 +48,7 @@ export default function Nav() {
           W
         </span>
         <span
-          style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '1.25rem', letterSpacing: '-0.02em', color: 'var(--color-text)' }}
+          style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '1.25rem', letterSpacing: '-0.02em', color: '#FFFFFF' }}
         >
           WebCrew
         </span>
@@ -60,12 +61,12 @@ export default function Nav() {
             key={l.href}
             href={l.href}
             style={{
-              color: 'var(--color-muted)', textDecoration: 'none',
+              color: 'rgba(255,255,255,0.7)', textDecoration: 'none',
               fontSize: '0.875rem', fontWeight: 500,
               transition: 'color 0.2s',
             }}
-            onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-text)')}
-            onMouseLeave={e => (e.currentTarget.style.color = 'var(--color-muted)')}
+            onMouseEnter={e => (e.currentTarget.style.color = 'rgba(255,255,255,1)')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.7)')}
           >
             {l.label}
           </a>
