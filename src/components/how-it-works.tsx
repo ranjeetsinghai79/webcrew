@@ -173,26 +173,26 @@ function DemoUI() {
 const STEPS = [
   {
     n: '01',
-    eyebrow: 'Step 1 — Free',
-    headline: '60 seconds to sign up.',
-    body: 'Tell us your business name, phone, and industry. That\'s it. No credit card. No meetings. No briefs. We handle everything else.',
-    note: 'Takes 60 seconds. Always free.',
+    eyebrow: 'Step 1 — 60 seconds',
+    headline: 'Tell us your business. That\'s it.',
+    body: 'Name, phone, industry. No credit card. No discovery calls. No 6-week briefs. We start building the moment you hit submit — usually within minutes.',
+    note: 'No payment. No card. Ever.',
     ui: <SignupUI />,
   },
   {
     n: '02',
     eyebrow: 'Step 2 — Overnight',
-    headline: 'We build it while you sleep.',
-    body: 'Real brand colors, your services, your phone number, AI-generated photos, cinematic animations. Built, tested, and deployed to a live URL — in hours.',
-    note: 'Average: 6 hours build time',
+    headline: 'We build your site while you sleep.',
+    body: 'AI extracts your brand, generates city-specific copy, creates cinematic hero images, and deploys everything to a live URL with a 97/100 PageSpeed score. Done before your alarm goes off.',
+    note: 'Avg 6hrs · zero involvement from you',
     ui: <BuildUI />,
   },
   {
     n: '03',
-    eyebrow: 'Step 3 — Leads',
-    headline: 'Wake up to calls and leads.',
-    body: 'You get a text with your live site link. Your new website is already ranked, indexed, and ready to convert. Customers find you. You get calls. Pay only if you love it.',
-    note: 'Pay only if you love it',
+    eyebrow: 'Step 3 — Your call to make',
+    headline: 'Wake up to a live site. Pay if you love it.',
+    body: 'You get a text with your live demo link. Google-indexed, SEO-ready, converting visitors to calls from day one. Love it? Pay $299 once to own it forever. Don\'t love it? You owe us nothing.',
+    note: 'Most clients see calls in week 1',
     ui: <DemoUI />,
   },
 ]
@@ -276,7 +276,7 @@ export default function HowItWorks() {
                 letterSpacing: '-0.035em', lineHeight: 1.0,
               }}>
                 <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
-                  {split('Invisible today.')}
+                  {split('From invisible')}
                 </div>
                 <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
                   <span style={{
@@ -284,8 +284,11 @@ export default function HowItWorks() {
                     background: 'linear-gradient(135deg,#2563EB,#7C3AED)',
                     WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
                   }}>
-                    {split('Fully booked tomorrow.')}
+                    {split('to fully booked.')}
                   </span>
+                </div>
+                <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
+                  {split('In 3 steps.')}
                 </div>
               </h2>
             </div>
@@ -294,7 +297,7 @@ export default function HowItWorks() {
             color: 'var(--color-muted)', fontSize: '0.95rem',
             lineHeight: 1.75, maxWidth: 280, paddingBottom: 6,
           }}>
-            No meetings. No briefs. No 6-week timelines. Three steps — done.
+            No meetings. No briefs. No contracts. No risk. You fill out one form — we do the rest while you sleep.
           </p>
         </div>
 

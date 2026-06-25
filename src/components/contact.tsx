@@ -220,7 +220,7 @@ export default function Contact() {
         <div style={{ textAlign: 'center', marginBottom: '48px' }}>
           <div className="section-label" style={{ justifyContent: 'center' }}>
             <span style={{ width: '24px', height: '1px', background: 'var(--color-blue)' }} />
-            Get Started — Free
+            Claim Your Free Slot
             <span style={{ width: '24px', height: '1px', background: 'var(--color-blue)' }} />
           </div>
           <h2 style={{
@@ -229,12 +229,38 @@ export default function Contact() {
             letterSpacing: '-0.03em', lineHeight: 1.05,
             marginBottom: '16px',
           }}>
-            Your demo site will be{' '}
-            <span className="gradient-brand">live by tomorrow.</span>
+            60 seconds to fill out.{' '}
+            <span className="gradient-brand">We handle everything else.</span>
           </h2>
-          <p style={{ color: 'var(--color-muted)', lineHeight: 1.7, fontSize: '1rem' }}>
-            No payment. No contract. Just a free professional website — built overnight.
+          <p style={{ color: 'var(--color-muted)', lineHeight: 1.7, fontSize: '1rem', maxWidth: '480px', margin: '0 auto' }}>
+            Your site goes live tonight. You wake up to a link, a live Google-ranked page, and leads starting day one.{' '}
+            <strong style={{ color: 'var(--color-text)' }}>Pay only if you love it.</strong>
           </p>
+        </div>
+
+        {/* Risk reversal bar */}
+        <div style={{
+          display: 'flex', flexWrap: 'wrap', gap: '12px',
+          justifyContent: 'center', marginBottom: '32px',
+        }}>
+          {[
+            { icon: '✓', text: 'Zero upfront cost' },
+            { icon: '✓', text: 'Live in under 24hrs' },
+            { icon: '✓', text: 'Pay only if you love it' },
+            { icon: '✓', text: 'You own it forever' },
+          ].map(({ icon, text }) => (
+            <div key={text} style={{
+              display: 'flex', alignItems: 'center', gap: 6,
+              fontSize: '0.82rem', fontWeight: 600,
+              color: 'var(--color-text)',
+              background: 'var(--color-surface)',
+              border: '1px solid var(--color-border)',
+              borderRadius: 100, padding: '7px 14px',
+            }}>
+              <span style={{ color: '#16a34a', fontWeight: 800 }}>{icon}</span>
+              {text}
+            </div>
+          ))}
         </div>
 
         {/* Tab selector */}

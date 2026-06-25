@@ -7,10 +7,10 @@ import { ArrowRight, TrendingDown, TrendingUp } from 'lucide-react'
 if (typeof window !== 'undefined') { gsap.registerPlugin(ScrollTrigger) }
 
 const BULLETS = [
-  { stat: '~2,400', label: 'people search your trade in your city every month' },
-  { stat: 'Top 3',  label: 'results get 68% of all clicks — you\'re not in them' },
-  { stat: '$650',   label: 'average job value for a local trade business' },
-  { stat: '~$9.6K', label: 'in leads you\'re invisibly losing every month' },
+  { stat: '~2,400', label: 'people search your exact trade in your city every month' },
+  { stat: 'Top 3',  label: 'Google results capture 68% of all those clicks. You\'re not there.' },
+  { stat: '$650',   label: 'average job value — meaning every missed lead costs you $650+' },
+  { stat: '~$9.6K', label: 'per month you\'re silently handing to competitors who rank above you' },
 ]
 
 function RevenueCard() {
@@ -244,13 +244,13 @@ export default function MoneyShot() {
               letterSpacing: '-0.04em', lineHeight: 0.98,
             }}>
               <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
-                {split('No online presence')}
+                {split('Invisible on Google')}
               </div>
               <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
-                {split('= customers going')}
+                {split('= $9,600/month', true)}
               </div>
               <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
-                {split('to your competitor.', true)}
+                {split('going to competitors.')}
               </div>
             </h2>
           </div>
@@ -259,7 +259,7 @@ export default function MoneyShot() {
             color: 'var(--color-muted)', fontSize: '1rem',
             lineHeight: 1.75, maxWidth: 440, marginBottom: 36,
           }}>
-            Every day without a professional website, you&apos;re handing leads to competitors. People search your trade online right now — and choose whoever shows up first. Here&apos;s the real cost of being invisible:
+            Right now, someone in your city is Googling your trade. They&apos;ll call whoever shows up first. If that&apos;s not you, you just lost a $650 job — silently. Here&apos;s the real math on what being invisible costs you every single month:
           </p>
 
           <div ref={bulletsRef} style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 44 }}>

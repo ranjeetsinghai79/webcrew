@@ -9,8 +9,8 @@ if (typeof window !== "undefined") { gsap.registerPlugin(ScrollTrigger) }
 const MONTHLY_ITEMS = [
   {
     icon: Globe,
-    label: 'Global CDN hosting',
-    detail: 'Cloudflare Pages — 200+ cities, 99.99% uptime',
+    label: 'Your site, always online',
+    detail: '99.9% uptime — fast everywhere, never goes down',
     market: '$30/mo',
   },
   {
@@ -22,7 +22,7 @@ const MONTHLY_ITEMS = [
   {
     icon: Zap,
     label: 'Weekly Google Business posts',
-    detail: 'AI writes + publishes every week — keep your GBP active',
+    detail: 'AI writes + publishes every week — stay visible on Google Maps',
     market: '$150/mo',
   },
   {
@@ -97,12 +97,12 @@ export default function Pricing() {
               fontSize: 'clamp(2.2rem,5.5vw,4rem)',
               letterSpacing: '-0.03em', lineHeight: 1.0,
             }}>
-              {split('One new customer')}
-              <span className="gradient-brand">{split(' pays for this.')}</span>
+              {split('One job pays for this')}
+              <span className="gradient-brand">{split(' forever.')}</span>
             </h2>
           </div>
-          <p style={{ color: 'var(--color-muted)', fontSize: '1.05rem', maxWidth: '480px', margin: '20px auto 0', lineHeight: 1.65 }}>
-            Free demo. $299 if you love it. $49/mo keeps your site — and your AI team — running.
+          <p style={{ color: 'var(--color-muted)', fontSize: '1.05rem', maxWidth: '520px', margin: '20px auto 0', lineHeight: 1.65 }}>
+            Your average job is worth $650+. Our site costs $299 — once. The math is embarrassingly obvious. And remember: you see it live before you pay a single dollar.
           </p>
         </div>
 
@@ -257,10 +257,10 @@ export default function Pricing() {
               className="btn-primary"
               style={{ width: '100%', justifyContent: 'center', textDecoration: 'none', display: 'flex' }}
             >
-              Get My FREE Demo Site <ArrowRight size={16} />
+              Claim My Free Demo Site <ArrowRight size={16} />
             </a>
-            <p style={{ textAlign: 'center', fontSize: '0.72rem', color: 'var(--color-muted)', marginTop: '12px' }}>
-              No card. No contract. See it live first.
+            <p style={{ textAlign: 'center', fontSize: '0.75rem', color: 'var(--color-muted)', marginTop: '14px', lineHeight: 1.6 }}>
+              No card. No contract. <strong style={{ color: 'var(--color-text)' }}>See it live. Then decide.</strong> You owe us nothing if you don&apos;t love it.
             </p>
           </div>
 
@@ -333,23 +333,36 @@ export default function Pricing() {
         {/* Bottom value bar */}
         <div style={{
           marginTop: '48px',
-          padding: '20px 28px',
+          padding: '24px 32px',
           background: 'linear-gradient(135deg, rgba(37,99,235,0.06) 0%, rgba(124,58,237,0.04) 100%)',
           border: '1px solid rgba(37,99,235,0.15)',
           borderRadius: '14px',
           display: 'flex',
           flexWrap: 'wrap',
-          gap: '12px',
+          gap: '16px',
           alignItems: 'center',
-          justifyContent: 'center',
-          textAlign: 'center',
+          justifyContent: 'space-between',
         }}>
-          <span style={{ fontSize: '0.88rem', color: 'var(--color-text)', fontWeight: 600 }}>
-            Everything in $49/mo would cost you <span style={{ color: 'var(--color-blue)', fontWeight: 800 }}>${MARKET_TOTAL}/mo</span> if you hired it out separately.
-          </span>
-          <span style={{ fontSize: '0.82rem', color: 'var(--color-muted)' }}>
-            · SSL + hosting + AI receptionist + GBP management + review replies + analytics. All included.
-          </span>
+          <div>
+            <div style={{ fontSize: '0.95rem', color: 'var(--color-text)', fontWeight: 700, marginBottom: 4 }}>
+              The $49/mo plan replaces <span style={{ color: 'var(--color-blue)' }}>${MARKET_TOTAL}/mo</span> in agency services.
+            </div>
+            <div style={{ fontSize: '0.82rem', color: 'var(--color-muted)' }}>
+              Hosting · AI call answering · GBP posts · review replies · monthly traffic report · instant lead SMS. All included.
+            </div>
+          </div>
+          <div style={{
+            flexShrink: 0,
+            background: 'white',
+            border: '1px solid rgba(37,99,235,0.2)',
+            borderRadius: 10,
+            padding: '10px 18px',
+            textAlign: 'center',
+          }}>
+            <div style={{ fontSize: '0.6rem', color: 'var(--color-muted)', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>You save</div>
+            <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--color-blue)', letterSpacing: '-0.03em', lineHeight: 1 }}>${MARKET_TOTAL - 49}/mo</div>
+            <div style={{ fontSize: '0.6rem', color: 'var(--color-muted)' }}>vs. hiring out</div>
+          </div>
         </div>
 
       </div>

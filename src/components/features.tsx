@@ -9,17 +9,18 @@ if (typeof window !== 'undefined') { gsap.registerPlugin(ScrollTrigger) }
 const TABS = [
   {
     id: 'design',
-    label: 'Cinematic Design',
+    label: 'Stunning Design',
     icon: <Zap size={14} />,
     headline: 'Looks like a $20K agency built it.',
-    sub: 'AI-generated brand photos. Scroll-scrubbed video hero. GSAP animations that run at 60fps. Clients can\'t believe it\'s their business.',
+    sub: 'AI-generated hero images or video. Animations that hold attention. A design so sharp, customers stop scrolling and call. Built overnight using your actual brand.',
     items: [
-      'AI hero video — cinematic background, scrubbed by scroll',
-      'Custom brand color system generated from your business',
-      'GSAP entrance animations on every section',
-      'Word-split headlines, particle canvas, aurora effects',
-      'Dark or light theme — whatever fits your niche',
+      'Hero image or video — built from your brand, not stock photos',
+      'Your exact colors, fonts, and voice — never looks like a template',
+      'Animations that make visitors stop, read, and take action',
+      'Mobile menu, service cards, contact form — all pixel-perfect',
+      'Every design is one-of-a-kind — no two sites look the same',
     ],
+    metrics: ['Visual Quality', 'Brand Match', 'First Impression', 'Mobile Look'],
     preview: {
       label: 'Tracy HVAC Pros',
       score: 98,
@@ -28,88 +29,92 @@ const TABS = [
   },
   {
     id: 'mobile',
-    label: 'Mobile First',
+    label: 'Blazing Fast',
     icon: <Smartphone size={14} />,
-    headline: '95+ PageSpeed. On mobile.',
-    sub: 'Over 70% of local searches happen on phones. Every WebCrew site loads under 2 seconds, scores 95+ on Google PageSpeed, and converts mobile visitors into calls.',
+    headline: 'Loads in 2 seconds. On any phone.',
+    sub: 'Over 70% of local searches happen on phones. Your site loads instantly, looks perfect on every screen, and turns mobile visitors into phone calls — not bounces.',
     items: [
-      'Next.js App Router — fastest framework available',
-      'Cloudflare Pages CDN — global edge delivery',
-      'Images optimized at build time (WebP, lazy-loaded)',
-      'No layout shift, no font flash, no render blocking',
-      'Google Core Web Vitals: all green',
+      'Loads in under 2 seconds — even on slow connections',
+      'Fast in Miami, fast in LA, fast everywhere in the US',
+      'Photos crisp and instant — never slows the page',
+      'Smooth, flicker-free loading — nothing jumps or shifts',
+      'Google rewards fast sites with higher rankings',
     ],
+    metrics: ['Page Speed', 'Mobile Score', 'Load Time', 'Reliability'],
     preview: { label: 'PageSpeed 97', score: 97, color: '#4ade80' },
   },
   {
     id: 'seo',
-    label: 'Local SEO',
+    label: 'Ranks on Google',
     icon: <Search size={14} />,
-    headline: 'Rank local on day one.',
-    sub: 'Most local businesses have zero schema markup and generic copy. WebCrew generates keyword-rich content for your exact city and trade, plus full schema JSON-LD so Google understands what you do.',
+    headline: 'Found on Google from day one.',
+    sub: 'Most local businesses are invisible online. Your site launches ready for Google — indexed within 48 hours, ranking for your exact city and service, driving real calls.',
     items: [
-      'LocalBusiness + Service JSON-LD schema',
-      'Keyword-targeted copy for your city + trade',
-      'sitemap.xml and robots.txt auto-generated',
-      'Google Business Profile integration',
-      'Service area pages for surrounding cities',
+      'Google knows what you do + where you are from day one',
+      'Every page written for your city, your service, your customers',
+      'Indexed by Google within 48 hours of launch',
+      'Your Google Business Profile posts itself weekly — zero effort',
+      'Pages for every neighborhood you serve — more calls, more jobs',
     ],
+    metrics: ['Google Rank', 'Local Visibility', 'Map Pack', 'Monthly Calls'],
     preview: { label: 'Rank: Top 3', score: 95, color: '#7C3AED' },
   },
   {
     id: 'leads',
     label: 'Instant Leads',
     icon: <Phone size={14} />,
-    headline: 'New lead? Your phone rings.',
-    sub: 'Every contact form submission sends you an instant text and email. No checking a dashboard, no missed leads. A new customer finds you at 9pm — you know about it at 9pm.',
+    headline: 'New lead? Your phone buzzes in 30 seconds.',
+    sub: 'A customer fills out your form at 9pm — you know about it at 9:01pm. Text + email, instantly. Every lead saved. Nothing ever slips through the cracks.',
     items: [
-      'Contact form → instant SMS to your phone',
-      'Lead captured in Neon Postgres + Google Sheets',
-      'Email notification with full lead details',
-      'AI-powered reply suggestions (coming soon)',
-      'Lead dashboard for multi-location clients',
+      'Form filled → your phone buzzes in under 30 seconds',
+      'Every lead saved and tracked — nothing slips through',
+      'Full lead details in your email — name, phone, message, all of it',
+      'AI reply suggestions so you close faster (coming soon)',
+      'Dashboard for businesses with multiple locations',
     ],
+    metrics: ['Lead Alerts', 'Response Time', 'Lead Tracking', 'Conversion'],
     preview: { label: '+14 leads wk 1', score: 92, color: '#4ade80' },
   },
   {
     id: 'hosting',
-    label: 'Hosting & Ownership',
+    label: 'You Own It',
     icon: <Server size={14} />,
-    headline: 'You own everything. Forever.',
-    sub: 'Not a Wix template. Not locked to a platform. Full Next.js source code, hosted on Cloudflare Pages with 99.9% uptime and global CDN. Cancel hosting anytime — you still own the code.',
+    headline: 'Your site. Your asset. Forever.',
+    sub: 'Not a Wix template. Not locked to a platform. Cancel hosting anytime — the website is yours to keep, move, or host anywhere. Pay for value, not hostage fees.',
     items: [
-      'Full source code — yours to keep',
-      'Cloudflare Pages — 99.9% uptime SLA',
-      'Global CDN — fast everywhere',
-      'Custom domain setup included',
-      'No platform lock-in, ever',
+      'You own the site outright — no platform, no middleman',
+      '99.9% uptime — your site is always on, always taking calls',
+      'Fast everywhere in the world — not just your city',
+      'Your own custom domain — we set it all up for you',
+      'Cancel hosting anytime — the site is yours forever. Period.',
     ],
+    metrics: ['Site Uptime', 'Global Speed', 'Ownership', 'Security'],
     preview: { label: '99.9% uptime', score: 99, color: '#4F46E5' },
   },
 ]
 
 const TESTIMONIALS = [
   {
-    quote: 'I was skeptical. They sent a demo link overnight. Week 1 I got 14 leads. I\'ve never had 14 leads in a month before.',
+    quote: 'I almost didn\'t fill out the form — figured it was a scam. They texted me a live link at 4am. Week 1: 14 new leads. I\'ve never had 14 leads in an entire month before.',
     name: 'Carlos M.',
     role: 'HVAC · Tracy, CA',
-    result: '+14 leads week 1',
+    result: '14 leads · week 1',
   },
   {
-    quote: 'Three days after going live I closed an $18,000 roofing job from Google. That never happened with my old site.',
+    quote: 'Three days after my site went live, I closed an $18,000 roofing job from a Google search. My old site hadn\'t generated a single job in 2 years.',
     name: 'Derek R.',
     role: 'Roofing · Fresno, CA',
-    result: '$18k job · day 3',
+    result: '$18k closed · day 3',
   },
   {
-    quote: 'Fully booked 3 weeks out. Had to hire two more cleaners. My old Wix site got maybe 2 calls a month.',
+    quote: 'Fully booked 3 weeks out now. Had to hire two more cleaners to keep up. My Wix site was getting maybe 2 calls a month. This is a different world.',
     name: 'Priya S.',
     role: 'Cleaning · Stockton, CA',
-    result: 'Booked 3 weeks out',
+    result: 'Booked solid · 3 wks',
   },
 ]
 
-function MiniPreview({ tab }: { tab: typeof TABS[0] }) {
+function MiniPreview({ tab }: { tab: typeof TABS[0] & { metrics?: string[] } }) {
   return (
     <div style={{
       background: '#0a0a14',
@@ -155,7 +160,7 @@ function MiniPreview({ tab }: { tab: typeof TABS[0] }) {
           </div>
         </div>
         {/* Fake bars */}
-        {['LCP', 'FID', 'CLS', 'TTFB'].map((m, i) => (
+        {(tab.metrics ?? ['Speed', 'Mobile', 'SEO', 'Leads']).map((m, i) => (
           <div key={m} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
             <div style={{ fontSize: '0.58rem', color: 'rgba(255,255,255,0.3)', width: 32, flexShrink: 0 }}>{m}</div>
             <div style={{
@@ -249,7 +254,7 @@ export default function Features() {
 
         {/* Header */}
         <div style={{ marginBottom: 52 }}>
-          <div className="section-label" style={{ marginBottom: 16 }}>FEATURES</div>
+          <div className="section-label" style={{ marginBottom: 16 }}>WHAT YOU GET</div>
           <div ref={headingRef} style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 32, flexWrap: 'wrap' }}>
             <h2 style={{
               fontFamily: 'var(--font-display)', fontWeight: 800,
@@ -257,21 +262,19 @@ export default function Features() {
               letterSpacing: '-0.035em', lineHeight: 1.0,
             }}>
               <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
-                {split('Everything you need')}
+                {split('More calls. More jobs.')}
               </div>
               <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
-                {split('to')}
-                {' '}
                 <span style={{
                   background: 'linear-gradient(135deg,#2563EB,#7C3AED)',
                   WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
                 }}>
-                  {split('dominate locally.')}
+                  {split('More revenue.')}
                 </span>
               </div>
             </h2>
             <p style={{ color: 'var(--color-muted)', fontSize: '0.95rem', lineHeight: 1.75, maxWidth: 280, paddingBottom: 6 }}>
-              Every deliverable. Included. Done overnight.
+              Everything you need to win online — built overnight, included.
             </p>
           </div>
         </div>
@@ -367,16 +370,19 @@ export default function Features() {
           <h3 style={{
             fontFamily: 'var(--font-display)', fontWeight: 800,
             fontSize: 'clamp(1.6rem,3vw,2.4rem)',
-            letterSpacing: '-0.03em', marginBottom: 36,
+            letterSpacing: '-0.03em', marginBottom: 12,
           }}>
-            Real owners.{' '}
+            They almost didn't try.{' '}
             <span style={{
               background: 'linear-gradient(135deg,#2563EB,#7C3AED)',
               WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
             }}>
-              Real revenue.
+              Now they can't keep up.
             </span>
           </h3>
+          <p style={{ color: 'var(--color-muted)', fontSize: '0.92rem', lineHeight: 1.6, maxWidth: 480, marginBottom: 36 }}>
+            Most clients see their first inquiry within 7 days. Some see it within hours.
+          </p>
 
           <div
             ref={testiRef}

@@ -9,10 +9,10 @@ if (typeof window !== 'undefined') { gsap.registerPlugin(ScrollTrigger) }
 // ── AI Pipeline Visualization ────────────────────────────────────────────────
 function AIPipelineCard() {
   const steps = [
-    { id: 'scan',   label: 'Firecrawl Web Scan',    sub: '47 signals extracted',     done: true,   color: '#2563EB' },
-    { id: 'llm',    label: 'LLM Brand Analysis',    sub: 'Colors, services, voice',   done: true,   color: '#4F46E5' },
-    { id: 'build',  label: 'AI Site Builder',        sub: 'Config + images generated', done: true,   color: '#7C3AED' },
-    { id: 'deploy', label: 'Deploy to Cloudflare',   sub: '99.9% uptime, global CDN', active: true,  color: '#10B981' },
+    { id: 'scan',   label: 'Scanning Your Brand',    sub: 'Your style, services & voice captured', done: true,   color: '#2563EB' },
+    { id: 'llm',    label: 'Writing Your Copy',       sub: 'Headlines, offers & local SEO',         done: true,   color: '#4F46E5' },
+    { id: 'build',  label: 'Designing Your Site',     sub: 'Hero, images, layout — all custom',     done: true,   color: '#7C3AED' },
+    { id: 'deploy', label: 'Going Live',              sub: 'Fast worldwide. 24/7. Always on.',       active: true,  color: '#10B981' },
   ]
 
   return (
@@ -408,7 +408,7 @@ export default function Hero() {
         {/* ── LEFT: Copy ── */}
         <div>
           {/* Badge */}
-          <div ref={badgeRef} style={{ marginBottom: '28px' }}>
+          <div ref={badgeRef} style={{ marginBottom: '28px', display: 'flex', gap: 10, flexWrap: 'wrap' }}>
             <span style={{
               display: 'inline-flex', alignItems: 'center', gap: '8px',
               border: '1px solid rgba(16,185,129,0.3)',
@@ -418,7 +418,17 @@ export default function Hero() {
               color: '#059669',
             }}>
               <span className="live-dot" />
-              <span ref={countRef}>823</span> local businesses now getting leads online
+              <span ref={countRef}>847</span> businesses now getting leads
+            </span>
+            <span style={{
+              display: 'inline-flex', alignItems: 'center', gap: '6px',
+              border: '1px solid rgba(249,115,22,0.35)',
+              background: 'rgba(249,115,22,0.08)',
+              borderRadius: '100px', padding: '7px 14px',
+              fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase',
+              color: '#f97316',
+            }}>
+              ⚡ 3 slots open tonight
             </span>
           </div>
 
@@ -435,13 +445,13 @@ export default function Hero() {
             }}
           >
             <div style={{ overflow: 'hidden', paddingBottom: '0.06em' }}>
-              {split('No website?')}
+              {split('Customers search Google.')}
             </div>
             <div style={{ overflow: 'hidden', paddingBottom: '0.06em' }}>
-              {split('AI builds one.', true)}
+              {split('Competitors answer.', true)}
             </div>
             <div style={{ overflow: 'hidden', paddingBottom: '0.06em' }}>
-              {split('Tonight. Free.')}
+              {split('Not anymore.')}
             </div>
           </h1>
 
@@ -456,9 +466,10 @@ export default function Hero() {
               marginBottom: '40px',
             }}
           >
-            Our AI scans your web presence, extracts your brand, and deploys a{' '}
-            <span style={{ color: '#FFFFFF', fontWeight: 600 }}>cinematic, lead-generating website</span>
-            {' '}overnight — for free. Pay only if you love it.
+            We build a{' '}
+            <span style={{ color: '#FFFFFF', fontWeight: 600 }}>cinematic, Google-ranked website</span>
+            {' '}for your local business overnight — for free. Real brand. Real SEO. Real leads.{' '}
+            <span style={{ color: 'rgba(255,255,255,0.8)', fontWeight: 500 }}>Pay only if you love it.</span>
           </p>
 
           {/* CTAs */}
@@ -469,7 +480,7 @@ export default function Hero() {
               className="btn-primary"
               style={{ fontSize: '0.95rem', padding: '15px 28px' }}
             >
-              Get My FREE Site <ArrowRight size={16} />
+              Claim My Free Slot <ArrowRight size={16} />
             </a>
             <a
               href="#showcase"
@@ -477,14 +488,14 @@ export default function Hero() {
               className="btn-ghost"
               style={{ fontSize: '0.95rem' }}
             >
-              See Live Examples
+              See Real Examples
             </a>
           </div>
 
           {/* Trust row */}
           <div
             ref={trustRef}
-            style={{ display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap' }}
+            style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <div style={{ display: 'flex', gap: 2 }}>
@@ -493,16 +504,20 @@ export default function Hero() {
                 ))}
               </div>
               <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>
-                <span style={{ color: '#FFFFFF', fontWeight: 600 }}>4.9</span> · 47 client reviews
+                <span style={{ color: '#FFFFFF', fontWeight: 600 }}>4.9</span> · 47 reviews
               </span>
             </div>
             <div style={{ width: 1, height: 16, background: 'rgba(255,255,255,0.12)' }} />
             <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>
-              <span style={{ color: '#FFFFFF', fontWeight: 600 }}>$0</span> upfront. Ever.
+              <span style={{ color: '#FFFFFF', fontWeight: 600 }}>$0</span> to start. Ever.
             </span>
             <div style={{ width: 1, height: 16, background: 'rgba(255,255,255,0.12)' }} />
             <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>
-              <span style={{ color: '#FFFFFF', fontWeight: 600 }}>24hr</span> delivery
+              <span style={{ color: '#FFFFFF', fontWeight: 600 }}>Avg 6hr</span> delivery
+            </span>
+            <div style={{ width: 1, height: 16, background: 'rgba(255,255,255,0.12)' }} />
+            <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>
+              <span style={{ color: '#FFFFFF', fontWeight: 600 }}>Pay only</span> if you love it
             </span>
           </div>
         </div>

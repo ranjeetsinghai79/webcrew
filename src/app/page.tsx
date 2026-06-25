@@ -5,14 +5,16 @@ import Cursor           from '@/components/cursor'
 import Nav              from '@/components/nav'
 import Hero             from '@/components/hero'
 import Ticker           from '@/components/ticker'
+import MoneyShot        from '@/components/money-shot'
 import HowItWorks       from '@/components/how-it-works'
 import Showcase         from '@/components/showcase'
 import Features         from '@/components/features'
-import MoneyShot        from '@/components/money-shot'
 import Results          from '@/components/results'
 import Pricing          from '@/components/pricing'
+import FAQ              from '@/components/faq'
 import Contact          from '@/components/contact'
 import Footer           from '@/components/footer'
+import UrgencyBar       from '@/components/urgency-bar'
 
 export default function Home() {
   return (
@@ -31,9 +33,11 @@ export default function Home() {
         <Features />
         <Results />
         <Pricing />
+        <FAQ />
         <Contact />
       </main>
       <Footer />
+      <UrgencyBar />
     </>
   )
 }
