@@ -418,7 +418,7 @@ export default function Hero() {
               color: '#059669',
             }}>
               <span className="live-dot" />
-              <span ref={countRef}>847</span> businesses now getting leads
+              <span ref={countRef}>847</span> sites built &amp; live
             </span>
             <span style={{
               display: 'inline-flex', alignItems: 'center', gap: '6px',
@@ -428,7 +428,7 @@ export default function Hero() {
               fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase',
               color: '#38bdf8',
             }}>
-              ⚡ Tonight&apos;s queue: 7 built · 3 remaining
+              ⚡ Avg delivery: 6 hours
             </span>
           </div>
 
@@ -446,11 +446,11 @@ export default function Hero() {
             }}
           >
             <div style={{ overflow: 'hidden', paddingBottom: '0.06em' }}>
-              {split('Your competitor')}
+              {split('Wake up to')}
             </div>
             <div style={{ overflow: 'hidden', paddingBottom: '0.06em' }}>
               <span style={{ display: 'inline-flex', flexWrap: 'wrap', gap: '0 0.22em' }}>
-                {'ranks #1.'.split(' ').map((w, i) => (
+                {'your website.'.split(' ').map((w, i) => (
                   <span key={i} className="word-wrap" style={{ display: 'inline-block' }}>
                     <span className="word-inner" style={{
                       display: 'inline-block',
@@ -464,7 +464,7 @@ export default function Hero() {
               </span>
             </div>
             <div style={{ overflow: 'hidden', paddingBottom: '0.06em' }}>
-              {split('Tonight, so do you.')}
+              {split('Built tonight. Free.')}
             </div>
           </h1>
 
@@ -479,9 +479,9 @@ export default function Hero() {
               marginBottom: '40px',
             }}
           >
-            Every month without a website, 2,400 people in your city search your trade and call whoever ranks first.{' '}
-            <span style={{ color: '#FFFFFF', fontWeight: 600 }}>We build your site overnight — free.</span>
-            {' '}Wake up to a live link. Pay $299 only if you love it.
+            Tell us your business.{' '}
+            <span style={{ color: '#FFFFFF', fontWeight: 600 }}>We design, build, and deploy a custom site while you sleep.</span>
+            {' '}Wake up to a live link — built for your city, your niche, your style. Pay $299 only if you love it.
           </p>
 
           {/* CTAs */}
