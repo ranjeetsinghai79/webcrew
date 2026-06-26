@@ -5,11 +5,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 if (typeof window !== "undefined") { gsap.registerPlugin(ScrollTrigger) }
 
-const STATS = [
-  { n: 847,  suffix: '+',  label: 'Sites built',          note: 'and counting' },
-  { n: 6,    suffix: 'h',  label: 'Avg build time',       note: 'while you sleep' },
-  { n: 49,   prefix: '$',  suffix: '/mo', label: 'All-in monthly', note: 'AI team included' },
-  { n: 94,   suffix: '%',  label: 'Client retention',     note: 'keep hosting' },
+const STATS: { n: number; suffix: string; prefix?: string; label: string; note: string }[] = [
+  { n: 847,  suffix: '+',      label: 'Sites live',              note: 'and growing daily' },
+  { n: 6,    suffix: 'h',      label: 'Avg build time',          note: 'while you sleep' },
+  { n: 7,    suffix: ' days',  label: 'To first Google call',    note: 'median across all clients' },
+  { n: 94,   suffix: '%',      label: 'Client retention',        note: 'renew every year' },
 ]
 
 const NICHES = [
@@ -74,9 +74,9 @@ export default function Results() {
 
         <div style={{ textAlign: 'center', marginBottom: '72px' }}>
           <div className="section-label" style={{ justifyContent: 'center' }}>
-            <span style={{ width: '24px', height: '1px', background: 'linear-gradient(135deg, #2563EB, #7C3AED)' }} />
+            <span style={{ width: '24px', height: '1px', background: 'linear-gradient(135deg, #00C26F, #0EA5E9)' }} />
             The Numbers
-            <span style={{ width: '24px', height: '1px', background: 'linear-gradient(135deg, #2563EB, #7C3AED)' }} />
+            <span style={{ width: '24px', height: '1px', background: 'linear-gradient(135deg, #00C26F, #0EA5E9)' }} />
           </div>
           <div ref={headingRef}>
             <h2 style={{
@@ -84,12 +84,12 @@ export default function Results() {
               fontSize: 'clamp(2.2rem,5.5vw,4rem)',
               letterSpacing: '-0.03em', lineHeight: 1.0,
             }}>
-              {split('An agency that')}
-              <span className="gradient-brand">{split(' never clocks out.')}</span>
+              {split('The proof shows up')}
+              <span className="gradient-brand">{split(' in your wallet.')}</span>
             </h2>
           </div>
           <p style={{ color: 'var(--color-muted)', fontSize: '1.05rem', maxWidth: '420px', margin: '20px auto 0', lineHeight: 1.65 }}>
-            AI doesn't sleep. Neither does your new website.
+            847 businesses. Same result: more calls, more jobs, more revenue.
           </p>
         </div>
 
@@ -112,13 +112,13 @@ export default function Results() {
                 overflow: 'hidden',
                 transition: 'border-color 0.3s, box-shadow 0.3s',
               }}
-              onMouseEnter={e => { const el = e.currentTarget; el.style.borderColor = 'rgba(37,99,235,0.35)'; el.style.boxShadow = '0 8px 32px rgba(0,0,0,0.1)' }}
+              onMouseEnter={e => { const el = e.currentTarget; el.style.borderColor = 'rgba(0,194,110,0.35)'; el.style.boxShadow = '0 8px 32px rgba(0,0,0,0.1)' }}
               onMouseLeave={e => { const el = e.currentTarget; el.style.borderColor = 'var(--color-border)'; el.style.boxShadow = 'none' }}
             >
               <div style={{
                 position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)',
                 width: '60%', height: '1px',
-                background: 'linear-gradient(90deg, transparent, rgba(99,102,241,0.4), transparent)',
+                background: 'linear-gradient(90deg, transparent, rgba(0,194,110,0.4), transparent)',
               }} />
               <div
                 className="stat-num"
@@ -144,48 +144,80 @@ export default function Results() {
           ))}
         </div>
 
-        {/* Testimonial */}
+        {/* Testimonials — 3 across */}
         <div style={{
           margin: '0 0 72px',
-          background: 'var(--color-surface)',
-          border: '1px solid rgba(99,102,241,0.2)',
-          borderRadius: '18px',
-          padding: '36px 40px',
-          position: 'relative',
-          maxWidth: '720px',
-          marginLeft: 'auto',
-          marginRight: 'auto',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: 20,
         }}>
-          <div style={{
-            position: 'absolute', top: 0, left: '20%', right: '20%', height: '1px',
-            background: 'linear-gradient(90deg, transparent, rgba(99,102,241,0.4), transparent)',
-          }} />
-          <div style={{
-            fontSize: '1.2rem', color: 'var(--color-muted)',
-            fontFamily: 'Georgia, serif', lineHeight: 1.5,
-            marginBottom: '20px',
-          }}>
-            &ldquo;I got 3 calls in the first week. Didn&apos;t even know I was getting a site — just said yes to the demo and it was live the next morning.&rdquo;
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <div style={{
-              width: 44, height: 44, borderRadius: '50%',
-              background: 'linear-gradient(135deg, #2563EB, #7C3AED)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '1rem', color: '#06060C',
+          {[
+            {
+              quote: 'I got 3 calls in the first week. Didn\'t even know I was getting a site — said yes to the demo and it was live the next morning.',
+              name: 'Mike T.', role: 'HVAC · Tracy, CA', initial: 'M', result: '3 calls · week 1',
+              color: '#00C26F',
+            },
+            {
+              quote: 'Three days in, I closed an $18,000 roofing job from a Google search. My old site hadn\'t generated a single job in two years.',
+              name: 'Derek R.', role: 'Roofing · Fresno, CA', initial: 'D', result: '$18K closed · day 3',
+              color: '#0EA5E9',
+            },
+            {
+              quote: 'Fully booked 3 weeks out. Had to hire two more cleaners. My Wix site was getting 2 calls a month. This is a completely different world.',
+              name: 'Priya S.', role: 'Cleaning · Stockton, CA', initial: 'P', result: 'Booked solid · 3 wks',
+              color: '#059669',
+            },
+          ].map(t => (
+            <div key={t.name} style={{
+              background: 'var(--color-surface)',
+              border: '1px solid rgba(0,194,110,0.15)',
+              borderRadius: '18px',
+              padding: '28px',
+              position: 'relative',
+              overflow: 'hidden',
             }}>
-              M
+              <div style={{
+                position: 'absolute', top: 0, left: '15%', right: '15%', height: '1px',
+                background: `linear-gradient(90deg, transparent, ${t.color}66, transparent)`,
+              }} />
+              <div style={{
+                display: 'inline-flex', alignItems: 'center', gap: 6,
+                background: `${t.color}12`,
+                border: `1px solid ${t.color}30`,
+                borderRadius: 100, padding: '3px 10px',
+                fontSize: '0.65rem', fontWeight: 700, color: t.color,
+                marginBottom: 16,
+              }}>
+                {t.result}
+              </div>
+              <p style={{
+                fontSize: '0.95rem', color: 'var(--color-muted)',
+                fontFamily: 'Georgia, serif', lineHeight: 1.6,
+                marginBottom: '20px',
+              }}>
+                &ldquo;{t.quote}&rdquo;
+              </p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{
+                  width: 38, height: 38, borderRadius: '50%', flexShrink: 0,
+                  background: `linear-gradient(135deg, ${t.color}, ${t.color}99)`,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '0.9rem', color: '#fff',
+                }}>
+                  {t.initial}
+                </div>
+                <div>
+                  <div style={{ fontWeight: 700, fontSize: '0.88rem', color: 'var(--color-text)' }}>{t.name}</div>
+                  <div style={{ fontSize: '0.72rem', color: 'var(--color-muted)' }}>{t.role}</div>
+                </div>
+                <div style={{ marginLeft: 'auto', display: 'flex', gap: 1 }}>
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} width="12" height="12" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  ))}
+                </div>
+              </div>
             </div>
-            <div>
-              <div style={{ fontWeight: 700, fontSize: '0.9rem', color: 'var(--color-text)' }}>Mike T.</div>
-              <div style={{ fontSize: '0.75rem', color: 'var(--color-muted)' }}>HVAC owner · Tracy, CA</div>
-            </div>
-            <div style={{ marginLeft: 'auto', display: 'flex', gap: 2 }}>
-              {[...Array(5)].map((_, i) => (
-                <svg key={i} width="13" height="13" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
 
         {/* Niche tags */}

@@ -11,9 +11,9 @@ function SignupUI() {
   return (
     <div style={{
       background: '#0a0a14', borderRadius: 10, padding: '14px 12px',
-      border: '1px solid rgba(37,99,235,0.12)',
+      border: '1px solid rgba(0,194,110,0.12)',
     }}>
-      <div style={{ fontSize: '0.58rem', color: 'rgba(99,102,241,0.5)', marginBottom: 10, letterSpacing: '0.1em', fontFamily: 'monospace' }}>
+      <div style={{ fontSize: '0.58rem', color: 'rgba(0,194,110,0.5)', marginBottom: 10, letterSpacing: '0.1em', fontFamily: 'monospace' }}>
         GET MY FREE DEMO SITE
       </div>
       {[
@@ -25,8 +25,8 @@ function SignupUI() {
           <div style={{ fontSize: '0.5rem', color: 'rgba(255,255,255,0.3)', marginBottom: 2, fontFamily: 'var(--font-body)' }}>{f.label}</div>
           <div style={{
             fontSize: '0.62rem', padding: '5px 8px', borderRadius: 5, fontFamily: 'var(--font-body)',
-            background: f.filled ? 'rgba(99,102,241,0.08)' : 'rgba(255,255,255,0.04)',
-            border: `1px solid ${f.filled ? 'rgba(99,102,241,0.2)' : 'rgba(255,255,255,0.06)'}`,
+            background: f.filled ? 'rgba(0,194,110,0.08)' : 'rgba(255,255,255,0.04)',
+            border: `1px solid ${f.filled ? 'rgba(0,194,110,0.2)' : 'rgba(255,255,255,0.06)'}`,
             color: f.filled ? '#F2F1EA' : 'rgba(255,255,255,0.2)',
           }}>
             {f.value}
@@ -35,7 +35,7 @@ function SignupUI() {
       ))}
       <div style={{
         marginTop: 10, padding: '7px 10px', borderRadius: 6,
-        background: '#4F46E5', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+        background: '#00C26F', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
       }}>
         <div style={{ fontSize: '0.62rem', fontWeight: 700, color: '#06060C', fontFamily: 'var(--font-display)' }}>
           Build My FREE Site →
@@ -57,7 +57,7 @@ function BuildUI() {
   return (
     <div style={{
       background: '#0a0a14', borderRadius: 10, padding: '14px 12px',
-      border: '1px solid rgba(37,99,235,0.12)',
+      border: '1px solid rgba(0,194,110,0.12)',
     }}>
       <div style={{ display: 'flex', gap: 6, marginBottom: 10 }}>
         {['#ff5f57','#febc2e','#28c840'].map((c, i) => (
@@ -74,27 +74,27 @@ function BuildUI() {
       ].map((t) => (
         <div key={t.label} style={{
           display: 'flex', alignItems: 'center', gap: 7,
-          padding: '5px 0', borderBottom: '1px solid rgba(37,99,235,0.05)',
+          padding: '5px 0', borderBottom: '1px solid rgba(0,194,110,0.05)',
         }}>
           <div style={{
             width: 14, height: 14, borderRadius: '50%', flexShrink: 0,
-            border: t.active ? '2px solid #4F46E5' : 'none',
-            background: t.done ? '#4ade80' : 'rgba(99,102,241,0.1)',
+            border: t.active ? '2px solid #00C26F' : 'none',
+            background: t.done ? '#4ade80' : 'rgba(0,194,110,0.1)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}>
             {t.done && <span style={{ fontSize: '0.5rem', color: '#06060C' }}>✓</span>}
-            {t.active && <div style={{ width: 4, height: 4, borderRadius: '50%', background: '#4F46E5', animation: 'none' }} />}
+            {t.active && <div style={{ width: 4, height: 4, borderRadius: '50%', background: '#00C26F', animation: 'none' }} />}
           </div>
           <div style={{
             fontSize: '0.62rem', fontFamily: 'var(--font-body)',
-            color: t.active ? '#4F46E5' : t.done ? 'rgba(255,255,255,0.55)' : 'rgba(255,255,255,0.25)',
+            color: t.active ? '#00C26F' : t.done ? 'rgba(255,255,255,0.55)' : 'rgba(255,255,255,0.25)',
           }}>
             {t.label}
           </div>
           {t.active && (
             <div style={{
               marginLeft: 'auto', fontSize: '0.55rem',
-              color: '#4F46E5', fontFamily: 'monospace',
+              color: '#00C26F', fontFamily: 'monospace',
             }}>
               ···
             </div>
@@ -112,7 +112,7 @@ function DemoUI() {
       <div style={{
         width: 80, flexShrink: 0,
         background: '#0a0a14', borderRadius: 12,
-        border: '1.5px solid rgba(37,99,235,0.2)',
+        border: '1.5px solid rgba(0,194,110,0.2)',
         padding: '10px 6px',
         display: 'flex', flexDirection: 'column', gap: 6,
       }}>
@@ -126,7 +126,7 @@ function DemoUI() {
             Your site is live 🎉 Tap to see it
           </div>
           <div style={{
-            marginTop: 5, background: '#4F46E5', borderRadius: 4,
+            marginTop: 5, background: '#00C26F', borderRadius: 4,
             padding: '3px 6px', fontSize: '0.46rem',
             fontWeight: 700, color: '#06060C', textAlign: 'center',
           }}>
@@ -143,15 +143,15 @@ function DemoUI() {
       {/* Result card */}
       <div style={{
         flex: 1, background: '#0a0a14', borderRadius: 10,
-        border: '1px solid rgba(37,99,235,0.12)', padding: '10px',
+        border: '1px solid rgba(0,194,110,0.12)', padding: '10px',
       }}>
-        <div style={{ fontSize: '0.58rem', color: 'rgba(99,102,241,0.6)', marginBottom: 6, letterSpacing: '0.08em' }}>YOUR NEW SITE</div>
+        <div style={{ fontSize: '0.58rem', color: 'rgba(0,194,110,0.6)', marginBottom: 6, letterSpacing: '0.08em' }}>YOUR NEW SITE</div>
         <div style={{
           background: 'linear-gradient(135deg,#1a1a28,#12121e)',
           borderRadius: 6, padding: '8px', marginBottom: 8,
-          border: '1px solid rgba(37,99,235,0.08)',
+          border: '1px solid rgba(0,194,110,0.08)',
         }}>
-          <div style={{ fontSize: '0.62rem', fontWeight: 700, color: '#4F46E5', fontFamily: 'var(--font-display)', marginBottom: 2 }}>
+          <div style={{ fontSize: '0.62rem', fontWeight: 700, color: '#00C26F', fontFamily: 'var(--font-display)', marginBottom: 2 }}>
             Tracy HVAC Pros
           </div>
           <div style={{ fontSize: '0.5rem', color: 'rgba(255,255,255,0.35)' }}>Licensed & Insured · Tracy, CA</div>
@@ -226,7 +226,7 @@ export default function HowItWorks() {
           const dy = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2)
           setRY(dx * 8)
           setRX(-dy * 6)
-          gsap.to(el, { duration: 0.3, borderColor: 'rgba(37,99,235,0.4)', boxShadow: '0 28px 70px rgba(37,99,235,0.14)' })
+          gsap.to(el, { duration: 0.3, borderColor: 'rgba(0,194,110,0.4)', boxShadow: '0 28px 70px rgba(0,194,110,0.14)' })
         }
         const onLeave = () => {
           setRX(0); setRY(0)
@@ -281,7 +281,7 @@ export default function HowItWorks() {
                 <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
                   <span style={{
                     display: 'inline-block',
-                    background: 'linear-gradient(135deg,#2563EB,#7C3AED)',
+                    background: 'linear-gradient(135deg,#00C26F,#0EA5E9)',
                     WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
                   }}>
                     {split('Fully booked')}
@@ -336,7 +336,7 @@ export default function HowItWorks() {
                 </div>
                 <div style={{
                   fontFamily: 'var(--font-display)', fontWeight: 800,
-                  fontSize: '1.1rem', color: 'rgba(99,102,241,0.15)',
+                  fontSize: '1.1rem', color: 'rgba(0,194,110,0.15)',
                   letterSpacing: '-0.03em',
                 }}>
                   {s.n}

@@ -74,7 +74,7 @@ function RevenueCard() {
           border: '1px solid rgba(0,0,0,0.08)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
         }}>
-          <TrendingUp size={16} color="#2563EB" />
+          <TrendingUp size={16} color="#00C26F" />
         </div>
       </div>
 
@@ -206,7 +206,7 @@ export default function MoneyShot() {
           className="word-inner"
           style={gold ? {
             display: 'inline-block',
-            background: 'linear-gradient(135deg,#2563EB,#7C3AED)',
+            background: 'linear-gradient(135deg,#00C26F,#0EA5E9)',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
           } : undefined}
         >{w}</span>

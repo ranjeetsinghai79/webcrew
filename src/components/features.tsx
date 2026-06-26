@@ -57,7 +57,7 @@ const TABS = [
       'Pages for every neighborhood you serve — more calls, more jobs',
     ],
     metrics: ['Google Rank', 'Local Visibility', 'Map Pack', 'Monthly Calls'],
-    preview: { label: 'Rank: Top 3', score: 95, color: '#7C3AED' },
+    preview: { label: 'Rank: Top 3', score: 95, color: '#0EA5E9' },
   },
   {
     id: 'leads',
@@ -89,7 +89,7 @@ const TABS = [
       'Cancel hosting anytime — the site is yours forever. Period.',
     ],
     metrics: ['Site Uptime', 'Global Speed', 'Ownership', 'Security'],
-    preview: { label: '99.9% uptime', score: 99, color: '#4F46E5' },
+    preview: { label: '99.9% uptime', score: 99, color: '#00C26F' },
   },
 ]
 
@@ -266,7 +266,7 @@ export default function Features() {
               </div>
               <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
                 <span style={{
-                  background: 'linear-gradient(135deg,#2563EB,#7C3AED)',
+                  background: 'linear-gradient(135deg,#00C26F,#0EA5E9)',
                   WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
                 }}>
                   {split('More revenue.')}
@@ -291,8 +291,8 @@ export default function Features() {
                 display: 'flex', alignItems: 'center', gap: 6,
                 padding: '9px 18px',
                 borderRadius: 100,
-                border: i === active ? '1.5px solid rgba(37,99,235,0.4)' : '1px solid var(--color-border)',
-                background: i === active ? 'rgba(37,99,235,0.06)' : 'transparent',
+                border: i === active ? '1.5px solid rgba(0,194,110,0.4)' : '1px solid var(--color-border)',
+                background: i === active ? 'rgba(0,194,110,0.06)' : 'transparent',
                 color: i === active ? 'var(--color-blue)' : 'var(--color-muted)',
                 fontSize: '0.8rem', fontWeight: i === active ? 600 : 500,
                 fontFamily: 'var(--font-body)',
@@ -374,7 +374,7 @@ export default function Features() {
           }}>
             They almost didn't try.{' '}
             <span style={{
-              background: 'linear-gradient(135deg,#2563EB,#7C3AED)',
+              background: 'linear-gradient(135deg,#00C26F,#0EA5E9)',
               WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
             }}>
               Now they can't keep up.

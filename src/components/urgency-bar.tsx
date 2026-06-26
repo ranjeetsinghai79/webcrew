@@ -44,7 +44,7 @@ export default function UrgencyBar() {
         bottom: 0, left: 0, right: 0,
         zIndex: 9000,
         background: 'linear-gradient(135deg, #03030D 0%, #0D0B28 100%)',
-        borderTop: '1px solid rgba(37,99,235,0.3)',
+        borderTop: '1px solid rgba(0,194,110,0.3)',
         padding: '14px clamp(20px,5vw,60px)',
         display: 'flex',
         alignItems: 'center',

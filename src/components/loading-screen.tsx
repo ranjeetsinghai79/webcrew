@@ -110,8 +110,8 @@ export default function LoadingScreen() {
             style={{
               width: '0%',
               height: '100%',
-              background: 'linear-gradient(90deg, #2563EB, #7C3AED)',
-              boxShadow: '0 0 12px rgba(124, 58, 237, 0.6)',
+              background: 'linear-gradient(90deg, #00C26F, #0EA5E9)',
+              boxShadow: '0 0 12px rgba(14, 165, 233, 0.6)',
               borderRadius: '4px',
             }}
           />

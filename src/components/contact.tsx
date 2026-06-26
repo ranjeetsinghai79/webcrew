@@ -48,7 +48,7 @@ const inputStyle: React.CSSProperties = {
 
 const onFocus = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => {
   e.currentTarget.style.borderColor = 'var(--color-blue)'
-  e.currentTarget.style.background = 'rgba(37,99,235,0.03)'
+  e.currentTarget.style.background = 'rgba(0,194,110,0.03)'
 }
 const onBlur = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => {
   e.currentTarget.style.borderColor = 'var(--color-border)'
@@ -168,9 +168,9 @@ export default function Contact() {
     cursor: 'pointer',
     border: 'none',
     transition: 'all 0.2s',
-    background: active ? 'linear-gradient(135deg, #2563EB, #7C3AED)' : 'transparent',
+    background: active ? 'linear-gradient(135deg, #00C26F, #0EA5E9)' : 'transparent',
     color: active ? '#fff' : 'var(--color-muted)',
-    boxShadow: active ? '0 4px 16px rgba(37,99,235,0.25)' : 'none',
+    boxShadow: active ? '0 4px 16px rgba(0,194,110,0.25)' : 'none',
     letterSpacing: '0.01em',
   })
 
@@ -178,9 +178,9 @@ export default function Contact() {
     <div style={{
       textAlign: 'center', padding: '56px 40px',
       background: 'var(--color-surface)',
-      border: '1px solid rgba(99,102,241,0.25)',
+      border: '1px solid rgba(0,194,110,0.25)',
       borderRadius: '20px',
-      boxShadow: '0 0 80px rgba(37,99,235,0.08)',
+      boxShadow: '0 0 80px rgba(0,194,110,0.08)',
     }}>
       <CheckCircle size={52} color="var(--color-blue)" style={{ margin: '0 auto 20px' }} />
       <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.7rem', letterSpacing: '-0.02em', marginBottom: '12px' }}>
@@ -194,8 +194,8 @@ export default function Contact() {
 
   const ConsentBox = ({ children }: { children: React.ReactNode }) => (
     <div style={{
-      background: 'rgba(37,99,235,0.04)',
-      border: '1px solid rgba(37,99,235,0.15)',
+      background: 'rgba(0,194,110,0.04)',
+      border: '1px solid rgba(0,194,110,0.15)',
       borderRadius: '10px',
       padding: '18px',
       display: 'flex', flexDirection: 'column', gap: '12px',
@@ -371,8 +371,8 @@ export default function Contact() {
             >
               <div style={{
                 padding: '12px 16px',
-                background: tab === 'upgrade' ? 'rgba(99,102,241,0.06)' : 'rgba(74,222,128,0.05)',
-                border: `1px solid ${tab === 'upgrade' ? 'rgba(99,102,241,0.2)' : 'rgba(74,222,128,0.2)'}`,
+                background: tab === 'upgrade' ? 'rgba(0,194,110,0.06)' : 'rgba(74,222,128,0.05)',
+                border: `1px solid ${tab === 'upgrade' ? 'rgba(0,194,110,0.2)' : 'rgba(74,222,128,0.2)'}`,
                 borderRadius: '8px',
                 fontSize: '0.82rem',
                 color: tab === 'upgrade' ? '#6366f1' : '#16a34a',

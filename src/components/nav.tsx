@@ -40,7 +40,7 @@ export default function Nav() {
         <span style={{
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
           width: '30px', height: '30px',
-          background: 'linear-gradient(135deg, #2563EB, #7C3AED)',
+          background: 'linear-gradient(135deg, #00C26F, #0EA5E9)',
           borderRadius: '6px',
           fontFamily: 'var(--font-display)', fontWeight: 700,
           fontSize: '1rem', color: '#FFFFFF',

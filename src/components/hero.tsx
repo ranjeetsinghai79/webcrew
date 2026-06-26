@@ -9,9 +9,9 @@ if (typeof window !== 'undefined') { gsap.registerPlugin(ScrollTrigger) }
 // ── AI Pipeline Visualization ────────────────────────────────────────────────
 function AIPipelineCard() {
   const steps = [
-    { id: 'scan',   label: 'Scanning Your Brand',    sub: 'Your style, services & voice captured', done: true,   color: '#2563EB' },
-    { id: 'llm',    label: 'Writing Your Copy',       sub: 'Headlines, offers & local SEO',         done: true,   color: '#4F46E5' },
-    { id: 'build',  label: 'Designing Your Site',     sub: 'Hero, images, layout — all custom',     done: true,   color: '#7C3AED' },
+    { id: 'scan',   label: 'Scanning Your Brand',    sub: 'Your style, services & voice captured', done: true,   color: '#00C26F' },
+    { id: 'llm',    label: 'Writing Your Copy',       sub: 'Headlines, offers & local SEO',         done: true,   color: '#00A85E' },
+    { id: 'build',  label: 'Designing Your Site',     sub: 'Hero, images, layout — all custom',     done: true,   color: '#0EA5E9' },
     { id: 'deploy', label: 'Going Live',              sub: 'Fast worldwide. 24/7. Always on.',       active: true,  color: '#10B981' },
   ]
 
@@ -25,7 +25,7 @@ function AIPipelineCard() {
     }}>
       {/* Header bar */}
       <div style={{
-        background: 'linear-gradient(135deg, #2563EB 0%, #7C3AED 100%)',
+        background: 'linear-gradient(135deg, #00C26F 0%, #0EA5E9 100%)',
         padding: '16px 20px',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
@@ -60,7 +60,7 @@ function AIPipelineCard() {
 
       {/* Business input */}
       <div style={{ padding: '16px 20px', borderBottom: '1px solid rgba(99,102,241,0.08)', background: '#FAFAFF' }}>
-        <div style={{ fontSize: '0.58rem', fontWeight: 700, color: 'var(--color-indigo)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 8 }}>
+        <div style={{ fontSize: '0.58rem', fontWeight: 700, color: 'var(--color-accent)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 8 }}>
           Target Business
         </div>
         <div style={{
@@ -70,10 +70,10 @@ function AIPipelineCard() {
         }}>
           <div style={{
             width: 28, height: 28, borderRadius: 7,
-            background: 'linear-gradient(135deg, #EFF6FF, #EDE9FE)',
-            border: '1px solid rgba(99,102,241,0.15)',
+            background: 'linear-gradient(135deg, #F0FDF4, #E0F8EC)',
+            border: '1px solid rgba(0,194,110,0.15)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: '0.7rem', fontWeight: 800, color: '#4F46E5',
+            fontSize: '0.7rem', fontWeight: 800, color: '#00A85E',
           }}>
             T
           </div>
@@ -180,7 +180,7 @@ function AIPipelineCard() {
         </div>
         <div style={{
           fontSize: '0.6rem', fontWeight: 700,
-          background: 'linear-gradient(135deg, #2563EB, #7C3AED)',
+          background: 'linear-gradient(135deg, #00C26F, #0EA5E9)',
           WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
         }}>
           VIEW LIVE →
@@ -198,7 +198,7 @@ function StatCard({ value, label, icon, gradient, style }: {
   return (
     <div style={{
       position: 'absolute',
-      background: gradient ? 'linear-gradient(135deg, #2563EB, #7C3AED)' : '#FFFFFF',
+      background: gradient ? 'linear-gradient(135deg, #00C26F, #0EA5E9)' : '#FFFFFF',
       border: gradient ? 'none' : '1.5px solid rgba(99,102,241,0.12)',
       borderRadius: 14,
       padding: '14px 18px',
@@ -206,16 +206,16 @@ function StatCard({ value, label, icon, gradient, style }: {
       alignItems: 'center',
       gap: 12,
       boxShadow: gradient
-        ? '0 12px 40px rgba(37,99,235,0.35)'
-        : '0 8px 32px rgba(99,102,241,0.1)',
+        ? '0 12px 40px rgba(0,194,110,0.35)'
+        : '0 8px 32px rgba(0,0,0,0.08)',
       minWidth: '155px',
       ...style,
     }}>
       <div style={{
         width: 36, height: 36, borderRadius: 10,
-        background: gradient ? 'rgba(255,255,255,0.2)' : 'rgba(99,102,241,0.08)',
+        background: gradient ? 'rgba(255,255,255,0.2)' : 'rgba(0,194,110,0.08)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        color: gradient ? '#fff' : 'var(--color-indigo)', flexShrink: 0,
+        color: gradient ? '#000' : 'var(--color-accent)', flexShrink: 0,
       }}>
         {icon}
       </div>
@@ -262,7 +262,7 @@ export default function Hero() {
     resize()
     window.addEventListener('resize', resize)
 
-    const COLORS = ['rgba(37,99,235,', 'rgba(124,58,237,', 'rgba(99,102,241,']
+    const COLORS = ['rgba(0,194,110,', 'rgba(14,165,233,', 'rgba(0,220,130,']
     const dots = Array.from({ length: 60 }, () => ({
       x: Math.random() * 1000,
       y: Math.random() * 800,
@@ -295,7 +295,7 @@ export default function Hero() {
             ctx.beginPath()
             ctx.moveTo(dots[i].x, dots[i].y)
             ctx.lineTo(dots[j].x, dots[j].y)
-            ctx.strokeStyle = `rgba(99,102,241,${0.04 * (1 - dist / 100)})`
+            ctx.strokeStyle = `rgba(0,194,110,${0.05 * (1 - dist / 100)})`
             ctx.lineWidth = 0.5
             ctx.stroke()
           }
@@ -356,7 +356,7 @@ export default function Hero() {
           className="word-inner"
           style={gradient ? {
             display: 'inline-block',
-            background: 'linear-gradient(135deg, #2563EB 0%, #7C3AED 100%)',
+            background: 'linear-gradient(135deg, #00C26F 0%, #0EA5E9 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
@@ -381,15 +381,15 @@ export default function Hero() {
       <canvas ref={canvasRef} id="hero-canvas" />
       <div className="noise-overlay" />
 
-      {/* Aurora blobs — vivid on dark */}
-      <div className="aurora-blob" style={{ width: '600px', height: '600px', background: 'rgba(37,99,235,0.18)', top: '-5%', left: '-5%', animation: 'aurora-drift 14s ease-in-out infinite' }} />
-      <div className="aurora-blob" style={{ width: '500px', height: '500px', background: 'rgba(124,58,237,0.14)', bottom: '5%', right: '0%', animation: 'aurora-drift 18s ease-in-out infinite reverse' }} />
-      <div className="aurora-blob" style={{ width: '300px', height: '300px', background: 'rgba(99,102,241,0.12)', top: '40%', left: '40%', animation: 'aurora-drift 22s ease-in-out infinite' }} />
+      {/* Aurora blobs */}
+      <div className="aurora-blob" style={{ width: '600px', height: '600px', background: 'rgba(0,194,110,0.14)', top: '-5%', left: '-5%', animation: 'aurora-drift 14s ease-in-out infinite' }} />
+      <div className="aurora-blob" style={{ width: '500px', height: '500px', background: 'rgba(14,165,233,0.10)', bottom: '5%', right: '0%', animation: 'aurora-drift 18s ease-in-out infinite reverse' }} />
+      <div className="aurora-blob" style={{ width: '300px', height: '300px', background: 'rgba(0,194,110,0.08)', top: '40%', left: '40%', animation: 'aurora-drift 22s ease-in-out infinite' }} />
 
       {/* Grid overlay */}
       <div style={{
         position: 'absolute', inset: 0, pointerEvents: 'none',
-        backgroundImage: 'linear-gradient(rgba(99,102,241,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.07) 1px, transparent 1px)',
+        backgroundImage: 'linear-gradient(rgba(0,194,110,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(0,194,110,0.06) 1px, transparent 1px)',
         backgroundSize: '72px 72px',
         maskImage: 'radial-gradient(ellipse 80% 80% at 30% 50%, black 20%, transparent 75%)',
       }} />
@@ -422,11 +422,11 @@ export default function Hero() {
             </span>
             <span style={{
               display: 'inline-flex', alignItems: 'center', gap: '6px',
-              border: '1px solid rgba(249,115,22,0.35)',
-              background: 'rgba(249,115,22,0.08)',
+              border: '1px solid rgba(14,165,233,0.35)',
+              background: 'rgba(14,165,233,0.08)',
               borderRadius: '100px', padding: '7px 14px',
               fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase',
-              color: '#f97316',
+              color: '#38bdf8',
             }}>
               ⚡ Tonight&apos;s queue: 7 built · 3 remaining
             </span>
@@ -446,15 +446,15 @@ export default function Hero() {
             }}
           >
             <div style={{ overflow: 'hidden', paddingBottom: '0.06em' }}>
-              {split('You\'re losing')}
+              {split('Your competitor')}
             </div>
             <div style={{ overflow: 'hidden', paddingBottom: '0.06em' }}>
               <span style={{ display: 'inline-flex', flexWrap: 'wrap', gap: '0 0.22em' }}>
-                {'$9,600/month'.split(' ').map((w, i) => (
+                {'ranks #1.'.split(' ').map((w, i) => (
                   <span key={i} className="word-wrap" style={{ display: 'inline-block' }}>
                     <span className="word-inner" style={{
                       display: 'inline-block',
-                      background: 'linear-gradient(135deg, #FBBF24 0%, #F97316 100%)',
+                      background: 'linear-gradient(135deg, #00C26F 0%, #0EA5E9 100%)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       backgroundClip: 'text',
@@ -464,7 +464,7 @@ export default function Hero() {
               </span>
             </div>
             <div style={{ overflow: 'hidden', paddingBottom: '0.06em' }}>
-              {split('to whoever ranks first.')}
+              {split('Tonight, so do you.')}
             </div>
           </h1>
 
@@ -472,16 +472,16 @@ export default function Hero() {
           <p
             ref={subRef}
             style={{
-              color: 'rgba(255,255,255,0.75)',
+              color: 'rgba(255,255,255,0.72)',
               fontSize: 'clamp(0.95rem,1.6vw,1.1rem)',
               lineHeight: 1.75,
               maxWidth: '480px',
               marginBottom: '40px',
             }}
           >
-            Every month you&apos;re not on Google, local customers are calling your competitor instead.{' '}
-            <span style={{ color: '#FFFFFF', fontWeight: 600 }}>We get you ranked — overnight, for free.</span>
-            {' '}You only pay if you love what you see.
+            Every month without a website, 2,400 people in your city search your trade and call whoever ranks first.{' '}
+            <span style={{ color: '#FFFFFF', fontWeight: 600 }}>We build your site overnight — free.</span>
+            {' '}Wake up to a live link. Pay $299 only if you love it.
           </p>
 
           {/* CTAs */}

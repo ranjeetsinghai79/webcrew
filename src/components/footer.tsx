@@ -26,7 +26,7 @@ export default function Footer() {
               <span style={{
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                 width: '32px', height: '32px',
-                background: 'linear-gradient(135deg, #2563EB, #7C3AED)',
+                background: 'linear-gradient(135deg, #00C26F, #0EA5E9)',
                 borderRadius: '8px',
                 fontFamily: 'var(--font-display)', fontWeight: 700,
                 fontSize: '1.1rem', color: '#FFFFFF',
@@ -46,7 +46,7 @@ export default function Footer() {
               href="#contact"
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
-                background: 'linear-gradient(135deg, #2563EB, #7C3AED)',
+                background: 'linear-gradient(135deg, #00C26F, #0EA5E9)',
                 color: '#fff', fontWeight: 700, fontSize: '0.82rem',
                 borderRadius: 100, padding: '10px 22px',
                 textDecoration: 'none', letterSpacing: '0.01em',

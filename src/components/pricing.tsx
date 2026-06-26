@@ -114,22 +114,22 @@ export default function Pricing() {
           <div
             className="pricing-card"
             style={{
-              background: 'linear-gradient(160deg, rgba(37,99,235,0.04) 0%, var(--color-bg) 100%)',
-              border: '1px solid rgba(37,99,235,0.3)',
+              background: 'linear-gradient(160deg, rgba(0,194,110,0.04) 0%, var(--color-bg) 100%)',
+              border: '1px solid rgba(0,194,110,0.3)',
               borderRadius: '20px',
               padding: '40px',
               position: 'relative',
-              boxShadow: '0 0 80px rgba(37,99,235,0.06)',
+              boxShadow: '0 0 80px rgba(0,194,110,0.06)',
               transition: 'transform 0.35s var(--ease-out), box-shadow 0.35s',
               display: 'flex', flexDirection: 'column',
             }}
-            onMouseEnter={e => { const el = e.currentTarget; el.style.transform = 'translateY(-6px)'; el.style.boxShadow = '0 24px 80px rgba(37,99,235,0.12)' }}
-            onMouseLeave={e => { const el = e.currentTarget; el.style.transform = 'translateY(0)'; el.style.boxShadow = '0 0 80px rgba(37,99,235,0.06)' }}
+            onMouseEnter={e => { const el = e.currentTarget; el.style.transform = 'translateY(-6px)'; el.style.boxShadow = '0 24px 80px rgba(0,194,110,0.12)' }}
+            onMouseLeave={e => { const el = e.currentTarget; el.style.transform = 'translateY(0)'; el.style.boxShadow = '0 0 80px rgba(0,194,110,0.06)' }}
           >
             {/* Most Popular badge */}
             <div style={{
               position: 'absolute', top: '-14px', left: '50%', transform: 'translateX(-50%)',
-              background: 'linear-gradient(135deg, #2563EB, #7C3AED)',
+              background: 'linear-gradient(135deg, #00C26F, #0EA5E9)',
               color: '#fff', fontWeight: 700, fontSize: '0.68rem', letterSpacing: '0.12em',
               textTransform: 'uppercase', padding: '5px 18px', borderRadius: '100px',
               whiteSpace: 'nowrap',
@@ -146,8 +146,8 @@ export default function Pricing() {
             {/* How it works — 3 steps */}
             <div style={{
               display: 'flex', gap: '0', marginBottom: '32px', marginTop: '8px',
-              background: 'rgba(37,99,235,0.04)', borderRadius: '12px',
-              border: '1px solid rgba(37,99,235,0.1)',
+              background: 'rgba(0,194,110,0.04)', borderRadius: '12px',
+              border: '1px solid rgba(0,194,110,0.1)',
               overflow: 'hidden',
             }}>
               {[
@@ -157,11 +157,11 @@ export default function Pricing() {
               ].map((s, i) => (
                 <div key={i} style={{
                   flex: 1, padding: '14px 12px', textAlign: 'center',
-                  borderRight: i < 2 ? '1px solid rgba(37,99,235,0.1)' : 'none',
+                  borderRight: i < 2 ? '1px solid rgba(0,194,110,0.1)' : 'none',
                 }}>
                   <div style={{
                     width: '22px', height: '22px', borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #2563EB, #7C3AED)',
+                    background: 'linear-gradient(135deg, #00C26F, #0EA5E9)',
                     color: '#fff', fontSize: '0.65rem', fontWeight: 800,
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     margin: '0 auto 6px',
@@ -207,8 +207,8 @@ export default function Pricing() {
                 </div>
                 {/* Value badge */}
                 <div style={{
-                  background: 'rgba(37,99,235,0.08)',
-                  border: '1px solid rgba(37,99,235,0.2)',
+                  background: 'rgba(0,194,110,0.08)',
+                  border: '1px solid rgba(0,194,110,0.2)',
                   borderRadius: '10px', padding: '8px 14px', textAlign: 'right',
                 }}>
                   <div style={{ fontSize: '0.65rem', color: 'var(--color-muted)', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Worth</div>
@@ -225,7 +225,7 @@ export default function Pricing() {
                     <div key={item.label} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
                       <div style={{
                         width: '32px', height: '32px', flexShrink: 0,
-                        background: 'rgba(37,99,235,0.08)', borderRadius: '8px',
+                        background: 'rgba(0,194,110,0.08)', borderRadius: '8px',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                       }}>
                         <Icon size={14} color="var(--color-blue)" />
@@ -330,8 +330,8 @@ export default function Pricing() {
         <div style={{
           marginTop: '48px',
           padding: '24px 32px',
-          background: 'linear-gradient(135deg, rgba(37,99,235,0.06) 0%, rgba(124,58,237,0.04) 100%)',
-          border: '1px solid rgba(37,99,235,0.15)',
+          background: 'linear-gradient(135deg, rgba(0,194,110,0.06) 0%, rgba(14,165,233,0.04) 100%)',
+          border: '1px solid rgba(0,194,110,0.15)',
           borderRadius: '14px',
           display: 'flex',
           flexWrap: 'wrap',
@@ -350,7 +350,7 @@ export default function Pricing() {
           <div style={{
             flexShrink: 0,
             background: 'white',
-            border: '1px solid rgba(37,99,235,0.2)',
+            border: '1px solid rgba(0,194,110,0.2)',
             borderRadius: 10,
             padding: '10px 18px',
             textAlign: 'center',

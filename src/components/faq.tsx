@@ -68,7 +68,7 @@ export default function FAQ() {
           className="word-inner"
           style={gradient ? {
             display: 'inline-block',
-            background: 'linear-gradient(135deg, #2563EB 0%, #7C3AED 100%)',
+            background: 'linear-gradient(135deg, #00C26F 0%, #0EA5E9 100%)',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
           } : undefined}
         >{w}</span>
@@ -148,8 +148,8 @@ export default function FAQ() {
                     flexShrink: 0,
                     width: 28, height: 28,
                     borderRadius: 8,
-                    background: isOpen ? 'rgba(37,99,235,0.08)' : 'var(--color-surface)',
-                    border: `1px solid ${isOpen ? 'rgba(37,99,235,0.25)' : 'var(--color-border)'}`,
+                    background: isOpen ? 'rgba(0,194,110,0.08)' : 'var(--color-surface)',
+                    border: `1px solid ${isOpen ? 'rgba(0,194,110,0.25)' : 'var(--color-border)'}`,
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     transition: 'all 0.2s',
                     color: isOpen ? 'var(--color-blue)' : 'var(--color-muted)',
@@ -182,8 +182,8 @@ export default function FAQ() {
         <div style={{
           marginTop: 56,
           padding: '28px 32px',
-          background: 'linear-gradient(135deg, rgba(37,99,235,0.05) 0%, rgba(124,58,237,0.04) 100%)',
-          border: '1px solid rgba(37,99,235,0.15)',
+          background: 'linear-gradient(135deg, rgba(0,194,110,0.05) 0%, rgba(14,165,233,0.04) 100%)',
+          border: '1px solid rgba(0,194,110,0.15)',
           borderRadius: 16,
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           gap: 20, flexWrap: 'wrap',

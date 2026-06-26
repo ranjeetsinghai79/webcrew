@@ -25,11 +25,11 @@ function Cell({ value, highlight }: { value: string | boolean; highlight?: boole
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <div style={{
           width: 24, height: 24, borderRadius: 6, flexShrink: 0,
-          background: highlight ? 'rgba(37,99,235,0.12)' : 'rgba(74,222,128,0.1)',
-          border: highlight ? '1.5px solid rgba(37,99,235,0.3)' : '1px solid rgba(74,222,128,0.25)',
+          background: highlight ? 'rgba(0,194,110,0.12)' : 'rgba(74,222,128,0.1)',
+          border: highlight ? '1.5px solid rgba(0,194,110,0.3)' : '1px solid rgba(74,222,128,0.25)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
         }}>
-          <Check size={13} color={highlight ? '#2563EB' : '#4ade80'} strokeWidth={2.5} />
+          <Check size={13} color={highlight ? '#00C26F' : '#4ade80'} strokeWidth={2.5} />
         </div>
       </div>
     )
@@ -106,7 +106,7 @@ export default function Comparison() {
               </div>
               <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
                 <span style={{
-                  background: 'linear-gradient(135deg,#2563EB,#7C3AED)',
+                  background: 'linear-gradient(135deg,#00C26F,#0EA5E9)',
                   WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
                 }}>
                   {split('You decide.')}
@@ -146,13 +146,13 @@ export default function Comparison() {
                     letterSpacing: i === 2 ? '-0.01em' : '0.08em',
                     textTransform: i === 2 ? 'none' : 'uppercase',
                     borderBottom: '2px solid var(--color-border)',
-                    background: i === 2 ? 'rgba(37,99,235,0.03)' : 'transparent',
+                    background: i === 2 ? 'rgba(0,194,110,0.03)' : 'transparent',
                     borderRadius: i === 2 ? '12px 12px 0 0' : 0,
                   }}>
                     {i === 2 && (
                       <div style={{
                         display: 'inline-flex', alignItems: 'center', gap: 6,
-                        background: 'linear-gradient(135deg,#2563EB,#7C3AED)',
+                        background: 'linear-gradient(135deg,#00C26F,#0EA5E9)',
                         color: '#fff', fontSize: '0.6rem', fontWeight: 800,
                         letterSpacing: '0.1em', textTransform: 'uppercase',
                         padding: '3px 10px', borderRadius: 100, marginBottom: 6,
@@ -187,7 +187,7 @@ export default function Comparison() {
                     <td key={ci} style={{
                       padding: '14px 20px',
                       borderBottom: rowIdx < ROWS.length - 1 ? '1px solid var(--color-border)' : 'none',
-                      background: hl ? 'rgba(37,99,235,0.03)' : 'transparent',
+                      background: hl ? 'rgba(0,194,110,0.03)' : 'transparent',
                     }}>
                       <Cell value={val} highlight={hl} />
                     </td>
