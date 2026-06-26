@@ -104,7 +104,6 @@ export default function Contact() {
 
   const handleDemoSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!demo.smsConsent) { setError('Please confirm SMS consent to receive your demo link.'); return }
     setError(''); setLoading(true)
     try {
       await fetch('https://api.webcrew.app/leads', {
@@ -137,7 +136,6 @@ export default function Contact() {
 
   const handleAuditSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!audit.emailConsent) { setError('Please confirm you agree to receive your audit report.'); return }
     setError(''); setLoading(true)
     try {
       await fetch('https://api.webcrew.app/audit', {
@@ -337,11 +335,11 @@ export default function Contact() {
                     style={{ width: '18px', height: '18px', minWidth: '18px', accentColor: 'var(--color-blue)', cursor: 'pointer', marginTop: '2px' }}
                   />
                   <span style={{ fontSize: '0.82rem', lineHeight: 1.6, color: 'var(--color-text)' }}>
-                    <strong>I agree to receive my free audit report</strong> and text/email follow-up from WebCrew at the contact info provided. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply <strong>STOP</strong> to unsubscribe.{' '}
+                    <strong>I agree to receive my free audit report</strong> and optional text/email follow-up from WebCrew at the contact info provided. Msg &amp; data rates may apply. Reply <strong>STOP</strong> to unsubscribe.{' '}
                     <a href="/privacy" style={{ color: 'var(--color-blue)', textDecoration: 'underline' }}>Privacy Policy</a>
                     {' '}&amp;{' '}
                     <a href="/terms" style={{ color: 'var(--color-blue)', textDecoration: 'underline' }}>Terms</a>.{' '}
-                    <span style={{ color: 'var(--color-blue)', fontWeight: 600 }}>(Required)</span>
+                    <span style={{ color: 'var(--color-muted)', fontWeight: 500 }}>(Optional)</span>
                   </span>
                 </label>
               </ConsentBox>
@@ -426,11 +424,11 @@ export default function Contact() {
                     style={{ width: '18px', height: '18px', minWidth: '18px', accentColor: 'var(--color-blue)', cursor: 'pointer', marginTop: '2px' }}
                   />
                   <span style={{ fontSize: '0.82rem', lineHeight: 1.6, color: 'var(--color-text)' }}>
-                    <strong>I agree to receive text messages from WebCrew</strong> regarding my website demo and related services at the number provided. Consent is not a condition of purchase. Message frequency varies. Msg &amp; data rates may apply. Reply <strong>STOP</strong> to unsubscribe. Reply <strong>HELP</strong> for help.{' '}
+                    <strong>Yes, I'd like to receive SMS updates from WebCrew</strong> about my website demo and related services at the number provided. This is optional — you can still submit without it. Message frequency varies. Msg &amp; data rates may apply. Reply <strong>STOP</strong> to opt out anytime. Reply <strong>HELP</strong> for help.{' '}
                     <a href="/privacy" style={{ color: 'var(--color-blue)', textDecoration: 'underline' }}>Privacy Policy</a>
                     {' '}&amp;{' '}
                     <a href="/terms" style={{ color: 'var(--color-blue)', textDecoration: 'underline' }}>Terms</a>.{' '}
-                    <span style={{ color: 'var(--color-blue)', fontWeight: 600 }}>(Required)</span>
+                    <span style={{ color: 'var(--color-muted)', fontWeight: 500 }}>(Optional)</span>
                   </span>
                 </label>
               </ConsentBox>

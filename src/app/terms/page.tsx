@@ -46,9 +46,9 @@ Monthly hosting fees are billed in advance. Late payments may result in service 
           },
           {
             title: 'SMS Communications and TCPA Compliance',
-            body: `By providing your phone number, you expressly consent to receive automated SMS messages from WebCrew regarding our services, your website demo, and follow-up communications.
+            body: `We send SMS messages only to users who explicitly opt in by checking the SMS consent checkbox on our contact form. Providing your phone number alone does not constitute consent to receive text messages.
 
-You may opt out at any time by replying STOP. After opting out, you will receive one final confirmation message. We comply with all applicable laws including the Telephone Consumer Protection Act (TCPA).`,
+You may opt out at any time by replying STOP to any message. After opting out, you will receive one final confirmation message. SMS consent is never a condition of purchase or service. We comply with all applicable laws including the Telephone Consumer Protection Act (TCPA).`,
           },
           {
             title: 'Intellectual Property',
