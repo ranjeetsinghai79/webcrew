@@ -254,7 +254,7 @@ export default function Features() {
 
         {/* Header */}
         <div style={{ marginBottom: 52 }}>
-          <div className="section-label" style={{ marginBottom: 16 }}>WHAT YOU GET</div>
+          <div className="section-label" style={{ marginBottom: 16 }}>EVERYTHING INCLUDED</div>
           <div ref={headingRef} style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 32, flexWrap: 'wrap' }}>
             <h2 style={{
               fontFamily: 'var(--font-display)', fontWeight: 800,
@@ -262,20 +262,67 @@ export default function Features() {
               letterSpacing: '-0.035em', lineHeight: 1.0,
             }}>
               <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
-                {split('More calls. More jobs.')}
+                {split('Everything Your Business Needs.')}
               </div>
               <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
                 <span style={{
                   background: 'linear-gradient(135deg,#00C26F,#0EA5E9)',
                   WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
                 }}>
-                  {split('More revenue.')}
+                  {split('Already Included.')}
                 </span>
               </div>
             </h2>
             <p style={{ color: 'var(--color-muted)', fontSize: '0.95rem', lineHeight: 1.75, maxWidth: 280, paddingBottom: 6 }}>
-              Everything you need to win online — built overnight, included.
+              No add-ons. No upgrades. No setup fee. Every feature included from day one.
             </p>
+          </div>
+
+          {/* Grouped inclusion grid */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, marginTop: '28px' }}>
+            {[
+              {
+                group: 'Online Presence',
+                color: '#00C26F',
+                items: ['Website', 'Hosting', 'SSL', 'Analytics'],
+              },
+              {
+                group: 'Visibility',
+                color: '#0EA5E9',
+                items: ['SEO', 'Local SEO', 'GBP Posts', 'Schema'],
+              },
+              {
+                group: 'Growth',
+                color: '#8B5CF6',
+                items: ['Lead Alerts', 'Traffic Reports', 'Monthly Updates', 'Performance'],
+              },
+            ].map(g => (
+              <div
+                key={g.group}
+                style={{
+                  background: 'var(--color-surface)',
+                  border: `1px solid ${g.color}22`,
+                  borderRadius: 12,
+                  padding: '14px 18px',
+                  minWidth: 180,
+                }}
+              >
+                <div style={{
+                  fontSize: '0.6rem', fontWeight: 800, letterSpacing: '0.16em',
+                  textTransform: 'uppercase', color: g.color, marginBottom: 10,
+                }}>
+                  {g.group}
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                  {g.items.map(item => (
+                    <div key={item} style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
+                      <span style={{ fontSize: '0.6rem', color: g.color }}>✓</span>
+                      <span style={{ fontSize: '0.82rem', color: 'var(--color-text)', fontWeight: 500 }}>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 

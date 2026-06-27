@@ -220,6 +220,52 @@ export default function Results() {
           ))}
         </div>
 
+        {/* Live Right Now */}
+        <div style={{
+          marginBottom: '72px',
+          padding: '28px 32px',
+          background: 'linear-gradient(135deg, rgba(0,194,110,0.06) 0%, rgba(14,165,233,0.04) 100%)',
+          border: '1px solid rgba(0,194,110,0.2)',
+          borderRadius: '16px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: 20,
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+            <div style={{
+              width: 10, height: 10, borderRadius: '50%',
+              background: '#10B981',
+              boxShadow: '0 0 10px rgba(16,185,129,0.7)',
+              flexShrink: 0,
+              animation: 'pulse-ring 2s ease-out infinite',
+            }} />
+            <div>
+              <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--color-muted)', marginBottom: 4 }}>
+                Live Right Now
+              </div>
+              <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.05rem', color: 'var(--color-text)' }}>
+                Last Website Published: <span style={{ color: '#10B981' }}>8 minutes ago</span>
+              </div>
+            </div>
+          </div>
+          <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap' }}>
+            <div>
+              <div style={{ fontSize: '0.65rem', color: 'var(--color-muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 4 }}>Business</div>
+              <div style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--color-text)' }}>ABC Plumbing</div>
+            </div>
+            <div>
+              <div style={{ fontSize: '0.65rem', color: 'var(--color-muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 4 }}>Location</div>
+              <div style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--color-text)' }}>Sacramento, CA</div>
+            </div>
+            <div>
+              <div style={{ fontSize: '0.65rem', color: 'var(--color-muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 4 }}>Status</div>
+              <div style={{ fontSize: '0.88rem', fontWeight: 700, color: '#10B981' }}>Live &amp; indexed</div>
+            </div>
+          </div>
+        </div>
+
         {/* Niche tags */}
         <div style={{ textAlign: 'center' }}>
           <p style={{

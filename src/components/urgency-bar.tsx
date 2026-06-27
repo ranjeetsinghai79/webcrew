@@ -71,7 +71,7 @@ export default function UrgencyBar() {
             boxShadow: '0 0 6px rgba(249,115,22,0.7)',
             flexShrink: 0,
           }} />
-          Tonight&apos;s queue: {BUILT_TONIGHT}/10 built · {SLOTS_TONIGHT} remaining
+          🟢 Tonight&apos;s Build Queue · {BUILT_TONIGHT} of 10 websites already scheduled. {SLOTS_TONIGHT} spots remaining.
         </span>
       </div>
 
@@ -82,9 +82,9 @@ export default function UrgencyBar() {
           color: 'rgba(255,255,255,0.75)',
           fontFamily: 'var(--font-display)',
         }}>
-          Tonight&apos;s batch fills up fast.{' '}
+          We build your site free tonight.{' '}
           <span style={{ color: '#FFFFFF', fontWeight: 600 }}>
-            We build your site free — you pay only if you love it.
+            $49/mo keeps it live and growing. No setup fee.
           </span>
         </span>
       </div>

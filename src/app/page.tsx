@@ -7,10 +7,14 @@ import Hero             from '@/components/hero'
 import Ticker           from '@/components/ticker'
 import MoneyShot        from '@/components/money-shot'
 import HowItWorks       from '@/components/how-it-works'
+import Comparison       from '@/components/comparison'
+import TrustLogos       from '@/components/trust-logos'
 import Showcase         from '@/components/showcase'
 import Features         from '@/components/features'
-import Comparison       from '@/components/comparison'
 import Results          from '@/components/results'
+import WhyWebcrew       from '@/components/why-webcrew'
+import AfterYouJoin     from '@/components/after-you-join'
+import ComingSoon       from '@/components/coming-soon'
 import Pricing          from '@/components/pricing'
 import FAQ              from '@/components/faq'
 import Contact          from '@/components/contact'
@@ -30,10 +34,14 @@ export default function Home() {
         <Ticker />
         <MoneyShot />
         <HowItWorks />
+        <TrustLogos />
+        <Comparison />
         <Showcase />
         <Features />
-        <Comparison />
         <Results />
+        <WhyWebcrew />
+        <AfterYouJoin />
+        <ComingSoon />
         <Pricing />
         <FAQ />
         <Contact />

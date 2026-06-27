@@ -40,7 +40,7 @@ export default function Footer() {
               color: 'rgba(255,255,255,0.4)', fontSize: '0.875rem',
               lineHeight: 1.75, maxWidth: 280, marginBottom: 28,
             }}>
-              AI builds professional, lead-generating websites for local businesses. Overnight. For free.
+              Helping local businesses get more customers through better websites, SEO and continuous growth.
             </p>
             <a
               href="#contact"

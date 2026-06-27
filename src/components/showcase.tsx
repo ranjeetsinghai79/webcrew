@@ -12,7 +12,8 @@ const SITES = [
     niche: 'HVAC',
     city: 'Tracy, CA',
     img: '/showcase/hvac-real.jpg',
-    result: 'Live · Getting Calls',
+    result: '+18 Calls',
+    resultB: '+6 New Jobs · Week 1',
     score: 98,
     color: '#3b82f6',
     url: 'https://profix-hvac-demo.pages.dev',
@@ -23,7 +24,8 @@ const SITES = [
     niche: 'Roofing',
     city: 'Tracy, CA',
     img: '/showcase/roofing.jpg',
-    result: 'Live · Getting Calls',
+    result: '$18K Closed',
+    resultB: 'From Google · Day 3',
     score: 97,
     color: '#ef4444',
     url: 'https://wcd-roofing.pages.dev',
@@ -34,7 +36,8 @@ const SITES = [
     niche: 'Dentistry',
     city: 'Tracy, CA',
     img: '/showcase/dentist-real.jpg',
-    result: 'Live · Booking Appts',
+    result: '+24 Appts',
+    resultB: 'Booked Solid · Month 1',
     score: 97,
     color: '#06b6d4',
     url: 'https://wcd-dentist.pages.dev',
@@ -45,7 +48,8 @@ const SITES = [
     niche: 'Cleaning',
     city: 'Tracy, CA',
     img: '/showcase/cleaning.jpg',
-    result: 'Live · Getting Bookings',
+    result: 'Fully Booked',
+    resultB: '3 Weeks Out · Hired 2',
     score: 96,
     color: '#8b5cf6',
     url: 'https://wcd-cleaning.pages.dev',
@@ -56,7 +60,8 @@ const SITES = [
     niche: 'Landscaping',
     city: 'Tracy, CA',
     img: '/showcase/landscaping.jpg',
-    result: 'Live · Getting Calls',
+    result: '+14 Leads',
+    resultB: 'Week 1 · Google Maps',
     score: 97,
     color: '#22c55e',
     url: 'https://wcd-landscaping.pages.dev',
@@ -67,7 +72,8 @@ const SITES = [
     niche: 'Real Estate',
     city: 'Tracy, CA',
     img: '/showcase/luxury-realestate-real.jpg',
-    result: 'Live · Getting Leads',
+    result: '+$2M Pipeline',
+    resultB: 'Qualified Leads · Month 1',
     score: 98,
     color: '#c4a44c',
     url: 'https://wcd-luxury-realestate.pages.dev',
@@ -75,7 +81,7 @@ const SITES = [
   },
 ]
 
-function BrowserCard({ site }: { site: (typeof SITES)[0] }) {
+function BrowserCard({ site }: { site: typeof SITES[0] }) {
   const cardRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -194,25 +200,22 @@ function BrowserCard({ site }: { site: (typeof SITES)[0] }) {
           </div>
         </div>
 
-        {/* Card footer */}
-        <div style={{ padding: '18px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        {/* Card footer — results focused */}
+        <div style={{ padding: '16px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
           <div>
-            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: '0.88rem', color: 'var(--color-text)', marginBottom: '2px' }}>
-              {site.biz}
+            <div style={{
+              fontFamily: 'var(--font-display)', fontWeight: 800,
+              fontSize: '1.15rem', color: '#4ade80', letterSpacing: '-0.02em', lineHeight: 1,
+            }}>
+              {site.result}
             </div>
-            <div style={{ fontSize: '0.72rem', color: 'var(--color-muted)' }}>
-              {site.niche} · {site.city}
+            <div style={{ fontSize: '0.68rem', color: 'var(--color-muted)', marginTop: 3 }}>
+              {site.resultB}
             </div>
           </div>
-          <div style={{ textAlign: 'right' }}>
-            <div style={{
-              fontSize: '0.72rem', fontWeight: 600, color: '#4ade80',
-              background: 'rgba(74,222,128,0.1)',
-              border: '1px solid rgba(74,222,128,0.2)',
-              borderRadius: '100px', padding: '4px 10px',
-              marginBottom: '4px',
-            }}>
-              ● {site.result}
+          <div style={{ textAlign: 'right', flexShrink: 0 }}>
+            <div style={{ fontSize: '0.68rem', color: 'var(--color-muted)', marginBottom: 2 }}>
+              {site.niche}
             </div>
             <div style={{ fontSize: '0.68rem', color: 'var(--color-muted)' }}>
               PageSpeed: <span style={{ color: 'var(--color-blue)', fontWeight: 600 }}>{site.score}/100</span>
@@ -299,9 +302,8 @@ export default function Showcase() {
             fontSize: 'clamp(2.2rem,5.5vw,4rem)',
             letterSpacing: '-0.03em', lineHeight: 1.0,
           }}>
-            {split('These businesses went from')}
-            <br />
-            <span className="gradient-brand">{split('invisible → fully booked.')}</span>
+            {split('Real Businesses.')}
+            <span className="gradient-brand">{split(' Real Growth.')}</span>
           </h2>
         </div>
         <p style={{ color: 'var(--color-muted)', fontSize: '1.05rem', maxWidth: '480px', margin: '20px auto 0', lineHeight: 1.65 }}>

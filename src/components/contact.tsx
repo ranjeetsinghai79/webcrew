@@ -218,7 +218,7 @@ export default function Contact() {
         <div style={{ textAlign: 'center', marginBottom: '48px' }}>
           <div className="section-label" style={{ justifyContent: 'center' }}>
             <span style={{ width: '24px', height: '1px', background: 'var(--color-blue)' }} />
-            Claim Your Free Slot
+            Get Started Free
             <span style={{ width: '24px', height: '1px', background: 'var(--color-blue)' }} />
           </div>
           <h2 style={{
@@ -227,12 +227,12 @@ export default function Contact() {
             letterSpacing: '-0.03em', lineHeight: 1.05,
             marginBottom: '16px',
           }}>
-            60 seconds to fill out.{' '}
-            <span className="gradient-brand">We handle everything else.</span>
+            Ready to Get More Customers?{' '}
+            <span className="gradient-brand">Fill out one simple form.</span>
           </h2>
           <p style={{ color: 'var(--color-muted)', lineHeight: 1.7, fontSize: '1rem', maxWidth: '480px', margin: '0 auto' }}>
-            Your site goes live tonight. You wake up to a link, a live Google-ranked page, and leads starting day one.{' '}
-            <strong style={{ color: 'var(--color-text)' }}>Pay only if you love it.</strong>
+            We&apos;ll handle everything else. Your site goes live tonight. Wake up to a live, Google-ranked page and leads starting day one.{' '}
+            <strong style={{ color: 'var(--color-text)' }}>No setup fee. Ever.</strong>
           </p>
         </div>
 

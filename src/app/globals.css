@@ -171,6 +171,17 @@ body {
 }
 .ticker-track:hover { animation-play-state: paused; }
 
+/* ── Trust logo scroller ── */
+@keyframes trust-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+.trust-track {
+  display: flex; flex-wrap: nowrap; width: max-content;
+  animation: trust-scroll 36s linear infinite;
+}
+.trust-track:hover { animation-play-state: paused; }
+
 /* ── Input styles ── */
 .form-input {
   width: 100%;

@@ -446,11 +446,11 @@ export default function Hero() {
             }}
           >
             <div style={{ overflow: 'hidden', paddingBottom: '0.06em' }}>
-              {split('Wake up to')}
+              {split('More Customers.')}
             </div>
             <div style={{ overflow: 'hidden', paddingBottom: '0.06em' }}>
               <span style={{ display: 'inline-flex', flexWrap: 'wrap', gap: '0 0.22em' }}>
-                {'your website.'.split(' ').map((w, i) => (
+                {'By Tomorrow'.split(' ').map((w, i) => (
                   <span key={i} className="word-wrap" style={{ display: 'inline-block' }}>
                     <span className="word-inner" style={{
                       display: 'inline-block',
@@ -464,7 +464,7 @@ export default function Hero() {
               </span>
             </div>
             <div style={{ overflow: 'hidden', paddingBottom: '0.06em' }}>
-              {split('Built tonight. Free.')}
+              {split('Morning.')}
             </div>
           </h1>
 
@@ -479,9 +479,8 @@ export default function Hero() {
               marginBottom: '40px',
             }}
           >
-            Tell us your business.{' '}
-            <span style={{ color: '#FFFFFF', fontWeight: 600 }}>We design, build, and deploy a custom site while you sleep.</span>
-            {' '}Wake up to a live link — built for your city, your niche, your style. Pay $299 only if you love it.
+            We build, launch and continuously improve your online presence so your business gets{' '}
+            <span style={{ color: '#FFFFFF', fontWeight: 600 }}>more calls, more bookings and more customers.</span>
           </p>
 
           {/* CTAs */}
@@ -492,7 +491,7 @@ export default function Hero() {
               className="btn-primary"
               style={{ fontSize: '0.95rem', padding: '15px 28px' }}
             >
-              Get FREE Demo Site <ArrowRight size={16} />
+              Build My FREE Website <ArrowRight size={16} />
             </a>
             <a
               href="#contact"
@@ -521,7 +520,7 @@ export default function Hero() {
             </div>
             <div style={{ width: 1, height: 16, background: 'rgba(255,255,255,0.12)' }} />
             <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>
-              <span style={{ color: '#FFFFFF', fontWeight: 600 }}>$0</span> to start. Ever.
+              <span style={{ color: '#FFFFFF', fontWeight: 600 }}>$0</span> setup fee. Ever.
             </span>
             <div style={{ width: 1, height: 16, background: 'rgba(255,255,255,0.12)' }} />
             <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>
@@ -529,7 +528,7 @@ export default function Hero() {
             </span>
             <div style={{ width: 1, height: 16, background: 'rgba(255,255,255,0.12)' }} />
             <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>
-              <span style={{ color: '#FFFFFF', fontWeight: 600 }}>Pay only</span> if you love it
+              <span style={{ color: '#FFFFFF', fontWeight: 600 }}>$49/mo</span> — cancel anytime
             </span>
           </div>
         </div>

@@ -212,6 +212,7 @@ export default function Comparison() {
           </p>
         </div>
 
+
       </div>
     </section>
   )
