@@ -191,7 +191,7 @@ const STEPS = [
     n: '03',
     eyebrow: 'Step 3 — Your call to make',
     headline: 'Wake up to a live site. Pay if you love it.',
-    body: 'You get a text with your live demo link. Google-indexed, SEO-ready, converting visitors to calls from day one. Love it? Pay $299 once to own it forever. Don\'t love it? You owe us nothing.',
+    body: 'You get a text with your live demo link. Google-indexed, SEO-ready, ready to attract customers from day one. Love it? Subscribe at $49/mo — everything included, site is yours. Don\'t love it? You owe us nothing.',
     note: 'Most clients see calls in week 1',
     ui: <DemoUI />,
   },
@@ -273,21 +273,21 @@ export default function HowItWorks() {
               <h2 style={{
                 fontFamily: 'var(--font-display)', fontWeight: 800,
                 fontSize: 'clamp(2.2rem,4.5vw,3.8rem)',
-                letterSpacing: '-0.035em', lineHeight: 1.0,
+                letterSpacing: '-0.035em', lineHeight: 1.1,
               }}>
-                <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
+                <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>
                   {split('Invisible today.')}
                 </div>
-                <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
+                <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>
                   <span style={{
                     display: 'inline-block',
                     background: 'linear-gradient(135deg,#00C26F,#0EA5E9)',
                     WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
                   }}>
-                    {split('Fully booked')}
+                    {split('Discoverable')}
                   </span>
                 </div>
-                <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
+                <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>
                   {split('by tomorrow.')}
                 </div>
               </h2>
@@ -297,7 +297,7 @@ export default function HowItWorks() {
             color: 'var(--color-muted)', fontSize: '0.95rem',
             lineHeight: 1.75, maxWidth: 280, paddingBottom: 6,
           }}>
-            No meetings. No briefs. No contracts. No risk. You fill out one form — we do the rest while you sleep.
+            Fill out one simple form. We build, launch and optimize everything while you sleep.
           </p>
         </div>
 

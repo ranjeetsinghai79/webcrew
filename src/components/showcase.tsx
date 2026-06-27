@@ -293,21 +293,21 @@ export default function Showcase() {
       <div style={{ textAlign: 'center', marginBottom: '64px', padding: '0 32px' }}>
         <div className="section-label" style={{ justifyContent: 'center' }}>
           <span style={{ width: '24px', height: '1px', background: 'var(--color-blue)' }} />
-          Live Sites. Real Leads.
+          Live Sites. Real Businesses.
           <span style={{ width: '24px', height: '1px', background: 'var(--color-blue)' }} />
         </div>
         <div ref={headingRef}>
           <h2 style={{
             fontFamily: 'var(--font-display)', fontWeight: 700,
             fontSize: 'clamp(2.2rem,5.5vw,4rem)',
-            letterSpacing: '-0.03em', lineHeight: 1.0,
+            letterSpacing: '-0.03em', lineHeight: 1.1,
           }}>
             {split('Real Businesses.')}
             <span className="gradient-brand">{split(' Real Growth.')}</span>
           </h2>
         </div>
         <p style={{ color: 'var(--color-muted)', fontSize: '1.05rem', maxWidth: '480px', margin: '20px auto 0', lineHeight: 1.65 }}>
-          Every site built FREE overnight. All live within 24 hours. All getting calls.
+          Every website built overnight for a real local business, launched within 24 hours, and optimized to attract more customers.
           Click any site to see it live.
         </p>
       </div>

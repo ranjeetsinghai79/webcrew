@@ -9,7 +9,7 @@ if (typeof window !== 'undefined') { gsap.registerPlugin(ScrollTrigger) }
 const ROWS = [
   { feature: 'Time to launch',             diy: '6–12 weeks',       agency: '2–4 months',        webcrew: 'Overnight' },
   { feature: 'Upfront cost',               diy: '$2,000+',           agency: '$8,000–$20,000',    webcrew: '$0 to start' },
-  { feature: 'Site ownership',             diy: 'Template/sub lock', agency: 'Agency owns it',    webcrew: '$299 once, yours forever' },
+  { feature: 'Site ownership',             diy: 'Template/sub lock', agency: 'Agency owns it',    webcrew: 'Yes — included' },
   { feature: 'Monthly cost',               diy: '$25–$50/mo sub',   agency: '$300–$1,000+/mo',   webcrew: '$49/mo' },
   { feature: 'Local SEO',                  diy: false,               agency: 'Extra fee',         webcrew: true },
   { feature: 'Google Business Profile',    diy: false,               agency: 'Extra fee',         webcrew: true },
@@ -98,13 +98,13 @@ export default function Comparison() {
             <h2 style={{
               fontFamily: 'var(--font-display)', fontWeight: 800,
               fontSize: 'clamp(2rem,4.2vw,3.2rem)',
-              letterSpacing: '-0.035em', lineHeight: 1.05,
+              letterSpacing: '-0.035em', lineHeight: 1.12,
               marginBottom: 16,
             }}>
-              <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
+              <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>
                 {split('DIY. Agency. WebCrew.')}
               </div>
-              <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
+              <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>
                 <span style={{
                   background: 'linear-gradient(135deg,#00C26F,#0EA5E9)',
                   WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',

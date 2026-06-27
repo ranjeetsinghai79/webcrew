@@ -35,7 +35,7 @@ function RevenueCard() {
         setTimeout(() => {
           countUp(badRef.current, 9600, '-$', '/mo')
           countUp(goodRef.current, 18200, '+$', '/mo')
-          countUp(roiRef.current, 60, '', 'x')
+          countUp(roiRef.current, 371, '', 'x')
         }, 300)
       }
     }, { threshold: 0.4 })
@@ -155,7 +155,7 @@ function RevenueCard() {
             Your WebCrew cost
           </div>
           <div style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--color-text)' }}>
-            $299 one-time
+            $49/month · free to start
           </div>
         </div>
         <div style={{ textAlign: 'right' }}>
@@ -208,7 +208,7 @@ export default function MoneyShot() {
             display: 'inline-block',
             background: 'linear-gradient(135deg,#00C26F,#0EA5E9)',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-          } : undefined}
+          } : { display: 'inline-block', color: '#FFFFFF' }}
         >{w}</span>
       </span>
     ))
@@ -218,12 +218,26 @@ export default function MoneyShot() {
       ref={sectionRef}
       style={{
         padding: 'clamp(80px,10vw,130px) clamp(24px,6vw,80px)',
-        borderTop: '1px solid var(--color-border)',
+        background: 'linear-gradient(160deg, #04040E 0%, #080820 55%, #0D0B28 100%)',
+        position: 'relative',
         overflow: 'hidden',
       }}
     >
+      {/* Aurora blobs */}
+      <div className="aurora-blob" style={{ width: '500px', height: '500px', background: 'rgba(0,194,110,0.09)', top: '-10%', left: '-8%', animation: 'aurora-drift 16s ease-in-out infinite' }} />
+      <div className="aurora-blob" style={{ width: '400px', height: '400px', background: 'rgba(14,165,233,0.07)', bottom: '0%', right: '-5%', animation: 'aurora-drift 20s ease-in-out infinite reverse' }} />
+
+      {/* Grid overlay */}
       <div style={{
-        maxWidth: '1200px', margin: '0 auto',
+        position: 'absolute', inset: 0, pointerEvents: 'none',
+        backgroundImage: 'linear-gradient(rgba(0,194,110,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,194,110,0.04) 1px, transparent 1px)',
+        backgroundSize: '72px 72px',
+        maskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%, black 20%, transparent 75%)',
+      }} />
+      <div className="noise-overlay" />
+
+      <div style={{
+        maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1,
         display: 'grid',
         gridTemplateColumns: 'minmax(0,1fr) minmax(0,1fr)',
         gap: 'clamp(40px,6vw,80px)',
@@ -233,7 +247,7 @@ export default function MoneyShot() {
       >
         {/* Left: copy */}
         <div>
-          <div className="section-label" style={{ marginBottom: 20 }}>
+          <div className="section-label" style={{ marginBottom: 20, color: '#00C26F' }}>
             THE MATH
           </div>
 
@@ -241,43 +255,52 @@ export default function MoneyShot() {
             <h2 style={{
               fontFamily: 'var(--font-display)', fontWeight: 800,
               fontSize: 'clamp(2.2rem,4.2vw,3.8rem)',
-              letterSpacing: '-0.04em', lineHeight: 0.98,
+              letterSpacing: '-0.04em', lineHeight: 1.1,
+              color: '#FFFFFF',
             }}>
-              <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
+              <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>
                 {split('Invisible on Google')}
               </div>
-              <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
+              <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>
                 {split('= $9,600/month', true)}
               </div>
-              <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
+              <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>
                 {split('going to competitors.')}
               </div>
             </h2>
           </div>
 
           <p style={{
-            color: 'var(--color-muted)', fontSize: '1rem',
+            color: 'rgba(255,255,255,0.6)', fontSize: '1rem',
             lineHeight: 1.75, maxWidth: 440, marginBottom: 36,
           }}>
             Right now, someone in your city is Googling your trade. They&apos;ll call whoever shows up first. If that&apos;s not you, you just lost a $650 job — silently. Here&apos;s the real math on what being invisible costs you every single month:
           </p>
 
-          <div ref={bulletsRef} style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 44 }}>
+          <div ref={bulletsRef} style={{ display: 'flex', flexDirection: 'column', gap: 14, marginBottom: 44 }}>
             {BULLETS.map((b) => (
               <div
                 key={b.label}
                 className="math-bullet"
-                style={{ display: 'flex', alignItems: 'flex-start', gap: 14 }}
+                style={{
+                  display: 'flex', alignItems: 'flex-start', gap: 14,
+                  padding: '12px 16px',
+                  background: 'rgba(255,255,255,0.04)',
+                  border: '1px solid rgba(255,255,255,0.06)',
+                  borderRadius: 10,
+                }}
               >
                 <div style={{
                   flexShrink: 0, marginTop: 2,
                   fontFamily: 'var(--font-display)', fontWeight: 800,
-                  fontSize: '1rem', color: 'var(--color-blue)',
-                  minWidth: 52,
+                  fontSize: '1rem',
+                  background: 'linear-gradient(135deg, #00C26F, #0EA5E9)',
+                  WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+                  minWidth: 58,
                 }}>
                   {b.stat}
                 </div>
-                <div style={{ color: 'var(--color-muted)', fontSize: '0.9rem', lineHeight: 1.5 }}>
+                <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.88rem', lineHeight: 1.5 }}>
                   {b.label}
                 </div>
               </div>
@@ -288,7 +311,7 @@ export default function MoneyShot() {
             <a href="#contact" className="btn-primary">
               Get My FREE Demo Site <ArrowRight size={16} />
             </a>
-            <a href="#how-it-works" className="btn-ghost">
+            <a href="#how-it-works" className="btn-ghost" style={{ color: 'rgba(255,255,255,0.8)', borderColor: 'rgba(255,255,255,0.18)' }}>
               See How It Works
             </a>
           </div>

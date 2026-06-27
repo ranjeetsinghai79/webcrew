@@ -259,12 +259,12 @@ export default function Features() {
             <h2 style={{
               fontFamily: 'var(--font-display)', fontWeight: 800,
               fontSize: 'clamp(2rem,4.2vw,3.6rem)',
-              letterSpacing: '-0.035em', lineHeight: 1.0,
+              letterSpacing: '-0.035em', lineHeight: 1.1,
             }}>
-              <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
+              <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>
                 {split('Everything Your Business Needs.')}
               </div>
-              <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
+              <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>
                 <span style={{
                   background: 'linear-gradient(135deg,#00C26F,#0EA5E9)',
                   WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',

@@ -87,7 +87,7 @@ export default function AfterYouJoin() {
             <h2 style={{
               fontFamily: 'var(--font-display)', fontWeight: 800,
               fontSize: 'clamp(2rem,4.2vw,3.4rem)',
-              letterSpacing: '-0.035em', lineHeight: 1.0,
+              letterSpacing: '-0.035em', lineHeight: 1.1,
             }}>
               {split('What Happens After You Join?')}
             </h2>

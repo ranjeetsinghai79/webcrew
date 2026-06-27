@@ -439,18 +439,18 @@ export default function Hero() {
               fontFamily: 'var(--font-display)',
               fontWeight: 800,
               fontSize: 'clamp(2.6rem,4.5vw,4.4rem)',
-              lineHeight: 0.97,
+              lineHeight: 1.1,
               letterSpacing: '-0.04em',
               marginBottom: '28px',
               color: '#FFFFFF',
             }}
           >
-            <div style={{ overflow: 'hidden', paddingBottom: '0.06em' }}>
-              {split('More Customers.')}
+            <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>
+              {split('Your Business.')}
             </div>
-            <div style={{ overflow: 'hidden', paddingBottom: '0.06em' }}>
+            <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>
               <span style={{ display: 'inline-flex', flexWrap: 'wrap', gap: '0 0.22em' }}>
-                {'By Tomorrow'.split(' ').map((w, i) => (
+                {'Online. By'.split(' ').map((w, i) => (
                   <span key={i} className="word-wrap" style={{ display: 'inline-block' }}>
                     <span className="word-inner" style={{
                       display: 'inline-block',
@@ -463,8 +463,8 @@ export default function Hero() {
                 ))}
               </span>
             </div>
-            <div style={{ overflow: 'hidden', paddingBottom: '0.06em' }}>
-              {split('Morning.')}
+            <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>
+              {split('Tomorrow Morning.')}
             </div>
           </h1>
 
@@ -479,8 +479,8 @@ export default function Hero() {
               marginBottom: '40px',
             }}
           >
-            We build, launch and continuously improve your online presence so your business gets{' '}
-            <span style={{ color: '#FFFFFF', fontWeight: 600 }}>more calls, more bookings and more customers.</span>
+            We build, launch and continuously improve your online presence to help{' '}
+            <span style={{ color: '#FFFFFF', fontWeight: 600 }}>your business get found, attract more leads, and grow over time.</span>
           </p>
 
           {/* CTAs */}

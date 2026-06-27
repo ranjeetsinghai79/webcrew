@@ -9,7 +9,7 @@ if (typeof window !== 'undefined') { gsap.registerPlugin(ScrollTrigger) }
 const FAQS = [
   {
     q: 'Is this actually free? What\'s the catch?',
-    a: 'Yes, completely free to start. Here\'s exactly how it works: we build your demo at no cost. If you see it live and love it, you pay $299 once to own it. If you don\'t love it — for any reason — you pay nothing and we part ways. No card on file. No surprise charges. No follow-up sales calls. The catch is that we\'re betting on our own work. We only make money when clients love what we built.',
+    a: 'Yes, completely free to start. Here\'s exactly how it works: we build your demo at no cost. If you see it live and love it, subscribe for $49/month — that covers hosting, SEO, GBP posts, review replies, lead alerts, and everything else. Your website is yours. If you don\'t love it — for any reason — you pay nothing and we part ways. No card on file. No surprise charges. No follow-up sales calls. We only make money when clients love what we built.',
   },
   {
     q: 'Is this just a template with my name swapped in?',
@@ -95,12 +95,12 @@ export default function FAQ() {
             <h2 style={{
               fontFamily: 'var(--font-display)', fontWeight: 800,
               fontSize: 'clamp(2rem,4.5vw,3.6rem)',
-              letterSpacing: '-0.035em', lineHeight: 1.0,
+              letterSpacing: '-0.035em', lineHeight: 1.1,
             }}>
-              <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
+              <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>
                 {split('Everything you\'re')}
               </div>
-              <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
+              <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>
                 {split('skeptical about.', true)}
                 {' '}
                 <span className="word-wrap" style={{ display: 'inline-block' }}>

@@ -107,7 +107,7 @@ export default function WhyWebcrew() {
             <h2 style={{
               fontFamily: 'var(--font-display)', fontWeight: 800,
               fontSize: 'clamp(2rem,4.2vw,3.4rem)',
-              letterSpacing: '-0.035em', lineHeight: 1.0,
+              letterSpacing: '-0.035em', lineHeight: 1.1,
             }}>
               {split('Why Businesses Choose WebCrew.')}
               <br />
@@ -133,8 +133,16 @@ export default function WhyWebcrew() {
           }}
           className="why-grid"
         >
-          {REASONS.map((r) => {
+          {REASONS.map((r, idx) => {
             const Icon = r.icon
+            const gradients = [
+              'linear-gradient(135deg, #00C26F, #0EA5E9)',
+              'linear-gradient(135deg, #0EA5E9, #6366F1)',
+              'linear-gradient(135deg, #6366F1, #00C26F)',
+              'linear-gradient(135deg, #00C26F, #059669)',
+              'linear-gradient(135deg, #0EA5E9, #00C26F)',
+              'linear-gradient(135deg, #F59E0B, #00C26F)',
+            ]
             return (
               <div
                 key={r.title}
@@ -142,20 +150,36 @@ export default function WhyWebcrew() {
                 style={{
                   background: 'var(--color-surface)',
                   border: '1px solid var(--color-border)',
-                  borderRadius: 16,
+                  borderRadius: 20,
                   padding: '28px 24px',
-                  cursor: 'default',
-                  transition: 'border-color 0.3s, box-shadow 0.3s',
+                  position: 'relative',
+                  overflow: 'hidden',
                 }}
               >
+                {/* Subtle top glow */}
                 <div style={{
-                  width: 44, height: 44, borderRadius: 12,
-                  background: 'rgba(0,194,110,0.08)',
-                  border: '1px solid rgba(0,194,110,0.15)',
+                  position: 'absolute', top: 0, left: '15%', right: '15%', height: 1,
+                  background: 'linear-gradient(90deg, transparent, rgba(0,194,110,0.25), transparent)',
+                }} />
+
+                <div style={{
+                  width: 48, height: 48, borderRadius: 14,
+                  background: `${gradients[idx % gradients.length].replace('linear-gradient(135deg, ', 'linear-gradient(135deg, ').replace(')', '22)')}`,
+                  border: '1px solid rgba(0,194,110,0.2)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   marginBottom: 18,
+                  position: 'relative',
                 }}>
-                  <Icon size={20} color="#00C26F" />
+                  <div style={{
+                    position: 'absolute', inset: 0, borderRadius: 14,
+                    background: gradients[idx % gradients.length],
+                    opacity: 0.12,
+                  }} />
+                  <Icon size={20} style={{
+                    background: gradients[idx % gradients.length],
+                    WebkitBackgroundClip: 'text',
+                    position: 'relative', zIndex: 1,
+                  }} color="#00C26F" />
                 </div>
                 <h3 style={{
                   fontFamily: 'var(--font-display)', fontWeight: 700,
@@ -164,7 +188,7 @@ export default function WhyWebcrew() {
                 }}>
                   {r.title}
                 </h3>
-                <p style={{ color: 'var(--color-muted)', fontSize: '0.88rem', lineHeight: 1.65 }}>
+                <p style={{ color: 'var(--color-muted)', fontSize: '0.88rem', lineHeight: 1.7 }}>
                   {r.desc}
                 </p>
               </div>

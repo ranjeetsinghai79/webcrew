@@ -89,7 +89,7 @@ export default function BeforeAfter() {
             <h2 style={{
               fontFamily: 'var(--font-display)', fontWeight: 700,
               fontSize: 'clamp(2.2rem,5.5vw,4rem)',
-              letterSpacing: '-0.03em', lineHeight: 1.0,
+              letterSpacing: '-0.03em', lineHeight: 1.1,
             }}>
               {split('This is what')}
               <span className="gradient-gold">{split(' losing money')}</span>

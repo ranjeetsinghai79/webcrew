@@ -317,3 +317,127 @@ body {
   .hero-grid  { grid-template-columns: 1fr !important; }
   .hero-right { display: none !important; }
 }
+
+@layer components {
+  /* ── Section divider glow ── */
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(0,194,110,0.25) 50%, transparent 100%);
+  }
+
+  /* ── Gradient icon container ── */
+  .icon-gradient {
+    width: 48px; height: 48px; border-radius: 14px;
+    background: linear-gradient(135deg, rgba(0,194,110,0.15), rgba(14,165,233,0.08));
+    border: 1px solid rgba(0,194,110,0.2);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.3s, border-color 0.3s, transform 0.3s var(--ease-out);
+  }
+  .icon-gradient:hover {
+    background: linear-gradient(135deg, rgba(0,194,110,0.22), rgba(14,165,233,0.14));
+    border-color: rgba(0,194,110,0.35);
+    transform: translateY(-2px);
+  }
+
+  /* ── Premium stat number ── */
+  .stat-number-xl {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(3.5rem, 6vw, 5rem);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    background: linear-gradient(135deg, #00C26F 0%, #0EA5E9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Card with top glow accent ── */
+  .card-glow {
+    position: relative;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s var(--ease-out);
+  }
+  .card-glow::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 15%; right: 15%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,194,110,0.5), transparent);
+  }
+  .card-glow:hover {
+    border-color: rgba(0,194,110,0.3);
+    box-shadow: 0 20px 60px rgba(0,194,110,0.08);
+    transform: translateY(-4px);
+  }
+
+  /* ── Dark CTA band ── */
+  .cta-dark-band {
+    background: linear-gradient(160deg, #04040E 0%, #080820 55%, #0D0B28 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ── Skip link ── */
+  .skip-link {
+    position: fixed; top: -100px; left: 16px; z-index: 99999;
+    background: #00C26F; color: #000;
+    padding: 10px 20px; border-radius: 8px;
+    font-weight: 700; text-decoration: none;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 16px; }
+
+  /* ── Comparison table WebCrew highlight column ── */
+  .webcrew-col {
+    background: linear-gradient(180deg, rgba(0,194,110,0.04) 0%, rgba(0,194,110,0.02) 100%);
+    position: relative;
+  }
+
+  /* ── Why-card hover lift ── */
+  .why-card {
+    cursor: default;
+    transition: border-color 0.3s, box-shadow 0.3s !important;
+  }
+  .why-card:hover .icon-gradient {
+    background: linear-gradient(135deg, rgba(0,194,110,0.25), rgba(14,165,233,0.18));
+    border-color: rgba(0,194,110,0.4);
+  }
+
+  /* ── Pricing card featured glow ── */
+  .pricing-card-featured {
+    box-shadow: 0 0 0 1.5px rgba(0,194,110,0.35), 0 24px 80px rgba(0,194,110,0.1);
+  }
+  .pricing-card-featured:hover {
+    box-shadow: 0 0 0 1.5px rgba(0,194,110,0.5), 0 32px 100px rgba(0,194,110,0.16) !important;
+  }
+
+  /* ── Stats band dark ── */
+  .stats-dark-band {
+    background: linear-gradient(135deg, #04040E 0%, #080820 100%);
+    border-radius: 24px;
+    padding: clamp(32px, 5vw, 56px);
+    position: relative;
+    overflow: hidden;
+  }
+  .stats-dark-band::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(0,194,110,0.1), transparent 70%);
+    pointer-events: none;
+  }
+
+  /* ── Glowing border on focus for form inputs ── */
+  .form-input:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(0,194,110,0.12), 0 1px 2px rgba(0,0,0,0.04);
+  }
+
+  /* ── Mobile form stack ── */
+  @media (max-width: 640px) {
+    .form-grid-2 { grid-template-columns: 1fr !important; }
+  }
+}

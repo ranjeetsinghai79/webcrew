@@ -68,7 +68,7 @@ export default function Results() {
     <section
       id="results"
       ref={sectionRef}
-      style={{ padding: 'clamp(80px,12vw,140px) 32px' }}
+      style={{ padding: 'clamp(80px,12vw,140px) 32px', borderTop: '1px solid var(--color-border)' }}
     >
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
 
@@ -82,66 +82,56 @@ export default function Results() {
             <h2 style={{
               fontFamily: 'var(--font-display)', fontWeight: 700,
               fontSize: 'clamp(2.2rem,5.5vw,4rem)',
-              letterSpacing: '-0.03em', lineHeight: 1.0,
+              letterSpacing: '-0.03em', lineHeight: 1.1,
             }}>
               {split('The proof shows up')}
               <span className="gradient-brand">{split(' in your wallet.')}</span>
             </h2>
           </div>
           <p style={{ color: 'var(--color-muted)', fontSize: '1.05rem', maxWidth: '420px', margin: '20px auto 0', lineHeight: 1.65 }}>
-            847 businesses. Same result: more calls, more jobs, more revenue.
+            847 businesses. Helping local businesses get found online, attract more leads, and grow.
           </p>
         </div>
 
-        {/* Stats */}
-        <div
-          ref={statsRef}
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '2px', marginBottom: '80px' }}
-        >
-          {STATS.map(s => (
-            <div
-              key={s.label}
-              className="stat-card"
-              style={{
-                background: 'var(--color-surface)',
-                border: '1px solid var(--color-border)',
-                borderRadius: '14px',
-                padding: '36px 28px',
-                textAlign: 'center',
-                position: 'relative',
-                overflow: 'hidden',
-                transition: 'border-color 0.3s, box-shadow 0.3s',
-              }}
-              onMouseEnter={e => { const el = e.currentTarget; el.style.borderColor = 'rgba(0,194,110,0.35)'; el.style.boxShadow = '0 8px 32px rgba(0,0,0,0.1)' }}
-              onMouseLeave={e => { const el = e.currentTarget; el.style.borderColor = 'var(--color-border)'; el.style.boxShadow = 'none' }}
-            >
-              <div style={{
-                position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)',
-                width: '60%', height: '1px',
-                background: 'linear-gradient(90deg, transparent, rgba(0,194,110,0.4), transparent)',
-              }} />
+        {/* Stats — dark band */}
+        <div className="stats-dark-band" ref={statsRef} style={{ marginBottom: '80px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0', position: 'relative', zIndex: 1 }}>
+            {STATS.map((s, idx) => (
               <div
-                className="stat-num"
-                data-target={s.n}
-                data-prefix={s.prefix ?? ''}
-                data-suffix={s.suffix}
+                key={s.label}
+                className="stat-card"
                 style={{
-                  fontFamily: 'var(--font-display)', fontWeight: 700,
-                  fontSize: '3rem', color: 'var(--color-blue)',
-                  letterSpacing: '-0.03em', lineHeight: 1,
-                  marginBottom: '10px',
+                  padding: 'clamp(24px,3vw,40px) 28px',
+                  textAlign: 'center',
+                  borderRight: idx < STATS.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none',
+                  position: 'relative',
                 }}
               >
-                {(s.prefix ?? '') + '0' + s.suffix}
+                <div
+                  className="stat-num"
+                  data-target={s.n}
+                  data-prefix={s.prefix ?? ''}
+                  data-suffix={s.suffix}
+                  style={{
+                    fontFamily: 'var(--font-display)', fontWeight: 800,
+                    fontSize: 'clamp(3rem, 5vw, 4.5rem)',
+                    letterSpacing: '-0.04em', lineHeight: 1,
+                    marginBottom: '12px',
+                    background: 'linear-gradient(135deg, #00C26F 0%, #0EA5E9 100%)',
+                    WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+                  }}
+                >
+                  {(s.prefix ?? '') + '0' + s.suffix}
+                </div>
+                <div style={{ color: 'rgba(255,255,255,0.9)', fontSize: '0.9rem', fontWeight: 700, marginBottom: '4px', fontFamily: 'var(--font-display)' }}>
+                  {s.label}
+                </div>
+                <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.75rem' }}>
+                  {s.note}
+                </div>
               </div>
-              <div style={{ color: 'var(--color-text)', fontSize: '0.9rem', fontWeight: 600, marginBottom: '4px' }}>
-                {s.label}
-              </div>
-              <div style={{ color: 'var(--color-muted)', fontSize: '0.75rem' }}>
-                {s.note}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* Testimonials — 3 across */}
@@ -292,8 +282,8 @@ export default function Results() {
                 onMouseEnter={e => {
                   const el = e.currentTarget
                   el.style.color = 'var(--color-text)'
-                  el.style.borderColor = 'var(--color-blue)'
-                  el.style.background = 'rgba(0,0,0,0.04)'
+                  el.style.borderColor = 'rgba(0,194,110,0.5)'
+                  el.style.background = 'rgba(0,194,110,0.04)'
                 }}
                 onMouseLeave={e => {
                   const el = e.currentTarget
@@ -308,6 +298,13 @@ export default function Results() {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 600px) {
+          .stats-dark-band .stat-card { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.06); }
+          .stats-dark-band .stat-card:last-child { border-bottom: none; }
+        }
+      `}</style>
     </section>
   )
 }

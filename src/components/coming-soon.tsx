@@ -70,7 +70,7 @@ export default function ComingSoon() {
             <h2 style={{
               fontFamily: 'var(--font-display)', fontWeight: 700,
               fontSize: 'clamp(2.2rem,5.5vw,4rem)',
-              letterSpacing: '-0.03em', lineHeight: 1.0, color: '#FFFFFF',
+              letterSpacing: '-0.03em', lineHeight: 1.1, color: '#FFFFFF',
             }}>
               {split('Your Business Gets')}
               <span style={{

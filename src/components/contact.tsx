@@ -211,55 +211,82 @@ export default function Contact() {
     <section
       id="contact"
       ref={sectionRef}
-      style={{ padding: 'clamp(80px,12vw,140px) 32px' }}
+      style={{ position: 'relative' }}
     >
-      <div style={{ maxWidth: '680px', margin: '0 auto' }}>
+      {/* Dark header band */}
+      <div style={{
+        background: 'linear-gradient(160deg, #04040E 0%, #080820 55%, #0D0B28 100%)',
+        padding: 'clamp(80px,10vw,120px) 32px clamp(60px,8vw,80px)',
+        position: 'relative',
+        overflow: 'hidden',
+        textAlign: 'center',
+      }}>
+        {/* Aurora blobs */}
+        <div className="aurora-blob" style={{ width: '500px', height: '500px', background: 'rgba(0,194,110,0.1)', top: '-20%', left: '-10%', animation: 'aurora-drift 18s ease-in-out infinite' }} />
+        <div className="aurora-blob" style={{ width: '400px', height: '400px', background: 'rgba(14,165,233,0.08)', bottom: '-10%', right: '-5%', animation: 'aurora-drift 22s ease-in-out infinite reverse' }} />
+        <div className="noise-overlay" />
 
-        <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-          <div className="section-label" style={{ justifyContent: 'center' }}>
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-blue)' }} />
+        {/* Grid overlay */}
+        <div style={{
+          position: 'absolute', inset: 0, pointerEvents: 'none',
+          backgroundImage: 'linear-gradient(rgba(0,194,110,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,194,110,0.04) 1px, transparent 1px)',
+          backgroundSize: '72px 72px',
+          maskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 75%)',
+        }} />
+
+        <div style={{ position: 'relative', zIndex: 1, maxWidth: '640px', margin: '0 auto' }}>
+          <div className="section-label" style={{ justifyContent: 'center', marginBottom: 20, color: '#00C26F' }}>
+            <span style={{ width: '24px', height: '1px', background: 'rgba(0,194,110,0.5)' }} />
             Get Started Free
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-blue)' }} />
+            <span style={{ width: '24px', height: '1px', background: 'rgba(0,194,110,0.5)' }} />
           </div>
           <h2 style={{
-            fontFamily: 'var(--font-display)', fontWeight: 700,
-            fontSize: 'clamp(1.9rem,4.5vw,3rem)',
-            letterSpacing: '-0.03em', lineHeight: 1.05,
-            marginBottom: '16px',
+            fontFamily: 'var(--font-display)', fontWeight: 800,
+            fontSize: 'clamp(2rem,4.5vw,3.4rem)',
+            letterSpacing: '-0.04em', lineHeight: 1.1,
+            color: '#FFFFFF',
+            marginBottom: '20px',
           }}>
-            Ready to Get More Customers?{' '}
-            <span className="gradient-brand">Fill out one simple form.</span>
-          </h2>
-          <p style={{ color: 'var(--color-muted)', lineHeight: 1.7, fontSize: '1rem', maxWidth: '480px', margin: '0 auto' }}>
-            We&apos;ll handle everything else. Your site goes live tonight. Wake up to a live, Google-ranked page and leads starting day one.{' '}
-            <strong style={{ color: 'var(--color-text)' }}>No setup fee. Ever.</strong>
-          </p>
-        </div>
-
-        {/* Risk reversal bar */}
-        <div style={{
-          display: 'flex', flexWrap: 'wrap', gap: '12px',
-          justifyContent: 'center', marginBottom: '32px',
-        }}>
-          {[
-            { icon: '✓', text: 'Zero upfront cost' },
-            { icon: '✓', text: 'Live in under 24hrs' },
-            { icon: '✓', text: 'Pay only if you love it' },
-            { icon: '✓', text: 'You own it forever' },
-          ].map(({ icon, text }) => (
-            <div key={text} style={{
-              display: 'flex', alignItems: 'center', gap: 6,
-              fontSize: '0.82rem', fontWeight: 600,
-              color: 'var(--color-text)',
-              background: 'var(--color-surface)',
-              border: '1px solid var(--color-border)',
-              borderRadius: 100, padding: '7px 14px',
+            Fill out the form.{' '}
+            <span style={{
+              background: 'linear-gradient(135deg, #00C26F, #0EA5E9)',
+              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
             }}>
-              <span style={{ color: '#16a34a', fontWeight: 800 }}>{icon}</span>
-              {text}
-            </div>
-          ))}
+              Wake up to your site.
+            </span>
+          </h2>
+          <p style={{ color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, fontSize: '1.05rem', maxWidth: '480px', margin: '0 auto 32px' }}>
+            We build overnight. You get a live, Google-ready site in your inbox by morning.{' '}
+            <strong style={{ color: 'rgba(255,255,255,0.9)' }}>No card. No setup fee. Ever.</strong>
+          </p>
+
+          {/* Risk chips */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', justifyContent: 'center' }}>
+            {[
+              'Zero upfront cost',
+              'Live in under 24hrs',
+              'Pay only if you love it',
+              'You own it forever',
+            ].map(text => (
+              <div key={text} style={{
+                display: 'flex', alignItems: 'center', gap: 6,
+                fontSize: '0.8rem', fontWeight: 600,
+                color: 'rgba(255,255,255,0.8)',
+                background: 'rgba(255,255,255,0.06)',
+                border: '1px solid rgba(255,255,255,0.1)',
+                borderRadius: 100, padding: '7px 16px',
+              }}>
+                <span style={{ color: '#00C26F', fontWeight: 800 }}>✓</span>
+                {text}
+              </div>
+            ))}
+          </div>
         </div>
+      </div>
+
+      {/* Form section */}
+      <div style={{ background: 'var(--color-bg)', padding: 'clamp(48px,8vw,80px) 32px clamp(80px,12vw,140px)' }}>
+      <div style={{ maxWidth: '680px', margin: '0 auto' }}>
 
         {/* Tab selector */}
         <div style={{
@@ -449,6 +476,7 @@ export default function Contact() {
           )}
         </div>
       </div>
+      </div>{/* /form section bg */}
     </section>
   )
 }
