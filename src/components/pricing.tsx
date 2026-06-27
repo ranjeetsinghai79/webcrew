@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowRight, Check, Minus, Zap, BarChart2, Star, Globe, MessageSquare } from 'lucide-react'
+import { ArrowRight, Check, Minus, Zap, BarChart2, Star, Globe, MessageSquare, Phone } from 'lucide-react'
 
 if (typeof window !== "undefined") { gsap.registerPlugin(ScrollTrigger) }
 
@@ -16,11 +16,12 @@ const FREE_FEATURES = [
 ]
 
 const GROWTH_FEATURES = [
-  { icon: Globe,          label: 'Custom domain (yourdomain.com)', detail: 'Yours permanently — even if you cancel', market: '$30/mo' },
-  { icon: Zap,            label: 'Weekly Google Business posts',    detail: '52 posts/year — stay visible on Maps',  market: '$150/mo' },
-  { icon: Star,           label: 'Reply to every Google review',    detail: 'In your voice. Prompt. Every one.',     market: '$150/mo' },
-  { icon: BarChart2,      label: 'Monthly SEO + traffic report',    detail: 'Google Search Console data emailed to you', market: '$100/mo' },
-  { icon: MessageSquare,  label: 'Instant lead SMS + email alerts', detail: 'Contact form → your phone in seconds',  market: '$30/mo' },
+  { icon: Globe,          label: 'Custom domain (yourdomain.com)', detail: 'Yours permanently — even if you cancel', market: '$30/mo',  coming: false },
+  { icon: MessageSquare,  label: 'Instant lead SMS + email alerts', detail: 'Contact form → your phone in seconds',  market: '$30/mo',  coming: false },
+  { icon: Zap,            label: 'Weekly Google Business posts',    detail: '52 posts/year — stay visible on Maps',  market: '$150/mo', coming: false },
+  { icon: Star,           label: 'Reply to every Google review',    detail: 'In your voice. Prompt. Every one.',     market: '$150/mo', coming: false },
+  { icon: BarChart2,      label: 'Monthly SEO + traffic report',    detail: 'Google Search Console data — emailed monthly', market: '$100/mo', coming: false },
+  { icon: Phone,          label: 'AI call answering — 24/7',        detail: 'Answers calls when you\'re busy. Founding members get this FREE on launch.', market: 'Coming Q3', coming: true },
 ]
 
 export default function Pricing() {
@@ -88,9 +89,9 @@ export default function Pricing() {
           ref={cardsRef}
           style={{
             display: 'grid',
-            gridTemplateColumns: 'minmax(0,1fr) minmax(0,1.15fr)',
+            gridTemplateColumns: 'minmax(0,1fr) minmax(0,1fr)',
             gap: '20px',
-            alignItems: 'start',
+            alignItems: 'stretch',
           }}
           className="pricing-grid"
         >
@@ -140,7 +141,7 @@ export default function Pricing() {
               Get Free Site — No Card Needed
             </a>
 
-            <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '24px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '24px', display: 'flex', flexDirection: 'column', gap: '12px', flex: 1 }}>
               {FREE_FEATURES.map(f => (
                 <div key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                   <Check size={14} color="var(--color-blue)" style={{ flexShrink: 0, marginTop: 2 }} />
@@ -211,10 +212,10 @@ export default function Pricing() {
               className="btn-primary"
               style={{ display: 'flex', justifyContent: 'center', textDecoration: 'none', marginBottom: '28px' }}
             >
-              Start Free — Upgrade Later <ArrowRight size={16} />
+              Lock In $49/mo — Start Free <ArrowRight size={16} />
             </a>
 
-            <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '24px' }}>
+            <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '24px', flex: 1 }}>
               <div style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--color-muted)', marginBottom: '16px', letterSpacing: '0.04em' }}>
                 Everything in Free, plus:
               </div>
@@ -222,20 +223,27 @@ export default function Pricing() {
                 {GROWTH_FEATURES.map(item => {
                   const Icon = item.icon
                   return (
-                    <div key={item.label} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                    <div key={item.label} style={{
+                      display: 'flex', gap: '12px', alignItems: 'flex-start',
+                      opacity: item.coming ? 0.7 : 1,
+                    }}>
                       <div style={{
                         width: '30px', height: '30px', flexShrink: 0,
-                        background: 'rgba(0,194,110,0.08)', borderRadius: '8px',
+                        background: item.coming ? 'rgba(255,255,255,0.05)' : 'rgba(0,194,110,0.08)',
+                        borderRadius: '8px',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        border: item.coming ? '1px dashed rgba(255,255,255,0.15)' : 'none',
                       }}>
-                        <Icon size={13} color="var(--color-blue)" />
+                        <Icon size={13} color={item.coming ? 'rgba(255,255,255,0.3)' : 'var(--color-blue)'} />
                       </div>
                       <div style={{ flex: 1 }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '8px' }}>
-                          <span style={{ fontSize: '0.84rem', fontWeight: 600, color: 'var(--color-text)' }}>{item.label}</span>
+                          <span style={{ fontSize: '0.84rem', fontWeight: 600, color: item.coming ? 'var(--color-muted)' : 'var(--color-text)' }}>{item.label}</span>
                           <span style={{
-                            fontSize: '0.65rem', color: 'var(--color-muted)',
-                            background: 'var(--color-surface)', border: '1px solid var(--color-border)',
+                            fontSize: '0.65rem',
+                            color: item.coming ? '#00C26F' : 'var(--color-muted)',
+                            background: item.coming ? 'rgba(0,194,110,0.08)' : 'var(--color-surface)',
+                            border: item.coming ? '1px solid rgba(0,194,110,0.2)' : '1px solid var(--color-border)',
                             borderRadius: '6px', padding: '1px 7px', whiteSpace: 'nowrap', flexShrink: 0,
                           }}>{item.market}</span>
                         </div>
