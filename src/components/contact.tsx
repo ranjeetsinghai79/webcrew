@@ -345,7 +345,7 @@ export default function Contact() {
                   onFocus={onFocus} onBlur={onBlur} />
               </div>
 
-              <input style={inputStyle} type="tel" placeholder="Phone number *" required
+              <input style={inputStyle} type="tel" placeholder="Phone number (optional)"
                 value={audit.phone} onChange={e => setAudit(f => ({ ...f, phone: e.target.value }))}
                 onFocus={onFocus} onBlur={onBlur} />
 
@@ -414,7 +414,7 @@ export default function Contact() {
                 <input style={inputStyle} type="text" placeholder="Your name *" required
                   value={demo.name} onChange={e => setDemo(f => ({ ...f, name: e.target.value }))}
                   onFocus={onFocus} onBlur={onBlur} />
-                <input style={inputStyle} type="tel" placeholder="Phone number *" required
+                <input style={inputStyle} type="tel" placeholder="Phone number (optional)"
                   value={demo.phone} onChange={e => setDemo(f => ({ ...f, phone: e.target.value }))}
                   onFocus={onFocus} onBlur={onBlur} />
               </div>
