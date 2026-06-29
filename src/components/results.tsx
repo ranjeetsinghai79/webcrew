@@ -6,15 +6,18 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 if (typeof window !== "undefined") { gsap.registerPlugin(ScrollTrigger) }
 
 const STATS: { n: number; suffix: string; prefix?: string; label: string; note: string }[] = [
-  { n: 847,  suffix: '+',      label: 'Sites live',              note: 'and growing daily' },
-  { n: 6,    suffix: 'h',      label: 'Avg build time',          note: 'while you sleep' },
-  { n: 7,    suffix: ' days',  label: 'To first Google call',    note: 'median across all clients' },
+  { n: 847,  suffix: '+',      label: 'Businesses live',         note: 'AI teams deployed' },
+  { n: 24,   suffix: '/7',     label: 'AI team works',           note: 'never sleeps, never calls in sick' },
+  { n: 62,   suffix: '%',      label: 'Calls missed without AI', note: 'industry average for local SMBs' },
   { n: 94,   suffix: '%',      label: 'Client retention',        note: 'renew every year' },
 ]
 
 const NICHES = [
   'HVAC', 'Roofing', 'Auto Detailing', 'Cleaning', 'Landscaping',
-  'Handyman', 'Junk Removal', 'Remodeling', 'Dentist', 'Med Spa',
+  'Junk Removal', 'Remodeling', 'Dentist', 'Med Spa', 'Law Firm',
+  'Plumbing', 'Barbershop', 'Salon', 'Pressure Washing', 'Daycare',
+  'Epoxy Flooring', 'Foundation Repair', 'Septic Services', 'Tree Services',
+  'Skin Clinic', 'IV Therapy', 'Nail Studio', 'Restaurant', 'Real Estate',
 ]
 
 export default function Results() {
@@ -60,7 +63,7 @@ export default function Results() {
   const split = (text: string) =>
     text.split(' ').map((w, i) => (
       <span key={i} className="word-wrap" style={{ display: 'inline-block', marginRight: '0.22em' }}>
-        <span className="word-inner">{w}</span>
+        <span className="word-inner">{w}{' '}</span>
       </span>
     ))
 
@@ -84,12 +87,12 @@ export default function Results() {
               fontSize: 'clamp(2.2rem,5.5vw,4rem)',
               letterSpacing: '-0.03em', lineHeight: 1.1,
             }}>
-              {split('The proof shows up')}
-              <span className="gradient-brand">{split(' in your wallet.')}</span>
+              {split('Numbers that prove')}
+              <span className="gradient-brand">{split(' AI beats humans.')}</span>
             </h2>
           </div>
-          <p style={{ color: 'var(--color-muted)', fontSize: '1.05rem', maxWidth: '420px', margin: '20px auto 0', lineHeight: 1.65 }}>
-            847 businesses. Helping local businesses get found online, attract more leads, and grow.
+          <p style={{ color: 'var(--color-muted)', fontSize: '1.05rem', maxWidth: '460px', margin: '20px auto 0', lineHeight: 1.65 }}>
+            847 local businesses. 8 AI agents each. Real results — calls answered, reviews replied, leads closed, rankings climbing.
           </p>
         </div>
 
@@ -210,49 +213,38 @@ export default function Results() {
           ))}
         </div>
 
-        {/* Live Right Now */}
-        <div style={{
-          marginBottom: '72px',
-          padding: '28px 32px',
-          background: 'linear-gradient(135deg, rgba(0,194,110,0.06) 0%, rgba(14,165,233,0.04) 100%)',
-          border: '1px solid rgba(0,194,110,0.2)',
-          borderRadius: '16px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
-          gap: 20,
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-            <div style={{
-              width: 10, height: 10, borderRadius: '50%',
-              background: '#10B981',
-              boxShadow: '0 0 10px rgba(16,185,129,0.7)',
-              flexShrink: 0,
-              animation: 'pulse-ring 2s ease-out infinite',
-            }} />
-            <div>
-              <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--color-muted)', marginBottom: 4 }}>
-                Live Right Now
-              </div>
-              <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.05rem', color: 'var(--color-text)' }}>
-                Last Website Published: <span style={{ color: '#10B981' }}>8 minutes ago</span>
-              </div>
-            </div>
+        {/* AI Agents Live Feed */}
+        <div style={{ marginBottom: '72px' }}>
+          <div style={{
+            fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.18em',
+            textTransform: 'uppercase', color: 'var(--color-muted)',
+            textAlign: 'center', marginBottom: 16,
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+          }}>
+            <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#10B981', boxShadow: '0 0 8px rgba(16,185,129,0.7)', animation: 'pulse-ring 2s ease-out infinite' }} />
+            AI Agents Active Right Now
           </div>
-          <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap' }}>
-            <div>
-              <div style={{ fontSize: '0.65rem', color: 'var(--color-muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 4 }}>Business</div>
-              <div style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--color-text)' }}>ABC Plumbing</div>
-            </div>
-            <div>
-              <div style={{ fontSize: '0.65rem', color: 'var(--color-muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 4 }}>Location</div>
-              <div style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--color-text)' }}>Sacramento, CA</div>
-            </div>
-            <div>
-              <div style={{ fontSize: '0.65rem', color: 'var(--color-muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 4 }}>Status</div>
-              <div style={{ fontSize: '0.88rem', fontWeight: 700, color: '#10B981' }}>Live &amp; indexed</div>
-            </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12 }} className="ai-feed-grid">
+            {[
+              { agent: 'AI Reception', action: 'Answered call for Valley Plumbing', time: '2m ago', color: '#00C26F' },
+              { agent: 'Review Agent', action: 'Replied to 4★ review for SmileDental', time: '7m ago', color: '#8B5CF6' },
+              { agent: 'GBP Agent', action: 'Posted "Fall special" for GreenScape', time: '12m ago', color: '#0EA5E9' },
+              { agent: 'Lead Alert', action: 'SMS sent → new inquiry for Elite Roofing', time: '18m ago', color: '#F59E0B' },
+            ].map(item => (
+              <div key={item.agent} style={{
+                padding: '14px 16px',
+                background: 'var(--color-surface)',
+                border: `1px solid ${item.color}20`,
+                borderRadius: 12,
+                borderLeft: `3px solid ${item.color}`,
+              }}>
+                <div style={{ fontSize: '0.6rem', fontWeight: 700, color: item.color, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 6 }}>
+                  {item.agent}
+                </div>
+                <div style={{ fontSize: '0.75rem', color: 'var(--color-text)', lineHeight: 1.4, marginBottom: 6 }}>{item.action}</div>
+                <div style={{ fontSize: '0.62rem', color: 'var(--color-muted)' }}>{item.time}</div>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -303,6 +295,12 @@ export default function Results() {
         @media (max-width: 600px) {
           .stats-dark-band .stat-card { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.06); }
           .stats-dark-band .stat-card:last-child { border-bottom: none; }
+        }
+        @media (max-width: 860px) {
+          .ai-feed-grid { grid-template-columns: repeat(2,1fr) !important; }
+        }
+        @media (max-width: 480px) {
+          .ai-feed-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>

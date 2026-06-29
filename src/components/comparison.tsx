@@ -76,7 +76,7 @@ export default function Comparison() {
   const split = (text: string) =>
     text.split(' ').map((w, i) => (
       <span key={i} className="word-wrap" style={{ display: 'inline-block', marginRight: '0.22em' }}>
-        <span className="word-inner">{w}</span>
+        <span className="word-inner">{w}{' '}</span>
       </span>
     ))
 

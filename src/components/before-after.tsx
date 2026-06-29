@@ -62,7 +62,7 @@ export default function BeforeAfter() {
   const split = (text: string) =>
     text.split(' ').map((w, i) => (
       <span key={i} className="word-wrap" style={{ display: 'inline-block', marginRight: '0.22em' }}>
-        <span className="word-inner">{w}</span>
+        <span className="word-inner">{w}{' '}</span>
       </span>
     ))
 
@@ -275,7 +275,7 @@ export default function BeforeAfter() {
                   fontSize: '0.88rem',
                 }}>
                   <span style={{ color: '#4ade80', opacity: 0.8 }}>✓</span>
-                  <span style={{ color: 'var(--color-text)' }}>{w}</span>
+                  <span style={{ color: 'var(--color-text)' }}>{w}{' '}</span>
                 </div>
               ))}
             </div>

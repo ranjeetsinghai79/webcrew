@@ -2,205 +2,138 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Phone, Globe, BarChart2, Zap } from 'lucide-react'
 
 if (typeof window !== 'undefined') { gsap.registerPlugin(ScrollTrigger) }
 
-// ── Mini UI mockups inside each step card ────────────────────────────────────
-
-function SignupUI() {
-  return (
-    <div style={{
-      background: '#0a0a14', borderRadius: 10, padding: '14px 12px',
-      border: '1px solid rgba(0,194,110,0.12)',
-    }}>
-      <div style={{ fontSize: '0.58rem', color: 'rgba(0,194,110,0.5)', marginBottom: 10, letterSpacing: '0.1em', fontFamily: 'monospace' }}>
-        GET MY FREE DEMO SITE
-      </div>
-      {[
-        { label: 'Business name', value: 'Tracy HVAC Pros', filled: true },
-        { label: 'Phone number',  value: '(209) 555-0182',  filled: true },
-        { label: 'Industry',      value: 'HVAC',            filled: true },
-      ].map(f => (
-        <div key={f.label} style={{ marginBottom: 6 }}>
-          <div style={{ fontSize: '0.5rem', color: 'rgba(255,255,255,0.3)', marginBottom: 2, fontFamily: 'var(--font-body)' }}>{f.label}</div>
-          <div style={{
-            fontSize: '0.62rem', padding: '5px 8px', borderRadius: 5, fontFamily: 'var(--font-body)',
-            background: f.filled ? 'rgba(0,194,110,0.08)' : 'rgba(255,255,255,0.04)',
-            border: `1px solid ${f.filled ? 'rgba(0,194,110,0.2)' : 'rgba(255,255,255,0.06)'}`,
-            color: f.filled ? '#F2F1EA' : 'rgba(255,255,255,0.2)',
-          }}>
-            {f.value}
-          </div>
-        </div>
-      ))}
-      <div style={{
-        marginTop: 10, padding: '7px 10px', borderRadius: 6,
-        background: '#00C26F', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-      }}>
-        <div style={{ fontSize: '0.62rem', fontWeight: 700, color: '#06060C', fontFamily: 'var(--font-display)' }}>
-          Build My FREE Site →
-        </div>
-      </div>
-      <div style={{
-        marginTop: 8, padding: '5px 8px', borderRadius: 6,
-        background: 'rgba(74,222,128,0.06)', border: '1px solid rgba(74,222,128,0.15)',
-        display: 'flex', alignItems: 'center', gap: 6,
-      }}>
-        <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#4ade80', boxShadow: '0 0 4px #4ade80', flexShrink: 0 }} />
-        <div style={{ fontSize: '0.55rem', color: '#4ade80', fontFamily: 'var(--font-body)' }}>Submitted · building starts now</div>
-      </div>
-    </div>
-  )
-}
-
-function BuildUI() {
-  return (
-    <div style={{
-      background: '#0a0a14', borderRadius: 10, padding: '14px 12px',
-      border: '1px solid rgba(0,194,110,0.12)',
-    }}>
-      <div style={{ display: 'flex', gap: 6, marginBottom: 10 }}>
-        {['#ff5f57','#febc2e','#28c840'].map((c, i) => (
-          <div key={i} style={{ width: 8, height: 8, borderRadius: '50%', background: c, opacity: 0.75 }} />
-        ))}
-      </div>
-      {[
-        { label: 'Brand analysis',   done: true  },
-        { label: 'Generating config',done: true  },
-        { label: 'Custom hero images', done: true  },
-        { label: 'Cinematic video',  done: true  },
-        { label: 'SEO & schema',     done: true  },
-        { label: 'Deploying live',   active: true },
-      ].map((t) => (
-        <div key={t.label} style={{
-          display: 'flex', alignItems: 'center', gap: 7,
-          padding: '5px 0', borderBottom: '1px solid rgba(0,194,110,0.05)',
-        }}>
-          <div style={{
-            width: 14, height: 14, borderRadius: '50%', flexShrink: 0,
-            border: t.active ? '2px solid #00C26F' : 'none',
-            background: t.done ? '#4ade80' : 'rgba(0,194,110,0.1)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}>
-            {t.done && <span style={{ fontSize: '0.5rem', color: '#06060C' }}>✓</span>}
-            {t.active && <div style={{ width: 4, height: 4, borderRadius: '50%', background: '#00C26F', animation: 'none' }} />}
-          </div>
-          <div style={{
-            fontSize: '0.62rem', fontFamily: 'var(--font-body)',
-            color: t.active ? '#00C26F' : t.done ? 'rgba(255,255,255,0.55)' : 'rgba(255,255,255,0.25)',
-          }}>
-            {t.label}
-          </div>
-          {t.active && (
-            <div style={{
-              marginLeft: 'auto', fontSize: '0.55rem',
-              color: '#00C26F', fontFamily: 'monospace',
-            }}>
-              ···
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
-  )
-}
-
-function DemoUI() {
-  return (
-    <div style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
-      {/* Phone */}
-      <div style={{
-        width: 80, flexShrink: 0,
-        background: '#0a0a14', borderRadius: 12,
-        border: '1.5px solid rgba(0,194,110,0.2)',
-        padding: '10px 6px',
-        display: 'flex', flexDirection: 'column', gap: 6,
-      }}>
-        <div style={{ width: 20, height: 3, borderRadius: 2, background: 'rgba(255,255,255,0.1)', margin: '0 auto' }} />
-        <div style={{
-          background: 'rgba(74,222,128,0.08)', border: '1px solid rgba(74,222,128,0.2)',
-          borderRadius: 8, padding: '6px 5px',
-        }}>
-          <div style={{ fontSize: '0.5rem', color: '#4ade80', marginBottom: 2, fontFamily: 'var(--font-body)' }}>WebCrew</div>
-          <div style={{ fontSize: '0.48rem', color: 'rgba(255,255,255,0.55)', lineHeight: 1.4 }}>
-            Your site is live 🎉 Tap to see it
-          </div>
-          <div style={{
-            marginTop: 5, background: '#00C26F', borderRadius: 4,
-            padding: '3px 6px', fontSize: '0.46rem',
-            fontWeight: 700, color: '#06060C', textAlign: 'center',
-          }}>
-            View My Site →
-          </div>
-        </div>
-        <div style={{ display: 'flex', gap: 3, justifyContent: 'center' }}>
-          {[3, 4, 5].map(w => (
-            <div key={w} style={{ width: `${w * 6}px`, height: 3, borderRadius: 2, background: 'rgba(255,255,255,0.06)' }} />
-          ))}
-        </div>
-      </div>
-
-      {/* Result card */}
-      <div style={{
-        flex: 1, background: '#0a0a14', borderRadius: 10,
-        border: '1px solid rgba(0,194,110,0.12)', padding: '10px',
-      }}>
-        <div style={{ fontSize: '0.58rem', color: 'rgba(0,194,110,0.6)', marginBottom: 6, letterSpacing: '0.08em' }}>YOUR NEW SITE</div>
-        <div style={{
-          background: 'linear-gradient(135deg,#1a1a28,#12121e)',
-          borderRadius: 6, padding: '8px', marginBottom: 8,
-          border: '1px solid rgba(0,194,110,0.08)',
-        }}>
-          <div style={{ fontSize: '0.62rem', fontWeight: 700, color: '#00C26F', fontFamily: 'var(--font-display)', marginBottom: 2 }}>
-            Tracy HVAC Pros
-          </div>
-          <div style={{ fontSize: '0.5rem', color: 'rgba(255,255,255,0.35)' }}>Licensed & Insured · Tracy, CA</div>
-        </div>
-        <div style={{
-          display: 'flex', gap: 4, alignItems: 'center',
-          padding: '5px 7px', borderRadius: 6,
-          background: 'rgba(74,222,128,0.05)', border: '1px solid rgba(74,222,128,0.12)',
-        }}>
-          <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#4ade80', flexShrink: 0 }} />
-          <div style={{ fontSize: '0.55rem', color: '#4ade80' }}>Live · pagespeed 97/100</div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-// ── Steps data ───────────────────────────────────────────────────────────────
 const STEPS = [
   {
-    n: '01',
-    eyebrow: 'Step 1 — 60 seconds',
-    headline: 'Tell us your business. That\'s it.',
-    body: 'Name, phone, industry. No credit card. No discovery calls. No 6-week briefs. We start building the moment you hit submit — usually within minutes.',
-    note: 'No payment. No card. Ever.',
-    ui: <SignupUI />,
+    num: '01',
+    icon: Zap,
+    color: '#00C26F',
+    title: 'Tell us your business',
+    sub: '2 minutes. That\'s it.',
+    body: 'Name, phone, niche, city. No forms, no calls, no agency pitch. Submit and go back to work. We handle everything from here.',
+    detail: 'Business name · Industry · City · Phone number',
+    ui: (
+      <div style={{ background: '#0a0a14', borderRadius: 10, padding: '14px 12px', border: '1px solid rgba(0,194,110,0.14)' }}>
+        <div style={{ fontSize: '0.56rem', color: 'rgba(0,194,110,0.55)', marginBottom: 10, letterSpacing: '0.12em', fontFamily: 'monospace' }}>
+          STEP 1 — SUBMIT
+        </div>
+        {['Business name · Maria\'s Medspa', 'City · Tracy, CA', 'Industry · Med Spa'].map((f, i) => (
+          <div key={i} style={{
+            marginBottom: 6, fontSize: '0.62rem', padding: '6px 9px', borderRadius: 5,
+            background: 'rgba(0,194,110,0.07)', border: '1px solid rgba(0,194,110,0.18)',
+            color: '#d1fae5', fontFamily: 'var(--font-body)',
+          }}>{f}</div>
+        ))}
+        <div style={{ marginTop: 10, padding: '7px 0', borderRadius: 6, background: '#00C26F', textAlign: 'center' }}>
+          <span style={{ fontSize: '0.62rem', fontWeight: 700, color: '#06060C', fontFamily: 'var(--font-display)' }}>Build My FREE Site →</span>
+        </div>
+        <div style={{ marginTop: 7, display: 'flex', alignItems: 'center', gap: 6, padding: '5px 8px', borderRadius: 5, background: 'rgba(74,222,128,0.06)', border: '1px solid rgba(74,222,128,0.15)' }}>
+          <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#4ade80', boxShadow: '0 0 5px #4ade80', flexShrink: 0 }} />
+          <div style={{ fontSize: '0.55rem', color: '#4ade80' }}>Received · AI team spinning up now</div>
+        </div>
+      </div>
+    ),
   },
   {
-    n: '02',
-    eyebrow: 'Step 2 — Overnight',
-    headline: 'We build your site while you sleep.',
-    body: 'We write city-specific copy, build your pages with custom images, and deploy everything to a live URL with a 97/100 PageSpeed score. Done before your alarm goes off.',
-    note: 'Avg 6hrs · zero involvement from you',
-    ui: <BuildUI />,
+    num: '02',
+    icon: Globe,
+    color: '#0EA5E9',
+    title: 'AI builds your site tonight',
+    sub: 'While you sleep.',
+    body: 'Our AI scrapes your brand, generates real images, writes your copy, and deploys a custom site — PageSpeed 97+, indexed, live. In under 8 hours. No humans required.',
+    detail: 'Brand analysis · Image gen · Custom copy · Cloudflare deploy',
+    ui: (
+      <div style={{ background: '#0a0a14', borderRadius: 10, padding: '14px 12px', border: '1px solid rgba(14,165,233,0.14)' }}>
+        <div style={{ fontSize: '0.56rem', color: 'rgba(14,165,233,0.55)', marginBottom: 10, letterSpacing: '0.12em', fontFamily: 'monospace' }}>
+          STEP 2 — BUILDING
+        </div>
+        {[
+          { label: 'Brand analysis', done: true, color: '#00C26F' },
+          { label: 'Generating hero images', done: true, color: '#00C26F' },
+          { label: 'Writing custom copy', done: true, color: '#00C26F' },
+          { label: 'Deploying to Cloudflare', active: true, color: '#0EA5E9' },
+        ].map((s, i) => (
+          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '5px 0', borderBottom: i < 3 ? '1px solid rgba(255,255,255,0.04)' : 'none' }}>
+            <div style={{ width: 7, height: 7, borderRadius: '50%', background: s.done ? '#00C26F' : s.active ? '#0EA5E9' : 'rgba(255,255,255,0.1)', boxShadow: s.active ? '0 0 7px #0EA5E9' : 'none', flexShrink: 0 }} />
+            <div style={{ fontSize: '0.6rem', color: s.done ? '#d1fae5' : s.active ? '#7dd3fc' : 'rgba(255,255,255,0.2)', fontFamily: 'var(--font-body)' }}>{s.label}</div>
+            {(s.done || s.active) && <div style={{ marginLeft: 'auto', fontSize: '0.5rem', color: s.done ? '#00C26F' : '#0EA5E9', fontWeight: 700 }}>{s.done ? '✓' : '●'}</div>}
+          </div>
+        ))}
+      </div>
+    ),
   },
   {
-    n: '03',
-    eyebrow: 'Step 3 — Your call to make',
-    headline: 'Wake up to a live site. Pay if you love it.',
-    body: 'You get a text with your live demo link. Google-indexed, SEO-ready, ready to attract customers from day one. Love it? Subscribe at $49/mo — everything included, site is yours. Don\'t love it? You owe us nothing.',
-    note: 'Most clients see calls in week 1',
-    ui: <DemoUI />,
+    num: '03',
+    icon: Phone,
+    color: '#8B5CF6',
+    title: '7 AI agents activate',
+    sub: 'Your full team is live.',
+    body: 'The moment your site goes live, your AI business manager kicks in. Reception answers calls. GBP posts go out weekly. Reviews get replied to. Ads go live. All automatic.',
+    detail: 'Reception · GBP posts · Review replies · Ads · Social · Reports',
+    ui: (
+      <div style={{ background: '#0a0a14', borderRadius: 10, padding: '14px 12px', border: '1px solid rgba(139,92,246,0.14)' }}>
+        <div style={{ fontSize: '0.56rem', color: 'rgba(139,92,246,0.55)', marginBottom: 10, letterSpacing: '0.12em', fontFamily: 'monospace' }}>
+          STEP 3 — LIVE
+        </div>
+        {[
+          { label: 'AI Reception', status: 'Answering calls', color: '#00C26F' },
+          { label: 'GBP Manager', status: 'Post scheduled', color: '#0EA5E9' },
+          { label: 'Review Reply', status: '4★ reply sent', color: '#8B5CF6' },
+          { label: 'Lead Alert', status: 'SMS → owner', color: '#F59E0B' },
+        ].map((a, i) => (
+          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '6px 0', borderBottom: i < 3 ? '1px solid rgba(255,255,255,0.04)' : 'none' }}>
+            <div style={{ width: 7, height: 7, borderRadius: '50%', background: a.color, boxShadow: `0 0 6px ${a.color}80`, flexShrink: 0 }} />
+            <div>
+              <div style={{ fontSize: '0.6rem', fontWeight: 600, color: '#F2F1EA', fontFamily: 'var(--font-display)' }}>{a.label}</div>
+              <div style={{ fontSize: '0.52rem', color: 'rgba(255,255,255,0.3)', fontFamily: 'var(--font-body)' }}>{a.status}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    ),
+  },
+  {
+    num: '04',
+    icon: BarChart2,
+    color: '#F59E0B',
+    title: 'Results compound monthly',
+    sub: 'Better every week.',
+    body: 'Rankings rise. Reviews accumulate. Calls increase. Your digital presence compounds — like interest. Month 3 is better than Month 1. Month 12 is unrecognizable from where you started.',
+    detail: 'Weekly reports · Ranking growth · Review velocity · Lead volume',
+    ui: (
+      <div style={{ background: '#0a0a14', borderRadius: 10, padding: '14px 12px', border: '1px solid rgba(245,158,11,0.14)' }}>
+        <div style={{ fontSize: '0.56rem', color: 'rgba(245,158,11,0.55)', marginBottom: 10, letterSpacing: '0.12em', fontFamily: 'monospace' }}>
+          STEP 4 — GROWING
+        </div>
+        {[
+          { label: 'Google Rank', wk1: 'p.8', wk4: 'p.3', color: '#00C26F' },
+          { label: 'Monthly Calls', wk1: '12', wk4: '41', color: '#0EA5E9' },
+          { label: 'Reviews', wk1: '4.2★', wk4: '4.8★', color: '#F59E0B' },
+        ].map((r, i) => (
+          <div key={i} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '5px 0', borderBottom: i < 2 ? '1px solid rgba(255,255,255,0.04)' : 'none' }}>
+            <div style={{ fontSize: '0.6rem', color: 'rgba(255,255,255,0.4)', fontFamily: 'var(--font-body)' }}>{r.label}</div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <div style={{ fontSize: '0.6rem', color: 'rgba(255,255,255,0.25)', fontFamily: 'monospace' }}>{r.wk1}</div>
+              <div style={{ fontSize: '0.5rem', color: 'rgba(255,255,255,0.2)' }}>→</div>
+              <div style={{ fontSize: '0.62rem', fontWeight: 700, color: r.color, fontFamily: 'monospace' }}>{r.wk4}</div>
+            </div>
+          </div>
+        ))}
+        <div style={{ marginTop: 9, padding: '6px 9px', borderRadius: 6, background: 'rgba(245,158,11,0.08)', border: '1px solid rgba(245,158,11,0.2)', textAlign: 'center' }}>
+          <span style={{ fontSize: '0.58rem', fontWeight: 700, color: '#fbbf24' }}>Week 4 report → +240% calls vs Week 1</span>
+        </div>
+      </div>
+    ),
   },
 ]
 
 export default function HowItWorks() {
   const sectionRef = useRef<HTMLElement>(null)
   const headingRef = useRef<HTMLDivElement>(null)
-  const cardsRef   = useRef<HTMLDivElement>(null)
+  const stepsRef   = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -208,30 +141,23 @@ export default function HowItWorks() {
         yPercent: 115, opacity: 0, stagger: 0.04, duration: 0.75, ease: 'power3.out',
         scrollTrigger: { trigger: headingRef.current, start: 'top 85%' },
       })
-      gsap.from(cardsRef.current?.querySelectorAll('.hiw-card') ?? [], {
-        y: 56, opacity: 0, stagger: 0.12, duration: 0.8, ease: 'power3.out',
-        scrollTrigger: { trigger: cardsRef.current, start: 'top 80%' },
+      gsap.from(stepsRef.current?.querySelectorAll('.hiw-card') ?? [], {
+        y: 52, opacity: 0, stagger: 0.12, duration: 0.75, ease: 'power3.out',
+        scrollTrigger: { trigger: stepsRef.current, start: 'top 82%' },
       })
 
-      // 3D tilt on step cards
-      cardsRef.current?.querySelectorAll('.hiw-card').forEach(card => {
+      stepsRef.current?.querySelectorAll('.hiw-card').forEach(card => {
         const el = card as HTMLElement
         const setRX = gsap.quickTo(el, 'rotationX', { duration: 0.4, ease: 'power2.out' })
         const setRY = gsap.quickTo(el, 'rotationY', { duration: 0.4, ease: 'power2.out' })
         gsap.set(el, { transformPerspective: 900, transformStyle: 'preserve-3d' })
-
         const onMove = (e: MouseEvent) => {
           const rect = el.getBoundingClientRect()
           const dx = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2)
           const dy = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2)
-          setRY(dx * 8)
-          setRX(-dy * 6)
-          gsap.to(el, { duration: 0.3, borderColor: 'rgba(0,194,110,0.4)', boxShadow: '0 28px 70px rgba(0,194,110,0.14)' })
+          setRY(dx * 5); setRX(-dy * 4)
         }
-        const onLeave = () => {
-          setRX(0); setRY(0)
-          gsap.to(el, { duration: 0.4, borderColor: 'var(--color-border)', boxShadow: 'none' })
-        }
+        const onLeave = () => { setRX(0); setRY(0) }
         el.addEventListener('mousemove', onMove)
         el.addEventListener('mouseleave', onLeave)
       })
@@ -242,7 +168,7 @@ export default function HowItWorks() {
   const split = (text: string) =>
     text.split(' ').map((w, i) => (
       <span key={i} className="word-wrap" style={{ display: 'inline-block', marginRight: '0.22em' }}>
-        <span className="word-inner">{w}</span>
+        <span className="word-inner">{w}{' '}</span>
       </span>
     ))
 
@@ -252,136 +178,155 @@ export default function HowItWorks() {
       ref={sectionRef}
       style={{
         padding: 'clamp(80px,10vw,130px) clamp(24px,6vw,80px)',
-        background: 'var(--color-surface)',
+        background: 'var(--color-bg)',
         borderTop: '1px solid var(--color-border)',
-        borderBottom: '1px solid var(--color-border)',
       }}
     >
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '1240px', margin: '0 auto' }}>
 
-        {/* Header row */}
-        <div style={{
-          display: 'flex', alignItems: 'flex-end',
-          justifyContent: 'space-between', gap: 32,
-          marginBottom: 64, flexWrap: 'wrap',
-        }}>
-          <div>
-            <div className="section-label" style={{ marginBottom: 16 }}>
-              HOW IT WORKS
-            </div>
-            <div ref={headingRef}>
-              <h2 style={{
-                fontFamily: 'var(--font-display)', fontWeight: 800,
-                fontSize: 'clamp(2.2rem,4.5vw,3.8rem)',
-                letterSpacing: '-0.035em', lineHeight: 1.1,
-              }}>
-                <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>
-                  {split('Invisible today.')}
-                </div>
-                <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>
-                  <span style={{
-                    display: 'inline-block',
-                    background: 'linear-gradient(135deg,#00C26F,#0EA5E9)',
-                    WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-                  }}>
-                    {split('Discoverable')}
-                  </span>
-                </div>
-                <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>
-                  {split('by tomorrow.')}
-                </div>
-              </h2>
-            </div>
+        {/* Header */}
+        <div style={{ textAlign: 'center', marginBottom: '64px' }}>
+          <div className="section-label" style={{ justifyContent: 'center', marginBottom: 20 }}>HOW IT WORKS</div>
+          <div ref={headingRef}>
+            <h2 style={{
+              fontFamily: 'var(--font-display)', fontWeight: 800,
+              fontSize: 'clamp(2rem,4.5vw,3.8rem)',
+              letterSpacing: '-0.04em', lineHeight: 1.08,
+            }}>
+              <div style={{ overflow: 'hidden', paddingBottom: '0.1em' }}>{split('Submit tonight.')}</div>
+              <div style={{ overflow: 'hidden', paddingBottom: '0.1em' }}>
+                <span style={{ background: 'linear-gradient(135deg,#00C26F,#0EA5E9)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                  {split('AI handles everything else.')}
+                </span>
+              </div>
+            </h2>
           </div>
-          <p style={{
-            color: 'var(--color-muted)', fontSize: '0.95rem',
-            lineHeight: 1.75, maxWidth: 280, paddingBottom: 6,
-          }}>
-            Fill out one simple form. We build, launch and optimize everything while you sleep.
+          <p style={{ color: 'var(--color-muted)', fontSize: '1rem', maxWidth: '480px', margin: '20px auto 0', lineHeight: 1.7 }}>
+            No agency calls. No design meetings. No 6-week timelines. Two minutes from you — then your AI team runs 24/7.
           </p>
         </div>
 
-        {/* 3 Cards */}
+        {/* Steps grid */}
         <div
-          ref={cardsRef}
+          ref={stepsRef}
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: 24,
+            gridTemplateColumns: 'repeat(4, minmax(0,1fr))',
+            gap: '18px',
           }}
           className="hiw-grid"
         >
-          {STEPS.map((s) => (
-            <div
-              key={s.n}
-              className="hiw-card"
-              style={{
-                background: 'var(--color-bg)',
-                border: '1px solid var(--color-border)',
-                borderRadius: 20,
-                padding: '28px 24px 24px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 20,
-                cursor: 'default',
-              }}
-            >
-              {/* Step number + eyebrow */}
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <div style={{
-                  fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em',
-                  textTransform: 'uppercase', color: 'var(--color-indigo)',
-                }}>
-                  {s.eyebrow}
-                </div>
-                <div style={{
-                  fontFamily: 'var(--font-display)', fontWeight: 800,
-                  fontSize: '1.1rem', color: 'rgba(0,194,110,0.15)',
-                  letterSpacing: '-0.03em',
-                }}>
-                  {s.n}
-                </div>
-              </div>
+          {STEPS.map((step, i) => {
+            const Icon = step.icon
+            return (
+              <div
+                key={step.num}
+                className="hiw-card"
+                style={{
+                  background: 'var(--color-bg)',
+                  border: '1px solid var(--color-border)',
+                  borderRadius: 18,
+                  padding: '26px 22px',
+                  position: 'relative',
+                  cursor: 'default',
+                  transition: 'border-color 0.3s, box-shadow 0.3s',
+                  overflow: 'hidden',
+                }}
+                onMouseEnter={e => {
+                  const el = e.currentTarget
+                  el.style.borderColor = `${step.color}40`
+                  el.style.boxShadow = `0 16px 48px ${step.color}14`
+                }}
+                onMouseLeave={e => {
+                  const el = e.currentTarget
+                  el.style.borderColor = 'var(--color-border)'
+                  el.style.boxShadow = 'none'
+                }}
+              >
+                {/* Connector line */}
+                {i < STEPS.length - 1 && (
+                  <div style={{
+                    position: 'absolute', top: 36, right: -9, width: 18, height: 1,
+                    background: `linear-gradient(90deg, ${step.color}40, transparent)`,
+                    zIndex: 10,
+                    display: 'none',
+                  }} className="step-connector" />
+                )}
 
-              {/* Mini UI */}
-              <div>{s.ui}</div>
+                {/* Step number */}
+                <div style={{
+                  fontSize: '0.55rem', fontWeight: 800, color: step.color,
+                  letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 14,
+                  display: 'flex', alignItems: 'center', gap: 8,
+                }}>
+                  <div style={{
+                    width: 28, height: 28, borderRadius: 8,
+                    background: `${step.color}12`,
+                    border: `1.5px solid ${step.color}30`,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  }}>
+                    <Icon size={13} color={step.color} />
+                  </div>
+                  <span style={{ fontSize: '0.72rem' }}>Step {step.num}</span>
+                </div>
 
-              {/* Copy */}
-              <div>
+                {/* Title */}
                 <h3 style={{
-                  fontFamily: 'var(--font-display)', fontWeight: 700,
-                  fontSize: '1.25rem', letterSpacing: '-0.02em',
-                  marginBottom: 10, lineHeight: 1.2,
+                  fontFamily: 'var(--font-display)', fontWeight: 800,
+                  fontSize: '1.05rem', letterSpacing: '-0.025em',
+                  color: 'var(--color-text)', marginBottom: 4, lineHeight: 1.25,
                 }}>
-                  {s.headline}
+                  {step.title}
                 </h3>
-                <p style={{ color: 'var(--color-muted)', fontSize: '0.88rem', lineHeight: 1.72 }}>
-                  {s.body}
+                <div style={{ fontSize: '0.7rem', fontWeight: 600, color: step.color, marginBottom: 12 }}>
+                  {step.sub}
+                </div>
+                <p style={{ color: 'var(--color-muted)', fontSize: '0.82rem', lineHeight: 1.65, marginBottom: 18 }}>
+                  {step.body}
                 </p>
-              </div>
 
-              {/* Note */}
-              <div style={{
-                marginTop: 'auto',
-                borderTop: '1px solid var(--color-border)',
-                paddingTop: 14,
-                fontSize: '0.75rem', fontWeight: 600,
-                color: '#4ade80', display: 'flex', alignItems: 'center', gap: 6,
-              }}>
-                <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#4ade80', flexShrink: 0 }} />
-                {s.note}
+                {/* Mini UI */}
+                {step.ui}
+
+                {/* Detail tag */}
+                <div style={{
+                  marginTop: 14, fontSize: '0.6rem', color: 'var(--color-muted)',
+                  lineHeight: 1.5, letterSpacing: '0.01em',
+                }}>
+                  {step.detail}
+                </div>
               </div>
+            )
+          })}
+        </div>
+
+        {/* Bottom trust bar */}
+        <div style={{
+          marginTop: 48,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          gap: 32, flexWrap: 'wrap',
+        }}>
+          {[
+            { val: '8h', label: 'avg time to live' },
+            { val: '0', label: 'setup calls required' },
+            { val: '24/7', label: 'AI team active from day 1' },
+            { val: '$0', label: 'to try — free forever option' },
+          ].map(s => (
+            <div key={s.val} style={{ textAlign: 'center' }}>
+              <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '1.5rem', letterSpacing: '-0.03em', background: 'linear-gradient(135deg,#00C26F,#0EA5E9)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{s.val}</div>
+              <div style={{ fontSize: '0.7rem', color: 'var(--color-muted)', marginTop: 2 }}>{s.label}</div>
             </div>
           ))}
         </div>
+
       </div>
 
       <style>{`
         @media (max-width: 900px) {
-          .hiw-grid { grid-template-columns: 1fr !important; }
-        }
-        @media (min-width: 901px) and (max-width: 1100px) {
           .hiw-grid { grid-template-columns: repeat(2,1fr) !important; }
+        }
+        @media (max-width: 540px) {
+          .hiw-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>

@@ -2,240 +2,138 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowRight, Star, Zap, Clock, TrendingUp } from 'lucide-react'
+import { ArrowRight, Star, Phone, MessageSquare, BarChart2, Globe, Megaphone, Share2 } from 'lucide-react'
 
 if (typeof window !== 'undefined') { gsap.registerPlugin(ScrollTrigger) }
 
-// ── AI Pipeline Visualization ────────────────────────────────────────────────
-function AIPipelineCard() {
-  const steps = [
-    { id: 'scan',   label: 'Scanning Your Brand',    sub: 'Your style, services & voice captured', done: true,   color: '#00C26F' },
-    { id: 'llm',    label: 'Writing Your Copy',       sub: 'Headlines, offers & local SEO',         done: true,   color: '#00A85E' },
-    { id: 'build',  label: 'Designing Your Site',     sub: 'Hero, images, layout — all custom',     done: true,   color: '#0EA5E9' },
-    { id: 'deploy', label: 'Going Live',              sub: 'Fast worldwide. 24/7. Always on.',       active: true,  color: '#10B981' },
-  ]
+// ── AI Team Dashboard card ───────────────────────────────────────────────────
+const AGENTS = [
+  { icon: Phone,        label: 'AI Reception',   status: "Call answered · 3m ago",      color: '#00C26F', dot: true  },
+  { icon: Globe,        label: 'GBP Post',        status: '"Fall special — book today"',  color: '#0EA5E9', dot: true  },
+  { icon: MessageSquare,label: 'Review Reply',    status: 'Replied to 4★ review',        color: '#8B5CF6', dot: true  },
+  { icon: Star,         label: 'Lead Alert',      status: 'New inquiry → SMS sent',       color: '#F59E0B', dot: true  },
+  { icon: BarChart2,    label: 'Weekly Report',   status: 'Sent · +18% traffic this wk', color: '#00C26F', dot: false },
+  { icon: Megaphone,    label: 'Ads Manager',     status: '3 campaigns ready · approve to launch', color: '#0EA5E9', dot: false },
+  { icon: Share2,       label: 'Social Post',     status: '5 drafts ready · 1-click to post',      color: '#8B5CF6', dot: false },
+]
 
+function AITeamCard() {
   return (
     <div style={{
       background: '#FFFFFF',
       borderRadius: 20,
-      border: '1.5px solid rgba(99, 102, 241, 0.15)',
+      border: '1.5px solid rgba(99, 102, 241, 0.13)',
       overflow: 'hidden',
-      boxShadow: '0 32px 80px rgba(37, 99, 235, 0.12), 0 4px 16px rgba(0,0,0,0.06)',
+      boxShadow: '0 32px 80px rgba(37, 99, 235, 0.1), 0 4px 16px rgba(0,0,0,0.06)',
     }}>
-      {/* Header bar */}
+      {/* Header */}
       <div style={{
         background: 'linear-gradient(135deg, #00C26F 0%, #0EA5E9 100%)',
-        padding: '16px 20px',
+        padding: '15px 20px',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <div style={{
-            width: 32, height: 32, borderRadius: 8,
-            background: 'rgba(255,255,255,0.15)',
-            backdropFilter: 'blur(8px)',
+            width: 30, height: 30, borderRadius: 8,
+            background: 'rgba(255,255,255,0.18)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}>
-            <Zap size={15} color="#fff" />
+            <span style={{ fontSize: '0.75rem' }}>🤖</span>
           </div>
           <div>
             <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '0.82rem', color: '#fff' }}>
-              WebCrew AI Pipeline
+              AI Business Manager
             </div>
-            <div style={{ fontSize: '0.6rem', color: 'rgba(255,255,255,0.65)', marginTop: 1 }}>
-              Building your site now...
+            <div style={{ fontSize: '0.6rem', color: 'rgba(255,255,255,0.7)', marginTop: 1 }}>
+              Maria&apos;s Medspa · Tracy, CA
             </div>
           </div>
         </div>
         <div style={{
           display: 'flex', alignItems: 'center', gap: 5,
-          background: 'rgba(16, 185, 129, 0.2)',
-          border: '1px solid rgba(16, 185, 129, 0.4)',
+          background: 'rgba(0,0,0,0.15)',
           borderRadius: 100, padding: '4px 10px',
         }}>
           <span className="live-dot" />
-          <span style={{ fontSize: '0.58rem', fontWeight: 700, color: '#6ee7b7', letterSpacing: '0.08em' }}>RUNNING</span>
+          <span style={{ fontSize: '0.58rem', fontWeight: 700, color: '#fff', letterSpacing: '0.08em' }}>7 ACTIVE</span>
         </div>
       </div>
 
-      {/* Business input */}
-      <div style={{ padding: '16px 20px', borderBottom: '1px solid rgba(99,102,241,0.08)', background: '#FAFAFF' }}>
-        <div style={{ fontSize: '0.58rem', fontWeight: 700, color: 'var(--color-accent)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 8 }}>
-          Target Business
-        </div>
-        <div style={{
-          display: 'flex', alignItems: 'center', gap: 10,
-          background: '#fff', border: '1.5px solid rgba(99,102,241,0.2)',
-          borderRadius: 10, padding: '10px 14px',
-        }}>
-          <div style={{
-            width: 28, height: 28, borderRadius: 7,
-            background: 'linear-gradient(135deg, #F0FDF4, #E0F8EC)',
-            border: '1px solid rgba(0,194,110,0.15)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: '0.7rem', fontWeight: 800, color: '#00A85E',
-          }}>
-            T
-          </div>
-          <div>
-            <div style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--color-text)', fontFamily: 'var(--font-display)' }}>
-              Tracy HVAC Pros
-            </div>
-            <div style={{ fontSize: '0.6rem', color: 'var(--color-muted)', marginTop: 1 }}>
-              Tracy, CA · HVAC & Cooling
-            </div>
-          </div>
-          <div style={{ marginLeft: 'auto', fontSize: '0.55rem', fontWeight: 600, color: '#10B981' }}>
-            ✓ Queued
-          </div>
-        </div>
-      </div>
-
-      {/* Pipeline steps */}
-      <div style={{ padding: '14px 20px', display: 'flex', flexDirection: 'column', gap: 0 }}>
-        {steps.map((step, i) => (
-          <div key={step.id}>
-            <div style={{
-              display: 'flex', alignItems: 'center', gap: 12,
-              padding: '10px 0',
-              borderBottom: i < steps.length - 1 ? '1px solid rgba(99,102,241,0.06)' : 'none',
+      {/* Agent rows */}
+      <div style={{ padding: '6px 0' }}>
+        {AGENTS.map((agent, i) => {
+          const Icon = agent.icon
+          return (
+            <div key={agent.label} style={{
+              display: 'flex', alignItems: 'center', gap: 11,
+              padding: '10px 18px',
+              borderBottom: i < AGENTS.length - 1 ? '1px solid rgba(99,102,241,0.055)' : 'none',
             }}>
-              {/* Step indicator */}
               <div style={{
-                width: 28, height: 28, borderRadius: 8, flexShrink: 0,
-                background: step.done
-                  ? `linear-gradient(135deg, ${step.color}22, ${step.color}11)`
-                  : step.active
-                    ? 'linear-gradient(135deg, rgba(16,185,129,0.1), rgba(16,185,129,0.06))'
-                    : 'rgba(241,245,249,1)',
-                border: step.done
-                  ? `1.5px solid ${step.color}44`
-                  : step.active
-                    ? '1.5px solid rgba(16,185,129,0.35)'
-                    : '1.5px solid rgba(226,232,240,1)',
+                width: 28, height: 28, borderRadius: 7, flexShrink: 0,
+                background: `${agent.color}12`,
+                border: `1.5px solid ${agent.color}30`,
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
-                {step.done && (
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path d="M2.5 6L5 8.5L9.5 3.5" stroke={step.color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                )}
-                {step.active && (
-                  <div style={{
-                    width: 8, height: 8, borderRadius: 2,
-                    background: '#10B981',
-                    animation: 'pulse-ring 1.2s ease-out infinite',
-                  }} />
-                )}
+                <Icon size={12} color={agent.color} />
               </div>
-
-              {/* Step copy */}
               <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{
-                  fontSize: '0.74rem', fontWeight: 600,
-                  color: step.active ? '#10B981' : step.done ? 'var(--color-text)' : 'var(--color-muted)',
-                  fontFamily: 'var(--font-display)',
-                }}>
-                  {step.label}
+                <div style={{ fontSize: '0.72rem', fontWeight: 700, color: '#0A0A0A', fontFamily: 'var(--font-display)' }}>
+                  {agent.label}
                 </div>
-                <div style={{ fontSize: '0.6rem', color: 'var(--color-muted)', marginTop: 2 }}>
-                  {step.sub}
+                <div style={{ fontSize: '0.58rem', color: '#6B7280', marginTop: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  {agent.status}
                 </div>
               </div>
-
-              {/* Status */}
               <div style={{
-                fontSize: '0.58rem', fontWeight: 700,
-                color: step.active ? '#10B981' : step.done ? step.color : '#CBD5E1',
-                letterSpacing: '0.06em',
-                whiteSpace: 'nowrap',
-              }}>
-                {step.active ? '●  Live' : step.done ? '✓' : '—'}
-              </div>
+                width: 7, height: 7, borderRadius: '50%', flexShrink: 0,
+                background: agent.dot ? agent.color : '#E5E7EB',
+                boxShadow: agent.dot ? `0 0 8px ${agent.color}99` : 'none',
+              }} />
             </div>
-          </div>
-        ))}
+          )
+        })}
       </div>
 
-      {/* Live URL footer */}
+      {/* Footer */}
       <div style={{
-        padding: '14px 20px',
-        background: 'linear-gradient(135deg, rgba(16,185,129,0.06), rgba(16,185,129,0.03))',
-        borderTop: '1px solid rgba(16,185,129,0.12)',
-        display: 'flex', alignItems: 'center', gap: 10,
+        padding: '12px 18px',
+        background: 'linear-gradient(135deg, rgba(0,194,110,0.05), rgba(14,165,233,0.04))',
+        borderTop: '1px solid rgba(0,194,110,0.1)',
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
-        <div style={{
-          width: 8, height: 8, borderRadius: '50%',
-          background: '#10B981',
-          boxShadow: '0 0 8px rgba(16,185,129,0.6)',
-          flexShrink: 0,
-        }} />
-        <div style={{ flex: 1 }}>
-          <div style={{ fontSize: '0.65rem', fontWeight: 600, color: '#059669', fontFamily: 'monospace' }}>
-            tracyhvacpros.pages.dev
-          </div>
-          <div style={{ fontSize: '0.55rem', color: 'var(--color-muted)', marginTop: 1 }}>
-            PageSpeed 97/100 · Deployed in 6h
-          </div>
-        </div>
-        <div style={{
-          fontSize: '0.6rem', fontWeight: 700,
-          background: 'linear-gradient(135deg, #00C26F, #0EA5E9)',
-          WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-        }}>
-          VIEW LIVE →
+        <div style={{ fontSize: '0.62rem', color: '#6B7280' }}>
+          This week: <strong style={{ color: '#00C26F' }}>12 calls handled · 4 reviews replied · 3 posts published</strong>
         </div>
       </div>
     </div>
   )
 }
 
-// ── Floating stat card ───────────────────────────────────────────────────────
-function StatCard({ value, label, icon, gradient, style }: {
-  value: string; label: string; icon: React.ReactNode
-  gradient?: boolean; style?: React.CSSProperties
+// ── Floating stat pill ───────────────────────────────────────────────────────
+function StatPill({ value, label, gradient, style }: {
+  value: string; label: string; gradient?: boolean; style?: React.CSSProperties
 }) {
   return (
     <div style={{
       position: 'absolute',
       background: gradient ? 'linear-gradient(135deg, #00C26F, #0EA5E9)' : '#FFFFFF',
       border: gradient ? 'none' : '1.5px solid rgba(99,102,241,0.12)',
-      borderRadius: 14,
-      padding: '14px 18px',
-      display: 'flex',
-      alignItems: 'center',
-      gap: 12,
-      boxShadow: gradient
-        ? '0 12px 40px rgba(0,194,110,0.35)'
-        : '0 8px 32px rgba(0,0,0,0.08)',
-      minWidth: '155px',
+      borderRadius: 12,
+      padding: '10px 16px',
+      boxShadow: gradient ? '0 10px 32px rgba(0,194,110,0.35)' : '0 8px 28px rgba(0,0,0,0.09)',
+      whiteSpace: 'nowrap',
       ...style,
     }}>
       <div style={{
-        width: 36, height: 36, borderRadius: 10,
-        background: gradient ? 'rgba(255,255,255,0.2)' : 'rgba(0,194,110,0.08)',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        color: gradient ? '#000' : 'var(--color-accent)', flexShrink: 0,
-      }}>
-        {icon}
-      </div>
-      <div>
-        <div style={{
-          fontFamily: 'var(--font-display)',
-          fontWeight: 800, fontSize: '1.25rem',
-          color: gradient ? '#fff' : 'var(--color-text)',
-          letterSpacing: '-0.02em', lineHeight: 1,
-        }}>
-          {value}
-        </div>
-        <div style={{
-          fontSize: '0.68rem',
-          color: gradient ? 'rgba(255,255,255,0.75)' : 'var(--color-muted)',
-          marginTop: 3,
-        }}>
-          {label}
-        </div>
-      </div>
+        fontFamily: 'var(--font-display)', fontWeight: 800,
+        fontSize: '1.15rem', letterSpacing: '-0.02em',
+        color: gradient ? '#fff' : '#0A0A0A', lineHeight: 1,
+      }}>{value}</div>
+      <div style={{
+        fontSize: '0.6rem', marginTop: 3,
+        color: gradient ? 'rgba(255,255,255,0.72)' : '#6B7280',
+      }}>{label}</div>
     </div>
   )
 }
@@ -250,9 +148,8 @@ export default function Hero() {
   const ctasRef    = useRef<HTMLDivElement>(null)
   const trustRef   = useRef<HTMLDivElement>(null)
   const rightRef   = useRef<HTMLDivElement>(null)
-  const countRef   = useRef<HTMLSpanElement>(null)
 
-  // Particle canvas — blue/purple tones
+  // Particle canvas
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -262,14 +159,12 @@ export default function Hero() {
     resize()
     window.addEventListener('resize', resize)
 
-    const COLORS = ['rgba(0,194,110,', 'rgba(14,165,233,', 'rgba(0,220,130,']
-    const dots = Array.from({ length: 60 }, () => ({
-      x: Math.random() * 1000,
-      y: Math.random() * 800,
-      r: Math.random() * 1.2 + 0.3,
-      vx: (Math.random() - 0.5) * 0.18,
-      vy: (Math.random() - 0.5) * 0.18,
-      a: Math.random() * 0.15 + 0.04,
+    const COLORS = ['rgba(0,194,110,', 'rgba(14,165,233,', 'rgba(139,92,246,']
+    const dots = Array.from({ length: 55 }, () => ({
+      x: Math.random() * 1200, y: Math.random() * 900,
+      r: Math.random() * 1.1 + 0.3,
+      vx: (Math.random() - 0.5) * 0.16, vy: (Math.random() - 0.5) * 0.16,
+      a: Math.random() * 0.13 + 0.04,
       c: COLORS[Math.floor(Math.random() * COLORS.length)],
     }))
 
@@ -288,14 +183,13 @@ export default function Hero() {
       }
       for (let i = 0; i < dots.length; i++) {
         for (let j = i + 1; j < dots.length; j++) {
-          const dx = dots[i].x - dots[j].x
-          const dy = dots[i].y - dots[j].y
+          const dx = dots[i].x - dots[j].x, dy = dots[i].y - dots[j].y
           const dist = Math.sqrt(dx * dx + dy * dy)
-          if (dist < 100) {
+          if (dist < 95) {
             ctx.beginPath()
             ctx.moveTo(dots[i].x, dots[i].y)
             ctx.lineTo(dots[j].x, dots[j].y)
-            ctx.strokeStyle = `rgba(0,194,110,${0.05 * (1 - dist / 100)})`
+            ctx.strokeStyle = `rgba(0,194,110,${0.04 * (1 - dist / 95)})`
             ctx.lineWidth = 0.5
             ctx.stroke()
           }
@@ -307,42 +201,21 @@ export default function Hero() {
     return () => { cancelAnimationFrame(raf); window.removeEventListener('resize', resize) }
   }, [])
 
-  // Counter animation
-  useEffect(() => {
-    if (!countRef.current) return
-    const target = 847
-    const obj = { val: target - 24 }
-    setTimeout(() => {
-      gsap.to(obj, {
-        val: target, duration: 2.5, ease: 'power2.out', delay: 1.8,
-        onUpdate: () => { if (countRef.current) countRef.current.textContent = Math.round(obj.val).toString() },
-      })
-    }, 100)
-  }, [])
-
   // Entrance animations
   useEffect(() => {
     const ctx = gsap.context(() => {
       const words = h1Ref.current?.querySelectorAll('.word-inner')
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 1.5 })
 
-      tl.from(badgeRef.current, { opacity: 0, y: -14, duration: 0.5 })
-      if (words) tl.from(words, { yPercent: 115, opacity: 0, stagger: 0.032, duration: 0.78 }, '-=0.15')
-      tl.from(subRef.current,   { opacity: 0, y: 18, duration: 0.6  }, '-=0.5')
-        .from(ctasRef.current,  { opacity: 0, y: 16, duration: 0.5  }, '-=0.4')
-        .from(trustRef.current, { opacity: 0, y: 10, duration: 0.45 }, '-=0.3')
-        .from(rightRef.current, { opacity: 0, x: 40, duration: 0.9, ease: 'power4.out' }, '-=1.2')
-
-      if (rightRef.current) {
-        gsap.from(rightRef.current.querySelectorAll('img'), {
-          clipPath: 'inset(0 100% 0 0)',
-          duration: 0.9, ease: 'power4.inOut', stagger: 0.1,
-          scrollTrigger: { trigger: rightRef.current, start: 'top 85%' }
-        })
-      }
+      tl.from(badgeRef.current,  { opacity: 0, y: -14, duration: 0.5 })
+      if (words) tl.from(words,  { yPercent: 115, opacity: 0, stagger: 0.03, duration: 0.75 }, '-=0.15')
+      tl.from(subRef.current,    { opacity: 0, y: 16, duration: 0.55 }, '-=0.5')
+        .from(ctasRef.current,   { opacity: 0, y: 14, duration: 0.45 }, '-=0.35')
+        .from(trustRef.current,  { opacity: 0, y: 10, duration: 0.4  }, '-=0.25')
+        .from(rightRef.current,  { opacity: 0, x: 36, duration: 0.85, ease: 'power4.out' }, '-=1.1')
 
       gsap.to(sectionRef.current, {
-        yPercent: -8, ease: 'none',
+        yPercent: -7, ease: 'none',
         scrollTrigger: { trigger: sectionRef.current, start: 'top top', end: 'bottom top', scrub: 1.5 },
       })
     })
@@ -352,16 +225,11 @@ export default function Hero() {
   const split = (text: string, gradient?: boolean) =>
     text.split(' ').map((w, i) => (
       <span key={i} className="word-wrap" style={{ display: 'inline-block', marginRight: '0.22em' }}>
-        <span
-          className="word-inner"
-          style={gradient ? {
-            display: 'inline-block',
-            background: 'linear-gradient(135deg, #00C26F 0%, #0EA5E9 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-          } : undefined}
-        >{w}</span>
+        <span className="word-inner" style={gradient ? {
+          display: 'inline-block',
+          background: 'linear-gradient(135deg, #00C26F 0%, #0EA5E9 100%)',
+          WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+        } : { display: 'inline-block' }}>{w}{' '}</span>
       </span>
     ))
 
@@ -369,10 +237,8 @@ export default function Hero() {
     <section
       ref={sectionRef}
       style={{
-        position: 'relative',
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
+        position: 'relative', minHeight: '100vh',
+        display: 'flex', alignItems: 'center',
         padding: 'clamp(100px,12vh,140px) clamp(24px,6vw,80px) clamp(60px,8vh,100px)',
         overflow: 'hidden',
         background: 'linear-gradient(160deg, #04040E 0%, #080820 55%, #0D0B28 100%)',
@@ -382,53 +248,48 @@ export default function Hero() {
       <div className="noise-overlay" />
 
       {/* Aurora blobs */}
-      <div className="aurora-blob" style={{ width: '600px', height: '600px', background: 'rgba(0,194,110,0.14)', top: '-5%', left: '-5%', animation: 'aurora-drift 14s ease-in-out infinite' }} />
-      <div className="aurora-blob" style={{ width: '500px', height: '500px', background: 'rgba(14,165,233,0.10)', bottom: '5%', right: '0%', animation: 'aurora-drift 18s ease-in-out infinite reverse' }} />
-      <div className="aurora-blob" style={{ width: '300px', height: '300px', background: 'rgba(0,194,110,0.08)', top: '40%', left: '40%', animation: 'aurora-drift 22s ease-in-out infinite' }} />
+      <div className="aurora-blob" style={{ width: '620px', height: '620px', background: 'rgba(0,194,110,0.13)', top: '-8%', left: '-8%', animation: 'aurora-drift 14s ease-in-out infinite' }} />
+      <div className="aurora-blob" style={{ width: '500px', height: '500px', background: 'rgba(14,165,233,0.09)', bottom: '5%', right: '-2%', animation: 'aurora-drift 18s ease-in-out infinite reverse' }} />
+      <div className="aurora-blob" style={{ width: '280px', height: '280px', background: 'rgba(139,92,246,0.08)', top: '45%', left: '38%', animation: 'aurora-drift 22s ease-in-out infinite' }} />
 
       {/* Grid overlay */}
       <div style={{
         position: 'absolute', inset: 0, pointerEvents: 'none',
-        backgroundImage: 'linear-gradient(rgba(0,194,110,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(0,194,110,0.06) 1px, transparent 1px)',
+        backgroundImage: 'linear-gradient(rgba(0,194,110,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,194,110,0.05) 1px, transparent 1px)',
         backgroundSize: '72px 72px',
         maskImage: 'radial-gradient(ellipse 80% 80% at 30% 50%, black 20%, transparent 75%)',
       }} />
 
-      {/* Two-column grid */}
+      {/* Two-column layout */}
       <div style={{
         position: 'relative', zIndex: 1,
-        width: '100%', maxWidth: '1280px', margin: '0 auto',
+        width: '100%', maxWidth: '1300px', margin: '0 auto',
         display: 'grid',
         gridTemplateColumns: 'minmax(0,1fr) minmax(0,1fr)',
-        gap: 'clamp(40px,6vw,80px)',
+        gap: 'clamp(40px,5vw,72px)',
         alignItems: 'center',
-      }}
-      className="hero-grid">
+      }} className="hero-grid">
 
-        {/* ── LEFT: Copy ── */}
+        {/* ── LEFT copy ── */}
         <div>
-          {/* Badge */}
+          {/* Badge row */}
           <div ref={badgeRef} style={{ marginBottom: '28px', display: 'flex', gap: 10, flexWrap: 'wrap' }}>
             <span style={{
-              display: 'inline-flex', alignItems: 'center', gap: '8px',
-              border: '1px solid rgba(16,185,129,0.3)',
-              background: 'rgba(16,185,129,0.06)',
+              display: 'inline-flex', alignItems: 'center', gap: '7px',
+              border: '1px solid rgba(0,194,110,0.3)', background: 'rgba(0,194,110,0.07)',
               borderRadius: '100px', padding: '7px 16px',
-              fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
-              color: '#059669',
+              fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#059669',
             }}>
               <span className="live-dot" />
-              <span ref={countRef}>847</span> sites built &amp; live
+              AI Business Manager
             </span>
             <span style={{
               display: 'inline-flex', alignItems: 'center', gap: '6px',
-              border: '1px solid rgba(14,165,233,0.35)',
-              background: 'rgba(14,165,233,0.08)',
+              border: '1px solid rgba(139,92,246,0.3)', background: 'rgba(139,92,246,0.07)',
               borderRadius: '100px', padding: '7px 14px',
-              fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase',
-              color: '#38bdf8',
+              fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#a78bfa',
             }}>
-              ⚡ Avg delivery: 6 hours
+              7 AI Agents · Always On
             </span>
           </div>
 
@@ -436,145 +297,93 @@ export default function Hero() {
           <h1
             ref={h1Ref}
             style={{
-              fontFamily: 'var(--font-display)',
-              fontWeight: 800,
-              fontSize: 'clamp(2.6rem,4.5vw,4.4rem)',
-              lineHeight: 1.1,
-              letterSpacing: '-0.04em',
-              marginBottom: '28px',
-              color: '#FFFFFF',
+              fontFamily: 'var(--font-display)', fontWeight: 800,
+              fontSize: 'clamp(2.5rem,4.2vw,4.2rem)',
+              lineHeight: 1.08, letterSpacing: '-0.04em',
+              marginBottom: '28px', color: '#FFFFFF',
             }}
           >
-            <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>
-              {split('Your Business.')}
-            </div>
-            <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>
-              <span style={{ display: 'inline-flex', flexWrap: 'wrap', gap: '0 0.22em' }}>
-                {'Online. By'.split(' ').map((w, i) => (
-                  <span key={i} className="word-wrap" style={{ display: 'inline-block' }}>
-                    <span className="word-inner" style={{
-                      display: 'inline-block',
-                      background: 'linear-gradient(135deg, #00C26F 0%, #0EA5E9 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                    }}>{w}</span>
-                  </span>
-                ))}
-              </span>
-            </div>
-            <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>
-              {split('Tomorrow Morning.')}
-            </div>
+            <div style={{ overflow: 'hidden', paddingBottom: '0.1em' }}>{split('Your Business,')}</div>
+            <div style={{ overflow: 'hidden', paddingBottom: '0.1em' }}>{split('Running', true)}</div>
+            <div style={{ overflow: 'hidden', paddingBottom: '0.1em' }}>{split('On Autopilot.')}</div>
           </h1>
 
           {/* Sub */}
-          <p
-            ref={subRef}
-            style={{
-              color: 'rgba(255,255,255,0.72)',
-              fontSize: 'clamp(0.95rem,1.6vw,1.1rem)',
-              lineHeight: 1.75,
-              maxWidth: '480px',
-              marginBottom: '40px',
-            }}
-          >
-            We build, launch and continuously improve your online presence to help{' '}
-            <span style={{ color: '#FFFFFF', fontWeight: 600 }}>your business get found, attract more leads, and grow over time.</span>
+          <p ref={subRef} style={{
+            color: 'rgba(255,255,255,0.7)', fontSize: 'clamp(0.9rem,1.5vw,1.05rem)',
+            lineHeight: 1.8, maxWidth: '490px', marginBottom: '38px',
+          }}>
+            AI answers your calls, builds your website, posts to Google, replies to reviews, runs ads, and sends weekly reports.{' '}
+            <span style={{ color: '#FFFFFF', fontWeight: 600 }}>24/7. Automatically. No staff needed.</span>
           </p>
 
           {/* CTAs */}
-          <div ref={ctasRef} style={{ marginBottom: '48px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+          <div ref={ctasRef} style={{ marginBottom: '44px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
             <a
               href="#contact"
-              onClick={e => { e.preventDefault(); window.dispatchEvent(new CustomEvent('wc:tab', { detail: { tab: 'demo' } })); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}
+              onClick={e => {
+                e.preventDefault()
+                window.dispatchEvent(new CustomEvent('wc:tab', { detail: { tab: 'demo' } }))
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+              }}
               className="btn-primary"
               style={{ fontSize: '0.95rem', padding: '15px 28px' }}
             >
-              Build My FREE Website <ArrowRight size={16} />
+              Get My AI Team Free <ArrowRight size={16} />
             </a>
             <a
-              href="#contact"
-              onClick={e => { e.preventDefault(); window.dispatchEvent(new CustomEvent('wc:tab', { detail: { tab: 'audit' } })); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) }}
+              href="#pricing"
+              onClick={e => { e.preventDefault(); document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' }) }}
               className="btn-ghost"
-              style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.85)', borderColor: 'rgba(255,255,255,0.2)' }}
+              style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.82)', borderColor: 'rgba(255,255,255,0.18)' }}
             >
-              Get FREE Growth Audit
+              See Pricing →
             </a>
           </div>
 
           {/* Trust row */}
-          <div
-            ref={trustRef}
-            style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div ref={trustRef} style={{ display: 'flex', alignItems: 'center', gap: '18px', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
               <div style={{ display: 'flex', gap: 2 }}>
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={14} fill="#F59E0B" color="#F59E0B" />
-                ))}
+                {[...Array(5)].map((_, i) => <Star key={i} size={13} fill="#F59E0B" color="#F59E0B" />)}
               </div>
-              <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>
-                <span style={{ color: '#FFFFFF', fontWeight: 600 }}>4.9</span> · 47 reviews
+              <span style={{ fontSize: '0.73rem', color: 'rgba(255,255,255,0.5)' }}>
+                <span style={{ color: '#fff', fontWeight: 600 }}>4.9</span> · 47 reviews
               </span>
             </div>
-            <div style={{ width: 1, height: 16, background: 'rgba(255,255,255,0.12)' }} />
-            <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>
-              <span style={{ color: '#FFFFFF', fontWeight: 600 }}>$0</span> setup fee. Ever.
+            <div style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.1)' }} />
+            <span style={{ fontSize: '0.73rem', color: 'rgba(255,255,255,0.5)' }}>
+              <span style={{ color: '#fff', fontWeight: 600 }}>Starts at $49/mo</span> — cancel anytime
             </span>
-            <div style={{ width: 1, height: 16, background: 'rgba(255,255,255,0.12)' }} />
-            <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>
-              <span style={{ color: '#FFFFFF', fontWeight: 600 }}>Avg 6hr</span> delivery
+            <div style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.1)' }} />
+            <span style={{ fontSize: '0.73rem', color: 'rgba(255,255,255,0.5)' }}>
+              <span style={{ color: '#fff', fontWeight: 600 }}>$0</span> setup fee. Ever.
             </span>
-            <div style={{ width: 1, height: 16, background: 'rgba(255,255,255,0.12)' }} />
-            <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>
-              <span style={{ color: '#FFFFFF', fontWeight: 600 }}>$49/mo</span> — cancel anytime
+            <div style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.1)' }} />
+            <span style={{ fontSize: '0.73rem', color: 'rgba(255,255,255,0.5)' }}>
+              <span style={{ color: '#00C26F', fontWeight: 600 }}>Site live overnight</span>
             </span>
           </div>
         </div>
 
-        {/* ── RIGHT: AI Pipeline + floating stats ── */}
-        <div ref={rightRef} className="hero-right" style={{ position: 'relative', paddingTop: '20px', paddingBottom: '20px' }}>
+        {/* ── RIGHT: AI Team Dashboard ── */}
+        <div ref={rightRef} className="hero-right" style={{ position: 'relative', paddingTop: '24px', paddingBottom: '24px' }}>
 
-          {/* Stat card: top-right — gradient */}
-          <StatCard
-            value="847"
-            label="Sites deployed"
-            icon={<Zap size={16} />}
-            gradient
-            style={{ top: -10, right: -16, zIndex: 10 }}
-          />
+          <StatPill value="24/7" label="Always working" gradient style={{ top: -12, right: -14, zIndex: 10 }} />
 
-          {/* AI Pipeline card */}
           <div style={{ marginTop: '28px', marginBottom: '28px' }}>
-            <AIPipelineCard />
+            <AITeamCard />
           </div>
 
-          {/* Stat card: bottom-left */}
-          <StatCard
-            value="6h"
-            label="Avg build time"
-            icon={<Clock size={16} />}
-            style={{ bottom: -10, left: -16, zIndex: 10 }}
-          />
+          <StatPill value="$49/mo" label="Full AI team" style={{ bottom: -10, left: -14, zIndex: 10 }} />
+          <StatPill value="0 missed" label="Calls this week" style={{ bottom: 56, right: -14, zIndex: 10 }} />
 
-          {/* Stat card: bottom-right */}
-          <StatCard
-            value="97/100"
-            label="PageSpeed score"
-            icon={<TrendingUp size={16} />}
-            style={{ bottom: 60, right: -16, zIndex: 10 }}
-          />
-
-          {/* Glow behind card */}
           <div style={{
-            position: 'absolute',
-            top: '50%', left: '50%',
-            transform: 'translate(-50%, -50%)',
+            position: 'absolute', top: '50%', left: '50%',
+            transform: 'translate(-50%,-50%)',
             width: '70%', height: '60%',
-            background: 'radial-gradient(ellipse, rgba(37,99,235,0.08) 0%, transparent 70%)',
-            pointerEvents: 'none',
-            zIndex: 0,
+            background: 'radial-gradient(ellipse, rgba(0,194,110,0.06) 0%, transparent 70%)',
+            pointerEvents: 'none', zIndex: 0,
           }} />
         </div>
       </div>
@@ -583,13 +392,9 @@ export default function Hero() {
       <div style={{
         position: 'absolute', bottom: '28px', left: '50%',
         transform: 'translateX(-50%)',
-        display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px',
-        color: 'rgba(255,255,255,0.3)',
+        display: 'flex', flexDirection: 'column', alignItems: 'center',
       }}>
-        <div style={{
-          width: '1px', height: '40px',
-          background: 'linear-gradient(to bottom, rgba(255,255,255,0.3), transparent)',
-        }} />
+        <div style={{ width: 1, height: 38, background: 'linear-gradient(to bottom, rgba(255,255,255,0.28), transparent)' }} />
       </div>
     </section>
   )

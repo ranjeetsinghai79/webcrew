@@ -2,94 +2,165 @@
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Zap, Smartphone, Search, Phone, Server, Shield, Star } from 'lucide-react'
+import {
+  Phone, Globe, Star, BarChart2, Megaphone, Share2,
+  Zap, Search, MessageSquare,
+} from 'lucide-react'
 
 if (typeof window !== 'undefined') { gsap.registerPlugin(ScrollTrigger) }
 
 const TABS = [
   {
-    id: 'design',
-    label: 'Stunning Design',
-    icon: <Zap size={14} />,
-    headline: 'Looks like a $20K agency built it.',
-    sub: 'Custom hero images or video built from your actual brand. Animations that hold attention. A design so sharp, customers stop scrolling and call.',
+    id: 'reception',
+    label: 'AI Reception',
+    icon: <Phone size={14} />,
+    badge: 'LIVE',
+    badgeColor: '#00C26F',
+    headline: 'Every call answered. Every lead captured.',
+    sub: 'Your AI receptionist picks up instantly — 24/7, even at 2am. It answers questions, books appointments, and sends you a summary. You never lose a customer to voicemail again.',
     items: [
-      'Hero image or video — built from your brand, not stock photos',
-      'Your exact colors, fonts, and voice — never looks like a template',
-      'Animations that make visitors stop, read, and take action',
-      'Mobile menu, service cards, contact form — all pixel-perfect',
-      'Every design is one-of-a-kind — no two sites look the same',
+      'Answers calls in your business voice — feels human',
+      'Books appointments and sends confirmation texts automatically',
+      'Handles FAQs: hours, pricing, location, services',
+      'Call summary + transcript sent to you after every call',
+      'Escalates urgent calls to your cell instantly',
     ],
-    metrics: ['Visual Quality', 'Brand Match', 'First Impression', 'Mobile Look'],
-    preview: {
-      label: 'Tracy HVAC Pros',
-      score: 98,
-      color: '#3b82f6',
-    },
+    metrics: ['Calls Handled', 'Missed Calls', 'Avg Response', 'Leads Captured'],
+    scores: [98, 0, 99, 94],
+    preview: { label: '0 missed calls', score: 100, color: '#00C26F' },
   },
   {
-    id: 'mobile',
-    label: 'Blazing Fast',
-    icon: <Smartphone size={14} />,
-    headline: 'Loads in 2 seconds. On any phone.',
-    sub: 'Over 70% of local searches happen on phones. Your site loads instantly, looks perfect on every screen, and turns mobile visitors into phone calls — not bounces.',
+    id: 'website',
+    label: 'AI Website',
+    icon: <Zap size={14} />,
+    badge: 'OVERNIGHT',
+    badgeColor: '#0EA5E9',
+    headline: 'Looks like a $20K agency built it.',
+    sub: 'Custom hero images or video generated from your actual brand. Cinematic animations. A design so sharp, customers stop scrolling and call — live in under 8 hours.',
     items: [
-      'Loads in under 2 seconds — even on slow connections',
-      'Fast in Miami, fast in LA, fast everywhere in the US',
-      'Photos crisp and instant — never slows the page',
-      'Smooth, flicker-free loading — nothing jumps or shifts',
-      'Google rewards fast sites with higher rankings',
+      'Built overnight using your real brand, photos and voice',
+      'Custom domain (yourdomain.com) included — yours permanently',
+      'PageSpeed 97/100 — loads in under 2 seconds',
+      'Contact form, service pages, and local SEO from day one',
+      'Never a template — every site is one-of-a-kind',
     ],
-    metrics: ['Page Speed', 'Mobile Score', 'Load Time', 'Reliability'],
-    preview: { label: 'PageSpeed 97', score: 97, color: '#4ade80' },
+    metrics: ['PageSpeed', 'Mobile Score', 'Load Time', 'Brand Match'],
+    scores: [97, 96, 99, 98],
+    preview: { label: 'PageSpeed 97/100', score: 97, color: '#0EA5E9' },
+  },
+  {
+    id: 'gbp',
+    label: 'GBP Posts',
+    icon: <Globe size={14} />,
+    badge: 'WEEKLY',
+    badgeColor: '#8B5CF6',
+    headline: 'Google Maps keeps your business at the top.',
+    sub: 'Google rewards active businesses. Your AI posts weekly updates to your Google Business Profile — in your voice, about real events and offers — so you rank higher and get more calls from Maps.',
+    items: [
+      '52 posts per year — your GBP stays fresh automatically',
+      'AI writes posts that match your voice and current offers',
+      'Seasonal specials, service highlights, before/after posts',
+      'Posts at optimal times for your local market',
+      'Monthly GBP performance report included',
+    ],
+    metrics: ['Posts/Year', 'Profile Views', 'Map Ranking', 'Call Clicks'],
+    scores: [100, 92, 87, 89],
+    preview: { label: '52 posts/yr auto', score: 93, color: '#8B5CF6' },
+  },
+  {
+    id: 'reviews',
+    label: 'Review Replies',
+    icon: <MessageSquare size={14} />,
+    badge: 'AUTO',
+    badgeColor: '#F59E0B',
+    headline: 'Every review replied to. Automatically.',
+    sub: 'Customers read your replies before they call. Your AI crafts personal, thoughtful responses to every Google review — 4-star, 5-star, even the tough ones — in your tone. Never leave a review unanswered.',
+    items: [
+      'Replies to every review within hours — not weeks',
+      'Tone matches your business voice, not a generic template',
+      'Handles negative reviews professionally — defuses and recovers',
+      'Boosts Google ranking (fresh activity = more visibility)',
+      'You approve or auto-publish — your choice per tier',
+    ],
+    metrics: ['Reply Rate', 'Avg Response', 'Rating Trend', 'Review Volume'],
+    scores: [100, 97, 88, 85],
+    preview: { label: '100% reply rate', score: 100, color: '#F59E0B' },
   },
   {
     id: 'seo',
-    label: 'Ranks on Google',
+    label: 'Local SEO',
     icon: <Search size={14} />,
+    badge: 'ONGOING',
+    badgeColor: '#0EA5E9',
     headline: 'Found on Google from day one.',
-    sub: 'Most local businesses are invisible online. Your site launches ready for Google — indexed within 48 hours, ranking for your exact city and service, driving real calls.',
+    sub: 'Most local businesses are invisible online. Your site launches indexed and ranking for your exact city and service — driving real calls from people searching right now.',
     items: [
       'Google knows what you do + where you are from day one',
-      'Every page written for your city, your service, your customers',
+      'Every page written for your city, service, and customers',
       'Indexed by Google within 48 hours of launch',
-      'Your Google Business Profile posts itself weekly — zero effort',
-      'Pages for every neighborhood you serve — more calls, more jobs',
+      'Schema markup + sitemap + robots.txt — technical SEO done',
+      'Service-area pages for every neighborhood you serve',
     ],
     metrics: ['Google Rank', 'Local Visibility', 'Map Pack', 'Monthly Calls'],
-    preview: { label: 'Rank: Top 3', score: 95, color: '#0EA5E9' },
+    scores: [91, 94, 88, 86],
+    preview: { label: 'Top 3 ranking', score: 91, color: '#0EA5E9' },
   },
   {
-    id: 'leads',
-    label: 'Instant Leads',
-    icon: <Phone size={14} />,
-    headline: 'New lead? Your phone buzzes in 30 seconds.',
-    sub: 'A customer fills out your form at 9pm — you know about it at 9:01pm. Text + email, instantly. Every lead saved. Nothing ever slips through the cracks.',
+    id: 'ads',
+    label: 'Ads Manager',
+    icon: <Megaphone size={14} />,
+    badge: 'READY TO LAUNCH',
+    badgeColor: '#EF4444',
+    headline: 'Ad campaigns drafted, compliance-checked, and ready to launch.',
+    sub: 'Your AI builds complete Google and Meta ad campaigns — keywords, ad copy, audience targeting, spend caps — all compliance-checked. You review, approve with one click, and they go live. No agency needed.',
     items: [
-      'Form filled → your phone buzzes in under 30 seconds',
-      'Every lead saved and tracked — nothing slips through',
-      'Full lead details in your email — name, phone, message, all of it',
-      'Smart reply suggestions so you close faster (coming soon)',
-      'Dashboard for businesses with multiple locations',
+      'Full Google Search + Meta/Instagram campaigns drafted by AI',
+      'Keywords, ad copy, and audience targeting pre-built',
+      'Every ad compliance-checked before you see it',
+      'You approve the budget and launch with one click',
+      'Weekly spend vs. leads report once campaigns are live',
     ],
-    metrics: ['Lead Alerts', 'Response Time', 'Lead Tracking', 'Conversion'],
-    preview: { label: '+14 leads wk 1', score: 92, color: '#4ade80' },
+    metrics: ['Campaign Ready', 'Ad Quality', 'Compliance', 'Approval'],
+    scores: [100, 95, 100, 88],
+    preview: { label: 'Campaigns ready · 1-click launch', score: 100, color: '#EF4444' },
   },
   {
-    id: 'hosting',
-    label: 'You Own It',
-    icon: <Server size={14} />,
-    headline: 'Your site. Your asset. Forever.',
-    sub: 'Not a Wix template. Not locked to a platform. Cancel hosting anytime — the website is yours to keep, move, or host anywhere. Pay for value, not hostage fees.',
+    id: 'social',
+    label: 'Social Media',
+    icon: <Share2 size={14} />,
+    badge: 'DRAFTED WEEKLY',
+    badgeColor: '#8B5CF6',
+    headline: 'Social content written for you. Posted in one click.',
+    sub: 'Every week, your AI writes 3–5 posts for Instagram, Facebook, and GBP — real content about your offers, seasonal promos, tips. Review them in your dashboard, post with one click, or approve all at once.',
     items: [
-      'You own the site outright — no platform, no middleman',
-      '99.9% uptime — your site is always on, always taking calls',
-      'Fast everywhere in the world — not just your city',
-      'Your own custom domain — we set it all up for you',
-      'Cancel hosting anytime — the site is yours forever. Period.',
+      '3–5 posts per week drafted — Instagram, Facebook, GBP',
+      'Content written in your voice using your real offers and services',
+      'Before/after hooks, seasonal promos, and tips included',
+      'Review drafts in dashboard, post with one click',
+      'Monthly top-performing post report so you know what works',
     ],
-    metrics: ['Site Uptime', 'Global Speed', 'Ownership', 'Security'],
-    preview: { label: '99.9% uptime', score: 99, color: '#00C26F' },
+    metrics: ['Posts/Week', 'Content Quality', 'Approval Speed', 'Engagement'],
+    scores: [100, 94, 100, 82],
+    preview: { label: '5 posts drafted · 1-click post', score: 94, color: '#8B5CF6' },
+  },
+  {
+    id: 'reports',
+    label: 'Weekly Reports',
+    icon: <BarChart2 size={14} />,
+    badge: 'WEEKLY',
+    badgeColor: '#00C26F',
+    headline: 'Know exactly how your business is growing.',
+    sub: 'Every Monday morning: a clean email with traffic, calls, reviews, rankings, and ad performance. No dashboards to log into. No spreadsheets. Just the numbers that matter, delivered to your inbox.',
+    items: [
+      'Weekly Google Search Console: clicks, impressions, keyword rankings',
+      'Call volume + AI reception summary',
+      'Google review rating trend + new reviews this week',
+      'Ad spend vs. leads generated',
+      'Month-over-month comparison — always know your trajectory',
+    ],
+    metrics: ['Traffic Trend', 'Call Volume', 'Review Score', 'Ad ROAS'],
+    scores: [94, 91, 96, 88],
+    preview: { label: '+18% traffic wk1', score: 94, color: '#00C26F' },
   },
 ]
 
@@ -114,19 +185,18 @@ const TESTIMONIALS = [
   },
 ]
 
-function MiniPreview({ tab }: { tab: typeof TABS[0] & { metrics?: string[] } }) {
+function MiniPreview({ tab }: { tab: typeof TABS[0] }) {
   return (
     <div style={{
-      background: '#0a0a14',
-      borderRadius: 14,
-      border: '1px solid rgba(0,0,0,0.1)',
+      background: '#0a0a14', borderRadius: 14,
+      border: '1px solid rgba(255,255,255,0.06)',
       overflow: 'hidden',
-      boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
+      boxShadow: '0 20px 60px rgba(0,0,0,0.45)',
     }}>
-      {/* Chrome */}
+      {/* Chrome bar */}
       <div style={{
         background: '#13131f', padding: '8px 12px',
-        borderBottom: '1px solid rgba(0,0,0,0.06)',
+        borderBottom: '1px solid rgba(255,255,255,0.04)',
         display: 'flex', alignItems: 'center', gap: 8,
       }}>
         <div style={{ display: 'flex', gap: 5 }}>
@@ -139,42 +209,46 @@ function MiniPreview({ tab }: { tab: typeof TABS[0] & { metrics?: string[] } }) 
           borderRadius: 4, padding: '3px 10px',
           fontSize: '0.6rem', color: 'rgba(255,255,255,0.3)', fontFamily: 'monospace',
         }}>
-          webcrew.app/preview
+          ai-manager.webcrew.app
+        </div>
+        <div style={{
+          fontSize: '0.56rem', fontWeight: 700, color: tab.preview.color,
+          background: `${tab.preview.color}18`,
+          border: `1px solid ${tab.preview.color}40`,
+          borderRadius: 100, padding: '2px 8px',
+        }}>
+          {tab.badge}
         </div>
       </div>
-      {/* Content area */}
+      {/* Content */}
       <div style={{ padding: 20 }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
+        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 16 }}>
           <div>
-            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '0.9rem', color: '#F2F1EA', marginBottom: 2 }}>
+            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '0.88rem', color: '#F2F1EA', marginBottom: 3 }}>
               {tab.preview.label}
             </div>
-            <div style={{ fontSize: '0.62rem', color: 'var(--color-muted)' }}>{tab.id === 'mobile' || tab.id === 'hosting' ? 'Performance score' : 'Live results'}</div>
+            <div style={{ fontSize: '0.6rem', color: 'rgba(255,255,255,0.3)' }}>Maria&apos;s Medspa · Live now</div>
           </div>
           <div style={{
             fontFamily: 'var(--font-display)', fontWeight: 800,
-            fontSize: '2rem', color: tab.preview.color,
-            letterSpacing: '-0.03em',
+            fontSize: '2.2rem', color: tab.preview.color, letterSpacing: '-0.04em', lineHeight: 1,
           }}>
             {tab.preview.score}
           </div>
         </div>
-        {/* Fake bars */}
-        {(tab.metrics ?? ['Speed', 'Mobile', 'SEO', 'Leads']).map((m, i) => (
-          <div key={m} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-            <div style={{ fontSize: '0.58rem', color: 'rgba(255,255,255,0.3)', width: 32, flexShrink: 0 }}>{m}</div>
-            <div style={{
-              flex: 1, height: 4, borderRadius: 2,
-              background: 'rgba(255,255,255,0.05)', overflow: 'hidden',
-            }}>
+        {tab.metrics.map((m, i) => (
+          <div key={m} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 9 }}>
+            <div style={{ fontSize: '0.58rem', color: 'rgba(255,255,255,0.25)', width: 68, flexShrink: 0 }}>{m}</div>
+            <div style={{ flex: 1, height: 4, borderRadius: 2, background: 'rgba(255,255,255,0.05)', overflow: 'hidden' }}>
               <div style={{
                 height: '100%', borderRadius: 2,
-                width: `${[92, 88, 95, 97][i]}%`,
-                background: `linear-gradient(90deg, ${tab.preview.color}99, ${tab.preview.color})`,
+                width: `${tab.scores[i]}%`,
+                background: `linear-gradient(90deg, ${tab.preview.color}80, ${tab.preview.color})`,
+                transition: 'width 0.6s ease',
               }} />
             </div>
-            <div style={{ fontSize: '0.58rem', color: tab.preview.color, width: 28, textAlign: 'right' }}>
-              {[92, 88, 95, 97][i]}
+            <div style={{ fontSize: '0.58rem', color: tab.preview.color, width: 26, textAlign: 'right', fontWeight: 700 }}>
+              {tab.scores[i]}
             </div>
           </div>
         ))}
@@ -201,7 +275,6 @@ export default function Features() {
         scrollTrigger: { trigger: testiRef.current, start: 'top 82%' },
       })
 
-      // 3D tilt on testimonial cards
       testiRef.current?.querySelectorAll('.testi-card').forEach(card => {
         const el = card as HTMLElement
         const setRX = gsap.quickTo(el, 'rotationX', { duration: 0.4, ease: 'power2.out' })
@@ -221,19 +294,18 @@ export default function Features() {
     return () => ctx.revert()
   }, [])
 
-  // Animate tab content swap
   useEffect(() => {
     if (!contentRef.current) return
     gsap.fromTo(contentRef.current,
-      { opacity: 0, y: 12 },
-      { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' }
+      { opacity: 0, y: 10 },
+      { opacity: 1, y: 0, duration: 0.38, ease: 'power3.out' }
     )
   }, [active])
 
   const split = (text: string) =>
     text.split(' ').map((w, i) => (
       <span key={i} className="word-wrap" style={{ display: 'inline-block', marginRight: '0.22em' }}>
-        <span className="word-inner">{w}</span>
+        <span className="word-inner">{w}{' '}</span>
       </span>
     ))
 
@@ -254,81 +326,53 @@ export default function Features() {
 
         {/* Header */}
         <div style={{ marginBottom: 52 }}>
-          <div className="section-label" style={{ marginBottom: 16 }}>EVERYTHING INCLUDED</div>
+          <div className="section-label" style={{ marginBottom: 16 }}>YOUR AI TEAM</div>
           <div ref={headingRef} style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 32, flexWrap: 'wrap' }}>
             <h2 style={{
               fontFamily: 'var(--font-display)', fontWeight: 800,
               fontSize: 'clamp(2rem,4.2vw,3.6rem)',
               letterSpacing: '-0.035em', lineHeight: 1.1,
             }}>
+              <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>{split('8 AI Employees.')}</div>
               <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>
-                {split('Everything Your Business Needs.')}
-              </div>
-              <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>
-                <span style={{
-                  background: 'linear-gradient(135deg,#00C26F,#0EA5E9)',
-                  WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-                }}>
-                  {split('Already Included.')}
+                <span style={{ background: 'linear-gradient(135deg,#00C26F,#0EA5E9)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                  {split('Already Hired.')}
                 </span>
               </div>
             </h2>
             <p style={{ color: 'var(--color-muted)', fontSize: '0.95rem', lineHeight: 1.75, maxWidth: 280, paddingBottom: 6 }}>
-              No add-ons. No upgrades. No setup fee. Every feature included from day one.
+              One subscription. Eight AI agents running your entire business growth stack — 24/7.
             </p>
           </div>
 
-          {/* Grouped inclusion grid */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, marginTop: '28px' }}>
+          {/* AI team chips */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: '28px' }}>
             {[
-              {
-                group: 'Online Presence',
-                color: '#00C26F',
-                items: ['Website', 'Hosting', 'SSL', 'Analytics'],
-              },
-              {
-                group: 'Visibility',
-                color: '#0EA5E9',
-                items: ['SEO', 'Local SEO', 'GBP Posts', 'Schema'],
-              },
-              {
-                group: 'Growth',
-                color: '#8B5CF6',
-                items: ['Lead Alerts', 'Traffic Reports', 'Monthly Updates', 'Performance'],
-              },
-            ].map(g => (
-              <div
-                key={g.group}
-                style={{
-                  background: 'var(--color-surface)',
-                  border: `1px solid ${g.color}22`,
-                  borderRadius: 12,
-                  padding: '14px 18px',
-                  minWidth: 180,
-                }}
-              >
-                <div style={{
-                  fontSize: '0.6rem', fontWeight: 800, letterSpacing: '0.16em',
-                  textTransform: 'uppercase', color: g.color, marginBottom: 10,
-                }}>
-                  {g.group}
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                  {g.items.map(item => (
-                    <div key={item} style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
-                      <span style={{ fontSize: '0.6rem', color: g.color }}>✓</span>
-                      <span style={{ fontSize: '0.82rem', color: 'var(--color-text)', fontWeight: 500 }}>{item}</span>
-                    </div>
-                  ))}
-                </div>
+              { label: 'Receptionist', color: '#00C26F' },
+              { label: 'Web Designer', color: '#0EA5E9' },
+              { label: 'SEO Specialist', color: '#0EA5E9' },
+              { label: 'GBP Manager', color: '#8B5CF6' },
+              { label: 'Review Manager', color: '#F59E0B' },
+              { label: 'Ad Manager', color: '#EF4444' },
+              { label: 'Social Manager', color: '#8B5CF6' },
+              { label: 'Analyst', color: '#00C26F' },
+            ].map(chip => (
+              <div key={chip.label} style={{
+                display: 'flex', alignItems: 'center', gap: 7,
+                background: `${chip.color}0D`,
+                border: `1px solid ${chip.color}30`,
+                borderRadius: 100, padding: '6px 14px',
+              }}>
+                <div style={{ width: 6, height: 6, borderRadius: '50%', background: chip.color, boxShadow: `0 0 6px ${chip.color}80` }} />
+                <span style={{ fontSize: '0.75rem', fontWeight: 600, color: chip.color }}>{chip.label}</span>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Pill tabs */}
+        {/* Scrollable pill tabs */}
         <div style={{
-          display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 40,
+          display: 'flex', gap: 7, flexWrap: 'wrap', marginBottom: 40,
         }}>
           {TABS.map((t, i) => (
             <button
@@ -336,19 +380,26 @@ export default function Features() {
               onClick={() => setActive(i)}
               style={{
                 display: 'flex', alignItems: 'center', gap: 6,
-                padding: '9px 18px',
-                borderRadius: 100,
-                border: i === active ? '1.5px solid rgba(0,194,110,0.4)' : '1px solid var(--color-border)',
-                background: i === active ? 'rgba(0,194,110,0.06)' : 'transparent',
-                color: i === active ? 'var(--color-blue)' : 'var(--color-muted)',
-                fontSize: '0.8rem', fontWeight: i === active ? 600 : 500,
-                fontFamily: 'var(--font-body)',
-                cursor: 'pointer',
-                transition: 'all 0.25s',
+                padding: '9px 16px', borderRadius: 100,
+                border: i === active ? `1.5px solid ${t.badgeColor}50` : '1px solid var(--color-border)',
+                background: i === active ? `${t.badgeColor}0D` : 'transparent',
+                color: i === active ? t.badgeColor : 'var(--color-muted)',
+                fontSize: '0.78rem', fontWeight: i === active ? 700 : 500,
+                fontFamily: 'var(--font-body)', cursor: 'pointer',
+                transition: 'all 0.22s',
               }}
             >
               {t.icon}
               {t.label}
+              {i === active && (
+                <span style={{
+                  fontSize: '0.5rem', fontWeight: 800, letterSpacing: '0.1em',
+                  color: '#fff', background: t.badgeColor,
+                  borderRadius: 100, padding: '2px 6px',
+                }}>
+                  {t.badge}
+                </span>
+              )}
             </button>
           ))}
         </div>
@@ -358,26 +409,21 @@ export default function Features() {
           ref={contentRef}
           style={{
             display: 'grid',
-            gridTemplateColumns: 'minmax(0,1fr) minmax(0,420px)',
-            gap: 48,
-            alignItems: 'center',
+            gridTemplateColumns: 'minmax(0,1fr) minmax(0,400px)',
+            gap: 48, alignItems: 'center',
           }}
           className="feat-grid"
         >
-          {/* Left: copy */}
+          {/* Left copy */}
           <div>
             <h3 style={{
               fontFamily: 'var(--font-display)', fontWeight: 800,
               fontSize: 'clamp(1.5rem,2.5vw,2.2rem)',
-              letterSpacing: '-0.03em', lineHeight: 1.1,
-              marginBottom: 16,
+              letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: 16,
             }}>
               {tab.headline}
             </h3>
-            <p style={{
-              color: 'var(--color-muted)', fontSize: '0.95rem',
-              lineHeight: 1.8, marginBottom: 28, maxWidth: 480,
-            }}>
+            <p style={{ color: 'var(--color-muted)', fontSize: '0.95rem', lineHeight: 1.8, marginBottom: 28, maxWidth: 480 }}>
               {tab.sub}
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -385,22 +431,20 @@ export default function Features() {
                 <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
                   <div style={{
                     width: 18, height: 18, borderRadius: 5,
-                    background: 'rgba(74,222,128,0.1)',
-                    border: '1px solid rgba(74,222,128,0.2)',
+                    background: `${tab.badgeColor}15`,
+                    border: `1px solid ${tab.badgeColor}35`,
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     flexShrink: 0, marginTop: 2,
                   }}>
-                    <span style={{ fontSize: '0.55rem', color: '#4ade80' }}>✓</span>
+                    <span style={{ fontSize: '0.55rem', color: tab.badgeColor }}>✓</span>
                   </div>
-                  <span style={{ color: 'var(--color-muted)', fontSize: '0.88rem', lineHeight: 1.55 }}>
-                    {item}
-                  </span>
+                  <span style={{ color: 'var(--color-muted)', fontSize: '0.88rem', lineHeight: 1.55 }}>{item}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Right: preview */}
+          {/* Right preview */}
           <div className="feat-preview">
             <MiniPreview tab={tab} />
           </div>
@@ -411,48 +455,29 @@ export default function Features() {
 
         {/* Testimonials */}
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-            <div className="section-label">REAL RESULTS</div>
-          </div>
+          <div className="section-label">REAL RESULTS</div>
           <h3 style={{
             fontFamily: 'var(--font-display)', fontWeight: 800,
             fontSize: 'clamp(1.6rem,3vw,2.4rem)',
             letterSpacing: '-0.03em', marginBottom: 12,
           }}>
-            They almost didn't try.{' '}
-            <span style={{
-              background: 'linear-gradient(135deg,#00C26F,#0EA5E9)',
-              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-            }}>
-              Now they can't keep up.
+            They almost didn&apos;t try.{' '}
+            <span style={{ background: 'linear-gradient(135deg,#00C26F,#0EA5E9)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+              Now they can&apos;t keep up.
             </span>
           </h3>
           <p style={{ color: 'var(--color-muted)', fontSize: '0.92rem', lineHeight: 1.6, maxWidth: 480, marginBottom: 36 }}>
             Most clients see their first inquiry within 7 days. Some see it within hours.
           </p>
 
-          <div
-            ref={testiRef}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3,1fr)',
-              gap: 20,
-            }}
-            className="testi-grid"
-          >
+          <div ref={testiRef} style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 20 }} className="testi-grid">
             {TESTIMONIALS.map((t) => (
-              <div
-                key={t.name}
-                className="testi-card"
-                style={{
-                  background: '#FFFFFF',
-                  border: '1px solid rgba(0,0,0,0.07)',
-                  borderRadius: 16, padding: 28,
-                  position: 'relative', overflow: 'hidden',
-                  cursor: 'default',
-                }}
-              >
-                <div style={{ position: 'absolute', top: 0, left: '15%', right: '15%', height: 1, background: 'linear-gradient(90deg,transparent,rgba(0,0,0,0.1),transparent)' }} />
+              <div key={t.name} className="testi-card" style={{
+                background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.07)',
+                borderRadius: 16, padding: 28,
+                position: 'relative', overflow: 'hidden', cursor: 'default',
+              }}>
+                <div style={{ position: 'absolute', top: 0, left: '15%', right: '15%', height: 1, background: 'linear-gradient(90deg,transparent,rgba(0,0,0,0.09),transparent)' }} />
                 <div style={{ display: 'flex', gap: 2, marginBottom: 12 }}>
                   {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="#F59E0B" color="#F59E0B" />)}
                 </div>
@@ -465,8 +490,8 @@ export default function Features() {
                     <div style={{ fontSize: '0.68rem', color: 'var(--color-muted)', marginTop: 2 }}>{t.role}</div>
                   </div>
                   <div style={{
-                    fontSize: '0.68rem', fontWeight: 600, color: '#4ade80',
-                    background: 'rgba(74,222,128,0.1)', border: '1px solid rgba(74,222,128,0.2)',
+                    fontSize: '0.68rem', fontWeight: 600, color: '#00C26F',
+                    background: 'rgba(0,194,110,0.08)', border: '1px solid rgba(0,194,110,0.2)',
                     borderRadius: 100, padding: '4px 10px', whiteSpace: 'nowrap',
                   }}>
                     ↑ {t.result}
@@ -476,7 +501,6 @@ export default function Features() {
             ))}
           </div>
         </div>
-
       </div>
 
       <style>{`

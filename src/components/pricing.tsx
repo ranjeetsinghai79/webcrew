@@ -2,26 +2,101 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowRight, Check, Minus, Zap, BarChart2, Star, Globe, MessageSquare, Phone } from 'lucide-react'
+import { ArrowRight, Check, Minus } from 'lucide-react'
 
 if (typeof window !== "undefined") { gsap.registerPlugin(ScrollTrigger) }
 
-const FREE_FEATURES = [
-  'Site built overnight — completely custom',
-  'Hosted on yourname.webcrew.app',
-  'Mobile-optimized · PageSpeed 90+',
-  'Contact form (leads emailed to you)',
-  'Basic local SEO on-page',
-  'Free forever — no credit card',
-]
-
-const GROWTH_FEATURES = [
-  { icon: Globe,          label: 'Custom domain (yourdomain.com)', detail: 'Yours permanently — even if you cancel', market: '$30/mo',  coming: false },
-  { icon: MessageSquare,  label: 'Instant lead SMS + email alerts', detail: 'Contact form → your phone in seconds',  market: '$30/mo',  coming: false },
-  { icon: Zap,            label: 'Weekly Google Business posts',    detail: '52 posts/year — stay visible on Maps',  market: '$150/mo', coming: false },
-  { icon: Star,           label: 'Reply to every Google review',    detail: 'In your voice. Prompt. Every one.',     market: '$150/mo', coming: false },
-  { icon: BarChart2,      label: 'Monthly SEO + traffic report',    detail: 'Google Search Console data — emailed monthly', market: '$100/mo', coming: false },
-  { icon: Phone,          label: 'AI call answering — 24/7',        detail: 'Answers calls when you\'re busy. Founding members get this FREE on launch.', market: 'Coming Q3', coming: true },
+const TIERS = [
+  {
+    id: 'starter',
+    name: 'Starter',
+    price: 49,
+    note: 'per month · cancel anytime',
+    tagline: 'Website + daily growth stack. The perfect start.',
+    cta: 'Get Started Free',
+    popular: false,
+    color: '#0EA5E9',
+    features: [
+      { label: 'Website built overnight — custom to your brand', included: true },
+      { label: 'Custom domain (yourdomain.com) — yours forever', included: true },
+      { label: 'Instant lead SMS + email alerts', included: true },
+      { label: 'Weekly Google Business Profile posts (52/yr)', included: true },
+      { label: 'Reply to every Google review automatically', included: true },
+      { label: 'Monthly GSC traffic + ranking report', included: true },
+      { label: 'PageSpeed 97/100 · SSL · Mobile-perfect', included: true },
+      { label: 'AI Reception 24/7 call answering', included: false },
+      { label: 'Social media (Instagram + Facebook + GBP)', included: false },
+      { label: 'Ads manager (Google + Meta)', included: false },
+      { label: 'Multi-location dashboard', included: false },
+    ],
+    value: '$430/mo at any agency',
+  },
+  {
+    id: 'growth',
+    name: 'Growth',
+    price: 149,
+    note: 'per month · cancel anytime',
+    tagline: 'Everything in Starter + AI answers your phone + social.',
+    cta: 'Start Growth Plan',
+    popular: true,
+    color: '#00C26F',
+    features: [
+      { label: 'Everything in Starter', included: true },
+      { label: 'AI Reception — answers calls 24/7 in your voice', included: true },
+      { label: 'Appointment booking via AI (auto-confirms)', included: true },
+      { label: 'Call transcripts + summary sent after every call', included: true },
+      { label: 'Social media: 4 posts/wk across IG, FB, GBP', included: true },
+      { label: 'Content written in your voice about real offers', included: true },
+      { label: 'Weekly social analytics report', included: true },
+      { label: 'Ads manager (Google + Meta)', included: false },
+      { label: 'Compliance layer + approval workflows', included: false },
+      { label: 'Multi-location dashboard', included: false },
+    ],
+    value: '$1,200+/mo at any agency',
+  },
+  {
+    id: 'business',
+    name: 'Business OS',
+    price: 297,
+    note: 'per month · cancel anytime',
+    tagline: 'Full AI business manager. Nothing left out.',
+    cta: 'Start Business OS',
+    popular: false,
+    color: '#8B5CF6',
+    features: [
+      { label: 'Everything in Growth', included: true },
+      { label: 'Google + Meta ads managed end-to-end by AI', included: true },
+      { label: 'Ads compliance-checked before publishing', included: true },
+      { label: 'Spend caps + weekly ad performance reports', included: true },
+      { label: 'Outreach pipeline (new leads found weekly)', included: true },
+      { label: 'Approval workflows for ads + social posts', included: true },
+      { label: 'Priority support + dedicated account setup', included: true },
+      { label: 'Multi-location dashboard', included: false },
+      { label: 'White-label / reseller access', included: false },
+    ],
+    value: '$2,500+/mo at any agency',
+  },
+  {
+    id: 'agency',
+    name: 'Agency',
+    price: 497,
+    note: 'per month · up to 5 locations',
+    tagline: 'Multi-location. White-label. API access. Everything.',
+    cta: 'Talk to Us',
+    popular: false,
+    color: '#F59E0B',
+    features: [
+      { label: 'Everything in Business OS', included: true },
+      { label: 'Up to 5 locations / client accounts', included: true },
+      { label: 'White-label dashboard — your brand, your clients', included: true },
+      { label: 'API access for custom integrations', included: true },
+      { label: 'Zapier / webhook support', included: true },
+      { label: 'Dedicated onboarding call + account manager', included: true },
+      { label: 'Custom compliance rules per industry/location', included: true },
+      { label: 'Enterprise pricing for 10+ locations', included: true },
+    ],
+    value: '$5,000+/mo at any agency',
+  },
 ]
 
 export default function Pricing() {
@@ -36,8 +111,8 @@ export default function Pricing() {
         scrollTrigger: { trigger: headingRef.current, start: 'top 85%' },
       })
       gsap.from(cardsRef.current?.querySelectorAll('.pricing-card') ?? [], {
-        y: 56, opacity: 0, stagger: 0.14, duration: 0.75, ease: 'power3.out',
-        scrollTrigger: { trigger: cardsRef.current, start: 'top 80%' },
+        y: 56, opacity: 0, stagger: 0.1, duration: 0.75, ease: 'power3.out',
+        scrollTrigger: { trigger: cardsRef.current, start: 'top 82%' },
       })
     })
     return () => ctx.revert()
@@ -46,7 +121,7 @@ export default function Pricing() {
   const split = (text: string) =>
     text.split(' ').map((w, i) => (
       <span key={i} className="word-wrap" style={{ display: 'inline-block', marginRight: '0.22em' }}>
-        <span className="word-inner">{w}</span>
+        <span className="word-inner">{w}{' '}</span>
       </span>
     ))
 
@@ -55,19 +130,19 @@ export default function Pricing() {
       id="pricing"
       ref={sectionRef}
       style={{
-        padding: 'clamp(80px,12vw,140px) 32px',
+        padding: 'clamp(80px,12vw,140px) clamp(24px,5vw,60px)',
         background: 'var(--color-surface)',
         borderTop: '1px solid var(--color-border)',
       }}
     >
-      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '1320px', margin: '0 auto' }}>
 
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
           <div className="section-label" style={{ justifyContent: 'center' }}>
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-blue)' }} />
+            <span style={{ width: 24, height: 1, background: 'var(--color-accent)' }} />
             Pricing
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-blue)' }} />
+            <span style={{ width: 24, height: 1, background: 'var(--color-accent)' }} />
           </div>
           <div ref={headingRef}>
             <h2 style={{
@@ -75,207 +150,189 @@ export default function Pricing() {
               fontSize: 'clamp(2.2rem,5.5vw,4rem)',
               letterSpacing: '-0.03em', lineHeight: 1.1,
             }}>
-              {split('Start free.')}
-              <span className="gradient-brand">{split(' Grow for $49/mo.')}</span>
+              {split('Hire your AI team')}
+              <span className="gradient-brand"> {split('for less than a daily coffee.')}</span>
             </h2>
           </div>
-          <p style={{ color: 'var(--color-muted)', fontSize: '1.05rem', maxWidth: '500px', margin: '20px auto 0', lineHeight: 1.65 }}>
-            We build your site overnight at no cost. Keep it free on a webcrew subdomain, or upgrade to your own domain + full growth stack for $49/month.
+          <p style={{ color: 'var(--color-muted)', fontSize: '1.05rem', maxWidth: '520px', margin: '20px auto 0', lineHeight: 1.65 }}>
+            Every plan starts with a FREE demo site — no card required. Upgrade only when you see real results.
           </p>
+
+          {/* Social proof pill */}
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: 10,
+            background: 'rgba(0,194,110,0.06)', border: '1px solid rgba(0,194,110,0.2)',
+            borderRadius: 100, padding: '10px 20px', marginTop: 24,
+          }}>
+            <span className="live-dot" />
+            <span style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--color-text)' }}>
+              Founding member pricing — locks forever. Raises to $199+/mo at public launch.
+            </span>
+          </div>
         </div>
 
-        {/* Cards */}
+        {/* 4-column card grid */}
         <div
           ref={cardsRef}
           style={{
             display: 'grid',
-            gridTemplateColumns: 'minmax(0,1fr) minmax(0,1fr)',
-            gap: '20px',
+            gridTemplateColumns: 'repeat(4, minmax(0,1fr))',
+            gap: '16px',
             alignItems: 'stretch',
           }}
           className="pricing-grid"
         >
-
-          {/* ── FREE CARD ── */}
-          <div
-            className="pricing-card"
-            style={{
-              background: 'var(--color-bg)',
-              border: '1px solid var(--color-border)',
-              borderRadius: '20px',
-              padding: '36px',
-              display: 'flex', flexDirection: 'column',
-              transition: 'transform 0.3s, box-shadow 0.3s',
-            }}
-            onMouseEnter={e => { const el = e.currentTarget; el.style.transform = 'translateY(-4px)'; el.style.boxShadow = '0 16px 48px rgba(0,0,0,0.08)' }}
-            onMouseLeave={e => { const el = e.currentTarget; el.style.transform = 'translateY(0)'; el.style.boxShadow = 'none' }}
-          >
-            <div style={{ marginBottom: '24px' }}>
-              <div style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--color-muted)', marginBottom: '10px' }}>
-                Free
-              </div>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px', marginBottom: '8px' }}>
-                <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '3rem', letterSpacing: '-0.04em', color: 'var(--color-text)' }}>$0</span>
-                <span style={{ color: 'var(--color-muted)', fontSize: '0.88rem' }}>/forever</span>
-              </div>
-              <p style={{ color: 'var(--color-muted)', fontSize: '0.88rem', lineHeight: 1.6, margin: 0 }}>
-                Get your site live and see leads come in — no card, no commitment. Upgrade when you&apos;re ready.
-              </p>
-            </div>
-
-            <a
-              href="#contact"
-              onClick={e => {
-                e.preventDefault()
-                window.dispatchEvent(new CustomEvent('wc:tab', { detail: { tab: 'demo' } }))
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-              }}
-              className="btn-ghost"
+          {TIERS.map((tier) => (
+            <div
+              key={tier.id}
+              className="pricing-card"
               style={{
-                display: 'flex', justifyContent: 'center',
-                textDecoration: 'none', marginBottom: '28px',
-                color: 'var(--color-text)', borderColor: 'var(--color-border)',
-                padding: '13px 24px',
+                background: tier.popular
+                  ? `linear-gradient(175deg, ${tier.color}08 0%, var(--color-bg) 100%)`
+                  : 'var(--color-bg)',
+                border: tier.popular
+                  ? `1.5px solid ${tier.color}50`
+                  : '1px solid var(--color-border)',
+                borderRadius: '20px',
+                padding: '28px 24px',
+                display: 'flex', flexDirection: 'column',
+                position: 'relative',
+                boxShadow: tier.popular ? `0 0 60px ${tier.color}12` : 'none',
+                transition: 'transform 0.3s, box-shadow 0.3s',
+              }}
+              onMouseEnter={e => {
+                const el = e.currentTarget
+                el.style.transform = 'translateY(-6px)'
+                el.style.boxShadow = `0 20px 60px ${tier.color}20`
+              }}
+              onMouseLeave={e => {
+                const el = e.currentTarget
+                el.style.transform = 'translateY(0)'
+                el.style.boxShadow = tier.popular ? `0 0 60px ${tier.color}12` : 'none'
               }}
             >
-              Get Free Site — No Card Needed
-            </a>
-
-            <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '24px', display: 'flex', flexDirection: 'column', gap: '12px', flex: 1 }}>
-              {FREE_FEATURES.map(f => (
-                <div key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                  <Check size={14} color="var(--color-blue)" style={{ flexShrink: 0, marginTop: 2 }} />
-                  <span style={{ fontSize: '0.84rem', color: 'var(--color-muted)', lineHeight: 1.4 }}>{f}</span>
+              {tier.popular && (
+                <div style={{
+                  position: 'absolute', top: '-13px', left: '50%', transform: 'translateX(-50%)',
+                  background: `linear-gradient(135deg, ${tier.color}, #0EA5E9)`,
+                  color: '#fff', fontWeight: 700, fontSize: '0.62rem',
+                  letterSpacing: '0.12em', textTransform: 'uppercase',
+                  padding: '5px 16px', borderRadius: '100px', whiteSpace: 'nowrap',
+                }}>
+                  ✦ Most Popular
                 </div>
-              ))}
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                <Minus size={14} color="rgba(0,0,0,0.2)" style={{ flexShrink: 0, marginTop: 2 }} />
-                <span style={{ fontSize: '0.84rem', color: 'rgba(0,0,0,0.3)', lineHeight: 1.4 }}>Custom domain, GBP management, lead alerts</span>
-              </div>
-            </div>
-          </div>
+              )}
 
-          {/* ── GROWTH CARD ── */}
-          <div
-            className="pricing-card"
-            style={{
-              background: 'linear-gradient(160deg, rgba(0,194,110,0.04) 0%, var(--color-bg) 100%)',
-              border: '1.5px solid rgba(0,194,110,0.3)',
-              borderRadius: '20px',
-              padding: '36px',
-              position: 'relative',
-              boxShadow: '0 0 80px rgba(0,194,110,0.07)',
-              display: 'flex', flexDirection: 'column',
-              transition: 'transform 0.35s var(--ease-out), box-shadow 0.35s',
-            }}
-            onMouseEnter={e => { const el = e.currentTarget; el.style.transform = 'translateY(-6px)'; el.style.boxShadow = '0 24px 80px rgba(0,194,110,0.14)' }}
-            onMouseLeave={e => { const el = e.currentTarget; el.style.transform = 'translateY(0)'; el.style.boxShadow = '0 0 80px rgba(0,194,110,0.07)' }}
-          >
-            {/* Badge */}
-            <div style={{
-              position: 'absolute', top: '-14px', left: '50%', transform: 'translateX(-50%)',
-              background: 'linear-gradient(135deg, #00C26F, #0EA5E9)',
-              color: '#fff', fontWeight: 700, fontSize: '0.65rem', letterSpacing: '0.12em',
-              textTransform: 'uppercase', padding: '5px 18px', borderRadius: '100px',
-              whiteSpace: 'nowrap',
-            }}>
-              ✦ Most Popular · Founding Member
-            </div>
+              {/* Top glow line for popular */}
+              {tier.popular && (
+                <div style={{ position: 'absolute', top: 0, left: '20%', right: '20%', height: 1, background: `linear-gradient(90deg, transparent, ${tier.color}, transparent)` }} />
+              )}
 
-            {/* Top glow line */}
-            <div style={{ position: 'absolute', top: 0, left: '20%', right: '20%', height: '1px', background: 'linear-gradient(90deg, transparent, var(--color-blue), transparent)' }} />
-
-            <div style={{ marginBottom: '24px', marginTop: '8px' }}>
-              <div style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--color-muted)', marginBottom: '10px' }}>
-                Growth
-              </div>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '8px' }}>
-                <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '3.4rem', letterSpacing: '-0.04em', color: 'var(--color-blue)' }}>$49</span>
-                <span style={{ color: 'var(--color-muted)', fontSize: '0.88rem' }}>/month · cancel anytime</span>
-              </div>
+              {/* Tier name */}
               <div style={{
-                fontSize: '0.78rem', color: '#00C26F', fontWeight: 600,
-                background: 'rgba(0,194,110,0.06)', border: '1px solid rgba(0,194,110,0.15)',
-                borderRadius: 8, padding: '8px 12px', lineHeight: 1.5,
+                fontSize: '0.62rem', fontWeight: 800, letterSpacing: '0.2em',
+                textTransform: 'uppercase', color: tier.color, marginBottom: 12,
+                marginTop: tier.popular ? 8 : 0,
               }}>
-                🔒 Price locked for life — future plans start at $99/mo. Join now.
+                {tier.name}
               </div>
-            </div>
 
-            <a
-              href="#contact"
-              onClick={e => {
-                e.preventDefault()
-                window.dispatchEvent(new CustomEvent('wc:tab', { detail: { tab: 'demo' } }))
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-              }}
-              className="btn-primary"
-              style={{ display: 'flex', justifyContent: 'center', textDecoration: 'none', marginBottom: '28px' }}
-            >
-              Lock In $49/mo — Start Free <ArrowRight size={16} />
-            </a>
-
-            <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '24px', flex: 1 }}>
-              <div style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--color-muted)', marginBottom: '16px', letterSpacing: '0.04em' }}>
-                Everything in Free, plus:
+              {/* Price */}
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, marginBottom: 6 }}>
+                <span style={{
+                  fontFamily: 'var(--font-display)', fontWeight: 800,
+                  fontSize: '2.8rem', letterSpacing: '-0.04em',
+                  color: tier.popular ? tier.color : 'var(--color-text)',
+                }}>
+                  ${tier.price}
+                </span>
+                <span style={{ color: 'var(--color-muted)', fontSize: '0.78rem' }}>/mo</span>
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                {GROWTH_FEATURES.map(item => {
-                  const Icon = item.icon
-                  return (
-                    <div key={item.label} style={{
-                      display: 'flex', gap: '12px', alignItems: 'flex-start',
-                      opacity: item.coming ? 0.7 : 1,
+              <div style={{ fontSize: '0.72rem', color: 'var(--color-muted)', marginBottom: 10, lineHeight: 1.4 }}>
+                {tier.note}
+              </div>
+
+              {/* Value comparison */}
+              <div style={{
+                fontSize: '0.68rem', fontWeight: 600,
+                color: tier.color,
+                background: `${tier.color}0C`,
+                border: `1px solid ${tier.color}22`,
+                borderRadius: 7, padding: '6px 10px',
+                marginBottom: 16, lineHeight: 1.4,
+              }}>
+                {tier.value}
+              </div>
+
+              {/* Tagline */}
+              <p style={{ color: 'var(--color-muted)', fontSize: '0.82rem', lineHeight: 1.55, marginBottom: 20 }}>
+                {tier.tagline}
+              </p>
+
+              {/* CTA */}
+              <a
+                href="#contact"
+                onClick={e => {
+                  e.preventDefault()
+                  window.dispatchEvent(new CustomEvent('wc:tab', { detail: { tab: 'demo' } }))
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                }}
+                className={tier.popular ? 'btn-primary' : 'btn-ghost'}
+                style={{
+                  display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 7,
+                  textDecoration: 'none', marginBottom: 22,
+                  fontSize: '0.85rem', padding: '13px 20px',
+                  ...(tier.popular ? {} : {
+                    borderColor: `${tier.color}40`,
+                    color: tier.color,
+                  }),
+                  ...(tier.popular ? { background: `linear-gradient(135deg, ${tier.color}, #0EA5E9)` } : {}),
+                }}
+              >
+                {tier.cta} <ArrowRight size={14} />
+              </a>
+
+              {/* Feature list */}
+              <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: 18, flex: 1, display: 'flex', flexDirection: 'column', gap: 9 }}>
+                {tier.features.map(f => (
+                  <div key={f.label} style={{ display: 'flex', gap: 9, alignItems: 'flex-start', opacity: f.included ? 1 : 0.38 }}>
+                    <div style={{
+                      width: 16, height: 16, borderRadius: 4, flexShrink: 0,
+                      background: f.included ? `${tier.color}15` : 'rgba(0,0,0,0.04)',
+                      border: f.included ? `1px solid ${tier.color}35` : '1px solid rgba(0,0,0,0.08)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      marginTop: 1,
                     }}>
-                      <div style={{
-                        width: '30px', height: '30px', flexShrink: 0,
-                        background: item.coming ? 'rgba(255,255,255,0.05)' : 'rgba(0,194,110,0.08)',
-                        borderRadius: '8px',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        border: item.coming ? '1px dashed rgba(255,255,255,0.15)' : 'none',
-                      }}>
-                        <Icon size={13} color={item.coming ? 'rgba(255,255,255,0.3)' : 'var(--color-blue)'} />
-                      </div>
-                      <div style={{ flex: 1 }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '8px' }}>
-                          <span style={{ fontSize: '0.84rem', fontWeight: 600, color: item.coming ? 'var(--color-muted)' : 'var(--color-text)' }}>{item.label}</span>
-                          <span style={{
-                            fontSize: '0.65rem',
-                            color: item.coming ? '#00C26F' : 'var(--color-muted)',
-                            background: item.coming ? 'rgba(0,194,110,0.08)' : 'var(--color-surface)',
-                            border: item.coming ? '1px solid rgba(0,194,110,0.2)' : '1px solid var(--color-border)',
-                            borderRadius: '6px', padding: '1px 7px', whiteSpace: 'nowrap', flexShrink: 0,
-                          }}>{item.market}</span>
-                        </div>
-                        <div style={{ fontSize: '0.75rem', color: 'var(--color-muted)', marginTop: '2px', lineHeight: 1.4 }}>{item.detail}</div>
-                      </div>
+                      {f.included
+                        ? <Check size={10} color={tier.color} strokeWidth={2.5} />
+                        : <Minus size={9} color="#9CA3AF" />
+                      }
                     </div>
-                  )
-                })}
+                    <span style={{ fontSize: '0.78rem', color: f.included ? 'var(--color-text)' : 'var(--color-muted)', lineHeight: 1.45 }}>
+                      {f.label}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
-
-            <p style={{ textAlign: 'center', fontSize: '0.74rem', color: 'var(--color-muted)', marginTop: '20px', lineHeight: 1.6, marginBottom: 0 }}>
-              Worth <strong style={{ color: 'var(--color-blue)' }}>$460/mo</strong> at any agency. You pay $49.
-            </p>
-          </div>
-
+          ))}
         </div>
 
-        {/* Responsive style */}
-        <style>{`
-          @media (max-width: 760px) {
-            .pricing-grid { grid-template-columns: 1fr !important; }
-          }
-        `}</style>
-
-        {/* Multi-location note */}
-        <p style={{ textAlign: 'center', marginTop: '28px', fontSize: '0.82rem', color: 'var(--color-muted)' }}>
-          Multiple locations or franchise?{' '}
-          <a href="#contact" style={{ color: 'var(--color-blue)', fontWeight: 600, textDecoration: 'underline' }}>
-            Contact us — custom pricing available.
-          </a>
-        </p>
+        {/* Free tier note */}
+        <div style={{
+          marginTop: 20, textAlign: 'center',
+          padding: '16px 24px',
+          background: 'var(--color-bg)',
+          border: '1px solid var(--color-border)',
+          borderRadius: 14,
+        }}>
+          <span style={{ fontSize: '0.84rem', color: 'var(--color-muted)' }}>
+            All plans include a{' '}
+            <strong style={{ color: 'var(--color-text)' }}>FREE demo website built overnight</strong>
+            {' '}— no card required. Pay only if you love it.
+            {' '}<a href="#contact" style={{ color: 'var(--color-accent)', fontWeight: 600, textDecoration: 'none' }}>Get started free →</a>
+          </span>
+        </div>
 
         {/* ── Pricing Roadmap ── */}
         <div style={{
@@ -286,84 +343,83 @@ export default function Pricing() {
           overflow: 'hidden',
         }}>
           <div style={{
-            padding: '24px 36px 20px',
+            padding: '22px 32px 18px',
             borderBottom: '1px solid rgba(255,255,255,0.06)',
             display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12,
           }}>
             <div>
-              <div style={{ fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', marginBottom: 6 }}>
+              <div style={{ fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.28)', marginBottom: 5 }}>
                 Pricing Roadmap
               </div>
-              <div style={{ fontSize: '1.05rem', fontWeight: 700, color: '#fff', letterSpacing: '-0.02em' }}>
-                Price increases at every milestone. Lock $49 now.
+              <div style={{ fontSize: '1rem', fontWeight: 700, color: '#fff', letterSpacing: '-0.02em' }}>
+                Price increases at every milestone. Lock founding rates now.
               </div>
             </div>
             <div style={{
-              display: 'inline-flex', alignItems: 'center', gap: 8,
-              background: 'rgba(0,194,110,0.1)', border: '1px solid rgba(0,194,110,0.3)',
-              borderRadius: 100, padding: '8px 16px',
+              display: 'inline-flex', alignItems: 'center', gap: 7,
+              background: 'rgba(0,194,110,0.1)', border: '1px solid rgba(0,194,110,0.28)',
+              borderRadius: 100, padding: '7px 15px',
             }}>
               <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#00C26F', boxShadow: '0 0 8px rgba(0,194,110,0.8)' }} />
-              <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#00C26F' }}>Founding Members window — open now</span>
+              <span style={{ fontSize: '0.73rem', fontWeight: 700, color: '#00C26F' }}>Founding window — open now</span>
             </div>
           </div>
 
-          <div style={{ padding: '0 36px 28px' }}>
+          <div style={{ padding: '0 32px 24px' }}>
             {[
-              { phase: '1', label: 'Founding Members',          price: '$49/mo',  note: 'Locked for life — never increases',              current: true,  badge: 'NOW' },
-              { phase: '2', label: 'Public Launch',             price: '$99/mo',  note: 'Price doubles on launch day',                    current: false, badge: 'NEXT' },
-              { phase: '3', label: 'AI Receptionist',           price: '$149/mo', note: '24/7 AI call answering added to all plans',       current: false, badge: 'Q3' },
-              { phase: '4', label: 'Business OS',               price: '$199/mo', note: 'CRM + automations + full business dashboard',     current: false, badge: 'Q4' },
-              { phase: '5', label: 'Multi-location & AI Suite', price: '$299+/mo',note: 'Franchise management + multi-location AI',        current: false, badge: '2026' },
+              { phase: '1', label: 'Founding Members',    price: 'from $49/mo',  note: 'Locked for life on all current features',     current: true,  badge: 'NOW'  },
+              { phase: '2', label: 'Public Launch',        price: 'from $199/mo', note: 'Price increases on launch day',               current: false, badge: 'NEXT' },
+              { phase: '3', label: 'AI Reception Live',    price: 'from $249/mo', note: 'Reception now default across all plans',      current: false, badge: 'Q3'   },
+              { phase: '4', label: 'Business OS v2',       price: 'from $399/mo', note: 'CRM + automations + referral network',        current: false, badge: 'Q4'   },
+              { phase: '5', label: 'Agency Suite',         price: '$997+/mo',     note: 'Franchise management + AI white-label',       current: false, badge: '2026' },
             ].map((tier, i, arr) => (
               <div key={tier.label} style={{ display: 'flex', alignItems: 'stretch', gap: 0 }}>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 36, flexShrink: 0, paddingTop: 22 }}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 34, flexShrink: 0, paddingTop: 22 }}>
                   <div style={{
-                    width: tier.current ? 14 : 10,
-                    height: tier.current ? 14 : 10,
+                    width: tier.current ? 13 : 9, height: tier.current ? 13 : 9,
                     borderRadius: '50%',
-                    background: tier.current ? 'linear-gradient(135deg, #00C26F, #0EA5E9)' : i === 1 ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.08)',
-                    border: tier.current ? 'none' : '1.5px solid rgba(255,255,255,0.12)',
+                    background: tier.current ? 'linear-gradient(135deg, #00C26F, #0EA5E9)' : i === 1 ? 'rgba(255,255,255,0.18)' : 'rgba(255,255,255,0.07)',
+                    border: tier.current ? 'none' : '1.5px solid rgba(255,255,255,0.1)',
                     flexShrink: 0,
-                    boxShadow: tier.current ? '0 0 16px rgba(0,194,110,0.7), 0 0 32px rgba(0,194,110,0.25)' : 'none',
+                    boxShadow: tier.current ? '0 0 14px rgba(0,194,110,0.7)' : 'none',
                   }} />
                   {i < arr.length - 1 && (
-                    <div style={{ flex: 1, width: 1.5, minHeight: 24, background: tier.current ? 'linear-gradient(to bottom, rgba(0,194,110,0.4), rgba(255,255,255,0.06))' : 'rgba(255,255,255,0.06)' }} />
+                    <div style={{ flex: 1, width: 1.5, minHeight: 20, background: tier.current ? 'linear-gradient(to bottom, rgba(0,194,110,0.35), rgba(255,255,255,0.05))' : 'rgba(255,255,255,0.05)' }} />
                   )}
                 </div>
                 <div style={{
-                  flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16,
-                  padding: tier.current ? '18px 20px' : '14px 20px',
-                  margin: tier.current ? '10px 0 4px' : '4px 0',
-                  borderRadius: 12,
+                  flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 14,
+                  padding: tier.current ? '16px 18px' : '12px 18px',
+                  margin: tier.current ? '10px 0 4px' : '3px 0',
+                  borderRadius: 10,
                   background: tier.current ? 'linear-gradient(135deg, rgba(0,194,110,0.08) 0%, rgba(14,165,233,0.05) 100%)' : 'transparent',
-                  border: tier.current ? '1px solid rgba(0,194,110,0.2)' : '1px solid transparent',
+                  border: tier.current ? '1px solid rgba(0,194,110,0.18)' : '1px solid transparent',
                 }}>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4, flexWrap: 'wrap' }}>
-                      <span style={{ fontSize: tier.current ? '1rem' : '0.88rem', fontWeight: tier.current ? 700 : 500, color: tier.current ? '#FFFFFF' : i === 1 ? 'rgba(255,255,255,0.55)' : 'rgba(255,255,255,0.3)', fontFamily: 'var(--font-display)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 3, flexWrap: 'wrap' }}>
+                      <span style={{ fontSize: tier.current ? '0.95rem' : '0.84rem', fontWeight: tier.current ? 700 : 500, color: tier.current ? '#FFFFFF' : i === 1 ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.28)', fontFamily: 'var(--font-display)' }}>
                         {tier.label}
                       </span>
-                      <span style={{ fontSize: '0.56rem', fontWeight: 800, letterSpacing: '0.14em', textTransform: 'uppercase', padding: '3px 8px', borderRadius: 100, background: tier.current ? 'linear-gradient(135deg, #00C26F, #0EA5E9)' : i === 1 ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.05)', color: tier.current ? '#fff' : i === 1 ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.2)' }}>
+                      <span style={{ fontSize: '0.54rem', fontWeight: 800, letterSpacing: '0.14em', textTransform: 'uppercase', padding: '2px 7px', borderRadius: 100, background: tier.current ? 'linear-gradient(135deg, #00C26F, #0EA5E9)' : i === 1 ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.04)', color: tier.current ? '#fff' : i === 1 ? 'rgba(255,255,255,0.35)' : 'rgba(255,255,255,0.18)' }}>
                         {tier.badge}
                       </span>
                     </div>
-                    <div style={{ fontSize: '0.74rem', color: tier.current ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.2)' }}>{tier.note}</div>
+                    <div style={{ fontSize: '0.72rem', color: tier.current ? 'rgba(255,255,255,0.45)' : 'rgba(255,255,255,0.18)' }}>{tier.note}</div>
                   </div>
                   <div style={{ textAlign: 'right', flexShrink: 0 }}>
-                    <div style={{ fontSize: tier.current ? '1.5rem' : '1.05rem', fontWeight: 800, letterSpacing: '-0.03em', fontFamily: 'var(--font-display)', color: tier.current ? '#00C26F' : i === 1 ? 'rgba(255,255,255,0.35)' : 'rgba(255,255,255,0.18)' }}>
+                    <div style={{ fontSize: tier.current ? '1.4rem' : '1rem', fontWeight: 800, letterSpacing: '-0.03em', fontFamily: 'var(--font-display)', color: tier.current ? '#00C26F' : i === 1 ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.15)' }}>
                       {tier.price}
                     </div>
-                    {tier.current && <div style={{ fontSize: '0.62rem', color: 'rgba(255,255,255,0.3)', marginTop: 2 }}>locked for life</div>}
+                    {tier.current && <div style={{ fontSize: '0.6rem', color: 'rgba(255,255,255,0.28)', marginTop: 2 }}>locked for life</div>}
                   </div>
                 </div>
               </div>
             ))}
           </div>
 
-          <div style={{ padding: '20px 36px', borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
-            <p style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.3)', margin: 0 }}>
-              Founding Members keep $49/mo <strong style={{ color: 'rgba(255,255,255,0.5)' }}>forever</strong> — regardless of future releases.
+          <div style={{ padding: '18px 32px', borderTop: '1px solid rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
+            <p style={{ fontSize: '0.76rem', color: 'rgba(255,255,255,0.28)', margin: 0 }}>
+              Founding Members keep their rate <strong style={{ color: 'rgba(255,255,255,0.45)' }}>forever</strong> — regardless of future plan pricing.
             </p>
             <a
               href="#contact"
@@ -372,14 +428,29 @@ export default function Pricing() {
                 window.dispatchEvent(new CustomEvent('wc:tab', { detail: { tab: 'demo' } }))
                 document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
               }}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: '0.78rem', fontWeight: 700, background: 'linear-gradient(135deg, #00C26F, #0EA5E9)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', textDecoration: 'none' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: '0.76rem', fontWeight: 700, background: 'linear-gradient(135deg, #00C26F, #0EA5E9)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', textDecoration: 'none' }}
             >
-              Lock $49 before launch →
+              Lock founding rate before launch →
             </a>
           </div>
         </div>
 
+        <p style={{ textAlign: 'center', marginTop: '24px', fontSize: '0.82rem', color: 'var(--color-muted)' }}>
+          Multiple locations or enterprise?{' '}
+          <a href="#contact" style={{ color: 'var(--color-accent)', fontWeight: 600, textDecoration: 'underline' }}>
+            Contact us — custom pricing available.
+          </a>
+        </p>
       </div>
+
+      <style>{`
+        @media (max-width: 1100px) {
+          .pricing-grid { grid-template-columns: repeat(2,1fr) !important; }
+        }
+        @media (max-width: 640px) {
+          .pricing-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </section>
   )
 }

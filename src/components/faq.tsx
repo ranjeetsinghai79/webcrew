@@ -71,7 +71,7 @@ export default function FAQ() {
             background: 'linear-gradient(135deg, #00C26F 0%, #0EA5E9 100%)',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
           } : undefined}
-        >{w}</span>
+        >{w}{' '}</span>
       </span>
     ))
 

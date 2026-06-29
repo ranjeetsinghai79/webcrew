@@ -209,7 +209,7 @@ export default function MoneyShot() {
             background: 'linear-gradient(135deg,#00C26F,#0EA5E9)',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
           } : { display: 'inline-block', color: '#FFFFFF' }}
-        >{w}</span>
+        >{w}{' '}</span>
       </span>
     ))
 
