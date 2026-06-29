@@ -14,7 +14,6 @@ import Results          from '@/components/results'
 import ComingSoon       from '@/components/coming-soon'
 import Comparison       from '@/components/comparison'
 import WhyWebcrew       from '@/components/why-webcrew'
-import AfterYouJoin     from '@/components/after-you-join'
 import Pricing          from '@/components/pricing'
 import FAQ              from '@/components/faq'
 import Contact          from '@/components/contact'
@@ -52,9 +51,7 @@ export default function Home() {
         <WhyWebcrew />
         {/* 11. Comparison — sets up why pricing is a no-brainer */}
         <Comparison />
-        {/* 12. Remove friction — free tier before pricing */}
-        <AfterYouJoin />
-        {/* 13. Ready to buy */}
+        {/* 12. Ready to buy */}
         <Pricing />
         <FAQ />
         <Contact />
