@@ -169,6 +169,10 @@ function BrowserCard({ site }: { site: typeof SITES[0] }) {
           <img
             src={site.img}
             alt={site.biz}
+            width={340}
+            height={210}
+            loading="lazy"
+            decoding="async"
             style={{
               width: '100%', height: '100%', objectFit: 'cover',
               objectPosition: 'center top', display: 'block',

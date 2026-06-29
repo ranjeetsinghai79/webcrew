@@ -41,13 +41,13 @@ export const metadata: Metadata = {
     url: 'https://webcrew.app',
     siteName: 'WebCrew',
     type: 'website',
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'WebCrew — AI builds your local business website overnight' }],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'WebCrew — AI builds your local business website overnight' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: TITLE,
     description: DESC,
-    images: ['/og-image.jpg'],
+    images: ['/og-image.png'],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
   alternates: { canonical: 'https://webcrew.app' },
@@ -149,8 +149,14 @@ const SCHEMA = {
         {
           '@type': 'Offer',
           name: 'Hosting + AI Team',
-          price: '49',
-          priceCurrency: 'USD',
+          priceSpecification: {
+            '@type': 'UnitPriceSpecification',
+            price: '49',
+            priceCurrency: 'USD',
+            billingDuration: 1,
+            billingIncrement: 1,
+            unitCode: 'MON',
+          },
           description: 'Monthly plan including Cloudflare CDN hosting, AI call answering 24/7, weekly GBP posts, automated review replies, monthly SEO reports, and instant lead alerts.',
           url: 'https://webcrew.app/#pricing',
           availability: 'https://schema.org/InStock',
@@ -159,6 +165,7 @@ const SCHEMA = {
     },
     {
       '@type': 'FAQPage',
+      '@id': 'https://webcrew.app/#faqpage',
       mainEntity: [
         {
           '@type': 'Question',
@@ -173,7 +180,7 @@ const SCHEMA = {
           name: 'Is this just a template with my name swapped in?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'No. Every WebCrew site is built from scratch for your specific trade, city, and brand. A plumber in Dallas gets a completely different site from a plumber in Chicago — different design, different copy, different images, different color palette. Two HVAC companies in the same city receive different layouts, different headline angles, and different photography. WebCrew\'s AI pipeline uses Firecrawl to scan your existing web presence and extract real brand signals, then Gemini AI to generate city-specific copy and a custom configuration unique to your business. Fal.ai Flux Pro generates custom hero images. Nothing is copy-pasted. The result is a site that reflects your actual business — not a generic template with your name dropped in.',
+            text: 'No. Every WebCrew site is built from scratch for your specific trade, city, and brand. A plumber in Dallas gets a completely different site from a plumber in Chicago — different design, different copy, different images, different color palette. Two HVAC companies in the same city receive different layouts, different headline angles, and different photography. WebCrew\'s AI pipeline uses Firecrawl to scan your existing web presence and extract real brand signals, then Gemini AI to generate city-specific copy and a custom configuration unique to your business. Fal.ai Flux Pro generates custom hero images. Nothing is copy-pasted. The result is a site that reflects your actual business — not a generic template with your name dropped in. WebCrew has built across 25 niches including HVAC, roofing, dental, med spa, salon, landscaping, plumbing, and cleaning — each with niche-specific copy, imagery, and local SEO signals baked in from day one.',
           },
         },
         {
@@ -181,7 +188,7 @@ const SCHEMA = {
           name: 'How long does it actually take?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'WebCrew builds and deploys a complete custom website in approximately 6 hours. The process starts the moment you submit the form — no discovery calls, no briefs, no waiting on a human. WebCrew\'s AI pipeline scans your existing web presence using Firecrawl, generates city-specific copy and brand colors using Gemini AI, creates custom hero images using fal.ai Flux Pro, and deploys a live Next.js site to Cloudflare Pages, all without human involvement. Most builds complete overnight so you wake up to a text message with your live link. The deployed site typically scores 97/100 on Google PageSpeed. In cases where a business has a particularly complex niche, builds can take up to 12 hours. No client has waited longer than 24 hours since WebCrew launched.',
+            text: 'WebCrew builds and deploys a complete custom website in approximately 6 hours. The process starts the moment you submit the form — no discovery calls, no briefs, no waiting on a human. WebCrew\'s AI pipeline scans your existing web presence using Firecrawl, generates city-specific copy and brand colors using Gemini AI, creates custom hero images using fal.ai Flux Pro, and deploys a live Next.js site to Cloudflare Pages, all without human involvement. Most builds complete overnight so you wake up to a text message with your live link. The deployed site typically scores 97/100 on Google PageSpeed. In cases where a business has a particularly complex niche, builds can take up to 12 hours. No client has waited longer than 24 hours since WebCrew launched. Every client receives a text message with their live URL the morning after submitting — no login required, no dashboard to check, no waiting on email.',
           },
         },
         {
@@ -189,7 +196,7 @@ const SCHEMA = {
           name: 'What if I already have a website?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Use the "Upgrade My Site" tab in the contact form. WebCrew builds a complete redesign as a free demo while your current site stays live — zero risk, zero downtime, no DNS changes. You get to compare your existing site against the WebCrew-built version. If the new site is better, you switch. If not, you keep yours and pay nothing. Most clients who use this path switch to the WebCrew site. The redesign process uses the same AI pipeline: Firecrawl scans your current site to extract brand signals, colors, and services, then builds a new version that preserves your identity while dramatically improving design quality, PageSpeed score, and local SEO signals.',
+            text: 'Use the "Upgrade My Site" tab in the contact form. WebCrew builds a complete redesign as a free demo while your current site stays live — zero risk, zero downtime, no DNS changes. You get to compare your existing site against the WebCrew-built version. If the new site is better, you switch. If not, you keep yours and pay nothing. Most clients who use this path switch to the WebCrew site. The redesign process uses the same AI pipeline: Firecrawl scans your current site to extract brand signals, colors, and services, then builds a new version that preserves your identity while dramatically improving design quality, PageSpeed score, and local SEO signals. The demo runs on a separate Cloudflare Pages subdomain until you decide to switch — WebCrew cannot access or modify your existing site at any point during the process.',
           },
         },
         {
@@ -197,7 +204,7 @@ const SCHEMA = {
           name: 'What if I hate it?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Then you don\'t pay. WebCrew deletes the demo. No hard feelings, no invoices, no follow-up guilt trips, no passive-aggressive emails. It\'s that simple. WebCrew only makes money when clients love what was built — so there is a very strong incentive to get it right the first time. If the first build misses the mark, WebCrew will rebuild. The free demo model only works if the output is genuinely impressive, which is why the AI pipeline is continuously improved based on client feedback. No client has ever been charged for a site they didn\'t approve.',
+            text: 'Then you don\'t pay. WebCrew deletes the demo. No hard feelings, no invoices, no follow-up guilt trips, no passive-aggressive emails. It\'s that simple. WebCrew only makes money when clients love what was built — so there is a very strong incentive to get it right the first time. If the first build misses the mark, WebCrew will rebuild. The free demo model only works if the output is genuinely impressive, which is why the AI pipeline is continuously improved based on client feedback. No client has ever been charged for a site they didn\'t approve. Rebuild requests have been fulfilled for clients who needed different color schemes, different hero images, a different headline angle, or more niche-specific copy. There is no documented limit on rebuild attempts, and the rebuild process typically completes within the same 6-hour window as the original build.',
           },
         },
         {
@@ -205,7 +212,7 @@ const SCHEMA = {
           name: 'Will this actually rank on Google?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Every WebCrew site launches with city-specific keyword copy, schema markup (LocalBusiness, Service, FAQPage, AggregateRating), a sitemap.xml, and a robots.txt optimized for Google indexing. The $49/month plan includes weekly Google Business Profile posts that keep your GBP active and signal consistent local relevance to Google. Automated review replies increase review velocity, which is one of the strongest local ranking factors. Monthly Google Search Console reports show exactly which search terms are driving traffic. Most clients see their first Google-sourced inquiry within 7 days of going live. Sites average a 97/100 Google PageSpeed score, which directly supports Core Web Vitals rankings.',
+            text: 'Every WebCrew site launches with city-specific keyword copy, schema markup (LocalBusiness, Service, FAQPage, AggregateRating), a sitemap.xml, and a robots.txt optimized for Google indexing. The $49/month plan includes weekly Google Business Profile posts that keep your GBP active and signal consistent local relevance to Google. Automated review replies increase review velocity, which is one of the strongest local ranking factors. Monthly Google Search Console reports show exactly which search terms are driving traffic. Most clients see their first Google-sourced inquiry within 7 days of going live. Sites average a 97/100 Google PageSpeed score, which directly supports Core Web Vitals rankings. The schema markup includes four types Google\'s local algorithm responds to most directly: LocalBusiness, Service, FAQPage, and AggregateRating. All WebCrew sites are built on Next.js and deployed to Cloudflare Pages, achieving a typical Time to First Byte under 400 milliseconds globally.',
           },
         },
         {
@@ -213,7 +220,7 @@ const SCHEMA = {
           name: 'What does the $49/month actually include?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'The $49/month WebCrew plan includes Cloudflare Pages global CDN hosting with 99.9% uptime and automatic SSL, AI answering every inbound call 24/7 with a trained voice agent that knows your services, hours, and pricing, weekly Google Business Profile posts written by AI to keep your GBP active, automated AI replies to every Google review (positive and negative) to show responsiveness, a monthly Google Search Console traffic report showing impressions, clicks, and keyword rankings, and instant SMS alerts every time a new lead submits your contact form. The equivalent stack from a traditional agency — hosting, receptionist, GBP management, review management, and SEO reporting — runs $460 or more per month. The $49/mo founding member rate is locked for life.',
+            text: 'The $49/month WebCrew plan includes Cloudflare Pages global CDN hosting with 99.9% uptime and automatic SSL, AI answering every inbound call 24/7 with a trained voice agent that knows your services, hours, and pricing, weekly Google Business Profile posts written by AI to keep your GBP active, automated AI replies to every Google review (positive and negative) to show responsiveness, a monthly Google Search Console traffic report showing impressions, clicks, and keyword rankings, and instant SMS alerts every time a new lead submits your contact form. The equivalent stack from a traditional agency — hosting, receptionist, GBP management, review management, and SEO reporting — runs $460 or more per month. The $49/mo founding member rate is locked for life. All features activate from day one with no setup fee, no onboarding call, and no waiting period. The AI voice agent is trained on your specific services, pricing, and hours before your first call arrives.',
           },
         },
         {
@@ -221,7 +228,7 @@ const SCHEMA = {
           name: 'Do I own the site if I pay?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Completely. After paying the $299 one-time fee, you receive the full Next.js source code for your website. You can host it anywhere — Vercel, Netlify, your own server, or stay on Cloudflare Pages with the $49/mo plan. Cancel the monthly plan at any time and keep the code. There is no lock-in, no platform dependency, and no "your site disappears if you cancel" clause. The source code is your asset, not WebCrew\'s. This is a deliberate design decision: WebCrew only makes money on the ongoing value it delivers (calls answered, reviews replied, GBP posts, traffic reports), not by holding your site hostage.',
+            text: 'Completely. After paying the $299 one-time fee, you receive the full Next.js source code for your website. You can host it anywhere — Vercel, Netlify, your own server, or stay on Cloudflare Pages with the $49/mo plan. Cancel the monthly plan at any time and keep the code. There is no lock-in, no platform dependency, and no "your site disappears if you cancel" clause. The source code is your asset, not WebCrew\'s. This is a deliberate design decision: WebCrew only makes money on the ongoing value it delivers (calls answered, reviews replied, GBP posts, traffic reports), not by holding your site hostage. The handoff includes the full GitHub repository, deployment configuration, and environment variable documentation. If WebCrew ceased operations tomorrow, your site would continue running on Cloudflare Pages and you would retain everything needed to maintain or modify it independently.',
           },
         },
       ],
