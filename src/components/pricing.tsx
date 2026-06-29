@@ -171,6 +171,32 @@ export default function Pricing() {
           </div>
         </div>
 
+        {/* How it works — price journey */}
+        <div style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          flexWrap: 'wrap', gap: '0', marginBottom: '40px',
+        }} className="price-journey">
+          {[
+            { step: '1', label: 'Demo site', price: '$0', note: 'built overnight, no card' },
+            { step: '2', label: 'Own the code', price: '$299', note: 'one-time · yours forever' },
+            { step: '3', label: 'AI team', price: 'from $49/mo', note: 'hosting + 8 AI agents' },
+          ].map((s, i) => (
+            <div key={s.step} style={{ display: 'flex', alignItems: 'center' }}>
+              <div style={{
+                textAlign: 'center', padding: '16px 24px',
+                background: 'var(--color-bg)', border: '1px solid var(--color-border)',
+                borderRadius: 14, minWidth: 160,
+              }}>
+                <div style={{ fontSize: '0.55rem', fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--color-muted)', marginBottom: 6 }}>Step {s.step}</div>
+                <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '1.4rem', letterSpacing: '-0.03em', color: i === 1 ? '#00C26F' : 'var(--color-text)', lineHeight: 1 }}>{s.price}</div>
+                <div style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--color-text)', marginTop: 4 }}>{s.label}</div>
+                <div style={{ fontSize: '0.65rem', color: 'var(--color-muted)', marginTop: 2 }}>{s.note}</div>
+              </div>
+              {i < 2 && <div style={{ width: 32, height: 1, background: 'var(--color-border)', flexShrink: 0 }} />}
+            </div>
+          ))}
+        </div>
+
         {/* 4-column card grid */}
         <div
           ref={cardsRef}
@@ -449,6 +475,9 @@ export default function Pricing() {
         }
         @media (max-width: 640px) {
           .pricing-grid { grid-template-columns: 1fr !important; }
+          .price-journey { flex-direction: column !important; align-items: stretch !important; }
+          .price-journey > div { width: 100% !important; }
+          .price-journey > div > div[style*="height: 1"] { display: none !important; }
         }
       `}</style>
     </section>

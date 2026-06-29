@@ -303,9 +303,9 @@ export default function Hero() {
               marginBottom: '28px', color: '#FFFFFF',
             }}
           >
-            <div style={{ overflow: 'hidden', paddingBottom: '0.1em' }}>{split('Your Business,')}</div>
-            <div style={{ overflow: 'hidden', paddingBottom: '0.1em' }}>{split('Running', true)}</div>
-            <div style={{ overflow: 'hidden', paddingBottom: '0.1em' }}>{split('On Autopilot.')}</div>
+            <div style={{ overflow: 'hidden', paddingBottom: '0.1em' }}>{split('Free Website.')}</div>
+            <div style={{ overflow: 'hidden', paddingBottom: '0.1em' }}>{split('Built Overnight.', true)}</div>
+            <div style={{ overflow: 'hidden', paddingBottom: '0.1em' }}>{split('AI Runs It.')}</div>
           </h1>
 
           {/* Sub */}

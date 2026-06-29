@@ -221,8 +221,8 @@ export default function Results() {
             textAlign: 'center', marginBottom: 16,
             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
           }}>
-            <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#10B981', boxShadow: '0 0 8px rgba(16,185,129,0.7)', animation: 'pulse-ring 2s ease-out infinite' }} />
-            AI Agents Active Right Now
+            <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#10B981', opacity: 0.7 }} />
+            Example AI Activity — Typical Client Day
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12 }} className="ai-feed-grid">
             {[
