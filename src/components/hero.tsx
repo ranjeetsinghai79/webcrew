@@ -8,13 +8,13 @@ if (typeof window !== 'undefined') { gsap.registerPlugin(ScrollTrigger) }
 
 // ── AI Team Dashboard card ───────────────────────────────────────────────────
 const AGENTS = [
-  { icon: Phone,        label: 'AI Reception',   status: "Call answered · 3m ago",      color: '#00C26F', dot: true  },
-  { icon: Globe,        label: 'GBP Post',        status: '"Fall special — book today"',  color: '#0EA5E9', dot: true  },
-  { icon: MessageSquare,label: 'Review Reply',    status: 'Replied to 4★ review',        color: '#8B5CF6', dot: true  },
-  { icon: Star,         label: 'Lead Alert',      status: 'New inquiry → SMS sent',       color: '#F59E0B', dot: true  },
-  { icon: BarChart2,    label: 'Weekly Report',   status: 'Sent · +18% traffic this wk', color: '#00C26F', dot: false },
-  { icon: Megaphone,    label: 'Ads Manager',     status: '3 campaigns ready · approve to launch', color: '#0EA5E9', dot: false },
-  { icon: Share2,       label: 'Social Post',     status: '5 drafts ready · 1-click to post',      color: '#8B5CF6', dot: false },
+  { icon: Phone,        label: 'AI Reception',   status: 'AC repair booked · $450 job · 4m ago',  color: '#00C26F', dot: true  },
+  { icon: Star,         label: 'Revenue Alert',  status: '$1,200 recovered · missed call returned',color: '#F59E0B', dot: true  },
+  { icon: Globe,        label: 'GBP Post',        status: '"Summer AC tune-up $89 — book now"',    color: '#0EA5E9', dot: true  },
+  { icon: MessageSquare,label: 'Review Reply',    status: 'Replied to 5★ · "Fast & professional"', color: '#8B5CF6', dot: true  },
+  { icon: BarChart2,    label: 'Weekly Report',   status: '9 jobs booked · $4,100 revenue this wk',color: '#00C26F', dot: false },
+  { icon: Megaphone,    label: 'Ads Manager',     status: '3 HVAC campaigns live · 14 leads',      color: '#0EA5E9', dot: false },
+  { icon: Share2,       label: 'Social Post',     status: '5 seasonal drafts ready · 1-click post',color: '#8B5CF6', dot: false },
 ]
 
 function AITeamCard() {
@@ -45,7 +45,7 @@ function AITeamCard() {
               AI Business Manager
             </div>
             <div style={{ fontSize: '0.6rem', color: 'rgba(255,255,255,0.7)', marginTop: 1 }}>
-              Maria&apos;s Medspa · Tracy, CA
+              Jake&apos;s HVAC · Dallas, TX
             </div>
           </div>
         </div>
@@ -103,7 +103,7 @@ function AITeamCard() {
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
         <div style={{ fontSize: '0.62rem', color: '#6B7280' }}>
-          This week: <strong style={{ color: '#00C26F' }}>12 calls handled · 4 reviews replied · 3 posts published</strong>
+          This week: <strong style={{ color: '#00C26F' }}>9 jobs booked · $4,100 revenue recovered · 0 missed calls</strong>
         </div>
       </div>
     </div>
@@ -281,7 +281,7 @@ export default function Hero() {
               fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#059669',
             }}>
               <span className="live-dot" />
-              AI Business Manager
+              AI Front Office
             </span>
             <span style={{
               display: 'inline-flex', alignItems: 'center', gap: '6px',
@@ -289,7 +289,7 @@ export default function Hero() {
               borderRadius: '100px', padding: '7px 14px',
               fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#a78bfa',
             }}>
-              7 AI Agents · Always On
+              Revenue Recovery · 24/7
             </span>
           </div>
 
@@ -303,9 +303,9 @@ export default function Hero() {
               marginBottom: '28px', color: '#FFFFFF',
             }}
           >
-            <div style={{ overflow: 'hidden', paddingBottom: '0.1em' }}>{split('Free Website.')}</div>
-            <div style={{ overflow: 'hidden', paddingBottom: '0.1em' }}>{split('Built Overnight.', true)}</div>
-            <div style={{ overflow: 'hidden', paddingBottom: '0.1em' }}>{split('AI Runs It.')}</div>
+            <div style={{ overflow: 'hidden', paddingBottom: '0.1em' }}>{split('Missed Calls =')}</div>
+            <div style={{ overflow: 'hidden', paddingBottom: '0.1em' }}>{split('Lost Revenue.', true)}</div>
+            <div style={{ overflow: 'hidden', paddingBottom: '0.1em' }}>{split('We Fix That.')}</div>
           </h1>
 
           {/* Sub */}
@@ -313,8 +313,8 @@ export default function Hero() {
             color: 'rgba(255,255,255,0.7)', fontSize: 'clamp(0.9rem,1.5vw,1.05rem)',
             lineHeight: 1.8, maxWidth: '490px', marginBottom: '38px',
           }}>
-            AI answers your calls, builds your website, posts to Google, replies to reviews, runs ads, and sends weekly reports.{' '}
-            <span style={{ color: '#FFFFFF', fontWeight: 600 }}>24/7. Automatically. No staff needed.</span>
+            Your AI Front Office answers every call, books jobs, posts to Google, replies to reviews, and runs your ads — while you&apos;re on the job.{' '}
+            <span style={{ color: '#FFFFFF', fontWeight: 600 }}>Zero missed calls. More booked jobs. 24/7.</span>
           </p>
 
           {/* CTAs */}
@@ -329,7 +329,7 @@ export default function Hero() {
               className="btn-primary"
               style={{ fontSize: '0.95rem', padding: '15px 28px' }}
             >
-              Get My AI Team Free <ArrowRight size={16} />
+              Stop Losing Jobs — Get Started Free <ArrowRight size={16} />
             </a>
             <a
               href="#pricing"
@@ -369,13 +369,13 @@ export default function Hero() {
         {/* ── RIGHT: AI Team Dashboard ── */}
         <div ref={rightRef} className="hero-right" style={{ position: 'relative', paddingTop: '24px', paddingBottom: '24px' }}>
 
-          <StatPill value="24/7" label="Always working" gradient style={{ top: -12, right: -14, zIndex: 10 }} />
+          <StatPill value="$4,100" label="Revenue recovered" gradient style={{ top: -12, right: -14, zIndex: 10 }} />
 
           <div style={{ marginTop: '28px', marginBottom: '28px' }}>
             <AITeamCard />
           </div>
 
-          <StatPill value="$49/mo" label="Full AI team" style={{ bottom: -10, left: -14, zIndex: 10 }} />
+          <StatPill value="9 jobs" label="Booked this week" style={{ bottom: -10, left: -14, zIndex: 10 }} />
           <StatPill value="0 missed" label="Calls this week" style={{ bottom: 56, right: -14, zIndex: 10 }} />
 
           <div style={{
