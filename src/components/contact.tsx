@@ -136,7 +136,12 @@ export default function Contact() {
 
   const handleAuditSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setError(''); setLoading(true)
+    setError('')
+    if (audit.emailConsent && !audit.phone) {
+      setError('Phone number is required to receive SMS updates.')
+      return
+    }
+    setLoading(true)
     try {
       await fetch('https://api.webcrew.app/audit', {
         method: 'POST',
@@ -345,7 +350,7 @@ export default function Contact() {
                   onFocus={onFocus} onBlur={onBlur} />
               </div>
 
-              <input style={inputStyle} type="tel" placeholder="Phone number *" required
+              <input style={inputStyle} type="tel" placeholder="Phone number (required for SMS updates)"
                 value={audit.phone} onChange={e => setAudit(f => ({ ...f, phone: e.target.value }))}
                 onFocus={onFocus} onBlur={onBlur} />
 
