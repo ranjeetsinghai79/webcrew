@@ -36,20 +36,18 @@ const TIERS = [
     name: 'Growth',
     price: 149,
     note: 'per month · cancel anytime',
-    tagline: 'Everything in Starter + AI answers your phone + social.',
+    tagline: 'Everything in Starter + AI answers every call 24/7.',
     cta: 'Start Growth Plan',
     popular: true,
     color: '#00C26F',
+    comingSoon: false,
     features: [
       { label: 'Everything in Starter', included: true },
       { label: 'AI Reception — answers calls 24/7 in your voice', included: true },
       { label: 'Appointment booking via AI (auto-confirms)', included: true },
       { label: 'Call transcripts + summary sent after every call', included: true },
-      { label: 'Social media: 4 posts/wk across IG, FB, GBP', included: true },
-      { label: 'Content written in your voice about real offers', included: true },
-      { label: 'Weekly social analytics report', included: true },
+      { label: 'Social media posts (IG + FB + GBP)', included: false, badge: 'Coming Soon' },
       { label: 'Ads manager (Google + Meta)', included: false },
-      { label: 'Compliance layer + approval workflows', included: false },
       { label: 'Multi-location dashboard', included: false },
     ],
     value: '$1,200+/mo at any agency',
@@ -59,20 +57,20 @@ const TIERS = [
     name: 'Business OS',
     price: 297,
     note: 'per month · cancel anytime',
-    tagline: 'Full AI business manager. Nothing left out.',
-    cta: 'Start Business OS',
+    tagline: 'Full AI business manager. Ads + outreach + approval workflows.',
+    cta: 'Notify Me',
     popular: false,
     color: '#8B5CF6',
+    comingSoon: true,
     features: [
       { label: 'Everything in Growth', included: true },
       { label: 'Google + Meta ads managed end-to-end by AI', included: true },
       { label: 'Ads compliance-checked before publishing', included: true },
-      { label: 'Spend caps + weekly ad performance reports', included: true },
+      { label: 'Social media: 4 posts/wk across IG, FB, GBP', included: true },
       { label: 'Outreach pipeline (new leads found weekly)', included: true },
       { label: 'Approval workflows for ads + social posts', included: true },
       { label: 'Priority support + dedicated account setup', included: true },
       { label: 'Multi-location dashboard', included: false },
-      { label: 'White-label / reseller access', included: false },
     ],
     value: '$2,500+/mo at any agency',
   },
@@ -82,9 +80,10 @@ const TIERS = [
     price: 497,
     note: 'per month · up to 5 locations',
     tagline: 'Multi-location. White-label. API access. Everything.',
-    cta: 'Talk to Us',
+    cta: 'Notify Me',
     popular: false,
     color: '#F59E0B',
+    comingSoon: true,
     features: [
       { label: 'Everything in Business OS', included: true },
       { label: 'Up to 5 locations / client accounts', included: true },
@@ -225,8 +224,11 @@ export default function Pricing() {
                 position: 'relative',
                 boxShadow: tier.popular ? `0 0 60px ${tier.color}12` : 'none',
                 transition: 'transform 0.3s, box-shadow 0.3s',
+                opacity: (tier as any).comingSoon ? 0.62 : 1,
+                filter: (tier as any).comingSoon ? 'grayscale(0.3)' : 'none',
               }}
               onMouseEnter={e => {
+                if ((tier as any).comingSoon) return
                 const el = e.currentTarget
                 el.style.transform = 'translateY(-6px)'
                 el.style.boxShadow = `0 20px 60px ${tier.color}20`
@@ -246,6 +248,18 @@ export default function Pricing() {
                   padding: '5px 16px', borderRadius: '100px', whiteSpace: 'nowrap',
                 }}>
                   ✦ Most Popular
+                </div>
+              )}
+
+              {(tier as any).comingSoon && (
+                <div style={{
+                  position: 'absolute', top: '-13px', left: '50%', transform: 'translateX(-50%)',
+                  background: 'rgba(156,163,175,0.18)', border: '1px solid rgba(156,163,175,0.3)',
+                  color: '#9CA3AF', fontWeight: 700, fontSize: '0.62rem',
+                  letterSpacing: '0.12em', textTransform: 'uppercase',
+                  padding: '5px 16px', borderRadius: '100px', whiteSpace: 'nowrap',
+                }}>
+                  Coming Soon
                 </div>
               )}
 
@@ -296,27 +310,41 @@ export default function Pricing() {
               </p>
 
               {/* CTA */}
-              <a
-                href="#contact"
-                onClick={e => {
-                  e.preventDefault()
-                  window.dispatchEvent(new CustomEvent('wc:tab', { detail: { tab: 'demo' } }))
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-                }}
-                className={tier.popular ? 'btn-primary' : 'btn-ghost'}
-                style={{
-                  display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 7,
-                  textDecoration: 'none', marginBottom: 22,
-                  fontSize: '0.85rem', padding: '13px 20px',
-                  ...(tier.popular ? {} : {
-                    borderColor: `${tier.color}40`,
-                    color: tier.color,
-                  }),
-                  ...(tier.popular ? { background: `linear-gradient(135deg, ${tier.color}, #0EA5E9)` } : {}),
-                }}
-              >
-                {tier.cta} <ArrowRight size={14} />
-              </a>
+              {(tier as any).comingSoon ? (
+                <div
+                  className="btn-ghost"
+                  style={{
+                    display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 7,
+                    marginBottom: 22, fontSize: '0.85rem', padding: '13px 20px',
+                    borderColor: 'rgba(156,163,175,0.3)', color: '#9CA3AF',
+                    cursor: 'default', pointerEvents: 'none',
+                  }}
+                >
+                  {tier.cta}
+                </div>
+              ) : (
+                <a
+                  href="#contact"
+                  onClick={e => {
+                    e.preventDefault()
+                    window.dispatchEvent(new CustomEvent('wc:tab', { detail: { tab: 'demo' } }))
+                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                  }}
+                  className={tier.popular ? 'btn-primary' : 'btn-ghost'}
+                  style={{
+                    display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 7,
+                    textDecoration: 'none', marginBottom: 22,
+                    fontSize: '0.85rem', padding: '13px 20px',
+                    ...(tier.popular ? {} : {
+                      borderColor: `${tier.color}40`,
+                      color: tier.color,
+                    }),
+                    ...(tier.popular ? { background: `linear-gradient(135deg, ${tier.color}, #0EA5E9)` } : {}),
+                  }}
+                >
+                  {tier.cta} <ArrowRight size={14} />
+                </a>
+              )}
 
               {/* Feature list */}
               <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: 18, flex: 1, display: 'flex', flexDirection: 'column', gap: 9 }}>
@@ -336,6 +364,17 @@ export default function Pricing() {
                     </div>
                     <span style={{ fontSize: '0.78rem', color: f.included ? 'var(--color-text)' : 'var(--color-muted)', lineHeight: 1.45 }}>
                       {f.label}
+                      {(f as any).badge && (
+                        <span style={{
+                          marginLeft: 6, fontSize: '0.6rem', fontWeight: 700,
+                          letterSpacing: '0.1em', textTransform: 'uppercase',
+                          color: tier.color, background: `${tier.color}15`,
+                          border: `1px solid ${tier.color}30`,
+                          borderRadius: 4, padding: '1px 5px', verticalAlign: 'middle',
+                        }}>
+                          {(f as any).badge}
+                        </span>
+                      )}
                     </span>
                   </div>
                 ))}
