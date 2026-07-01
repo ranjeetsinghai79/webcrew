@@ -345,7 +345,7 @@ export default function Contact() {
                   onFocus={onFocus} onBlur={onBlur} />
               </div>
 
-              <input style={inputStyle} type="tel" placeholder="Phone number (optional)"
+              <input style={inputStyle} type="tel" placeholder="Phone number *" required
                 value={audit.phone} onChange={e => setAudit(f => ({ ...f, phone: e.target.value }))}
                 onFocus={onFocus} onBlur={onBlur} />
 
@@ -362,11 +362,10 @@ export default function Contact() {
                     style={{ width: '18px', height: '18px', minWidth: '18px', accentColor: 'var(--color-blue)', cursor: 'pointer', marginTop: '2px' }}
                   />
                   <span style={{ fontSize: '0.82rem', lineHeight: 1.6, color: 'var(--color-text)' }}>
-                    <strong>I agree to receive my free audit report</strong> and optional text/email follow-up from WebCrew at the contact info provided. Msg &amp; data rates may apply. Reply <strong>STOP</strong> to unsubscribe.{' '}
+                    <strong>Yes, I agree to receive SMS and email messages from WebCrew</strong> about my audit results and related website services at the phone number and email provided. Message frequency varies. Msg &amp; data rates may apply. Consent is not a condition of any purchase. Reply <strong>STOP</strong> to opt out. Reply <strong>HELP</strong> for help.{' '}
                     <a href="/privacy" style={{ color: 'var(--color-blue)', textDecoration: 'underline' }}>Privacy Policy</a>
                     {' '}&amp;{' '}
-                    <a href="/terms" style={{ color: 'var(--color-blue)', textDecoration: 'underline' }}>Terms</a>.{' '}
-                    <span style={{ color: 'var(--color-muted)', fontWeight: 500 }}>(Optional)</span>
+                    <a href="/terms" style={{ color: 'var(--color-blue)', textDecoration: 'underline' }}>Terms</a>.
                   </span>
                 </label>
               </ConsentBox>
@@ -451,11 +450,10 @@ export default function Contact() {
                     style={{ width: '18px', height: '18px', minWidth: '18px', accentColor: 'var(--color-blue)', cursor: 'pointer', marginTop: '2px' }}
                   />
                   <span style={{ fontSize: '0.82rem', lineHeight: 1.6, color: 'var(--color-text)' }}>
-                    <strong>Yes, I'd like to receive SMS updates from WebCrew</strong> about my website demo and related services at the number provided. This is optional — you can still submit without it. Message frequency varies. Msg &amp; data rates may apply. Reply <strong>STOP</strong> to opt out anytime. Reply <strong>HELP</strong> for help.{' '}
+                    <strong>Yes, I agree to receive SMS messages from WebCrew</strong> about my website demo and related services at the phone number provided. Consent is not a condition of any purchase. Message frequency varies. Msg &amp; data rates may apply. Reply <strong>STOP</strong> to opt out anytime. Reply <strong>HELP</strong> for help.{' '}
                     <a href="/privacy" style={{ color: 'var(--color-blue)', textDecoration: 'underline' }}>Privacy Policy</a>
                     {' '}&amp;{' '}
-                    <a href="/terms" style={{ color: 'var(--color-blue)', textDecoration: 'underline' }}>Terms</a>.{' '}
-                    <span style={{ color: 'var(--color-muted)', fontWeight: 500 }}>(Optional)</span>
+                    <a href="/terms" style={{ color: 'var(--color-blue)', textDecoration: 'underline' }}>Terms</a>.
                   </span>
                 </label>
               </ConsentBox>
