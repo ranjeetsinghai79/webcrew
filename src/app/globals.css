@@ -157,6 +157,24 @@ body {
   position: absolute; inset: 0; pointer-events: none;
 }
 
+/* ── Cinematic Hero (scroll-pin) ── */
+/* Desktop: tall outer creates scroll real-estate; inner is sticky */
+/* Mobile: collapse to single viewport, no scroll pin */
+@media (max-width: 1023px) {
+  .cinematic-outer {
+    height: 100vh !important;
+  }
+  .cinematic-inner {
+    position: relative !important;
+  }
+  /* Card fills most of viewport on mobile (no expansion animation) */
+  .cinematic-card {
+    top: 12% !important; right: 4% !important;
+    bottom: 12% !important; left: 4% !important;
+    border-radius: 16px !important;
+  }
+}
+
 /* ── Clip reveal ── */
 .clip-reveal { clip-path: inset(0 100% 0 0); }
 
