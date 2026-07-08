@@ -53,10 +53,8 @@ export default function Home() {
         <Comparison />
         {/* 12. Ready to buy */}
         <Pricing />
-        {/* 13. Convert — form before objections */}
-        <Contact />
-        {/* 14. Handle objections last */}
         <FAQ />
+        <Contact />
       </main>
       <Footer />
       <UrgencyBar />
