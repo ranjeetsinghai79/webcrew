@@ -311,8 +311,8 @@ export default function Showcase() {
           </h2>
         </div>
         <p style={{ color: 'var(--color-muted)', fontSize: '1.05rem', maxWidth: '480px', margin: '20px auto 0', lineHeight: 1.65 }}>
-          Every website built overnight for a real local business, launched within 24 hours, and optimized to attract more customers.
-          Click any site to see it live.
+          Live sites built for real local businesses — ranked, indexed, and generating calls from day one.
+          Click any to see it live.
         </p>
       </div>
 
@@ -337,7 +337,7 @@ export default function Showcase() {
 
       <div style={{ textAlign: 'center', marginTop: '16px', padding: '0 32px' }}>
         <a href="#contact" className="btn-primary" style={{ fontSize: '0.95rem' }}>
-          Get My FREE Demo Site <ArrowUpRight size={16} />
+          Book Your Free Demo <ArrowUpRight size={16} />
         </a>
       </div>
     </section>

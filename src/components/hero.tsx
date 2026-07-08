@@ -2,19 +2,17 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowRight, Star, Phone, MessageSquare, BarChart2, Globe, Megaphone, Share2 } from 'lucide-react'
+import { ArrowRight, Star, Phone, MessageSquare, BarChart2, Globe } from 'lucide-react'
 
 if (typeof window !== 'undefined') { gsap.registerPlugin(ScrollTrigger) }
 
 // ── AI Team Dashboard card ───────────────────────────────────────────────────
 const AGENTS = [
-  { icon: Phone,        label: 'AI Reception',   status: 'AC repair booked · $450 job · 4m ago',  color: '#00C26F', dot: true  },
-  { icon: Star,         label: 'Revenue Alert',  status: '$1,200 recovered · missed call returned',color: '#F59E0B', dot: true  },
-  { icon: Globe,        label: 'GBP Post',        status: '"Summer AC tune-up $89 — book now"',    color: '#0EA5E9', dot: true  },
-  { icon: MessageSquare,label: 'Review Reply',    status: 'Replied to 5★ · "Fast & professional"', color: '#8B5CF6', dot: true  },
-  { icon: BarChart2,    label: 'Weekly Report',   status: '9 jobs booked · $4,100 revenue this wk',color: '#00C26F', dot: false },
-  { icon: Megaphone,    label: 'Ads Manager',     status: '3 HVAC campaigns live · 14 leads',      color: '#0EA5E9', dot: false },
-  { icon: Share2,       label: 'Social Post',     status: '5 seasonal drafts ready · 1-click post',color: '#8B5CF6', dot: false },
+  { icon: Phone,        label: 'AI Reception',  status: 'AC repair booked · $450 job · 4m ago',   color: '#00C26F', dot: true  },
+  { icon: Star,         label: 'Revenue Alert', status: '$1,200 recovered · missed call returned', color: '#F59E0B', dot: true  },
+  { icon: Globe,        label: 'GBP Post',      status: '"Summer AC tune-up $89 — book now"',     color: '#0EA5E9', dot: true  },
+  { icon: MessageSquare,label: 'Review Reply',  status: 'Replied to 5★ · "Fast & professional"',  color: '#8B5CF6', dot: true  },
+  { icon: BarChart2,    label: 'Weekly Report', status: '9 jobs booked · $4,100 revenue this wk', color: '#00C26F', dot: false },
 ]
 
 function AITeamCard() {
@@ -34,7 +32,7 @@ function AITeamCard() {
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <div style={{
-            width: 30, height: 30, borderRadius: 8,
+            width: 28, height: 28, borderRadius: 8,
             background: 'rgba(255,255,255,0.18)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}>
@@ -55,7 +53,7 @@ function AITeamCard() {
           borderRadius: 100, padding: '4px 10px',
         }}>
           <span className="live-dot" />
-          <span style={{ fontSize: '0.58rem', fontWeight: 700, color: '#fff', letterSpacing: '0.08em' }}>7 ACTIVE</span>
+          <span style={{ fontSize: '0.58rem', fontWeight: 700, color: '#fff', letterSpacing: '0.08em' }}>5 ACTIVE</span>
         </div>
       </div>
 
@@ -103,7 +101,7 @@ function AITeamCard() {
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
         <div style={{ fontSize: '0.62rem', color: '#6B7280' }}>
-          This week: <strong style={{ color: '#00C26F' }}>9 jobs booked · $4,100 revenue recovered · 0 missed calls</strong>
+          This week: <strong style={{ color: '#00C26F' }}>9 jobs booked · $4,100 recovered · 0 missed calls</strong>
         </div>
       </div>
     </div>
@@ -313,7 +311,7 @@ export default function Hero() {
             color: 'rgba(255,255,255,0.7)', fontSize: 'clamp(0.9rem,1.5vw,1.05rem)',
             lineHeight: 1.8, maxWidth: '490px', marginBottom: '38px',
           }}>
-            Your AI Front Office answers every call, books jobs, posts to Google, replies to reviews, and runs your ads — while you&apos;re on the job.{' '}
+            Your AI Front Office answers every call, books jobs, posts to Google, and replies to reviews — while you&apos;re on the job.{' '}
             <span style={{ color: '#FFFFFF', fontWeight: 600 }}>Zero missed calls. More booked jobs. 24/7.</span>
           </p>
 
@@ -329,7 +327,7 @@ export default function Hero() {
               className="btn-primary"
               style={{ fontSize: '0.95rem', padding: '15px 28px' }}
             >
-              Stop Losing Jobs — Get Started Free <ArrowRight size={16} />
+              Book Your Free Demo <ArrowRight size={16} />
             </a>
             <a
               href="#pricing"

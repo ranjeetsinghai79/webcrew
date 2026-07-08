@@ -193,7 +193,7 @@ export default function HowItWorks() {
               fontSize: 'clamp(2rem,4.5vw,3.8rem)',
               letterSpacing: '-0.04em', lineHeight: 1.08,
             }}>
-              <div style={{ overflow: 'hidden', paddingBottom: '0.1em' }}>{split('Submit tonight.')}</div>
+              <div style={{ overflow: 'hidden', paddingBottom: '0.1em' }}>{split('Live tonight.')}</div>
               <div style={{ overflow: 'hidden', paddingBottom: '0.1em' }}>
                 <span style={{ background: 'linear-gradient(135deg,#00C26F,#0EA5E9)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                   {split('AI handles everything else.')}

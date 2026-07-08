@@ -252,16 +252,16 @@ export default function Contact() {
             color: '#FFFFFF',
             marginBottom: '20px',
           }}>
-            Fill out the form.{' '}
+            Tell us about your business.{' '}
             <span style={{
               background: 'linear-gradient(135deg, #00C26F, #0EA5E9)',
               WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
             }}>
-              Wake up to your site.
+              Wake up to your AI team.
             </span>
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, fontSize: '1.05rem', maxWidth: '480px', margin: '0 auto 32px' }}>
-            We build overnight. You get a live, Google-ready site in your inbox by morning.{' '}
+            We set everything up overnight — AI reception, Google presence, review management. All done for you.{' '}
             <strong style={{ color: 'rgba(255,255,255,0.9)' }}>No card. No setup fee. Ever.</strong>
           </p>
 

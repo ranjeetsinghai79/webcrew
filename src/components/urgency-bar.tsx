@@ -71,7 +71,7 @@ export default function UrgencyBar() {
             boxShadow: '0 0 6px rgba(249,115,22,0.7)',
             flexShrink: 0,
           }} />
-          🟢 Tonight&apos;s Build Queue · {BUILT_TONIGHT} of 10 websites already scheduled. {SLOTS_TONIGHT} spots remaining.
+          🟢 Founding Spots · {SLOTS_TONIGHT} of 10 slots remaining this week.
         </span>
       </div>
 
@@ -82,9 +82,9 @@ export default function UrgencyBar() {
           color: 'rgba(255,255,255,0.75)',
           fontFamily: 'var(--font-display)',
         }}>
-          We build your site free tonight.{' '}
+          AI team: website, calls, Google, reviews — all done for you.{' '}
           <span style={{ color: '#FFFFFF', fontWeight: 600 }}>
-            $49/mo keeps it live and growing. No setup fee.
+            Starts at $49/mo. No setup fee. Cancel anytime.
           </span>
         </span>
       </div>
@@ -100,7 +100,7 @@ export default function UrgencyBar() {
         className="btn-primary"
         style={{ fontSize: '0.82rem', padding: '10px 20px', whiteSpace: 'nowrap', flexShrink: 0 }}
       >
-        Get My Free Demo Site <ArrowRight size={14} />
+        Book Your Free Demo <ArrowRight size={14} />
       </a>
 
       {/* Dismiss */}

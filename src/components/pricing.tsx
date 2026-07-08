@@ -52,50 +52,6 @@ const TIERS = [
     ],
     value: '$1,200+/mo at any agency',
   },
-  {
-    id: 'business',
-    name: 'Business OS',
-    price: 297,
-    note: 'per month · cancel anytime',
-    tagline: 'Full AI business manager. Ads + outreach + approval workflows.',
-    cta: 'Notify Me',
-    popular: false,
-    color: '#8B5CF6',
-    comingSoon: true,
-    features: [
-      { label: 'Everything in Growth', included: true },
-      { label: 'Google + Meta ads managed end-to-end by AI', included: true },
-      { label: 'Ads compliance-checked before publishing', included: true },
-      { label: 'Social media: 4 posts/wk across IG, FB, GBP', included: true },
-      { label: 'Outreach pipeline (new leads found weekly)', included: true },
-      { label: 'Approval workflows for ads + social posts', included: true },
-      { label: 'Priority support + dedicated account setup', included: true },
-      { label: 'Multi-location dashboard', included: false },
-    ],
-    value: '$2,500+/mo at any agency',
-  },
-  {
-    id: 'agency',
-    name: 'Agency',
-    price: 497,
-    note: 'per month · up to 5 locations',
-    tagline: 'Multi-location. White-label. API access. Everything.',
-    cta: 'Notify Me',
-    popular: false,
-    color: '#F59E0B',
-    comingSoon: true,
-    features: [
-      { label: 'Everything in Business OS', included: true },
-      { label: 'Up to 5 locations / client accounts', included: true },
-      { label: 'White-label dashboard — your brand, your clients', included: true },
-      { label: 'API access for custom integrations', included: true },
-      { label: 'Zapier / webhook support', included: true },
-      { label: 'Dedicated onboarding call + account manager', included: true },
-      { label: 'Custom compliance rules per industry/location', included: true },
-      { label: 'Enterprise pricing for 10+ locations', included: true },
-    ],
-    value: '$5,000+/mo at any agency',
-  },
 ]
 
 export default function Pricing() {
@@ -196,14 +152,16 @@ export default function Pricing() {
           ))}
         </div>
 
-        {/* 4-column card grid */}
+        {/* 2-column card grid */}
         <div
           ref={cardsRef}
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(4, minmax(0,1fr))',
-            gap: '16px',
+            gridTemplateColumns: 'repeat(2, minmax(0,1fr))',
+            gap: '24px',
             alignItems: 'stretch',
+            maxWidth: '860px',
+            margin: '0 auto',
           }}
           className="pricing-grid"
         >
@@ -509,9 +467,6 @@ export default function Pricing() {
       </div>
 
       <style>{`
-        @media (max-width: 1100px) {
-          .pricing-grid { grid-template-columns: repeat(2,1fr) !important; }
-        }
         @media (max-width: 640px) {
           .pricing-grid { grid-template-columns: 1fr !important; }
           .price-journey { flex-direction: column !important; align-items: stretch !important; }

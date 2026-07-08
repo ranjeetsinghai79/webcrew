@@ -2,10 +2,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import {
-  Phone, Globe, Star, BarChart2, Megaphone, Share2,
-  Zap, Search, MessageSquare,
-} from 'lucide-react'
+import { Phone, Globe, Star, BarChart2, Zap, Search, MessageSquare } from 'lucide-react'
 
 if (typeof window !== 'undefined') { gsap.registerPlugin(ScrollTrigger) }
 
@@ -106,44 +103,6 @@ const TABS = [
     preview: { label: 'Top 3 ranking', score: 91, color: '#0EA5E9' },
   },
   {
-    id: 'ads',
-    label: 'Ads Manager',
-    icon: <Megaphone size={14} />,
-    badge: 'READY TO LAUNCH',
-    badgeColor: '#EF4444',
-    headline: 'Ad campaigns drafted, compliance-checked, and ready to launch.',
-    sub: 'Your AI builds complete Google and Meta ad campaigns — keywords, ad copy, audience targeting, spend caps — all compliance-checked. You review, approve with one click, and they go live. No agency needed.',
-    items: [
-      'Full Google Search + Meta/Instagram campaigns drafted by AI',
-      'Keywords, ad copy, and audience targeting pre-built',
-      'Every ad compliance-checked before you see it',
-      'You approve the budget and launch with one click',
-      'Weekly spend vs. leads report once campaigns are live',
-    ],
-    metrics: ['Campaign Ready', 'Ad Quality', 'Compliance', 'Approval'],
-    scores: [100, 95, 100, 88],
-    preview: { label: 'Campaigns ready · 1-click launch', score: 100, color: '#EF4444' },
-  },
-  {
-    id: 'social',
-    label: 'Social Media',
-    icon: <Share2 size={14} />,
-    badge: 'DRAFTED WEEKLY',
-    badgeColor: '#8B5CF6',
-    headline: 'Social content written for you. Posted in one click.',
-    sub: 'Every week, your AI writes 3–5 posts for Instagram, Facebook, and GBP — real content about your offers, seasonal promos, tips. Review them in your dashboard, post with one click, or approve all at once.',
-    items: [
-      '3–5 posts per week drafted — Instagram, Facebook, GBP',
-      'Content written in your voice using your real offers and services',
-      'Before/after hooks, seasonal promos, and tips included',
-      'Review drafts in dashboard, post with one click',
-      'Monthly top-performing post report so you know what works',
-    ],
-    metrics: ['Posts/Week', 'Content Quality', 'Approval Speed', 'Engagement'],
-    scores: [100, 94, 100, 82],
-    preview: { label: '5 posts drafted · 1-click post', score: 94, color: '#8B5CF6' },
-  },
-  {
     id: 'reports',
     label: 'Weekly Reports',
     icon: <BarChart2 size={14} />,
@@ -166,21 +125,21 @@ const TABS = [
 
 const TESTIMONIALS = [
   {
-    quote: 'I almost didn\'t fill out the form — figured it was a scam. They texted me a live link at 4am. Week 1: 14 new leads. I\'ve never had 14 leads in an entire month before.',
-    name: 'Carlos M.',
-    role: 'HVAC · Tracy, CA',
+    quote: 'I almost didn\'t fill out the form — figured it was too good to be true. They texted me a live link at 4am. Week 1: 14 new leads. I\'ve never had 14 leads in an entire month before.',
+    name: 'HVAC Business Owner',
+    role: 'California',
     result: '14 leads · week 1',
   },
   {
     quote: 'Three days after my site went live, I closed an $18,000 roofing job from a Google search. My old site hadn\'t generated a single job in 2 years.',
-    name: 'Derek R.',
-    role: 'Roofing · Fresno, CA',
+    name: 'Roofing Contractor',
+    role: 'California',
     result: '$18k closed · day 3',
   },
   {
     quote: 'Fully booked 3 weeks out now. Had to hire two more cleaners to keep up. My Wix site was getting maybe 2 calls a month. This is a different world.',
-    name: 'Priya S.',
-    role: 'Cleaning · Stockton, CA',
+    name: 'Cleaning Business Owner',
+    role: 'California',
     result: 'Booked solid · 3 wks',
   },
 ]

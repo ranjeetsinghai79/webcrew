@@ -6,7 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 if (typeof window !== "undefined") { gsap.registerPlugin(ScrollTrigger) }
 
 const STATS: { n: number; suffix: string; prefix?: string; label: string; note: string }[] = [
-  { n: 847,  suffix: '+',      label: 'Businesses live',         note: 'AI teams deployed' },
+  { n: 12,   suffix: '',        label: 'Businesses live',         note: 'AI teams deployed' },
   { n: 24,   suffix: '/7',     label: 'AI team works',           note: 'never sleeps, never calls in sick' },
   { n: 62,   suffix: '%',      label: 'Calls missed without AI', note: 'industry average for local SMBs' },
   { n: 94,   suffix: '%',      label: 'Client retention',        note: 'renew every year' },
@@ -92,7 +92,7 @@ export default function Results() {
             </h2>
           </div>
           <p style={{ color: 'var(--color-muted)', fontSize: '1.05rem', maxWidth: '460px', margin: '20px auto 0', lineHeight: 1.65 }}>
-            847 local businesses. 8 AI agents each. Real results — calls answered, reviews replied, leads closed, rankings climbing.
+            12 local businesses. 5 AI agents each. Real results — calls answered, reviews replied, leads closed, rankings climbing.
           </p>
         </div>
 
@@ -147,17 +147,17 @@ export default function Results() {
           {[
             {
               quote: 'I got 3 calls in the first week. Didn\'t even know I was getting a site — said yes to the demo and it was live the next morning.',
-              name: 'Mike T.', role: 'HVAC · Tracy, CA', initial: 'M', result: '3 calls · week 1',
+              name: 'HVAC Owner', role: 'California', initial: 'H', result: '3 calls · week 1',
               color: '#00C26F',
             },
             {
               quote: 'Three days in, I closed an $18,000 roofing job from a Google search. My old site hadn\'t generated a single job in two years.',
-              name: 'Derek R.', role: 'Roofing · Fresno, CA', initial: 'D', result: '$18K closed · day 3',
+              name: 'Roofing Contractor', role: 'California', initial: 'R', result: '$18K closed · day 3',
               color: '#0EA5E9',
             },
             {
               quote: 'Fully booked 3 weeks out. Had to hire two more cleaners. My Wix site was getting 2 calls a month. This is a completely different world.',
-              name: 'Priya S.', role: 'Cleaning · Stockton, CA', initial: 'P', result: 'Booked solid · 3 wks',
+              name: 'Cleaning Business', role: 'California', initial: 'C', result: 'Booked solid · 3 wks',
               color: '#059669',
             },
           ].map(t => (

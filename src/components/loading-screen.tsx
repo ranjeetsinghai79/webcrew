@@ -93,7 +93,7 @@ export default function LoadingScreen() {
             marginBottom: '8px',
           }}
         >
-          AI builds your local business website. Overnight.
+          Your AI front office. Answering calls 24/7.
         </div>
         <div style={{
           color: 'rgba(255,255,255,0.25)',
@@ -102,7 +102,7 @@ export default function LoadingScreen() {
           textTransform: 'uppercase',
           marginBottom: '40px',
         }}>
-          Overnight. For free.
+          Website · Calls · Google · Reviews
         </div>
         <div ref={barRef} style={{ width: '240px', height: '3px', background: 'var(--color-border)', margin: '0 auto', borderRadius: '4px' }}>
           <div

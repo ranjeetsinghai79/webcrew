@@ -65,7 +65,7 @@ function RevenueCard() {
             Revenue Calculator
           </div>
           <div style={{ fontSize: '0.72rem', color: 'var(--color-muted)' }}>
-            Based on your local market · Tracy, CA
+            Based on typical local market data
           </div>
         </div>
         <div style={{
@@ -308,10 +308,18 @@ export default function MoneyShot() {
           </div>
 
           <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-            <a href="#contact" className="btn-primary">
-              Get My FREE Demo Site <ArrowRight size={16} />
+            <a href="#contact" className="btn-primary"
+              onClick={e => {
+                e.preventDefault()
+                window.dispatchEvent(new CustomEvent('wc:tab', { detail: { tab: 'demo' } }))
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+              }}
+            >
+              Book Your Free Demo <ArrowRight size={16} />
             </a>
-            <a href="#how-it-works" className="btn-ghost" style={{ color: 'rgba(255,255,255,0.8)', borderColor: 'rgba(255,255,255,0.18)' }}>
+            <a href="#how-it-works" className="btn-ghost" style={{ color: 'rgba(255,255,255,0.8)', borderColor: 'rgba(255,255,255,0.18)' }}
+              onClick={e => { e.preventDefault(); document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' }) }}
+            >
               See How It Works
             </a>
           </div>
