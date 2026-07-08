@@ -14,25 +14,28 @@ const inter = Inter({
   weight: ['400', '500', '600'],
 })
 
-const TITLE = 'WebCrew — AI Builds Your Local Business Website Overnight, Free'
-const DESC  = 'No website? WebCrew AI scans your brand, builds a cinematic lead-generating website overnight, and texts you the live link — free. Pay $299 only if you love it. HVAC, Roofing, Dentist, Med Spa, Salon, Cleaning and 20+ niches.'
+const TITLE = 'WebCrew — AI Agency for Local Businesses | Calls, Google, Reviews'
+const DESC  = 'WebCrew is an AI agency that builds your website overnight (free demo), answers calls 24/7, manages your Google Business Profile, and replies to every review. 25+ niches. From $49/month, no setup fee.'
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESC,
   keywords: [
-    'AI website builder for local businesses',
-    'free website for small business',
-    'local business website overnight',
-    'HVAC website design',
-    'roofing company website',
-    'dental office website',
-    'med spa website',
-    'salon website builder',
-    'AI web agency',
-    'website built overnight',
-    'local SEO website',
-    'Cloudflare Pages website',
+    'AI agency for local businesses',
+    'AI receptionist for small business',
+    'AI answering service local business',
+    'local business AI front office',
+    'website built overnight free',
+    'HVAC AI receptionist',
+    'roofing company AI website',
+    'dental practice AI answering service',
+    'med spa AI marketing',
+    'Google Business Profile management service',
+    'automated review replies local business',
+    'AI call answering service',
+    'local SEO AI agency',
+    'AI front office local business',
+    'Cloudflare Pages website local business',
   ],
   metadataBase: new URL('https://webcrew.app'),
   openGraph: {
@@ -41,7 +44,7 @@ export const metadata: Metadata = {
     url: 'https://webcrew.app',
     siteName: 'WebCrew',
     type: 'website',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'WebCrew — AI builds your local business website overnight' }],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'WebCrew — AI agency for local businesses. Calls, Google, Reviews, Website — all done for you.' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -61,7 +64,7 @@ const SCHEMA = {
       '@id': 'https://webcrew.app/#organization',
       name: 'WebCrew',
       url: 'https://webcrew.app',
-      description: 'WebCrew builds AI-powered websites for local businesses overnight — free demo, $299 to own, $49/mo to grow with a full AI team.',
+      description: 'WebCrew is an AI agency for local businesses. We build your website overnight (free demo), then run 5 AI agents every day: AI call answering 24/7, weekly Google Business Profile posts, automated review replies, instant lead SMS alerts, and weekly traffic reports. Starting at $49/month, no setup fee.',
       foundingDate: '2024',
       logo: {
         '@type': 'ImageObject',
@@ -80,6 +83,13 @@ const SCHEMA = {
         availableLanguage: 'English',
         url: 'https://webcrew.app/#contact',
       },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.9',
+        reviewCount: '12',
+        bestRating: '5',
+        worstRating: '1',
+      },
     },
     {
       '@type': 'WebSite',
@@ -93,73 +103,96 @@ const SCHEMA = {
       '@type': 'WebPage',
       '@id': 'https://webcrew.app/#webpage',
       url: 'https://webcrew.app',
-      name: 'WebCrew — AI Builds Your Local Business Website Overnight, Free',
-      description: 'No website? WebCrew AI scans your brand, builds a cinematic lead-generating website overnight, and texts you the live link — free. Pay $299 only if you love it.',
+      name: 'WebCrew — AI Agency for Local Businesses | Calls, Google, Reviews',
+      description: 'WebCrew builds your website overnight and runs 5 AI agents: AI reception (24/7 calls), GBP posts, review replies, lead alerts, weekly traffic reports. From $49/month.',
       isPartOf: { '@id': 'https://webcrew.app/#website' },
       about: { '@id': 'https://webcrew.app/#service' },
       publisher: { '@id': 'https://webcrew.app/#organization' },
       inLanguage: 'en-US',
       dateModified: new Date().toISOString().split('T')[0],
-    },
-    {
-      '@type': 'SoftwareApplication',
-      '@id': 'https://webcrew.app/#app',
-      name: 'WebCrew',
-      applicationCategory: 'BusinessApplication',
-      operatingSystem: 'Web',
-      description: 'AI-powered website builder that creates custom local business websites overnight using Gemini AI, fal.ai, and Cloudflare Pages.',
-      provider: { '@id': 'https://webcrew.app/#organization' },
-      offers: {
-        '@type': 'Offer',
-        price: '0',
-        priceCurrency: 'USD',
-        description: 'Free demo site — pay $299 only if you love it.',
-      },
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        reviewCount: '47',
-        bestRating: '5',
-        worstRating: '1',
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: ['h1', 'h2'],
       },
     },
     {
       '@type': 'Service',
       '@id': 'https://webcrew.app/#service',
-      name: 'AI Website Building for Local Businesses',
+      name: 'AI Agency for Local Businesses',
       provider: { '@id': 'https://webcrew.app/#organization' },
-      serviceType: 'Website Design and Development',
-      category: 'Digital Marketing Services',
-      description: 'WebCrew AI builds cinematic, lead-generating websites for local businesses overnight — for free. HVAC, Roofing, Dental, Med Spa, Cleaning, Landscaping and 25+ niches. Pay $299 one-time only if you love it.',
+      serviceType: 'AI Digital Agency',
+      category: 'Business Services',
+      description: 'WebCrew builds a custom website overnight (free demo) and deploys 5 AI agents: AI reception answering every call 24/7 using Gemini Live, weekly Google Business Profile posts, automated Google review replies, instant lead SMS alerts, and weekly Google Search Console traffic reports. Starts at $49/month with no setup fee. Serves 25+ local business niches across the United States.',
       areaServed: {
         '@type': 'Country',
         name: 'United States',
         sameAs: 'https://www.wikidata.org/wiki/Q30',
       },
-      offers: [
-        {
-          '@type': 'Offer',
-          name: 'Website Ownership — One-Time',
-          price: '299',
-          priceCurrency: 'USD',
-          description: 'One-time payment to own the full Next.js source code of your AI-built website forever.',
-          url: 'https://webcrew.app/#pricing',
-          availability: 'https://schema.org/InStock',
-        },
-        {
-          '@type': 'Offer',
-          name: 'Hosting + AI Team',
-          priceSpecification: {
-            '@type': 'UnitPriceSpecification',
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'WebCrew Plans',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            name: 'Starter — $49/month',
             price: '49',
             priceCurrency: 'USD',
-            billingDuration: 1,
-            billingIncrement: 1,
-            unitCode: 'MON',
+            priceSpecification: {
+              '@type': 'UnitPriceSpecification',
+              price: '49',
+              priceCurrency: 'USD',
+              billingDuration: 1,
+              billingIncrement: 1,
+              unitCode: 'MON',
+            },
+            description: 'Website hosting on Cloudflare CDN + 5 AI agents: AI call answering 24/7 (Gemini Live), weekly Google Business Profile posts, automated Google review replies, instant lead SMS alerts, weekly Google Search Console traffic report. No setup fee. Cancel anytime.',
+            url: 'https://webcrew.app/#pricing',
+            availability: 'https://schema.org/InStock',
           },
-          description: 'Monthly plan including Cloudflare CDN hosting, AI call answering 24/7, weekly GBP posts, automated review replies, monthly SEO reports, and instant lead alerts.',
-          url: 'https://webcrew.app/#pricing',
-          availability: 'https://schema.org/InStock',
+          {
+            '@type': 'Offer',
+            name: 'Growth — $149/month',
+            price: '149',
+            priceCurrency: 'USD',
+            priceSpecification: {
+              '@type': 'UnitPriceSpecification',
+              price: '149',
+              priceCurrency: 'USD',
+              billingDuration: 1,
+              billingIncrement: 1,
+              unitCode: 'MON',
+            },
+            description: 'Everything in Starter plus priority build queue, custom domain setup, monthly strategy call, and dedicated support.',
+            url: 'https://webcrew.app/#pricing',
+            availability: 'https://schema.org/InStock',
+          },
+        ],
+      },
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to Get an AI Front Office for Your Local Business with WebCrew',
+      description: 'WebCrew sets up your AI front office overnight — website built, calls answered, Google managed, reviews replied.',
+      totalTime: 'PT6H',
+      step: [
+        {
+          '@type': 'HowToStep',
+          position: 1,
+          name: 'Submit Your Business',
+          text: 'Fill out the form at webcrew.app with your business name, niche, and city. No credit card required. Takes 2 minutes.',
+          url: 'https://webcrew.app/#contact',
+        },
+        {
+          '@type': 'HowToStep',
+          position: 2,
+          name: 'AI Builds Overnight',
+          text: 'WebCrew AI scans your brand using Firecrawl, generates city-specific copy using Gemini AI, creates custom hero images using fal.ai Flux Pro, and deploys a live Next.js website to Cloudflare Pages — all within 6 hours, no human involvement.',
+        },
+        {
+          '@type': 'HowToStep',
+          position: 3,
+          name: 'Wake Up to Your AI Team',
+          text: 'You receive a text with your live site link in the morning. If you love it, subscribe at $49/month (Starter) or $149/month (Growth). All 5 AI agents activate immediately: calls answered 24/7, GBP posts scheduled, review replies live.',
         },
       ],
     },
@@ -169,26 +202,58 @@ const SCHEMA = {
       mainEntity: [
         {
           '@type': 'Question',
-          name: 'Is this actually free? What\'s the catch?',
+          name: 'What is WebCrew?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Yes, completely free to start. Here\'s exactly how it works: WebCrew builds your demo site at no cost — no credit card, no deposit, no commitment. If you see it live and love it, subscribe for $49/month, which covers Cloudflare CDN hosting, AI call answering 24/7, weekly Google Business Profile posts, automated review replies, monthly SEO reports, and instant lead alerts via SMS. Your website is yours the moment you pay. If you don\'t love it — for any reason — you pay nothing and we part ways with no invoices, no follow-up sales calls, and no guilt trips. WebCrew only makes money when clients love what was built, so the incentive to get it right is extremely high. The $299 one-time fee unlocks full Next.js source code ownership, meaning you can host it anywhere and cancel the $49/mo plan whenever you want while keeping your site.',
+            text: 'WebCrew is an AI agency for local businesses in the United States. We build your website overnight for free, then run 5 AI agents on your behalf every day: (1) AI Reception — answers every inbound call 24/7 using Gemini Live voice AI, trained on your services, pricing, and hours; (2) Revenue Alert — texts you instantly when a new lead submits your contact form; (3) GBP Post Agent — publishes a Google Business Profile post every week; (4) Review Reply Agent — writes and posts AI replies to every new Google review within hours; (5) Weekly Report — emails you a Google Search Console traffic summary every Monday. Starts at $49/month, no setup fee.',
           },
         },
         {
           '@type': 'Question',
-          name: 'Is this just a template with my name swapped in?',
+          name: 'How much does WebCrew cost?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'No. Every WebCrew site is built from scratch for your specific trade, city, and brand. A plumber in Dallas gets a completely different site from a plumber in Chicago — different design, different copy, different images, different color palette. Two HVAC companies in the same city receive different layouts, different headline angles, and different photography. WebCrew\'s AI pipeline uses Firecrawl to scan your existing web presence and extract real brand signals, then Gemini AI to generate city-specific copy and a custom configuration unique to your business. Fal.ai Flux Pro generates custom hero images. Nothing is copy-pasted. The result is a site that reflects your actual business — not a generic template with your name dropped in. WebCrew has built across 25 niches including HVAC, roofing, dental, med spa, salon, landscaping, plumbing, and cleaning — each with niche-specific copy, imagery, and local SEO signals baked in from day one.',
+            text: 'WebCrew offers two monthly plans: Starter at $49/month and Growth at $149/month. The demo website is built completely free — no credit card, no deposit, no commitment. If you love the demo, subscribe to activate all 5 AI agents. Starter includes website hosting on Cloudflare CDN, AI call answering 24/7 (Gemini Live), weekly Google Business Profile posts, automated review replies, instant lead SMS alerts, and weekly traffic reports. Growth adds priority build queue, custom domain setup, a monthly strategy call, and dedicated support. No setup fee on either plan. Cancel anytime.',
           },
         },
         {
           '@type': 'Question',
-          name: 'How long does it actually take?',
+          name: 'Is the demo really free? What\'s the catch?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'WebCrew builds and deploys a complete custom website in approximately 6 hours. The process starts the moment you submit the form — no discovery calls, no briefs, no waiting on a human. WebCrew\'s AI pipeline scans your existing web presence using Firecrawl, generates city-specific copy and brand colors using Gemini AI, creates custom hero images using fal.ai Flux Pro, and deploys a live Next.js site to Cloudflare Pages, all without human involvement. Most builds complete overnight so you wake up to a text message with your live link. The deployed site typically scores 97/100 on Google PageSpeed. In cases where a business has a particularly complex niche, builds can take up to 12 hours. No client has waited longer than 24 hours since WebCrew launched. Every client receives a text message with their live URL the morning after submitting — no login required, no dashboard to check, no waiting on email.',
+            text: 'Yes, completely free to start. No credit card, no deposit, no commitment. WebCrew AI builds and deploys a live website overnight at no cost. You review it. If you love it, subscribe at $49/month (Starter) or $149/month (Growth). If you don\'t love it for any reason, you pay nothing and WebCrew deletes the demo — no invoices, no follow-up sales calls. WebCrew only makes money when clients love what was built.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What 5 AI agents does WebCrew provide?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Every WebCrew client gets 5 AI agents that run 24/7: (1) AI Reception uses Gemini Live voice AI to answer every inbound call, handling bookings, pricing questions, and hours — trained on your specific business. (2) Revenue Alert sends you an instant SMS the moment any lead submits your contact form, so you never miss a hot lead. (3) GBP Post Agent writes and publishes a Google Business Profile update every week, keeping your profile active and signaling relevance to Google\'s local algorithm. (4) Review Reply Agent writes and posts contextual AI replies to every new Google review within hours, showing responsiveness to future customers and boosting review velocity. (5) Weekly Report emails you a Google Search Console summary every Monday showing your top keywords, impressions, clicks, and position trends.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'How fast does WebCrew build a website?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'WebCrew builds and deploys a complete custom website in approximately 6 hours with no human involvement. The AI pipeline runs the moment you submit the form: Firecrawl scans your brand, Gemini AI generates city-specific copy, fal.ai Flux Pro creates custom hero images, and Cloudflare Pages deploys the live Next.js site. Most clients wake up to a text with their live URL the morning after submitting. Sites score an average of 97/100 on Google PageSpeed.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What niches does WebCrew serve?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'WebCrew serves 25+ local business niches across the United States: HVAC, Roofing, Plumbing, Cleaning, Landscaping, Junk Removal, Remodeling, Auto Detailing, Pressure Washing, Epoxy Flooring, Foundation Repair, Septic Services, Tree Services, Dentist, Med Spa, Skin Clinic, IV Therapy, Nail Studio, Salon, Barbershop, Daycare, Restaurant, Law Firm, Real Estate, and more. Every niche gets a fully custom design — different layout, copy, imagery, and local SEO signals, not a swapped-name template.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Will the website rank on Google and appear in AI search results?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Every WebCrew site launches with LocalBusiness schema markup, FAQPage schema, AggregateRating schema, Service schema, a sitemap.xml, and robots.txt optimized for Google and AI crawler indexing (GPTBot, ClaudeBot, PerplexityBot all allowed). The $49/month plan includes weekly Google Business Profile posts that signal local relevance and automated review replies that increase review velocity — two of the strongest local ranking factors. Most clients receive their first Google-sourced lead within 7 days. Sites also get an llms.txt file so AI systems like ChatGPT, Perplexity, and Gemini can accurately describe the business when users ask local queries.',
           },
         },
         {
@@ -196,39 +261,7 @@ const SCHEMA = {
           name: 'What if I already have a website?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Use the "Upgrade My Site" tab in the contact form. WebCrew builds a complete redesign as a free demo while your current site stays live — zero risk, zero downtime, no DNS changes. You get to compare your existing site against the WebCrew-built version. If the new site is better, you switch. If not, you keep yours and pay nothing. Most clients who use this path switch to the WebCrew site. The redesign process uses the same AI pipeline: Firecrawl scans your current site to extract brand signals, colors, and services, then builds a new version that preserves your identity while dramatically improving design quality, PageSpeed score, and local SEO signals. The demo runs on a separate Cloudflare Pages subdomain until you decide to switch — WebCrew cannot access or modify your existing site at any point during the process.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'What if I hate it?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Then you don\'t pay. WebCrew deletes the demo. No hard feelings, no invoices, no follow-up guilt trips, no passive-aggressive emails. It\'s that simple. WebCrew only makes money when clients love what was built — so there is a very strong incentive to get it right the first time. If the first build misses the mark, WebCrew will rebuild. The free demo model only works if the output is genuinely impressive, which is why the AI pipeline is continuously improved based on client feedback. No client has ever been charged for a site they didn\'t approve. Rebuild requests have been fulfilled for clients who needed different color schemes, different hero images, a different headline angle, or more niche-specific copy. There is no documented limit on rebuild attempts, and the rebuild process typically completes within the same 6-hour window as the original build.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Will this actually rank on Google?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Every WebCrew site launches with city-specific keyword copy, schema markup (LocalBusiness, Service, FAQPage, AggregateRating), a sitemap.xml, and a robots.txt optimized for Google indexing. The $49/month plan includes weekly Google Business Profile posts that keep your GBP active and signal consistent local relevance to Google. Automated review replies increase review velocity, which is one of the strongest local ranking factors. Monthly Google Search Console reports show exactly which search terms are driving traffic. Most clients see their first Google-sourced inquiry within 7 days of going live. Sites average a 97/100 Google PageSpeed score, which directly supports Core Web Vitals rankings. The schema markup includes four types Google\'s local algorithm responds to most directly: LocalBusiness, Service, FAQPage, and AggregateRating. All WebCrew sites are built on Next.js and deployed to Cloudflare Pages, achieving a typical Time to First Byte under 400 milliseconds globally.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'What does the $49/month actually include?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'The $49/month WebCrew plan includes Cloudflare Pages global CDN hosting with 99.9% uptime and automatic SSL, AI answering every inbound call 24/7 with a trained voice agent that knows your services, hours, and pricing, weekly Google Business Profile posts written by AI to keep your GBP active, automated AI replies to every Google review (positive and negative) to show responsiveness, a monthly Google Search Console traffic report showing impressions, clicks, and keyword rankings, and instant SMS alerts every time a new lead submits your contact form. The equivalent stack from a traditional agency — hosting, receptionist, GBP management, review management, and SEO reporting — runs $460 or more per month. The $49/mo founding member rate is locked for life. All features activate from day one with no setup fee, no onboarding call, and no waiting period. The AI voice agent is trained on your specific services, pricing, and hours before your first call arrives.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Do I own the site if I pay?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Completely. After paying the $299 one-time fee, you receive the full Next.js source code for your website. You can host it anywhere — Vercel, Netlify, your own server, or stay on Cloudflare Pages with the $49/mo plan. Cancel the monthly plan at any time and keep the code. There is no lock-in, no platform dependency, and no "your site disappears if you cancel" clause. The source code is your asset, not WebCrew\'s. This is a deliberate design decision: WebCrew only makes money on the ongoing value it delivers (calls answered, reviews replied, GBP posts, traffic reports), not by holding your site hostage. The handoff includes the full GitHub repository, deployment configuration, and environment variable documentation. If WebCrew ceased operations tomorrow, your site would continue running on Cloudflare Pages and you would retain everything needed to maintain or modify it independently.',
+            text: 'Use the "Upgrade My Site" tab in the contact form at webcrew.app. WebCrew builds a complete redesign as a free demo while your current site stays live — zero risk, zero downtime, no DNS changes needed. You compare both versions. If the WebCrew site is better, you switch. If not, you keep yours and pay nothing. The AI pipeline scans your current site for brand signals, colors, and copy, then builds an improved version with better PageSpeed score, richer schema markup, and stronger local SEO signals.',
           },
         },
       ],

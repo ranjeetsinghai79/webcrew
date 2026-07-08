@@ -1,20 +1,41 @@
 # WebCrew
 
-> WebCrew is an AI-powered website builder for local businesses in the United States. The service builds custom Next.js websites overnight for free across 25+ niches including HVAC, roofing, dental, med spa, salon, barbershop, cleaning, landscaping, junk removal, remodeling, auto detailing, restaurant, law firm, and daycare. Businesses pay $299 one-time if they choose to keep the site, or $49/month for ongoing hosting with AI call answering, Google Business Profile management, automated review replies, and monthly SEO reports.
+> WebCrew is an AI agency for local businesses in the United States. We build your website, answer your calls 24/7, manage your Google Business Profile, reply to reviews, and send you weekly traffic reports — all done for you. Starts at $49/month, no setup fee, cancel anytime.
+
+## What We Do
+WebCrew deploys a full AI front office for local businesses: a cinematic, lead-generating website built overnight (free demo), plus 5 AI agents that run continuously after launch. No templates, no DIY, no human bottleneck — everything is done for you by AI overnight.
+
+## The 5 AI Agents
+1. **AI Reception** — answers every inbound call 24/7 using Gemini Live voice AI, trained on your services, hours, and pricing
+2. **Revenue Alert** — sends instant SMS to the owner every time a new lead submits the contact form
+3. **GBP Post Agent** — writes and publishes a Google Business Profile post every week
+4. **Review Reply Agent** — writes and posts AI replies to every new Google review within hours
+5. **Weekly Report** — emails a Google Search Console traffic summary every Monday
+
+## Pricing
+- **Starter — $49/month**: Website hosting + all 5 AI agents. Free to start, no credit card. Pay only if you love the demo.
+- **Growth — $149/month**: Everything in Starter + priority build queue, custom domain setup, monthly strategy call, and dedicated support.
+- No setup fee. No contracts. Cancel anytime.
 
 ## Key Facts
-- 847 websites built and deployed as of June 2026
+- 12 local businesses live with active AI teams (as of July 2026, early access)
 - Average build time: 6 hours (no human involvement)
 - Average PageSpeed score: 97/100
-- Pricing: free to start, $299 one-time site ownership, $49/month hosting + AI team
-- Niches: 25+ local service categories, United States
-- Technology stack: Gemini AI, Cloudflare Pages, Next.js, Twilio, Firecrawl, fal.ai Flux Pro
-- AI team included: reception (answers calls 24/7), GBP posts (weekly), review replies (automated), lead alerts (SMS), weekly traffic reports
+- 25+ niches: HVAC, Roofing, Dental, Med Spa, Salon, Barbershop, Cleaning, Landscaping, Junk Removal, Remodeling, Auto Detailing, Restaurant, Law Firm, Daycare, Plumbing, Pressure Washing, Epoxy Flooring, Foundation Repair, Septic Services, Tree Services, Skin Clinic, IV Therapy, Nail Studio, Real Estate
+- Technology: Gemini Live (AI calls), Cloudflare Pages (hosting), Next.js (sites), Twilio (SMS), Google Business Profile API (GBP posts), Firecrawl (brand scraping), fal.ai Flux Pro (AI imagery)
+- United States only
+
+## How It Works
+1. Submit the form at webcrew.app with your business name, niche, and city
+2. WebCrew AI scans your brand, builds a custom website overnight, and deploys it live
+3. Wake up to a text with your live site link — free demo, no card required
+4. If you love it, subscribe. All 5 AI agents activate from day one.
 
 ## Pages
-- https://webcrew.app — Main site with full service description, pricing, FAQ, and demo showcase
-- https://webcrew.app/privacy — Privacy policy including SMS consent and data handling terms
+- https://webcrew.app — Main site with pricing, demo showcase, and contact form
+- https://webcrew.app/privacy — Privacy policy including SMS consent and carrier clause
 - https://webcrew.app/terms — Terms of service
 
 ## Contact
 - Email: hello@webcrew.app
+- Website: https://webcrew.app
