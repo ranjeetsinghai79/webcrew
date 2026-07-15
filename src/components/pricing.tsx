@@ -121,7 +121,7 @@ export default function Pricing() {
           }}>
             <span className="live-dot" />
             <span style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--color-text)' }}>
-              Founding member pricing — locks forever. Raises to $199+/mo at public launch.
+              First 10 customers — flexible 60-day founding pilot, tailored to budget and usage.
             </span>
           </div>
         </div>
@@ -151,6 +151,10 @@ export default function Pricing() {
             </div>
           ))}
         </div>
+
+        <p style={{ textAlign: 'center', maxWidth: 700, margin: '-14px auto 36px', color: 'var(--color-muted)', fontSize: '0.82rem', lineHeight: 1.6 }}>
+          Need AI reception on a smaller starting budget? Tell us what feels comfortable. Eligible founding customers can start with a limited voice pilot from $59/month; included usage and features are confirmed before onboarding.
+        </p>
 
         {/* 2-column card grid */}
         <div

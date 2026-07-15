@@ -45,7 +45,7 @@ Starter plan: $49/month. AI reception and appointment booking are not included.
 Growth plan: $149/month. Includes Starter plus 24/7 AI reception, appointment booking, and call transcripts and summaries.
 Custom/Enterprise services: only as confirmed in writing by an authorized WebCrew team member.
 
-Monthly fees are billed in advance and plans may be cancelled at any time. Late payments may result in service suspension. The AI receptionist is not authorized to negotiate or change prices. All fees are non-refundable except as described in our satisfaction guarantee.`,
+Monthly fees are billed in advance and plans may be cancelled at any time. Late payments may result in service suspension. During an expressly offered founding-customer program, the AI receptionist may propose only system-authorized pilot prices, usage limits, and scope; the final plan is confirmed during onboarding. All fees are non-refundable except as described in our satisfaction guarantee.`,
           },
           {
             title: 'Satisfaction Guarantee',
