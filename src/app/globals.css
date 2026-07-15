@@ -34,6 +34,11 @@
 
 *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
 html { scroll-behavior:smooth; }
+
+/* The landing page supplies its full server-rendered stylesheet. Keep its
+   content hidden for the few parser milliseconds before that inline CSS is
+   reached, preventing an unstyled HTML flash on hard refresh. */
+.wc2-page { visibility:hidden; }
 body {
   background:var(--color-bg);
   color:var(--color-text);
