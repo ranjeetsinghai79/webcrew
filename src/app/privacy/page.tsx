@@ -3,7 +3,7 @@ export const metadata = {
   description: 'WebCrew privacy policy — how we collect and use your information.',
 }
 
-const EFFECTIVE = 'May 19, 2026'
+const EFFECTIVE = 'July 15, 2026'
 
 export default function Privacy() {
   return (
@@ -29,6 +29,14 @@ export default function Privacy() {
 We also collect usage data automatically (IP address, browser type, pages visited, time on site) via standard server logs and analytics tools. We do not use third-party advertising trackers.`,
           },
           {
+            title: 'AI Receptionist, Calls, and Recordings',
+            body: `When you call or interact with our receptionist, you are communicating with an artificial-intelligence system. We provide notice at the beginning of the call. Calls may be recorded and transcribed for service, quality, lead follow-up, appointment handling, security, and improvement.
+
+Call information may include your telephone number, audio, transcript, name, email, business details, requests, appointment preferences, SMS replies, and conversation summaries. Please do not provide sensitive personal information that is not needed for your request.
+
+AI-generated responses can be incomplete or incorrect. Do not rely on the receptionist for legal, medical, financial, emergency, or other professional advice. You may ask for human follow-up, and you may request correction or deletion of eligible information by emailing hello@webcrew.app.`,
+          },
+          {
             title: 'How We Use Your Information',
             body: `We use the information we collect to:
 • Build and deliver your demo website
@@ -52,7 +60,7 @@ Carriers are not liable for delayed or undelivered messages.`,
           {
             title: 'Data Sharing',
             body: `We share your information only with:
-• Service providers who help us operate (hosting, SMS delivery via Twilio, email via Resend)
+• Service providers who help us operate (hosting and AI processing through Google Cloud/Vertex AI, calls and SMS through Twilio, email through Resend, scheduling, database, analytics, and security providers)
 • Law enforcement when required by law
 
 All service providers are bound by confidentiality agreements.
@@ -61,7 +69,7 @@ No mobile information will be shared with third parties/affiliates for marketing
           },
           {
             title: 'Data Retention',
-            body: 'We retain your information for as long as necessary to provide our services and as required by law. You may request deletion of your data at any time by emailing hello@webcrew.app.',
+            body: 'We retain contact, call, recording, transcript, scheduling, and service information only for as long as reasonably necessary for the purposes described above, dispute resolution, security, and legal obligations. Retention periods vary by record type and account relationship. We delete or de-identify information when it is no longer needed, subject to legal and operational exceptions. You may request deletion of eligible data at any time by emailing hello@webcrew.app.',
           },
           {
             title: 'Your Rights',

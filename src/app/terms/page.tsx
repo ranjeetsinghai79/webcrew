@@ -3,7 +3,7 @@ export const metadata = {
   description: 'WebCrew terms of service.',
 }
 
-const EFFECTIVE = 'May 19, 2026'
+const EFFECTIVE = 'July 15, 2026'
 
 export default function Terms() {
   return (
@@ -33,12 +33,19 @@ export default function Terms() {
 We reserve the right to modify, suspend, or discontinue any part of our services at any time.`,
           },
           {
-            title: 'Payment Terms',
-            body: `Starter plan: $299 one-time setup fee plus $49/month hosting.
-Premium plan: $599 one-time setup fee plus $79/month hosting.
-Custom/Enterprise: as quoted.
+            title: 'AI Receptionist and Accuracy',
+            body: `Our phone and messaging receptionist uses artificial intelligence and identifies itself as AI. Calls may be recorded and transcribed after notice for service, quality, follow-up, and security.
 
-Monthly hosting fees are billed in advance. Late payments may result in service suspension. All fees are non-refundable except as described in our satisfaction guarantee.`,
+AI output may be incomplete, delayed, or incorrect and does not constitute legal, medical, financial, emergency, or other professional advice. Prices, appointments, commitments, and other material terms are binding only when confirmed through WebCrew's authorized systems or by a human team member. If an answer appears incorrect, ask for human follow-up or contact hello@webcrew.app.`,
+          },
+          {
+            title: 'Payment Terms',
+            body: `Optional website code ownership: $299 one-time.
+Starter plan: $49/month. AI reception and appointment booking are not included.
+Growth plan: $149/month. Includes Starter plus 24/7 AI reception, appointment booking, and call transcripts and summaries.
+Custom/Enterprise services: only as confirmed in writing by an authorized WebCrew team member.
+
+Monthly fees are billed in advance and plans may be cancelled at any time. Late payments may result in service suspension. The AI receptionist is not authorized to negotiate or change prices. All fees are non-refundable except as described in our satisfaction guarantee.`,
           },
           {
             title: 'Satisfaction Guarantee',
