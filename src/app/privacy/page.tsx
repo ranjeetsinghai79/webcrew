@@ -30,7 +30,7 @@ We also collect usage data automatically (IP address, browser type, pages visite
           },
           {
             title: 'AI Receptionist, Calls, and Recordings',
-            body: `When you call or interact with our receptionist, you are communicating with an artificial-intelligence system. We provide notice at the beginning of the call. Calls may be recorded and transcribed for service, quality, lead follow-up, appointment handling, security, and improvement.
+            body: `When you call or interact with our receptionist, you are communicating with an artificial-intelligence system. We provide notice at the beginning of the call. Calls are recorded and transcribed for service, quality, internal training and evaluation, lead follow-up, appointment handling, security, and improvement.
 
 Call information may include your telephone number, audio, transcript, name, email, business details, requests, appointment preferences, SMS replies, and conversation summaries. Please do not provide sensitive personal information that is not needed for your request.
 

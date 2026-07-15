@@ -34,7 +34,7 @@ We reserve the right to modify, suspend, or discontinue any part of our services
           },
           {
             title: 'AI Receptionist and Accuracy',
-            body: `Our phone and messaging receptionist uses artificial intelligence and identifies itself as AI. Calls may be recorded and transcribed after notice for service, quality, follow-up, and security.
+            body: `Our phone and messaging receptionist uses artificial intelligence and identifies itself as AI. Calls are recorded and transcribed after notice for service, quality, internal training and evaluation, follow-up, and security.
 
 AI output may be incomplete, delayed, or incorrect and does not constitute legal, medical, financial, emergency, or other professional advice. Prices, appointments, commitments, and other material terms are binding only when confirmed through WebCrew's authorized systems or by a human team member. If an answer appears incorrect, ask for human follow-up or contact hello@webcrew.app.`,
           },
