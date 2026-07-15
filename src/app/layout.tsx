@@ -14,8 +14,8 @@ const inter = Inter({
   weight: ['400', '500', '600'],
 })
 
-const TITLE = 'WebCrew — AI Agency for Local Businesses | Calls, Google, Reviews'
-const DESC  = 'WebCrew is an AI agency that builds your website overnight (free demo), answers calls 24/7, manages your Google Business Profile, and replies to every review. 25+ niches. From $49/month, no setup fee.'
+const TITLE = 'WebCrew — 24/7 AI Front Office for Local Businesses'
+const DESC  = 'WebCrew answers calls, qualifies leads, follows up, and helps book customers 24/7—so missed calls do not become lost revenue.'
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -64,7 +64,7 @@ const SCHEMA = {
       '@id': 'https://webcrew.app/#organization',
       name: 'WebCrew',
       url: 'https://webcrew.app',
-      description: 'WebCrew is an AI agency for local businesses. We build your website overnight (free demo), then run 5 AI agents every day: AI call answering 24/7, weekly Google Business Profile posts, automated review replies, instant lead SMS alerts, and weekly traffic reports. Starting at $49/month, no setup fee.',
+      description: 'WebCrew is an AI front office for local businesses. It answers calls, qualifies leads, follows up, and helps book customers 24/7.',
       foundingDate: '2024',
       logo: {
         '@type': 'ImageObject',
@@ -122,51 +122,11 @@ const SCHEMA = {
       provider: { '@id': 'https://webcrew.app/#organization' },
       serviceType: 'AI Digital Agency',
       category: 'Business Services',
-      description: 'WebCrew builds a custom website overnight (free demo) and deploys 5 AI agents: AI reception answering every call 24/7 using Gemini Live, weekly Google Business Profile posts, automated Google review replies, instant lead SMS alerts, and weekly Google Search Console traffic reports. Starts at $49/month with no setup fee. Serves 25+ local business niches across the United States.',
+      description: 'WebCrew answers calls, qualifies leads, follows up, and helps local businesses book customers 24/7. No credit card or setup fee is required to see it working.',
       areaServed: {
         '@type': 'Country',
         name: 'United States',
         sameAs: 'https://www.wikidata.org/wiki/Q30',
-      },
-      hasOfferCatalog: {
-        '@type': 'OfferCatalog',
-        name: 'WebCrew Plans',
-        itemListElement: [
-          {
-            '@type': 'Offer',
-            name: 'Starter — $49/month',
-            price: '49',
-            priceCurrency: 'USD',
-            priceSpecification: {
-              '@type': 'UnitPriceSpecification',
-              price: '49',
-              priceCurrency: 'USD',
-              billingDuration: 1,
-              billingIncrement: 1,
-              unitCode: 'MON',
-            },
-            description: 'Website hosting on Cloudflare CDN + 5 AI agents: AI call answering 24/7 (Gemini Live), weekly Google Business Profile posts, automated Google review replies, instant lead SMS alerts, weekly Google Search Console traffic report. No setup fee. Cancel anytime.',
-            url: 'https://webcrew.app/#pricing',
-            availability: 'https://schema.org/InStock',
-          },
-          {
-            '@type': 'Offer',
-            name: 'Growth — $149/month',
-            price: '149',
-            priceCurrency: 'USD',
-            priceSpecification: {
-              '@type': 'UnitPriceSpecification',
-              price: '149',
-              priceCurrency: 'USD',
-              billingDuration: 1,
-              billingIncrement: 1,
-              unitCode: 'MON',
-            },
-            description: 'Everything in Starter plus priority build queue, custom domain setup, monthly strategy call, and dedicated support.',
-            url: 'https://webcrew.app/#pricing',
-            availability: 'https://schema.org/InStock',
-          },
-        ],
       },
     },
     {
@@ -192,7 +152,7 @@ const SCHEMA = {
           '@type': 'HowToStep',
           position: 3,
           name: 'Wake Up to Your AI Team',
-          text: 'You receive a text with your live site link in the morning. If you love it, subscribe at $49/month (Starter) or $149/month (Growth). All 5 AI agents activate immediately: calls answered 24/7, GBP posts scheduled, review replies live.',
+          text: 'You receive a text with your live site link and a walkthrough of your AI front office. You can review how calls, lead details, follow-up, and booking work before deciding to continue.',
         },
       ],
     },
@@ -205,15 +165,7 @@ const SCHEMA = {
           name: 'What is WebCrew?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'WebCrew is an AI agency for local businesses in the United States. We build your website overnight for free, then run 5 AI agents on your behalf every day: (1) AI Reception — answers every inbound call 24/7 using Gemini Live voice AI, trained on your services, pricing, and hours; (2) Revenue Alert — texts you instantly when a new lead submits your contact form; (3) GBP Post Agent — publishes a Google Business Profile post every week; (4) Review Reply Agent — writes and posts AI replies to every new Google review within hours; (5) Weekly Report — emails you a Google Search Console traffic summary every Monday. Starts at $49/month, no setup fee.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'How much does WebCrew cost?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'WebCrew offers two monthly plans: Starter at $49/month and Growth at $149/month. The demo website is built completely free — no credit card, no deposit, no commitment. If you love the demo, subscribe to activate all 5 AI agents. Starter includes website hosting on Cloudflare CDN, AI call answering 24/7 (Gemini Live), weekly Google Business Profile posts, automated review replies, instant lead SMS alerts, and weekly traffic reports. Growth adds priority build queue, custom domain setup, a monthly strategy call, and dedicated support. No setup fee on either plan. Cancel anytime.',
+            text: 'WebCrew is an AI front office for local businesses in the United States. It answers inbound calls 24/7, qualifies leads, captures customer details, supports appointment booking, follows up, and keeps the business owner informed.',
           },
         },
         {
@@ -221,7 +173,7 @@ const SCHEMA = {
           name: 'Is the demo really free? What\'s the catch?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Yes, completely free to start. No credit card, no deposit, no commitment. WebCrew AI builds and deploys a live website overnight at no cost. You review it. If you love it, subscribe at $49/month (Starter) or $149/month (Growth). If you don\'t love it for any reason, you pay nothing and WebCrew deletes the demo — no invoices, no follow-up sales calls. WebCrew only makes money when clients love what was built.',
+            text: 'Yes. No credit card, deposit, or setup fee is required to see WebCrew working for your business. You review the experience before deciding whether to continue.',
           },
         },
         {
