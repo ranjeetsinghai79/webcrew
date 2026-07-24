@@ -104,7 +104,7 @@ const SCHEMA = {
       '@id': 'https://webcrew.app/#webpage',
       url: 'https://webcrew.app',
       name: 'WebCrew — AI Agency for Local Businesses | Calls, Google, Reviews',
-      description: 'WebCrew builds your website overnight and runs 5 AI agents: AI reception (24/7 calls), GBP posts, review replies, lead alerts, weekly traffic reports. From $49/month.',
+      description: 'WebCrew builds your website overnight and runs 5 AI agents: AI reception (24/7 calls), GBP posts, review replies, lead alerts, weekly traffic reports.',
       isPartOf: { '@id': 'https://webcrew.app/#website' },
       about: { '@id': 'https://webcrew.app/#service' },
       publisher: { '@id': 'https://webcrew.app/#organization' },
@@ -205,7 +205,7 @@ const SCHEMA = {
           name: 'Will the website rank on Google and appear in AI search results?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Every WebCrew site launches with LocalBusiness schema markup, FAQPage schema, AggregateRating schema, Service schema, a sitemap.xml, and robots.txt optimized for Google and AI crawler indexing (GPTBot, ClaudeBot, PerplexityBot all allowed). The $49/month plan includes weekly Google Business Profile posts that signal local relevance and automated review replies that increase review velocity — two of the strongest local ranking factors. Most clients receive their first Google-sourced lead within 7 days. Sites also get an llms.txt file so AI systems like ChatGPT, Perplexity, and Gemini can accurately describe the business when users ask local queries.',
+            text: 'Every WebCrew site launches with LocalBusiness schema markup, FAQPage schema, AggregateRating schema, Service schema, a sitemap.xml, and robots.txt optimized for Google and AI crawler indexing (GPTBot, ClaudeBot, PerplexityBot all allowed). Every plan includes weekly Google Business Profile posts that signal local relevance and automated review replies that increase review velocity — two of the strongest local ranking factors. Most clients receive their first Google-sourced lead within 7 days. Sites also get an llms.txt file so AI systems like ChatGPT, Perplexity, and Gemini can accurately describe the business when users ask local queries.',
           },
         },
         {

@@ -70,7 +70,8 @@ export default function LoadingScreen() {
       />
 
       <div style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
-        <div ref={logoRef} style={{ marginBottom: '20px' }}>
+        <div ref={logoRef} style={{ marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <img src="/logo.png" alt="WebCrew" style={{ width: '56px', height: '56px', objectFit: 'contain' }} />
           <span
             style={{
               fontFamily: 'var(--font-display)',

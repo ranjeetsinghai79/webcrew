@@ -40,7 +40,7 @@ function AITeamCard() {
           </div>
           <div>
             <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '0.82rem', color: '#fff' }}>
-              AI Business Manager
+              Example WebCrew Activity
             </div>
             <div style={{ fontSize: '0.6rem', color: 'rgba(255,255,255,0.7)', marginTop: 1 }}>
               Jake&apos;s HVAC · Dallas, TX
@@ -289,6 +289,14 @@ export default function Hero() {
             }}>
               Revenue Recovery · 24/7
             </span>
+            <span style={{
+              display: 'inline-flex', alignItems: 'center', gap: '6px',
+              border: '1px solid rgba(14,165,233,0.3)', background: 'rgba(14,165,233,0.07)',
+              borderRadius: '100px', padding: '7px 14px',
+              fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#38bdf8',
+            }}>
+              Found on ChatGPT · Perplexity · Google AI
+            </span>
           </div>
 
           {/* Headline */}
@@ -301,9 +309,9 @@ export default function Hero() {
               marginBottom: '28px', color: '#FFFFFF',
             }}
           >
-            <div style={{ overflow: 'hidden', paddingBottom: '0.1em' }}>{split('Missed Calls =')}</div>
-            <div style={{ overflow: 'hidden', paddingBottom: '0.1em' }}>{split('Lost Revenue.', true)}</div>
-            <div style={{ overflow: 'hidden', paddingBottom: '0.1em' }}>{split('We Fix That.')}</div>
+            <div style={{ overflow: 'hidden', paddingBottom: '0.1em' }}>{split('You Miss the Call.')}</div>
+            <div style={{ overflow: 'hidden', paddingBottom: '0.1em' }}>{split('They Call Your', true)}</div>
+            <div style={{ overflow: 'hidden', paddingBottom: '0.1em' }}>{split('Competitor.', true)}</div>
           </h1>
 
           {/* Sub */}
@@ -311,47 +319,44 @@ export default function Hero() {
             color: 'rgba(255,255,255,0.7)', fontSize: 'clamp(0.9rem,1.5vw,1.05rem)',
             lineHeight: 1.8, maxWidth: '490px', marginBottom: '38px',
           }}>
-            Your AI Front Office answers every call, books jobs, posts to Google, and replies to reviews — while you&apos;re on the job.{' '}
-            <span style={{ color: '#FFFFFF', fontWeight: 600 }}>Zero missed calls. More booked jobs. 24/7.</span>
+            WebCrew answers callers, qualifies new customers, and books appointments while you&apos;re working — so more calls become paying jobs.{' '}
+            <span style={{ color: '#FFFFFF', fontWeight: 600 }}>Available 24/7 and trained on your business.</span>
           </p>
 
           {/* CTAs */}
           <div ref={ctasRef} style={{ marginBottom: '44px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
             <a
-              href="#contact"
+              href="#revenue-calculator"
               onClick={e => {
                 e.preventDefault()
-                window.dispatchEvent(new CustomEvent('wc:tab', { detail: { tab: 'demo' } }))
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                document.getElementById('revenue-calculator')?.scrollIntoView({ behavior: 'smooth' })
               }}
               className="btn-primary"
               style={{ fontSize: '0.95rem', padding: '15px 28px' }}
             >
-              Book Your Free Demo <ArrowRight size={16} />
+              Calculate My Missed Revenue <ArrowRight size={16} />
             </a>
             <a
-              href="#pricing"
-              onClick={e => { e.preventDefault(); document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' }) }}
+              href="#features"
+              onClick={e => { e.preventDefault(); document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' }) }}
               className="btn-ghost"
               style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.82)', borderColor: 'rgba(255,255,255,0.18)' }}
             >
-              See Pricing →
+              See How WebCrew Answers →
             </a>
           </div>
 
           {/* Trust row */}
           <div ref={trustRef} style={{ display: 'flex', alignItems: 'center', gap: '18px', flexWrap: 'wrap' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
-              <div style={{ display: 'flex', gap: 2 }}>
-                {[...Array(5)].map((_, i) => <Star key={i} size={13} fill="#F59E0B" color="#F59E0B" />)}
-              </div>
+              <Phone size={13} color="#4ade80" />
               <span style={{ fontSize: '0.73rem', color: 'rgba(255,255,255,0.5)' }}>
-                <span style={{ color: '#fff', fontWeight: 600 }}>4.9</span> · 47 reviews
+                Built for local service businesses
               </span>
             </div>
             <div style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.1)' }} />
             <span style={{ fontSize: '0.73rem', color: 'rgba(255,255,255,0.5)' }}>
-              <span style={{ color: '#fff', fontWeight: 600 }}>Starts at $49/mo</span> — cancel anytime
+              <span style={{ color: '#fff', fontWeight: 600 }}>Call answering from $149/mo</span> — cancel anytime
             </span>
             <div style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.1)' }} />
             <span style={{ fontSize: '0.73rem', color: 'rgba(255,255,255,0.5)' }}>

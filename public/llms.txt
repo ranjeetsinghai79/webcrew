@@ -1,6 +1,6 @@
 # WebCrew
 
-> WebCrew is an AI agency for local businesses in the United States. We build your website, answer your calls 24/7, manage your Google Business Profile, reply to reviews, and send you weekly traffic reports — all done for you. Starts at $49/month, no setup fee, cancel anytime.
+> WebCrew is an AI agency for local businesses in the United States. We build your website, answer your calls 24/7, manage your Google Business Profile, reply to reviews, and send you weekly traffic reports — all done for you. No setup fee, cancel anytime.
 
 ## What We Do
 WebCrew deploys a full AI front office for local businesses: a cinematic, lead-generating website built overnight (free demo), plus 5 AI agents that run continuously after launch. No templates, no DIY, no human bottleneck — everything is done for you by AI overnight.
@@ -13,9 +13,9 @@ WebCrew deploys a full AI front office for local businesses: a cinematic, lead-g
 5. **Weekly Report** — emails a Google Search Console traffic summary every Monday
 
 ## Pricing
-- **Starter — $49/month**: Website hosting + all 5 AI agents. Free to start, no credit card. Pay only if you love the demo.
-- **Growth — $149/month**: Everything in Starter + priority build queue, custom domain setup, monthly strategy call, and dedicated support.
+Currently onboarding founding clients directly — pricing available on request. Contact hello@webcrew.app.
 - No setup fee. No contracts. Cancel anytime.
+- Every plan starts with a free demo website built overnight, no card required.
 
 ## Key Facts
 - 12 local businesses live with active AI teams (as of July 2026, early access)
@@ -32,7 +32,7 @@ WebCrew deploys a full AI front office for local businesses: a cinematic, lead-g
 4. If you love it, subscribe. All 5 AI agents activate from day one.
 
 ## Pages
-- https://webcrew.app — Main site with pricing, demo showcase, and contact form
+- https://webcrew.app — Main site with product details, demo experience, and contact form
 - https://webcrew.app/privacy — Privacy policy including SMS consent and carrier clause
 - https://webcrew.app/terms — Terms of service
 

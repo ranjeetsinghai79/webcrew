@@ -2,12 +2,13 @@
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ArrowRight, Menu, X } from 'lucide-react'
+import { SHOW_PUBLIC_PRICING } from '@/lib/features'
 
 const LINKS = [
   { label: 'How It Works', href: '#how-it-works' },
   { label: 'Showcase',     href: '#showcase' },
   { label: 'Features',     href: '#features' },
-  { label: 'Pricing',      href: '#pricing' },
+  ...(SHOW_PUBLIC_PRICING ? [{ label: 'Pricing', href: '#pricing' }] : []),
 ]
 
 export default function Nav() {
@@ -46,17 +47,7 @@ export default function Nav() {
       >
         {/* Logo */}
         <a href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px', zIndex: 10 }}>
-          <span style={{
-            display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-            width: '32px', height: '32px',
-            background: 'linear-gradient(135deg, #00C26F, #0EA5E9)',
-            borderRadius: '8px',
-            fontFamily: 'var(--font-display)', fontWeight: 800,
-            fontSize: '1rem', color: '#FFFFFF',
-            boxShadow: '0 4px 12px rgba(0,194,110,0.3)',
-          }}>
-            W
-          </span>
+          <img src="/logo.png" alt="WebCrew" style={{ width: '32px', height: '32px', objectFit: 'contain' }} />
           <span style={{
             fontFamily: 'var(--font-display)', fontWeight: 800,
             fontSize: '1.25rem', letterSpacing: '-0.02em', color: '#FFFFFF',

@@ -1,341 +1,106 @@
 'use client'
-import { useEffect, useRef, useState } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowRight, TrendingDown, TrendingUp } from 'lucide-react'
 
-if (typeof window !== 'undefined') { gsap.registerPlugin(ScrollTrigger) }
+import { useMemo, useState } from 'react'
+import { ArrowRight, PhoneCall } from 'lucide-react'
 
-const BULLETS = [
-  { stat: '~2,400', label: 'people search your exact trade in your city every month' },
-  { stat: 'Top 3',  label: 'Google results capture 68% of all those clicks. You\'re not there.' },
-  { stat: '$650',   label: 'average job value — meaning every missed lead costs you $650+' },
-  { stat: '~$9.6K', label: 'per month you\'re silently handing to competitors who rank above you' },
-]
-
-function RevenueCard() {
-  const badRef  = useRef<HTMLSpanElement>(null)
-  const goodRef = useRef<HTMLSpanElement>(null)
-  const roiRef  = useRef<HTMLSpanElement>(null)
-  const triggered = useRef(false)
-  const containerRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting && !triggered.current) {
-        triggered.current = true
-        const countUp = (el: HTMLSpanElement | null, target: number, prefix = '', suffix = '') => {
-          if (!el) return
-          const obj = { val: 0 }
-          gsap.to(obj, {
-            val: target, duration: 2.2, ease: 'power2.out',
-            onUpdate: () => { el.textContent = prefix + Math.round(obj.val).toLocaleString() + suffix },
-          })
-        }
-        setTimeout(() => {
-          countUp(badRef.current, 9600, '-$', '/mo')
-          countUp(goodRef.current, 18200, '+$', '/mo')
-          countUp(roiRef.current, 371, '', 'x')
-        }, 300)
-      }
-    }, { threshold: 0.4 })
-    if (containerRef.current) observer.observe(containerRef.current)
-    return () => observer.disconnect()
-  }, [])
-
+function Field({ label, value, min, max, step = 1, prefix, suffix, onChange }: {
+  label: string
+  value: number
+  min: number
+  max: number
+  step?: number
+  prefix?: string
+  suffix?: string
+  onChange: (value: number) => void
+}) {
   return (
-    <div
-      ref={containerRef}
-      style={{
-        background: '#FFFFFF',
-        border: '1px solid rgba(0,0,0,0.09)',
-        borderRadius: 20,
-        overflow: 'hidden',
-        boxShadow: '0 8px 40px rgba(0,0,0,0.1)',
-      }}
-    >
-      {/* Card header */}
-      <div style={{
-        padding: '20px 24px',
-        borderBottom: '1px solid rgba(0,0,0,0.06)',
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      }}>
-        <div>
-          <div style={{ fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-blue)', marginBottom: 2 }}>
-            Revenue Calculator
-          </div>
-          <div style={{ fontSize: '0.72rem', color: 'var(--color-muted)' }}>
-            Based on typical local market data
-          </div>
-        </div>
-        <div style={{
-          width: 36, height: 36, borderRadius: 10,
-          background: '#F3F4F6',
-          border: '1px solid rgba(0,0,0,0.08)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-        }}>
-          <TrendingUp size={16} color="#00C26F" />
-        </div>
+    <label style={{ display: 'grid', gap: 9 }}>
+      <span style={{ color: 'rgba(255,255,255,.72)', fontSize: '.82rem', fontWeight: 650 }}>{label}</span>
+      <div style={{ position: 'relative' }}>
+        {prefix && <span style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: 'rgba(255,255,255,.48)' }}>{prefix}</span>}
+        <input
+          type="number"
+          value={value}
+          min={min}
+          max={max}
+          step={step}
+          onChange={event => onChange(Math.min(max, Math.max(min, Number(event.target.value) || 0)))}
+          style={{
+            width: '100%', minHeight: 48, borderRadius: 10,
+            border: '1px solid rgba(255,255,255,.13)', background: 'rgba(255,255,255,.06)',
+            color: '#fff', font: 'inherit', fontWeight: 750,
+            padding: `0 ${suffix ? '48px' : '14px'} 0 ${prefix ? '30px' : '14px'}`,
+          }}
+        />
+        {suffix && <span style={{ position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%)', color: 'rgba(255,255,255,.48)', fontSize: '.78rem' }}>{suffix}</span>}
       </div>
-
-      {/* Bad site row */}
-      <div style={{ padding: '20px 24px', borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-          <div style={{
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            width: 24, height: 24, borderRadius: 6,
-            background: 'rgba(255,77,77,0.1)',
-          }}>
-            <TrendingDown size={13} color="#ff7070" />
-          </div>
-          <div style={{ fontSize: '0.72rem', fontWeight: 600, color: '#ff7070' }}>
-            With your current site
-          </div>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
-          {[
-            { label: 'Google rank',   val: 'Not found' },
-            { label: 'Leads/month',   val: '~2' },
-            { label: 'Avg job value', val: '$650' },
-            { label: 'Monthly loss',  val: <span ref={badRef} style={{ color: '#ff7070' }}>-$0/mo</span> },
-          ].map((r) => (
-            <div key={r.label} style={{
-              background: 'rgba(255,77,77,0.04)',
-              border: '1px solid rgba(255,77,77,0.08)',
-              borderRadius: 8, padding: '8px 10px',
-            }}>
-              <div style={{ fontSize: '0.58rem', color: 'var(--color-muted)', marginBottom: 2 }}>{r.label}</div>
-              <div style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--color-text)' }}>{r.val}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Good site row */}
-      <div style={{ padding: '20px 24px', borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-          <div style={{
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            width: 24, height: 24, borderRadius: 6,
-            background: 'rgba(74,222,128,0.1)',
-          }}>
-            <TrendingUp size={13} color="#4ade80" />
-          </div>
-          <div style={{ fontSize: '0.72rem', fontWeight: 600, color: '#4ade80' }}>
-            With WebCrew
-          </div>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
-          {[
-            { label: 'Google rank',   val: 'Top 3' },
-            { label: 'Leads/month',   val: '~28' },
-            { label: 'Avg job value', val: '$650' },
-            { label: 'Monthly rev.',  val: <span ref={goodRef} style={{ color: '#4ade80' }}>+$0/mo</span> },
-          ].map((r) => (
-            <div key={r.label} style={{
-              background: 'rgba(74,222,128,0.04)',
-              border: '1px solid rgba(74,222,128,0.1)',
-              borderRadius: 8, padding: '8px 10px',
-            }}>
-              <div style={{ fontSize: '0.58rem', color: 'var(--color-muted)', marginBottom: 2 }}>{r.label}</div>
-              <div style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--color-text)' }}>{r.val}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* ROI footer */}
-      <div style={{
-        padding: '16px 24px',
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        background: '#F9FAFB',
-      }}>
-        <div>
-          <div style={{ fontSize: '0.65rem', color: 'var(--color-muted)', marginBottom: 2 }}>
-            Your WebCrew cost
-          </div>
-          <div style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--color-text)' }}>
-            $49/month · free to start
-          </div>
-        </div>
-        <div style={{ textAlign: 'right' }}>
-          <div style={{ fontSize: '0.65rem', color: 'var(--color-muted)', marginBottom: 2 }}>
-            Month 1 ROI
-          </div>
-          <div style={{
-            fontFamily: 'var(--font-display)', fontWeight: 800,
-            fontSize: '1.6rem', letterSpacing: '-0.03em',
-            color: 'var(--color-blue)',
-          }}>
-            <span ref={roiRef}>0x</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    </label>
   )
 }
 
 export default function MoneyShot() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const headingRef = useRef<HTMLDivElement>(null)
-  const bulletsRef = useRef<HTMLDivElement>(null)
-  const cardRef    = useRef<HTMLDivElement>(null)
+  const [calls, setCalls] = useState(40)
+  const [missedRate, setMissedRate] = useState(25)
+  const [closeRate, setCloseRate] = useState(35)
+  const [jobValue, setJobValue] = useState(650)
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(headingRef.current?.querySelectorAll('.word-inner') ?? [], {
-        yPercent: 115, opacity: 0, stagger: 0.035, duration: 0.75, ease: 'power3.out',
-        scrollTrigger: { trigger: headingRef.current, start: 'top 85%' },
-      })
-      gsap.from(bulletsRef.current?.querySelectorAll('.math-bullet') ?? [], {
-        x: -24, opacity: 0, stagger: 0.1, duration: 0.6, ease: 'power3.out',
-        scrollTrigger: { trigger: bulletsRef.current, start: 'top 82%' },
-      })
-      gsap.from(cardRef.current, {
-        x: 40, opacity: 0, duration: 0.9, ease: 'power4.out',
-        scrollTrigger: { trigger: cardRef.current, start: 'top 82%' },
-      })
-    })
-    return () => ctx.revert()
-  }, [])
-
-  const split = (text: string, gold?: boolean) =>
-    text.split(' ').map((w, i) => (
-      <span key={i} className="word-wrap" style={{ display: 'inline-block', marginRight: '0.22em' }}>
-        <span
-          className="word-inner"
-          style={gold ? {
-            display: 'inline-block',
-            background: 'linear-gradient(135deg,#00C26F,#0EA5E9)',
-            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-          } : { display: 'inline-block', color: '#FFFFFF' }}
-        >{w}{' '}</span>
-      </span>
-    ))
+  const estimate = useMemo(() => {
+    const missedCalls = calls * (missedRate / 100)
+    const jobs = missedCalls * (closeRate / 100)
+    return { missedCalls, jobs, revenue: jobs * jobValue * 4.33 }
+  }, [calls, missedRate, closeRate, jobValue])
 
   return (
-    <section
-      ref={sectionRef}
-      style={{
-        padding: 'clamp(80px,10vw,130px) clamp(24px,6vw,80px)',
-        background: 'linear-gradient(160deg, #04040E 0%, #080820 55%, #0D0B28 100%)',
-        position: 'relative',
-        overflow: 'hidden',
-      }}
-    >
-      {/* Aurora blobs */}
-      <div className="aurora-blob" style={{ width: '500px', height: '500px', background: 'rgba(0,194,110,0.09)', top: '-10%', left: '-8%', animation: 'aurora-drift 16s ease-in-out infinite' }} />
-      <div className="aurora-blob" style={{ width: '400px', height: '400px', background: 'rgba(14,165,233,0.07)', bottom: '0%', right: '-5%', animation: 'aurora-drift 20s ease-in-out infinite reverse' }} />
-
-      {/* Grid overlay */}
-      <div style={{
-        position: 'absolute', inset: 0, pointerEvents: 'none',
-        backgroundImage: 'linear-gradient(rgba(0,194,110,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,194,110,0.04) 1px, transparent 1px)',
-        backgroundSize: '72px 72px',
-        maskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%, black 20%, transparent 75%)',
-      }} />
+    <section id="revenue-calculator" style={{
+      padding: 'clamp(80px,10vw,130px) clamp(24px,6vw,80px)',
+      background: 'linear-gradient(155deg,#04040e 0%,#080820 58%,#0d0b28 100%)',
+      color: '#fff', position: 'relative', overflow: 'hidden',
+    }}>
       <div className="noise-overlay" />
-
-      <div style={{
-        maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1,
-        display: 'grid',
-        gridTemplateColumns: 'minmax(0,1fr) minmax(0,1fr)',
-        gap: 'clamp(40px,6vw,80px)',
-        alignItems: 'center',
-      }}
-      className="math-grid"
-      >
-        {/* Left: copy */}
+      <div className="missed-revenue-grid" style={{
+        maxWidth: 1180, margin: '0 auto', position: 'relative', zIndex: 1,
+        display: 'grid', gridTemplateColumns: 'minmax(0,.9fr) minmax(0,1.1fr)',
+        gap: 'clamp(44px,7vw,88px)', alignItems: 'center',
+      }}>
         <div>
-          <div className="section-label" style={{ marginBottom: 20, color: '#00C26F' }}>
-            THE MATH
-          </div>
-
-          <div ref={headingRef} style={{ marginBottom: 28 }}>
-            <h2 style={{
-              fontFamily: 'var(--font-display)', fontWeight: 800,
-              fontSize: 'clamp(2.2rem,4.2vw,3.8rem)',
-              letterSpacing: '-0.04em', lineHeight: 1.1,
-              color: '#FFFFFF',
-            }}>
-              <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>
-                {split('Invisible on Google')}
-              </div>
-              <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>
-                {split('= $9,600/month', true)}
-              </div>
-              <div style={{ overflow: 'hidden', paddingBottom: '0.12em' }}>
-                {split('going to competitors.')}
-              </div>
-            </h2>
-          </div>
-
-          <p style={{
-            color: 'rgba(255,255,255,0.6)', fontSize: '1rem',
-            lineHeight: 1.75, maxWidth: 440, marginBottom: 36,
-          }}>
-            Right now, someone in your city is Googling your trade. They&apos;ll call whoever shows up first. If that&apos;s not you, you just lost a $650 job — silently. Here&apos;s the real math on what being invisible costs you every single month:
+          <div className="section-label" style={{ color: '#00c26f', marginBottom: 18 }}>WHAT A MISSED CALL COSTS</div>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.25rem,4.5vw,4rem)', lineHeight: 1.05, letterSpacing: '-.045em', marginBottom: 24 }}>
+            One missed call can be worth more than one month of WebCrew.
+          </h2>
+          <p style={{ color: 'rgba(255,255,255,.65)', lineHeight: 1.75, maxWidth: 520 }}>
+            Tuesday, 4:18 PM. You&apos;re finishing a job when the phone rings. The caller needs help, gets no answer, and keeps searching. Use your own numbers to estimate what those moments may be costing you.
           </p>
-
-          <div ref={bulletsRef} style={{ display: 'flex', flexDirection: 'column', gap: 14, marginBottom: 44 }}>
-            {BULLETS.map((b) => (
-              <div
-                key={b.label}
-                className="math-bullet"
-                style={{
-                  display: 'flex', alignItems: 'flex-start', gap: 14,
-                  padding: '12px 16px',
-                  background: 'rgba(255,255,255,0.04)',
-                  border: '1px solid rgba(255,255,255,0.06)',
-                  borderRadius: 10,
-                }}
-              >
-                <div style={{
-                  flexShrink: 0, marginTop: 2,
-                  fontFamily: 'var(--font-display)', fontWeight: 800,
-                  fontSize: '1rem',
-                  background: 'linear-gradient(135deg, #00C26F, #0EA5E9)',
-                  WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-                  minWidth: 58,
-                }}>
-                  {b.stat}
-                </div>
-                <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.88rem', lineHeight: 1.5 }}>
-                  {b.label}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-            <a href="#contact" className="btn-primary"
-              onClick={e => {
-                e.preventDefault()
-                window.dispatchEvent(new CustomEvent('wc:tab', { detail: { tab: 'demo' } }))
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-              }}
-            >
-              Book Your Free Demo <ArrowRight size={16} />
-            </a>
-            <a href="#how-it-works" className="btn-ghost" style={{ color: 'rgba(255,255,255,0.8)', borderColor: 'rgba(255,255,255,0.18)' }}
-              onClick={e => { e.preventDefault(); document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' }) }}
-            >
-              See How It Works
-            </a>
+          <div style={{ marginTop: 28, padding: '18px 20px', borderLeft: '3px solid #00c26f', background: 'rgba(0,194,111,.07)', borderRadius: '0 12px 12px 0' }}>
+            <strong>WebCrew changes the ending:</strong>
+            <span style={{ display: 'block', color: 'rgba(255,255,255,.68)', marginTop: 6, lineHeight: 1.6 }}>The call is answered, the customer is qualified, and an appointment can be requested before you finish your current job.</span>
           </div>
         </div>
 
-        {/* Right: revenue calculator card */}
-        <div ref={cardRef}>
-          <RevenueCard />
+        <div style={{ background: 'rgba(255,255,255,.055)', border: '1px solid rgba(255,255,255,.12)', borderRadius: 22, padding: 'clamp(22px,4vw,34px)', boxShadow: '0 30px 90px rgba(0,0,0,.28)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 11, marginBottom: 26 }}>
+            <span style={{ width: 38, height: 38, borderRadius: 10, display: 'grid', placeItems: 'center', background: 'rgba(0,194,111,.13)', color: '#4ade80' }}><PhoneCall size={18} /></span>
+            <div><strong style={{ display: 'block' }}>Missed-revenue calculator</strong><span style={{ color: 'rgba(255,255,255,.48)', fontSize: '.72rem' }}>An estimate based only on the numbers you enter</span></div>
+          </div>
+          <div className="calculator-fields" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18 }}>
+            <Field label="Inbound calls per week" value={calls} min={0} max={10000} onChange={setCalls} />
+            <Field label="Calls you miss" value={missedRate} min={0} max={100} suffix="%" onChange={setMissedRate} />
+            <Field label="Calls that become jobs" value={closeRate} min={0} max={100} suffix="%" onChange={setCloseRate} />
+            <Field label="Average job value" value={jobValue} min={0} max={1000000} prefix="$" onChange={setJobValue} />
+          </div>
+          <div style={{ marginTop: 26, padding: '24px', borderRadius: 15, background: 'linear-gradient(135deg,rgba(0,194,111,.14),rgba(14,165,233,.12))', border: '1px solid rgba(74,222,128,.2)' }}>
+            <span style={{ color: 'rgba(255,255,255,.58)', fontSize: '.78rem' }}>Estimated revenue at risk each month</span>
+            <strong style={{ display: 'block', fontFamily: 'var(--font-display)', fontSize: 'clamp(2.25rem,5vw,3.5rem)', letterSpacing: '-.05em', margin: '4px 0 8px', color: '#4ade80' }}>${Math.round(estimate.revenue).toLocaleString()}</strong>
+            <span style={{ color: 'rgba(255,255,255,.58)', fontSize: '.76rem' }}>From about {estimate.missedCalls.toFixed(1)} missed calls and {estimate.jobs.toFixed(1)} potential jobs per week.</span>
+          </div>
+          <a href="#contact" className="btn-primary" style={{ marginTop: 20, width: '100%', justifyContent: 'center' }} onClick={event => {
+            event.preventDefault()
+            window.dispatchEvent(new CustomEvent('wc:tab', { detail: { tab: 'demo' } }))
+            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+          }}>See WebCrew Answer My Calls <ArrowRight size={16} /></a>
+          <p style={{ color: 'rgba(255,255,255,.38)', fontSize: '.67rem', lineHeight: 1.5, marginTop: 12, textAlign: 'center' }}>Illustrative estimate, not a guarantee. Call answering and appointment booking are included in the $149/month Growth plan.</p>
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 900px) {
-          .math-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
+      <style>{`@media(max-width:900px){.missed-revenue-grid{grid-template-columns:1fr!important}} @media(max-width:560px){.calculator-fields{grid-template-columns:1fr!important}}`}</style>
     </section>
   )
 }

@@ -1,4 +1,6 @@
 'use client'
+import { SHOW_PUBLIC_PRICING } from '@/lib/features'
+
 export default function Footer() {
   const year = new Date().getFullYear()
   return (
@@ -65,7 +67,7 @@ export default function Footer() {
               { label: 'How It Works', href: '#how-it-works' },
               { label: 'Showcase',     href: '#showcase' },
               { label: 'Features',     href: '#features' },
-              { label: 'Pricing',      href: '#pricing' },
+              ...(SHOW_PUBLIC_PRICING ? [{ label: 'Pricing', href: '#pricing' }] : []),
             ].map(l => (
               <a key={l.href} href={l.href} style={{
                 display: 'block', color: 'rgba(255,255,255,0.5)', fontSize: '0.875rem',
