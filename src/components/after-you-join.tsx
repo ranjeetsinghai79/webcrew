@@ -20,10 +20,9 @@ const PAID_ITEMS = [
   { label: 'Instant SMS + email lead alerts', tier: '$49/mo' },
   { label: 'Weekly Google Business Profile posts', tier: '$49/mo' },
   { label: 'Auto-reply to Google reviews', tier: '$49/mo' },
-  { label: 'Monthly GSC traffic + ranking report', tier: '$49/mo' },
-  { label: 'AI Reception — 24/7 call answering', tier: '$149/mo' },
-  { label: 'Social media management (IG, FB, GBP)', tier: '$149/mo' },
-  { label: 'Ads management (Google + Meta)', tier: '$297/mo' },
+  { label: 'Weekly traffic + ranking report', tier: '$49/mo' },
+  { label: 'AI Reception — 24/7 call answering + booking', tier: '$199/mo' },
+  { label: 'Full AI Front Office (site + reception + booking + lead nurture)', tier: '$299/mo' },
 ]
 
 export default function AfterYouJoin() {

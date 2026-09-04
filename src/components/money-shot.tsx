@@ -97,7 +97,7 @@ export default function MoneyShot() {
             window.dispatchEvent(new CustomEvent('wc:tab', { detail: { tab: 'demo' } }))
             document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
           }}>See WebCrew Answer My Calls <ArrowRight size={16} /></a>
-          <p style={{ color: 'rgba(255,255,255,.38)', fontSize: '.67rem', lineHeight: 1.5, marginTop: 12, textAlign: 'center' }}>Illustrative estimate, not a guarantee. Call answering and appointment booking are included in the $149/month Growth plan.</p>
+          <p style={{ color: 'rgba(255,255,255,.38)', fontSize: '.67rem', lineHeight: 1.5, marginTop: 12, textAlign: 'center' }}>Illustrative estimate, not a guarantee. Call answering and appointment booking start at $199/month with AI Reception.</p>
         </div>
       </div>
       <style>{`@media(max-width:900px){.missed-revenue-grid{grid-template-columns:1fr!important}} @media(max-width:560px){.calculator-fields{grid-template-columns:1fr!important}}`}</style>

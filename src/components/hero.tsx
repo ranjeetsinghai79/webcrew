@@ -356,7 +356,7 @@ export default function Hero() {
             </div>
             <div style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.1)' }} />
             <span style={{ fontSize: '0.73rem', color: 'rgba(255,255,255,0.5)' }}>
-              <span style={{ color: '#fff', fontWeight: 600 }}>Call answering from $149/mo</span> — cancel anytime
+              <span style={{ color: '#fff', fontWeight: 600 }}>Call answering from $199/mo</span> — cancel anytime
             </span>
             <div style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.1)' }} />
             <span style={{ fontSize: '0.73rem', color: 'rgba(255,255,255,0.5)' }}>
