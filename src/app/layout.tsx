@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Plus_Jakarta_Sans, Inter } from 'next/font/google'
 import './globals.css'
 import AvatarWidget from '@/components/avatar-widget'
@@ -15,6 +16,8 @@ const inter = Inter({
   variable: '--font-body',
   weight: ['400', '500', '600'],
 })
+
+const GA_ID = 'G-2QG59D1ZZR'
 
 const TITLE = 'WebCrew — 24/7 AI Front Office for Local Businesses'
 const DESC  = 'WebCrew answers calls, qualifies leads, follows up, and helps book customers 24/7—so missed calls do not become lost revenue.'
@@ -48,6 +51,9 @@ export const metadata: Metadata = {
     siteName: 'WebCrew',
     type: 'website',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'WebCrew — AI agency for local businesses. Calls, Google, Reviews, Website — all done for you.' }],
+    // Link-preview animation (WebCrew logo reveal). Platforms that don't play
+    // og:video fall back to the og:image above.
+    videos: [{ url: 'https://webcrew.app/intro.mp4', secureUrl: 'https://webcrew.app/intro.mp4', type: 'video/mp4', width: 1920, height: 1080 }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -91,6 +97,10 @@ const SITE_SCHEMA = {
         availableLanguage: 'English',
         url: 'https://webcrew.app/#contact',
       },
+      // Citation footprint — add each profile's URL here as it goes live (docs/citation-profiles-draft.md tracks status).
+      sameAs: [
+        'https://www.linkedin.com/company/146264124',
+      ],
     },
     {
       '@type': 'WebSite',
@@ -113,6 +123,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');`}
+        </Script>
         {children}
         <AvatarWidget />
         <ReferralCapture />

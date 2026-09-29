@@ -471,7 +471,7 @@ export default function AvatarWidget() {
               onChange={e => setTextInput(e.target.value)}
               onKeyDown={e => { if (e.key === 'Enter') sendText() }}
               placeholder="Type a message…"
-              style={{ flex: 1, border: '1px solid #e2e8f0', borderRadius: 100, padding: '9px 14px', fontSize: 13.5, outline: 'none' }}
+              style={{ flex: 1, border: '1px solid #e2e8f0', borderRadius: 100, padding: '9px 14px', fontSize: 13.5, outline: 'none', color: '#0f172a', background: '#fff', caretColor: '#2563EB' }}
             />
             <button
               onClick={sendText}

@@ -1,33 +1,28 @@
 'use client'
 
-// Animated brand mark — the AI-crew face, recolored to the site's actual
-// palette (blue→purple gradient, not the widget's navy/orange), reused as
-// the logo everywhere a static image used to sit. Same breathe/blink idle
-// loop as MiniFace in avatar-widget.tsx, decoupled from widget state.
+// Animated brand mark — the WebCrew smiley (black disc, white eyes, orange
+// smile), same artwork as public/logo.png + app/icon.png, drawn as SVG so it
+// stays sharp at any size and can blink/breathe. Used as the logo everywhere
+// a static image used to sit.
 export default function BrandMark({ size = 32, id, className }: { size?: number; id?: string; className?: string }) {
-  const eye = Math.max(3, size * 0.14)
-  const mouthW = size * 0.42
-
   return (
     <div
       id={id}
       className={className}
-      style={{
-        width: size, height: size, borderRadius: '50%', position: 'relative', flexShrink: 0,
-        background: 'radial-gradient(circle at 35% 30%, #16233f, var(--wc-navy, #0b1220))',
-      }}
+      style={{ width: size, height: size, borderRadius: '50%', position: 'relative', flexShrink: 0, background: '#000' }}
     >
       <style>{`
         @keyframes wc-mark-blink { 0%, 92%, 100% { transform: scaleY(1); } 96% { transform: scaleY(0.1); } }
         @keyframes wc-mark-breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
-        .wc-mark-eye { animation: wc-mark-blink 4.5s ease-in-out infinite; }
+        .wc-mark-eye { transform-box: fill-box; transform-origin: center; animation: wc-mark-blink 4.5s ease-in-out infinite; }
         .wc-mark-idle { animation: wc-mark-breathe 3.2s ease-in-out infinite; }
+        @media (prefers-reduced-motion: reduce) { .wc-mark-eye, .wc-mark-idle { animation: none; } }
       `}</style>
-      <div className="wc-mark-idle wc-mark-face" style={{ position: 'absolute', inset: 0 }}>
-        <div className="wc-mark-eye wc-mark-feature" style={{ position: 'absolute', top: size * 0.32, left: size * 0.28, width: eye, height: eye, borderRadius: '50%', background: '#fff' }} />
-        <div className="wc-mark-eye wc-mark-feature" style={{ position: 'absolute', top: size * 0.32, right: size * 0.28, width: eye, height: eye, borderRadius: '50%', background: '#fff' }} />
-        <div className="wc-mark-feature wc-mark-mouth" style={{ position: 'absolute', bottom: size * 0.24, left: '50%', transform: 'translateX(-50%)', width: mouthW, height: Math.max(2, size * 0.08), borderRadius: 999, background: 'var(--wc-orange, #ff6b1a)' }} />
-      </div>
+      <svg className="wc-mark-idle" viewBox="0 0 100 100" width={size} height={size} role="img" aria-label="WebCrew" style={{ display: 'block' }}>
+        <circle className="wc-mark-eye" cx="32.2" cy="45.8" r="7.1" fill="#fff" />
+        <circle className="wc-mark-eye" cx="68" cy="45.8" r="7.1" fill="#fff" />
+        <path d="M32 64.6 Q50 81.6 68 64.6" fill="none" stroke="var(--wc-orange, #ff6b1a)" strokeWidth="5.2" strokeLinecap="round" />
+      </svg>
     </div>
   )
 }
