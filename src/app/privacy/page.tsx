@@ -60,7 +60,11 @@ We do not sell your personal information to third parties.`,
           },
           {
             title: 'SMS Communications',
-            body: `End-users provide explicit consent by visiting webcrew.app and entering their phone number into our contact or website audit request form. By checking the consent checkbox, users opt into receiving text messages from WebCrew regarding website design and related services. We do not engage in unsolicited cold texting.
+            body: `We run two SMS programs:
+
+1. Website inquiries: end-users provide explicit consent by visiting webcrew.app and entering their phone number into our contact or website audit request form. By checking the consent checkbox, users opt into receiving text messages from WebCrew regarding website design and related services. We do not engage in unsolicited cold texting.
+
+2. AI Phone Reception (client businesses): when an end-user calls a business that uses our AI phone reception platform, our AI assistant asks for explicit consent by voice, before any text is sent: "Would you like a confirmation text at this number with your appointment details? Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe or HELP for help. Full terms and privacy policy at webcrew.app." A text is sent only after a clear yes.
 
 Message and data rates may apply. Message frequency varies. Consent is not a condition of purchase.
 

@@ -52,9 +52,13 @@ Monthly fees are billed in advance and plans may be cancelled at any time. Late 
           },
           {
             title: 'SMS Communications and TCPA Compliance',
-            body: `We send SMS messages only to users who explicitly opt in by checking the SMS consent checkbox on our contact form. Providing your phone number alone does not constitute consent to receive text messages.
+            body: `We run two SMS programs, and providing your phone number alone never constitutes consent to receive text messages:
 
-You may opt out at any time by replying STOP to any message. After opting out, you will receive one final confirmation message. SMS consent is never a condition of purchase or service. We comply with all applicable laws including the Telephone Consumer Protection Act (TCPA).`,
+1. Website inquiries: by checking the SMS consent checkbox on our contact or website audit form, you opt in to text messages from WebCrew about your request.
+
+2. AI Phone Reception (client businesses): when you call a business that uses our AI phone reception platform, our AI assistant asks for your explicit consent by voice before sending any text: "Would you like a confirmation text at this number with your appointment details? Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe or HELP for help. Full terms and privacy policy at webcrew.app." A text is sent only after you say yes, and this consent is asked again on any call where it hasn't already been given.
+
+Message frequency varies by program and by your activity. Message and data rates may apply. Reply STOP to any message to opt out at any time — you will receive one final confirmation message. Reply HELP for help. SMS consent is never a condition of purchase or service. See our Privacy Policy at webcrew.app/privacy for how we handle your information; carriers are not liable for delayed or undelivered messages. We comply with all applicable laws including the Telephone Consumer Protection Act (TCPA).`,
           },
           {
             title: 'Intellectual Property',
