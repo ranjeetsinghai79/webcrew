@@ -214,5 +214,13 @@
     "credit": "José Andrés  Pacheco Cortes",
     "creditUrl": "https://www.pexels.com/photo/man-drilling-an-aircon-casing-5463581/",
     "source": "Pexels"
+  },
+  "ai-receptionist-for-hvac-companies": {
+    "id": "pexels:16695385",
+    "src": "/blog/ai-receptionist-for-hvac-companies.jpg",
+    "alt": "Close-up of a man using a remote to control air conditioning indoors.",
+    "credit": "Jakub Zerdzicki",
+    "creditUrl": "https://www.pexels.com/photo/man-hand-holding-remote-16695385/",
+    "source": "Pexels"
   }
 }
