@@ -222,5 +222,13 @@
     "credit": "Jakub Zerdzicki",
     "creditUrl": "https://www.pexels.com/photo/man-hand-holding-remote-16695385/",
     "source": "Pexels"
+  },
+  "ai-receptionist-for-garage-door-companies": {
+    "id": "pexels:8387509",
+    "src": "/blog/ai-receptionist-for-garage-door-companies.jpg",
+    "alt": "Front view of an auto repair shop with roll-up doors and signage in Millville, Minnesota.",
+    "credit": "Tom Fisk",
+    "creditUrl": "https://www.pexels.com/photo/gray-building-with-roll-up-doors-8387509/",
+    "source": "Pexels"
   }
 }
