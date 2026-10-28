@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useMemo, useState } from 'react'
+import { trackMeta } from '@/lib/meta-pixel'
 import TierPricing from '@/components/tier-pricing'
 import {
   ArrowRight, BellRing, CalendarCheck, Check, CheckCircle2, ChevronDown,
@@ -126,6 +127,7 @@ export default function MissedCallLanding({ showPricing = false }: { showPricing
         }),
       })
       if (!res.ok) throw new Error('Submission failed')
+      trackMeta('Lead')
       setLeadState('sent')
     } catch {
       setLeadState('error')

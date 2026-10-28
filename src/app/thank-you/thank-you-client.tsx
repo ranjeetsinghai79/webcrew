@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { trackMeta } from '@/lib/meta-pixel'
 import { useSearchParams } from 'next/navigation'
 
 const ADMIN_URL = process.env.NEXT_PUBLIC_ADMIN_URL ?? 'https://admin.webcrew.app'
@@ -14,6 +15,18 @@ export function ThankYouClient() {
   const sessionId = searchParams.get('session_id')
   const [state, setState] = useState<DashboardState>(sessionId ? 'pending' : 'no_session')
   const [authUrl, setAuthUrl] = useState<string | null>(null)
+
+  // Stripe only redirects here after a completed checkout, so this is a trial start. eventID = session id lets
+  // Meta drop the duplicate if the page is reloaded.
+  useEffect(() => {
+    if (!sessionId) return
+    try {
+      const key = `wc-meta-trial-${sessionId}`
+      if (sessionStorage.getItem(key)) return
+      sessionStorage.setItem(key, '1')
+    } catch { /* storage blocked: still fire, Meta dedupes on eventID */ }
+    trackMeta('StartTrial', { currency: 'USD', value: 0 }, sessionId)
+  }, [sessionId])
 
   useEffect(() => {
     if (!sessionId) return

@@ -4,6 +4,7 @@ import { Plus_Jakarta_Sans, Inter } from 'next/font/google'
 import './globals.css'
 import AvatarWidget from '@/components/avatar-widget'
 import ReferralCapture from '@/components/referral-capture'
+import MetaPixel from '@/components/meta-pixel'
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -134,6 +135,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <AvatarWidget />
         <ReferralCapture />
+        <MetaPixel />
       </body>
     </html>
   )
