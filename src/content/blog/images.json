@@ -230,5 +230,13 @@
     "credit": "Tom Fisk",
     "creditUrl": "https://www.pexels.com/photo/gray-building-with-roll-up-doors-8387509/",
     "source": "Pexels"
+  },
+  "ai-receptionist-for-pest-control": {
+    "id": "pexels:19789841",
+    "src": "/blog/ai-receptionist-for-pest-control.jpg",
+    "alt": "Pest control specialist using a smoke machine to fumigate outside a house.",
+    "credit": "Garda Pest Control Indonesia",
+    "creditUrl": "https://www.pexels.com/photo/smoke-used-for-pest-control-19789841/",
+    "source": "Pexels"
   }
 }
