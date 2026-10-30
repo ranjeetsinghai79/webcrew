@@ -2,7 +2,7 @@
 // asks Gemini for a fresh one when the queue is empty), writes the post with
 // Gemini, validates it against our honesty rules, adds a free stock photo, and
 // registers it in src/content/blog/index.ts. A post that fails validation after
-// 3 attempts is NOT published (the day is skipped, never a bad post).
+// 5 attempts is NOT published (the day is skipped, never a bad post).
 // Usage: GEMINI_API_KEY=… PEXELS_API_KEY=… node scripts/daily-blog.mjs [--force] [--dry]
 import fs from 'node:fs'
 import path from 'node:path'
@@ -36,7 +36,7 @@ WebCrew facts (the ONLY product facts you may state):
 const RULES = `
 Writing rules (a post that breaks any rule is rejected):
 - Audience: owners of local service businesses (HVAC, plumbing, roofing, electrical, cleaning, landscaping, pest control, auto detailing, garage doors, etc.). Plain English, short paragraphs, practical, specific. Write like an experienced operator, not a marketer.
-- NO statistics, percentages or numbers presented as facts about the market, and never write "studies show", "research", "survey", "according to", "on average", "industry data". If a number helps, present it as a worked example with the owner's own numbers ("say a job is worth $400…") or as a formula.
+- NO statistics, percentages or numbers presented as facts about the market, and never write "studies show", "research", "survey", "according to", "on average", "industry data". If a number helps, present it as a worked example with the owner's own numbers ("say a job is worth $400…") or as a formula. Use at most 3 dollar figures besides WebCrew prices, and put the words "for example" or "say" right before EVERY one of them in the same sentence (a total you calculate from an example still needs "for example" next to it). Our checker rejects any other dollar figure.
 - No invented customers, testimonials, quotes or case studies. No named people.
 - Do not state facts about competitors other than that they exist.
 - No legal advice beyond "check the rules in your state"; say that for texting consent topics.
@@ -74,13 +74,21 @@ async function gemini(prompt, schema) {
   let last
   for (const [i, model] of MODELS.entries()) {
     for (let attempt = 0; attempt < 2; attempt++) {
-      const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${KEY}`, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
+      let r
+      try {
+        r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${KEY}`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: AbortSignal.timeout(240000),
         body: JSON.stringify({
           contents: [{ role: 'user', parts: [{ text: prompt }] }],
           generationConfig: { temperature: 0.7, maxOutputTokens: 12000, responseMimeType: 'application/json', ...(schema ? { responseSchema: schema } : {}) },
         }),
-      })
+        })
+      } catch (e) { // network drop / timeout ("fetch failed") — retry like a 503
+        last = new Error(`Gemini ${model} network: ${e.message}`)
+        console.log(`[daily-blog] ${model} network error (${e.message}), retrying`)
+        await new Promise(res => setTimeout(res, 15000 * (attempt + 1)))
+        continue
+      }
       const j = await r.json().catch(() => ({}))
       if (r.ok) {
         const text = (j.candidates?.[0]?.content?.parts ?? []).map(p => p.text ?? '').join('')
@@ -186,7 +194,7 @@ async function main() {
   const slugs = posts.map(p => p.slug)
   console.log(`[daily-blog] topic: ${topic.title} (${topic.slug})`)
   let feedback = ''
-  for (let attempt = 1; attempt <= 3; attempt++) {
+  for (let attempt = 1; attempt <= 5; attempt++) {
     const prompt = `Write one blog post for webcrew.app.\n\nTopic: ${topic.title}\nAngle: ${topic.angle ?? ''}\nCategory: ${topic.category}\nTarget keywords: ${(topic.keywords ?? []).join(', ')}\nUse slug: ${topic.slug}\n${FACTS}\n${RULES}\n\nExisting posts you may link to (slug — title):\n${posts.map(p => `${p.slug} — ${p.title}`).join('\n')}\n${feedback ? `\nYour previous draft was rejected for: ${feedback}\nFix every item.` : ''}\nReturn JSON {slug, title, description, keywords, body, faq:[{q,a}]}.`
     let draft
     try { draft = await gemini(prompt, SCHEMA) } catch (e) { feedback = `invalid output (${e.message})`; console.warn(`[daily-blog] attempt ${attempt}: ${e.message}`); continue }
