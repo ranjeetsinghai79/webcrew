@@ -238,5 +238,13 @@
     "credit": "Garda Pest Control Indonesia",
     "creditUrl": "https://www.pexels.com/photo/smoke-used-for-pest-control-19789841/",
     "source": "Pexels"
+  },
+  "ai-receptionist-for-landscapers": {
+    "id": "pexels:27309420",
+    "src": "/blog/ai-receptionist-for-landscapers.jpg",
+    "alt": "Groundskeeper mowing the green on a golf course during a sunny day, showcasing lush landscapes and maintenance.",
+    "credit": "Makesavanh Oudthalith",
+    "creditUrl": "https://www.pexels.com/photo/a-man-is-mowing-the-grass-on-a-golf-course-27309420/",
+    "source": "Pexels"
   }
 }
