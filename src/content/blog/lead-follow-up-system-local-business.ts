@@ -43,5 +43,7 @@ WebCrew does this out of the box:
 - Booked customers get reminders before the visit and a review request after.
 - Past customers get a friendly check-in later on.
 - You get a nudge if a lead is waiting for a callback and nobody has marked it contacted.
+
+Texting a caller you missed? Read [missed call text back](/blog/missed-call-text-back) first for message examples and consent rules.
 `,
 }

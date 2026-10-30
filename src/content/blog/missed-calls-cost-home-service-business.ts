@@ -61,6 +61,8 @@ You have three realistic options:
 3. **Use an AI receptionist.** Answers every call instantly, around the clock, and books jobs directly. Costs a small fixed monthly amount.
 
 WebCrew is built for option three. Run the numbers above first. If the monthly cost of missed calls is bigger than $99, an AI front desk pays for itself with the first saved job.
+
+If you can't answer every call yet, a consent-based [missed call text back](/blog/missed-call-text-back) is a useful backup.
 `,
   faq: [
     ['What counts as a missed call?', 'Any call that rang out, went to voicemail, or hung up before you answered. Leave out obvious spam and robocalls.'],

@@ -43,5 +43,7 @@ You will likely see a pattern: the faster responses book more often. That is you
 Many leads do not book on the first contact. They are getting quotes, checking with a spouse, or just busy. A short, polite follow-up a few days later, and another about a week after, often brings them back.
 
 WebCrew does this automatically: it follows up with leads who did not book on day 3 and day 10, and stops as soon as they book or say no.
+
+For callers who hang up before anyone answers, see [missed call text back: message examples and the texting rules](/blog/missed-call-text-back).
 `,
 }
