@@ -3,7 +3,7 @@ import type { BlogPost } from '@/lib/blog/types'
 export const post: BlogPost = {
   slug: 'ai-receptionist-pricing',
   title: 'AI Receptionist Pricing in 2026: What You Actually Pay (and the Fees to Watch)',
-  description: 'AI receptionist pricing runs $50–$300/month for small businesses. Compare per-minute, per-call, and flat plans side by side, plus the fees most providers don\'t list upfront.',
+  description: 'AI receptionist pricing for small businesses, from public pricing pages. Compare per-minute, per-call, and flat plans side by side, plus the fees most providers don\'t list upfront.',
   date: '2026-10-18',
   category: 'Pricing & comparisons',
   imageQuery: 'calculator invoice desk',
@@ -11,7 +11,7 @@ export const post: BlogPost = {
   body: `
 ## How much does an AI receptionist cost?
 
-Most AI receptionist plans for small businesses cost between $50 and $300 per month. Entry plans with limited calls start around $25/month. Full-featured plans with 24/7 coverage, calendar booking, and text messaging typically run $99 to $149 per month. Setup costs range from $0 to several hundred dollars depending on the provider — always ask before you sign.
+On public pricing pages we checked on 2026-10-18, small-business AI receptionist plans ran from about $25 to $299 per month: Upfirst from $24.95, Rosie $49 to $299, Goodcall $79 to $299, My AI Front Desk $99. Plans with more minutes, calendar booking and texting sit in the higher tiers. Ask about any setup fee before you sign; not every provider lists it.
 
 WebCrew's founding rate is $99/month with $0 setup and a 30-day free trial.
 
@@ -63,10 +63,10 @@ We picked the simplest model we could: one flat monthly price with a hard limit 
 Every plan includes the AI receptionist, website chat, calendar booking, reminders, lead follow-ups and review requests, plus a website if you need one. $0 setup, 30-day free trial, cancel anytime. If you use all your minutes, new calls ring your cell, so you are never billed for overage and never lose a customer.
 `,
   faq: [
-    ['How much does an AI receptionist cost per month?', 'AI receptionist pricing for small businesses typically runs $50 to $300 per month. Basic plans start around $25/month. Plans with 24/7 coverage, calendar booking, and text messaging usually cost $99 to $149/month. WebCrew charges $99/month for founding clients with no setup fee.'],
-    ['What is the setup cost for an AI receptionist?', 'Setup costs vary. Some providers charge $200 to $500 to configure your AI. Others, including WebCrew, charge $0. Always confirm the setup fee before signing — it is not always listed on the pricing page.'],
+    ['How much does an AI receptionist cost per month?', 'On public pricing pages checked 2026-10-18, plans ran from about $25 to $299 per month (Upfirst from $24.95, Rosie $49 to $299, Goodcall $79 to $299, My AI Front Desk $99). WebCrew is $99/month for the first 10 founding clients, then $149, with no setup fee.'],
+    ['What is the setup cost for an AI receptionist?', 'It depends on the provider, and some do not list it on their pricing page, so ask before you sign. WebCrew charges $0 for setup.'],
     ['Is a cheaper per-call plan better?', 'Only if your volume is low and steady. Busy months or seasonal spikes can push per-call plans past the price of a flat plan quickly. Count your calls for a typical busy week first.'],
     ['What is a fair price for a small business?', 'For a single-location service business, published AI receptionist plans with booking mostly sit between about $50 and $300 per month. Compare what is included at each price, not just the number.'],
-    ['What is the cost of an AI receptionist compared to a human receptionist?', 'A part-time human receptionist in the US costs $1,500 to $3,000 per month before payroll taxes and benefits. An AI receptionist costs $50 to $300 per month and is available 24/7 without overtime, holidays, or sick days.'],
+    ['What is the cost of an AI receptionist compared to a human receptionist?', 'Compare your own numbers: what you pay a receptionist or answering service per month (wages plus taxes and benefits) against an AI plan of about $25 to $299 per month that answers 24/7, including nights, weekends and holidays.'],
   ],
 }
