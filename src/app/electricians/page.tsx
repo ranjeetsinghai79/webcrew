@@ -2,9 +2,9 @@ import NicheLanding, { NicheContent } from '@/components/niche-landing'
 
 export const metadata = {
   title: 'AI Receptionist & Virtual Receptionist for Electricians | WebCrew',
-  description: 'A 24/7 AI receptionist that prioritizes power outages and safety-critical calls over routine work — plus a website live within about a day. $0 setup, 30-day free trial, $99/mo founding rate.',
+  description: 'Electrician answering service and virtual receptionist. Answers every call 24/7, flags sparking outlets and power outages, books routine jobs to Google Calendar. $0 setup, 30-day free trial.',
   alternates: { canonical: 'https://webcrew.app/electricians' },
-  keywords: ['electrician virtual receptionist', 'electrical contractor answering service', '24/7 electrician call answering', 'electrician phone answering service', 'AI receptionist for electricians', 'electrician AI answering service', 'emergency electrical call answering', 'electrician missed call recovery'],
+  keywords: ['electrician virtual receptionist', 'electrician answering service', 'virtual receptionist for electricians', 'answering service for electricians', 'electrical contractor answering service', '24/7 electrician call answering', 'AI receptionist for electricians', 'electrician AI answering service', 'remote receptionist for electricians', 'emergency electrical call answering'],
 }
 
 const N: NicheContent = {
@@ -20,9 +20,11 @@ const N: NicheContent = {
     { title: 'Collects what your electrician needs', body: 'Panel type, whether breakers are tripping, what’s affected — captured before the truck rolls, not figured out standing in the driveway.' },
     { title: 'Never lets a safety call sit', body: 'A power-out call at midnight gets answered at midnight and flagged — you get the summary the moment you’re up, not a guess at what came in overnight.' },
   ],
-  answer: "An AI receptionist (also called a virtual receptionist) for electricians answers every call 24/7, flags safety issues like sparking outlets or burning smells, collects panel and breaker details, and books routine jobs into your Google Calendar. You keep your number. WebCrew costs $99/month for the first 10 clients, with a 30-day free trial.",
-  aka: ["electrician virtual receptionist", "electrical contractor answering service", "24/7 electrician call answering", "electrician phone answering service"],
+  answer: "WebCrew is a virtual receptionist and answering service for electricians. It answers every call 24/7, flags safety issues like sparking outlets or burning smells, collects panel and breaker details, and books routine jobs into Google Calendar. $99/month for founding clients, 30-day free trial.",
+  aka: ["electrician virtual receptionist", "electrician answering service", "virtual receptionist for electricians", "answering service for electricians", "answering service for electrician", "remote receptionist for electricians", "electrical contractor answering service", "24/7 electrician call answering"],
   faq: [
+    ['What does an electrician answering service do?', 'An electrician answering service answers your business calls 24/7, qualifies each caller, flags emergencies like power outages or sparking outlets, and books routine jobs into your calendar. It is cheaper than a full-time receptionist and does not take nights off.'],
+    ['Is a virtual receptionist for electricians different from a live answering service?', 'A virtual receptionist is always available, always consistent, and costs a fraction of a live answering service. It can handle scheduling and triage the same way — the difference is that it never puts a caller on hold because another call is coming in.'],
     ['Can it tell a safety issue from a routine job request?', 'Yes — configured on your service list and escalation rules before going live, including exactly what counts as urgent for your business.'],
     ['Can it tell someone to shut off their breaker?', 'It can relay your standard safety guidance if you want that configured — the goal is reducing risk while help is on the way, not replacing your judgment on-site.'],
     ['Does it replace my dispatcher?', 'No — it answers, qualifies, and captures what your electrician needs. You stay in control of scheduling and who gets sent.'],

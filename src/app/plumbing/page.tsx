@@ -2,9 +2,9 @@ import NicheLanding, { NicheContent } from '@/components/niche-landing'
 
 export const metadata = {
   title: 'AI Receptionist & Answering Service for Plumbers | WebCrew',
-  description: 'A 24/7 AI receptionist that prioritizes burst pipes, no water, and sewage backups over routine calls — plus a website live within about a day. $0 setup, 30-day free trial, $99/mo founding rate.',
+  description: 'AI answering service for plumbers and plumbing companies. Answers every call 24/7, prioritizes burst pipes and sewage backups, books jobs to Google Calendar. $0 setup, 30-day free trial.',
   alternates: { canonical: 'https://webcrew.app/plumbing' },
-  keywords: ['plumbing answering service', 'virtual receptionist for plumbers', '24/7 plumbing call answering', 'plumber call center alternative', 'plumber AI answering service', 'AI receptionist for plumbing companies', 'emergency plumbing call answering', 'plumbing missed call recovery'],
+  keywords: ['plumbing answering service', 'virtual receptionist for plumbers', 'plumbing virtual receptionist', 'answering service for plumbers', 'plumber virtual receptionist', '24/7 plumbing call answering', 'plumber AI answering service', 'AI receptionist for plumbing companies', 'answering service for plumbing companies', 'emergency plumbing call answering'],
 }
 
 const N: NicheContent = {
@@ -20,10 +20,12 @@ const N: NicheContent = {
     { title: 'Collects what your plumber needs before rolling', body: 'Where the water’s coming from, whether the main shutoff is off, how long it’s been running — captured before dispatch, not radioed in on the way.' },
     { title: 'Never sends an emergency to voicemail', body: 'A call at 3am gets answered at 3am, qualified, and you get the summary the moment you’re up — not a guess at what happened overnight.' },
   ],
-  answer: "An AI receptionist for plumbers answers every call 24/7, tells a burst pipe or sewage backup apart from a routine drain job, flags emergencies to your cell, and books regular work into your Google Calendar. You keep your number. WebCrew costs $99/month for the first 10 clients, with a 30-day free trial.",
-  aka: ["plumbing answering service", "virtual receptionist for plumbers", "24/7 plumbing call answering", "plumber call center alternative"],
+  answer: "WebCrew is a virtual receptionist and answering service for plumbers and plumbing companies. It answers every call 24/7, tells a burst pipe or sewage backup apart from a routine drain question, flags emergencies to your cell, and books jobs into Google Calendar. $99/month for founding clients, 30-day free trial.",
+  aka: ["answering service for plumbers", "plumbing virtual receptionist", "virtual receptionist for plumbers", "plumber virtual receptionist", "answering service for plumbing companies", "virtual receptionist for plumbing companies", "plumbing answering service", "24/7 plumbing call answering"],
   cities: ["Allen", "Arlington", "Birmingham", "Clearwater", "Columbus", "Coral Springs", "Denver", "Duluth", "Hialeah", "Hollywood", "Indianapolis", "Jersey City", "Los Angeles", "Minneapolis", "Norfolk", "Oklahoma City", "Paterson", "Philadelphia", "Port St. Lucie", "San Diego", "San Jose", "Springfield", "St. Petersburg", "Toledo"],
   faq: [
+    ['What is a plumbing virtual receptionist?', 'A plumbing virtual receptionist — also called an answering service for plumbers — is an AI that answers your business line 24/7, qualifies each caller, and books or flags the call. You do not need to hire a person. It costs less than a part-time employee.'],
+    ['How is an answering service for plumbers different from voicemail?', 'Voicemail records a message. An answering service for plumbing companies asks the caller the right questions, decides if it is an emergency, books routine work into your calendar, and texts you the summary — all without you picking up.'],
     ['Can it tell a burst pipe from a slow drain question?', 'Yes — configured on your service list and escalation rules before going live, including exactly what counts as urgent for your business.'],
     ['Can it walk someone through shutting off their water?', 'It can relay your standard shutoff instructions if you want that configured — the goal is to reduce damage while help is on the way, not replace your judgment on the job.'],
     ['Does it replace my on-call rotation?', 'No — it answers, qualifies, and captures the details your on-call plumber needs. You stay in control of who gets dispatched.'],
