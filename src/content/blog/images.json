@@ -302,5 +302,13 @@
     "credit": "Jimmy Liao",
     "creditUrl": "https://www.pexels.com/photo/a-man-wearing-work-clothes-and-a-belt-with-tools-standing-on-a-ladder-17063686/",
     "source": "Pexels"
+  },
+  "ai-receptionist-for-carpet-cleaning": {
+    "id": "pexels:38325",
+    "src": "/blog/ai-receptionist-for-carpet-cleaning.jpg",
+    "alt": "Close-up of a modern vacuum cleaner with water filtration on carpet floor indoors.",
+    "credit": "Pixabay",
+    "creditUrl": "https://www.pexels.com/photo/black-and-red-canister-vacuum-cleaner-on-floor-38325/",
+    "source": "Pexels"
   }
 }
