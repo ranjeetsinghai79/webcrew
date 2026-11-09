@@ -2,13 +2,15 @@ import type { BlogPost } from '@/lib/blog/types'
 
 export const post: BlogPost = {
   slug: "ai-receptionist-for-garage-door-companies",
-  title: "AI Receptionist for Garage Door Companies: Catch Urgent Calls",
-  description: "Never lose another broken spring or stuck door job. Learn how an AI receptionist handles emergency garage door calls 24/7 and books your calendar.",
+  title: "AI Receptionist for Garage Door Companies: Virtual Receptionist and Garage AI Dispatcher",
+  description: "AI receptionist and virtual receptionist for garage door companies. Handles broken springs, stuck doors, and after-hours emergencies 24/7. Books into Google Calendar.",
   date: "2026-10-24",
   category: "By trade",
   imageQuery: "garage door repair",
-  keywords: ["AI receptionist for garage door companies", "garage door answering service", "emergency garage door repair calls", "automated answering garage door contractor"],
+  keywords: ["AI receptionist for garage door companies", "garage door virtual receptionist", "garage AI receptionist", "garage door AI dispatcher", "garage door answering service", "emergency garage door repair calls", "automated answering garage door contractor"],
   body: `
+A garage door virtual receptionist answers your business phone 24/7, handles broken spring and stuck door calls, and books service appointments directly into your Google Calendar. It routes urgent calls straight to your cell phone and texts callers back immediately if they hang up without booking.
+
 ## The Anatomy of an Urgent Garage Door Call
 
 When a homeowner calls a garage door company, they are rarely planning a project months down the road. Most often, their vehicle is trapped inside the garage on a weekday morning, a torsion spring just snapped with a sound like a gunshot, or a cable slipped off the drum and left the door hanging crooked.
@@ -65,6 +67,14 @@ Once booked, automated communications keep the customer updated:
 
 After every real customer conversation, you receive an immediate summary by email or text message. You get the caller's name, phone number, issue, and booking details without having to listen to audio recordings or sort through rambling voicemails.
 
+## Garage AI dispatcher: handling call overflow and emergency routing
+
+A garage AI receptionist acts as the front-line dispatcher during high-volume periods. When your phone rings back to back after a storm or during cold snaps when springs snap more often, the AI answers every call at once. No caller hears a busy signal, and no job goes to a competitor because your line was occupied.
+
+The AI sorts incoming calls by urgency. A car trapped behind a failed opener gets flagged for immediate attention. A quote request for a new door gets booked into a future opening. If you have a service call in progress and an emergency comes in, the AI sends you an instant summary so you can decide whether to send another technician.
+
+This is not full dispatch software for routing multiple trucks. It handles the phone side: answering every call, triaging the urgency, booking what it can, and routing the rest to you with the information you need to make a fast decision.
+
 ## Following Up and Securing Google Reviews
 
 Not every caller books an appointment on the spot. Some homeowners want to check with a spouse, or they call during work hours to inquire about a full garage door replacement package.
@@ -91,5 +101,8 @@ WebCrew provides an AI front desk that answers your business phone and website c
     ["Can the AI receptionist tell the difference between a broken spring and a routine opener question?", "Yes. The AI listens to the customer's description and flags urgent situations like trapped vehicles, snapped springs, or doors off their tracks so you can prioritize them."],
     ["How does the AI book appointments for my garage door company?", "The AI connects directly to your Google Calendar. It checks your open availability in real time and schedules the service call directly into your schedule."],
     ["What happens if a call goes over my monthly minute limit?", "If you exceed your monthly plan minutes, additional calls simply forward directly to your cell phone rather than the AI. There are never any surprise overage fees."],
+    ["What is a garage door virtual receptionist?", "A garage door virtual receptionist is an AI that answers every call to your garage door company 24/7, handles urgent repairs and after-hours lockouts, and books service calls directly into your Google Calendar. It routes true emergencies to your cell phone and texts callers who hang up without booking."],
+    ["Can a garage AI receptionist work as a call dispatcher?", "It handles the front end of dispatching: answering every call, triaging broken spring and stuck door urgencies, booking routine jobs, and sending you a triage summary for the situations that need your direct attention. It does not route between multiple trucks but it eliminates the calls that fall through the cracks."],
+    ["What makes a garage AI receptionist different from a call center answering service?", "A garage AI receptionist answers instantly with no hold time, knows your service area and hours, books directly into your Google Calendar, and texts back callers who hang up. A traditional call center uses operators who read generic scripts and may not know garage door trade specifics like spring types or opener brands."],
   ],
 }
