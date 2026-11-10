@@ -131,7 +131,7 @@
     "id": "pexels:5463575",
     "src": "/blog/hvac-phone-script-for-booking-more-jobs.jpg",
     "alt": "Technician repairing an air conditioner unit outdoors, wearing a facemask and using a manifold gauge.",
-    "credit": "José Andrés  Pacheco Cortes",
+    "credit": "Jos\u00e9 Andr\u00e9s  Pacheco Cortes",
     "creditUrl": "https://www.pexels.com/photo/man-checking-an-air-conditioner-5463575/",
     "source": "Pexels"
   },
@@ -211,7 +211,7 @@
     "id": "pexels:5463581",
     "src": "/blog/best-ai-receptionist-for-hvac-and-plumbing.jpg",
     "alt": "A technician is repairing an air conditioning unit on a rooftop, demonstrating skilled manual work.",
-    "credit": "José Andrés  Pacheco Cortes",
+    "credit": "Jos\u00e9 Andr\u00e9s  Pacheco Cortes",
     "creditUrl": "https://www.pexels.com/photo/man-drilling-an-aircon-casing-5463581/",
     "source": "Pexels"
   },
@@ -309,6 +309,22 @@
     "alt": "Close-up of a modern vacuum cleaner with water filtration on carpet floor indoors.",
     "credit": "Pixabay",
     "creditUrl": "https://www.pexels.com/photo/black-and-red-canister-vacuum-cleaner-on-floor-38325/",
+    "source": "Pexels"
+  },
+  "best-ai-answering-service-for-contractors-2027": {
+    "id": "pexels:17410721",
+    "src": "/blog/best-ai-answering-service-for-contractors-2027.jpg",
+    "alt": "A construction worker on a wooden frame checks a device at a building site.",
+    "credit": "David Brown",
+    "creditUrl": "https://www.pexels.com/photo/man-standing-on-house-construction-17410721/",
+    "source": "Pexels"
+  },
+  "best-ai-receptionist-for-hvac-2027": {
+    "id": "pexels:7347538",
+    "src": "/blog/best-ai-receptionist-for-hvac-2027.jpg",
+    "alt": "A technician skillfully repairing an outdoor air conditioning unit mounted on a building wall.",
+    "credit": "Richard Low Hong",
+    "creditUrl": "https://www.pexels.com/photo/man-in-gray-t-shirt-fixing-the-aircon-7347538/",
     "source": "Pexels"
   }
 }

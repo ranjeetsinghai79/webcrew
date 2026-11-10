@@ -13,6 +13,8 @@ export const post: BlogPost = {
 
 The best AI receptionist for an HVAC or plumbing company is the one that can tell an emergency from a routine call, book real jobs into your calendar, and send urgent calls to your cell. Price matters less than those three things, because one missed no-heat or burst-pipe call can be worth more than a year of the service.
 
+Looking ahead? See the [2027 HVAC comparison](/blog/best-ai-receptionist-for-hvac-2027) with prices re-checked in November 2026.
+
 We make WebCrew, so read this as our view. Competitor details come from each company's own public pricing page as of October 18, 2026. "Not listed" means we could not find it there, not that it does not exist.
 
 ## What an HVAC or plumbing company actually needs
