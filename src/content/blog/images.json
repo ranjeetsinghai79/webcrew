@@ -131,7 +131,7 @@
     "id": "pexels:5463575",
     "src": "/blog/hvac-phone-script-for-booking-more-jobs.jpg",
     "alt": "Technician repairing an air conditioner unit outdoors, wearing a facemask and using a manifold gauge.",
-    "credit": "Jos\u00e9 Andr\u00e9s  Pacheco Cortes",
+    "credit": "José Andrés  Pacheco Cortes",
     "creditUrl": "https://www.pexels.com/photo/man-checking-an-air-conditioner-5463575/",
     "source": "Pexels"
   },
@@ -211,7 +211,7 @@
     "id": "pexels:5463581",
     "src": "/blog/best-ai-receptionist-for-hvac-and-plumbing.jpg",
     "alt": "A technician is repairing an air conditioning unit on a rooftop, demonstrating skilled manual work.",
-    "credit": "Jos\u00e9 Andr\u00e9s  Pacheco Cortes",
+    "credit": "José Andrés  Pacheco Cortes",
     "creditUrl": "https://www.pexels.com/photo/man-drilling-an-aircon-casing-5463581/",
     "source": "Pexels"
   },
@@ -325,6 +325,22 @@
     "alt": "A technician skillfully repairing an outdoor air conditioning unit mounted on a building wall.",
     "credit": "Richard Low Hong",
     "creditUrl": "https://www.pexels.com/photo/man-in-gray-t-shirt-fixing-the-aircon-7347538/",
+    "source": "Pexels"
+  },
+  "ai-receptionist-with-missed-call-text-back": {
+    "id": "pexels:8165375",
+    "src": "/blog/ai-receptionist-with-missed-call-text-back.jpg",
+    "alt": "Young woman in business attire using smartphone while enjoying a coffee outdoors.",
+    "credit": "MART  PRODUCTION",
+    "creditUrl": "https://www.pexels.com/photo/woman-in-white-long-sleeves-holding-a-cup-of-coffee-8165375/",
+    "source": "Pexels"
+  },
+  "best-ai-receptionist-by-industry-2027": {
+    "id": "pexels:6205511",
+    "src": "/blog/best-ai-receptionist-by-industry-2027.jpg",
+    "alt": "Unrecognizable female cafeteria worker with cellphone talking to young colleague with tablet in daylight",
+    "credit": "Tim Douglas",
+    "creditUrl": "https://www.pexels.com/photo/cafe-employees-with-tablet-and-smartphone-speaking-at-counter-6205511/",
     "source": "Pexels"
   }
 }
