@@ -3,6 +3,9 @@
 // Gemini, validates it against our honesty rules, adds a free stock photo, and
 // registers it in src/content/blog/index.ts. A post that fails validation after
 // 5 attempts is NOT published (the day is skipped, never a bad post).
+// Steps: topic → research (Google autocomplete, free) → write → checker →
+// editor pass (kept only if it still passes the checker) → publish. All on the free
+// AI Studio key; BLOG_RESEARCH=off / BLOG_EDIT=off disable the new steps.
 // Usage: GEMINI_API_KEY=… PEXELS_API_KEY=… node scripts/daily-blog.mjs [--force] [--dry]
 import fs from 'node:fs'
 import path from 'node:path'
@@ -69,7 +72,7 @@ function existingPosts() {
 const MODELS = [MODEL, 'gemini-3.7-flash', 'gemini-3.5-flash'].filter((m, i, a) => a.indexOf(m) === i)
 const RETRYABLE = new Set([429, 500, 503, 504])
 
-async function gemini(prompt, schema) {
+async function gemini(prompt, schema, opts = {}) {
   if (!KEY) throw new Error('GEMINI_API_KEY is not set')
   let last
   for (const [i, model] of MODELS.entries()) {
@@ -80,7 +83,10 @@ async function gemini(prompt, schema) {
         method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: AbortSignal.timeout(240000),
         body: JSON.stringify({
           contents: [{ role: 'user', parts: [{ text: prompt }] }],
-          generationConfig: { temperature: 0.7, maxOutputTokens: 12000, responseMimeType: 'application/json', ...(schema ? { responseSchema: schema } : {}) },
+          ...(opts.tools ? { tools: opts.tools } : {}),
+          generationConfig: opts.text
+            ? { temperature: 0.3, maxOutputTokens: 6000 }
+            : { temperature: opts.temperature ?? 0.7, maxOutputTokens: 12000, responseMimeType: 'application/json', ...(schema ? { responseSchema: schema } : {}) },
         }),
         })
       } catch (e) { // network drop / timeout ("fetch failed") — retry like a 503
@@ -93,6 +99,7 @@ async function gemini(prompt, schema) {
       if (r.ok) {
         const text = (j.candidates?.[0]?.content?.parts ?? []).map(p => p.text ?? '').join('')
         if (i > 0) console.log(`[daily-blog] used fallback model ${model}`)
+        if (opts.text) return { text, sources: (j.candidates?.[0]?.groundingMetadata?.groundingChunks ?? []).map(c => c.web).filter(Boolean) }
         return JSON.parse(text)
       }
       last = new Error(`Gemini ${model} ${r.status}: ${JSON.stringify(j).slice(0, 200)}`)
@@ -102,6 +109,83 @@ async function gemini(prompt, schema) {
     }
   }
   throw last
+}
+
+
+// Step 1 — research, $0. Google's public autocomplete shows what people really type
+// about the topic (the questions a post must answer). Gemini Google-Search grounding
+// is optional (BLOG_GROUNDING=on) because our free key has 0 grounding quota.
+async function suggest(q) {
+  try {
+    const r = await fetch(`https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=${encodeURIComponent(q)}`, { signal: AbortSignal.timeout(8000), headers: { 'User-Agent': 'Mozilla/5.0 (webcrew blog research)' } })
+    if (!r.ok) return []
+    const j = await r.json()
+    return Array.isArray(j?.[1]) ? j[1] : []
+  } catch { return [] }
+}
+
+async function research(topic) {
+  if (process.env.BLOG_RESEARCH === 'off') return null
+  // Autocomplete needs short phrases: strip years/"best", then try each keyword and shorter cuts.
+  const clean = t => t.toLowerCase().replace(/\b20\d\d\b/g, '').replace(/^(the )?best /, '').replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim()
+  const seeds = [...new Set([...(topic.keywords ?? []), topic.title].map(clean).flatMap(k => [k, k.split(' ').slice(0, 4).join(' ')]).filter(k => k.split(' ').length >= 2))].slice(0, 4)
+  const prefixes = ['', 'how ', 'how much ', 'is ', 'can ', 'best ']
+  const suffixes = [' cost', ' vs', ' worth it', ' free']
+  const seen = new Set()
+  for (const seed of seeds) {
+    for (const q of [...prefixes.map(p => p + seed), ...suffixes.map(x => seed + x)]) {
+      for (const s of await suggest(q)) if (!/\bjobs?\b|salary|near me|hiring|remote/i.test(s)) seen.add(s)
+      await new Promise(res => setTimeout(res, 250))
+    }
+    if (seen.size >= 30) break
+  }
+  // Keep searches about THIS topic: they mention a distinctive word (the trade, the problem)
+  // or are generic (no "for <someone else>").
+  const common = new Set(['ai', 'receptionist', 'answering', 'service', 'services', 'for', 'the', 'a', 'an', 'how', 'to', 'best', 'of', 'and', 'in', 'your', 'my', 'vs', 'business', 'small'])
+  const distinct = [...new Set(seeds.join(' ').split(' ').filter(w => w.length > 3 && !common.has(w)).map(w => w.slice(0, 5)))]
+  const searches = [...seen].filter(x => distinct.some(d => x.includes(d)) || !/ for /.test(x)).slice(0, 30)
+  let notes = searches.length ? `REAL GOOGLE SEARCHES on this topic today (cover the ones that fit, in plain words; one "## " section or FAQ can answer several):\n${searches.map(s => '- ' + s).join('\n')}` : ''
+  if (process.env.BLOG_GROUNDING === 'on') {
+    try {
+      const r = await gemini(`List 5 to 10 short, checkable facts a US local service business owner should know about: ${topic.title}. One per line, with the website each came from in brackets. No statistics or percentages, no product recommendations.`, null, { text: true, tools: [{ google_search: {} }] })
+      if (r.text?.trim()) notes += `\n\nFACTS FROM A GOOGLE SEARCH TODAY:\n${r.text.trim().slice(0, 3000)}`
+    } catch (e) { console.warn(`[daily-blog] grounding skipped: ${e.message.slice(0, 120)}`) }
+  }
+  console.log(`[daily-blog] research: ${searches.length} real searches${notes.includes('FACTS FROM') ? ' + grounded facts' : ''}`)
+  return notes ? { notes } : null
+}
+
+// Step 3 — editor pass on a draft that already passed the checker. If the edit
+// breaks a rule, the original (passing) draft is kept.
+async function edit(draft, notes, slugs) {
+  if (process.env.BLOG_EDIT === 'off') return draft
+  try {
+    const out = await gemini(`You are the editor of webcrew.app's blog. Improve this draft without changing its topic, slug or structure type.
+
+Do:
+- Make the first sentence under every "## " heading answer that heading directly.
+- Make the opening paragraph answer the title's question in 1 to 2 sentences.
+- Cut filler, repeated points and vague lines; prefer concrete steps an owner can do today.
+- Remove any claim not supported by the WebCrew facts below or by the research notes.
+- Keep every rule below (format, word count, links, dollar-figure labels, FAQ count).
+${FACTS}
+${RULES}
+${notes ? `\nResearch notes (for fact-checking only):\n${notes}\n` : ''}
+Existing slugs you may link to: ${slugs.join(', ')}
+
+Draft JSON:
+${JSON.stringify(draft)}
+
+Return the edited post as JSON {slug, title, description, keywords, body, faq:[{q,a}]}.`, SCHEMA, { temperature: 0.4 })
+    out.slug = draft.slug
+    const errs = validate(out, slugs)
+    if (errs.length) { console.warn(`[daily-blog] editor pass rejected (${errs.join('; ')}); keeping original draft`); return draft }
+    console.log('[daily-blog] editor pass applied')
+    return out
+  } catch (e) {
+    console.warn(`[daily-blog] editor pass skipped: ${e.message}`)
+    return draft
+  }
 }
 
 const slugify = s => s.toLowerCase().replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 70).replace(/-$/, '')
@@ -193,14 +277,17 @@ async function main() {
   const topic = await nextTopic(posts)
   const slugs = posts.map(p => p.slug)
   console.log(`[daily-blog] topic: ${topic.title} (${topic.slug})`)
+  const res = await research(topic)
+  const researchBlock = res ? `\nResearch notes (use them to answer what owners really search for; do NOT copy statistics, do NOT name sources or competitors; the writing rules still win):\n${res.notes}\n` : ''
   let feedback = ''
   for (let attempt = 1; attempt <= 5; attempt++) {
-    const prompt = `Write one blog post for webcrew.app.\n\nTopic: ${topic.title}\nAngle: ${topic.angle ?? ''}\nCategory: ${topic.category}\nTarget keywords: ${(topic.keywords ?? []).join(', ')}\nUse slug: ${topic.slug}\n${FACTS}\n${RULES}\n\nExisting posts you may link to (slug — title):\n${posts.map(p => `${p.slug} — ${p.title}`).join('\n')}\n${feedback ? `\nYour previous draft was rejected for: ${feedback}\nFix every item.` : ''}\nReturn JSON {slug, title, description, keywords, body, faq:[{q,a}]}.`
+    const prompt = `Write one blog post for webcrew.app.\n\nTopic: ${topic.title}\nAngle: ${topic.angle ?? ''}\nCategory: ${topic.category}\nTarget keywords: ${(topic.keywords ?? []).join(', ')}\nUse slug: ${topic.slug}\n${FACTS}\n${RULES}\n${researchBlock}\nExisting posts you may link to (slug — title):\n${posts.map(p => `${p.slug} — ${p.title}`).join('\n')}\n${feedback ? `\nYour previous draft was rejected for: ${feedback}\nFix every item.` : ''}\nReturn JSON {slug, title, description, keywords, body, faq:[{q,a}]}.`
     let draft
     try { draft = await gemini(prompt, SCHEMA) } catch (e) { feedback = `invalid output (${e.message})`; console.warn(`[daily-blog] attempt ${attempt}: ${e.message}`); continue }
     draft.slug = topic.slug
     const errs = validate(draft, slugs)
     if (errs.length) { feedback = errs.join('; '); console.warn(`[daily-blog] attempt ${attempt} rejected: ${feedback}`); continue }
+    draft = await edit(draft, res?.notes, slugs)
     const post = { ...draft, date: today, category: topic.category, imageQuery: topic.imageQuery ?? draft.keywords[0] }
     if (DRY) { console.log(toTs(post)); return }
     fs.writeFileSync(path.join(CONTENT, `${post.slug}.ts`), toTs(post))
