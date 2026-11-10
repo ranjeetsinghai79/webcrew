@@ -45,6 +45,21 @@ const FAQS: Array<[string, string]> = [
   ['What if I have several locations or need a custom workflow?', 'Tell us about your setup and we’ll send a custom quote.'],
 ]
 
+const CMP_COLS = ['WebCrew', 'My AI Front Desk', 'Rosie', 'Goodcall', 'Upfirst', 'Smith.ai', 'NextPhone']
+const CMP_ROWS: { label: string; win?: boolean; cells: string[] }[] = [
+  { label: 'Entry price', cells: ['$99/mo (Founding 10)', '$99/mo', '$49/mo', '$79/mo', '$24.95/mo', 'Free (25 calls), Pro $150', '$199/mo'] },
+  { label: 'Included', cells: ['250 AI minutes', '200 min, 400 texts', '250 min', '100 unique customers', '30 calls', '25 calls (free plan)', 'Unlimited calls'] },
+  { label: 'Over the limit', win: true, cells: ['Rings your cell, no fee', '$0.25/min', 'Not stated', '79¢ per customer', '$1.50 per call', '$3.00 per call', 'No overage'] },
+  { label: 'Free trial', win: true, cells: ['30 days', '7 days', '7 days', 'Free demo agent', '14 days or 100 calls', 'Free plan', '7 days'] },
+  { label: 'Setup fee', cells: ['$0', 'Not listed', 'Not listed', 'Not listed', 'Not listed', 'Not listed', 'None'] },
+  { label: 'Calendar booking on entry plan', cells: ['Google Calendar', 'Via Zapier', 'Links by text ($149 plan books)', 'Not listed', 'Yes', 'Yes', 'Yes'] },
+  { label: 'Preview on your own site before paying', win: true, cells: ['Yes', 'Not listed', 'Not listed', 'Not listed', 'Not listed', 'Not listed', 'Not listed'] },
+  { label: 'AI on your website included', win: true, cells: ['Yes (voice + chat)', '100 chats/mo', 'Not listed', 'Not listed', 'Not listed', 'Not listed', 'Not listed'] },
+  { label: 'New website if you have none', win: true, cells: ['Included', 'Not listed', 'Not listed', 'Not listed', 'Not listed', 'Not listed', 'Not listed'] },
+  { label: 'Lead follow-ups + review requests', win: true, cells: ['Included', 'Follow-up sequences', 'Not listed', 'Not listed', 'Not listed', 'Not listed', 'Not listed'] },
+  { label: 'Price locked for life', win: true, cells: ['Yes, first 10 companies', 'Not listed', 'Not listed', 'Not listed', 'Not listed', 'Not listed', 'Not listed'] },
+]
+
 function useReveal() {
   useEffect(() => {
     const els = document.querySelectorAll<HTMLElement>('.l4-reveal')
@@ -79,6 +94,7 @@ export default function LandingV4() {
           <nav aria-label="Main">
             <a href="#included">What you get</a>
             <a href="#how">How it works</a>
+            <a href="#compare">Compare</a>
             <a href="#pricing">Pricing</a>
             <a href="#faq">FAQ</a>
           </nav>
@@ -208,6 +224,44 @@ export default function LandingV4() {
               <div className="l4-browser"><span /><span /><span /><em>Example: a new site for a business with no website</em></div>
               <img src="/product/sample-site.jpg" alt="Example of a new HVAC website with call and service buttons" loading="lazy" width={1440} height={900} />
             </figure>
+          </div>
+        </section>
+
+        {/* ── Comparison ─────────────────────────────────────────────────── */}
+        <section className="l4-sec" id="compare">
+          <div className="l4-wrap">
+            <div className="l4-head l4-reveal">
+              <p className="l4-eyebrow">Compare</p>
+              <h2>WebCrew vs the 6 AI receptionists owners ask us about.</h2>
+              <p className="l4-lede">Every competitor fact comes from that company&rsquo;s own pricing page, checked November 9, 2026. &ldquo;Not listed&rdquo; means we couldn&rsquo;t find it there.</p>
+            </div>
+            <div className="l4-cmp-scroll l4-reveal" role="region" aria-label="Comparison table, scroll sideways on small screens" tabIndex={0}>
+              <table className="l4-cmp">
+                <thead>
+                  <tr><th scope="col"></th>{CMP_COLS.map((c, i) => <th scope="col" key={c} className={i === 0 ? 'l4-cmp-us' : undefined}>{c}</th>)}</tr>
+                </thead>
+                <tbody>
+                  {CMP_ROWS.map(r => (
+                    <tr key={r.label}>
+                      <th scope="row">{r.label}</th>
+                      {r.cells.map((c, i) => <td key={i} className={i === 0 ? (r.win ? 'l4-cmp-us l4-cmp-win' : 'l4-cmp-us') : undefined}>{i === 0 && r.win && <Check size={14} />}{c}</td>)}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="l4-cmp-hint">Swipe the table sideways to see all 7.</p>
+            <div className="l4-cmp-why l4-reveal">
+              <h3>Where WebCrew wins</h3>
+              <ul>
+                <li><Check size={16} /> <span><b>See it on your own business before you pay.</b> Free preview with the AI trained on your site.</span></li>
+                <li><Check size={16} /> <span><b>Longest free trial here:</b> 30 days, $0 setup.</span></li>
+                <li><Check size={16} /> <span><b>No overage bill.</b> Past your minutes, calls ring your cell.</span></li>
+                <li><Check size={16} /> <span><b>Website AI included,</b> plus a new website if you don&rsquo;t have one.</span></li>
+                <li><Check size={16} /> <span><b>Lead follow-ups and review requests</b> in the same plan.</span></li>
+              </ul>
+              <p className="l4-fine">Honest note: Upfirst and Rosie cost less to start, and NextPhone offers unlimited calls at $199/month. If you only need messages taken, they may suit you better.</p>
+            </div>
           </div>
         </section>
 
