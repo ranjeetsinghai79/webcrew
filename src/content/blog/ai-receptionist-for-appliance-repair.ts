@@ -2,13 +2,15 @@ import type { BlogPost } from '@/lib/blog/types'
 
 export const post: BlogPost = {
   slug: "ai-receptionist-for-appliance-repair",
-  title: "AI Receptionist for Appliance Repair: Collect Details First",
-  description: "Discover how an AI receptionist for appliance repair collects brand, model, and symptoms before you roll a truck, saving time and second trips.",
+  title: "AI Receptionist for Appliance Repair: AI Front Desk, Dispatcher, and CSR",
+  description: "An AI front desk and dispatcher for appliance repair companies handles incoming calls, collects brand and model details, triages emergencies, and books service visits 24/7.",
   date: "2026-11-04",
   category: "By trade",
   imageQuery: "appliance repair technician",
-  keywords: ["ai receptionist for appliance repair", "appliance repair answering service", "virtual receptionist appliance repair", "appliance intake automation"],
+  keywords: ["ai receptionist for appliance repair", "ai front desk for appliance repair", "appliance repair ai dispatcher", "ai dispatcher for appliance repair", "appliance repair ai csr", "appliance repair ai front desk", "appliance repair answering service", "virtual receptionist appliance repair", "appliance intake automation"],
   body: `
+An AI receptionist for appliance repair works as an AI front desk, dispatcher, and CSR in one. It answers every call, collects the brand, model number, and symptoms before a truck rolls, routes urgent calls to your mobile, and books service visits into your Google Calendar. No blind service calls.
+
 ## The Problem with the Blind Service Call
 
 Every appliance technician knows the frustration of arriving at a home with zero idea what they are actually walking into. The work order says refrigerator not working, but it does not list the brand, the model number, or whether the compressor is humming.
@@ -54,6 +56,19 @@ If you know in advance that three callers have direct-drive washing machines wit
 
 Modern automated systems also simplify scheduling. Once connected, an AI receptionist can handle [booking appointments into your calendar](/blog/ai-appointment-booking-for-service-businesses) within your real service windows. Homeowners receive an immediate booking confirmation, and they can text back letters like C to confirm, R to reschedule, or X to cancel. Any text messages only go to callers who explicitly agreed to receive text messages; otherwise, updates are delivered by email. Check the rules in your state regarding business texting consent.
 
+## Appliance repair AI dispatcher: routing calls and triaging emergencies
+
+An appliance repair AI dispatcher does more than take messages. It acts as a live CSR that sorts every inbound call by urgency, routes it to the right outcome, and keeps your day on schedule.
+
+A good AI CSR for appliance repair:
+
+- Flags active water leaks, gas smell calls, and cooling failures on full refrigerators as same-day emergencies
+- Transfers urgent calls directly to your cell phone while you are on a job
+- Routes routine service requests to your next available booking window
+- Sends a confirmation to callers who have opted in, with appointment time and a simple C/R/X reply code
+
+The dispatcher logic runs on the instructions you configure: the appliance brands you service, your service area zip codes, and the urgency rules that match your business. You do not need to reprogram anything after setup.
+
 ## Triaging Urgent Appliance Emergencies
 
 Not every appliance failure carries the same urgency. A squeaky dryer roller can wait until Thursday, but a fully stocked refrigerator that stopped cooling overnight is an urgent situation. A dishwasher leaking water through the subfloor into a finished basement requires immediate attention.
@@ -80,6 +95,9 @@ Once a job is completed, collecting positive feedback is just as critical for wi
 WebCrew is an AI front desk designed specifically for local service businesses, handling incoming phone calls and website inquiries around the clock. Through the Founding 10 offer, the first ten clients get complete access for $99 per month locked for life, backed by a 30-day free trial and zero setup fees. Setup takes just minutes by forwarding your number, connecting your Google Calendar, and entering your service area and appliance specialties.
 `,
   faq: [
+    ["What is an AI front desk for appliance repair?", "An AI front desk for appliance repair answers your business calls 24/7, collects brand, model, and symptom details, and books service visits into your calendar — the same work a human front desk or CSR would do, without the staffing cost."],
+    ["Can an AI dispatcher triage appliance repair emergencies?", "Yes. You configure the urgency rules — active water leaks, cooling failures, gas smells — and the AI dispatcher flags those calls, routes them to your mobile phone immediately, and schedules routine calls in your standard booking window."],
+    ["What does an appliance repair AI CSR handle?", "An appliance repair AI CSR handles inbound calls, guided intake questions (brand, model, symptoms, error codes), appointment booking, and automated reminders. It does not give repair quotes or diagnose faults — it prepares the information so your technician can."],
     ["Can the AI receptionist ask customers for their appliance model number?", "Yes. The AI asks for the brand, appliance type, model number, and symptoms, and it can guide callers on where to find the model tag if they are unsure."],
     ["What happens if a customer calls about an emergency refrigerator leak?", "The AI identifies urgent issues based on your instructions, flags the call as urgent, and can transfer the caller straight to your cell phone."],
     ["Does the AI give out exact repair prices over the phone?", "No. WebCrew does not quote prices for jobs it has not been given, so it will only provide diagnostic fees or baseline pricing that you explicitly provide."],
