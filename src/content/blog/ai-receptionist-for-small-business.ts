@@ -57,7 +57,7 @@ If you get very few calls and answer almost all of them yourself, you probably d
 
 ## How WebCrew does it
 
-WebCrew is an AI front desk built for local service businesses. It answers your phone and the chat on your website 24/7, books jobs into your Google Calendar, follows up with leads who did not book, sends appointment reminders, and asks happy customers for a Google review. If you do not have a website, we build one for you as part of the plan.
+WebCrew is an AI front desk built for local service businesses. It answers your phone and the chat on your website 24/7, books jobs into your Google Calendar, follows up with leads who did not book, sends appointment reminders, and asks every customer for a Google review after the visit. If you do not have a website, we build one for you as part of the plan.
 
 > Founding 10 pricing: $99/month, locked for life, with 250 AI minutes, $0 setup and a 30-day free trial. If you ever use all your minutes, calls ring your cell instead, so there are no surprise charges and no missed customers.
 `,

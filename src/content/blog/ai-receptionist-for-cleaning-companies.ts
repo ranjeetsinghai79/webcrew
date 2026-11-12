@@ -31,7 +31,7 @@ Your regular clients call to skip a week, add a room, or change a day. The AI ha
 
 ## After the clean
 
-With the customer's permission, WebCrew sends a short note after a visit asking how it went and, if they were happy, invites them to leave a Google review. No pressure, no filtering out unhappy customers (Google does not allow that).
+With the customer's permission, WebCrew sends every customer the same short thank-you after a visit with a link to leave a Google review. No pressure, and no filtering out unhappy customers (Google does not allow that).
 
 WebCrew Founding 10: $99/month locked for life, 250 AI minutes, website and booking included.
 `,

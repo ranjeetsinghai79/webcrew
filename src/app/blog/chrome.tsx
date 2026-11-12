@@ -13,7 +13,7 @@ export function BlogCta() {
   return (
     <div className="bp-box">
       <h2>Stop losing calls you never heard ring.</h2>
-      <p>WebCrew answers your phone and your website 24/7, books jobs into your calendar, follows up, and asks happy customers for reviews. Founding 10: $99/mo locked for life, 250 AI minutes, $0 setup, 30-day free trial.</p>
+      <p>WebCrew answers your phone and your website 24/7, books jobs into your calendar, follows up, and asks every customer for a Google review. Founding 10: $99/mo locked for life, 250 AI minutes, $0 setup, 30-day free trial.</p>
       <a className="bp-cta" href="/#lead-form">Build my free demo</a>
     </div>
   )
