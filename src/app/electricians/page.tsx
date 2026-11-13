@@ -20,8 +20,8 @@ const N: NicheContent = {
     { title: 'Collects what your electrician needs', body: 'Panel type, whether breakers are tripping, what’s affected — captured before the truck rolls, not figured out standing in the driveway.' },
     { title: 'Never lets a safety call sit', body: 'A power-out call at midnight gets answered at midnight and flagged — you get the summary the moment you’re up, not a guess at what came in overnight.' },
   ],
-  answer: "WebCrew is a virtual receptionist and answering service for electricians. It answers every call 24/7, flags safety issues like sparking outlets or burning smells, collects panel and breaker details, and books routine jobs into Google Calendar. $99/month for founding clients, 30-day free trial.",
-  aka: ["electrician virtual receptionist", "electrician answering service", "virtual receptionist for electricians", "answering service for electricians", "answering service for electrician", "remote receptionist for electricians", "electrical contractor answering service", "24/7 electrician call answering"],
+  answer: "WebCrew is an AI receptionist and answering service for electricians and electrical contractors. It answers every call 24/7, flags safety issues like sparking outlets or burning smells, collects panel and breaker details, and books routine jobs into Google Calendar. $99/month for founding clients, 30-day free trial.",
+  aka: ["ai receptionist for electricians", "ai receptionist for electrician", "ai receptionist for electrical contractors", "ai receptionist for electrical", "electrician virtual receptionist", "electrician answering service", "virtual receptionist for electricians", "answering service for electricians", "answering service for electrician", "remote receptionist for electricians", "electrical contractor answering service", "electrician live receptionist", "24/7 electrician call answering"],
   faq: [
     ['What does an electrician answering service do?', 'An electrician answering service answers your business calls 24/7, qualifies each caller, flags emergencies like power outages or sparking outlets, and books routine jobs into your calendar. It is cheaper than a full-time receptionist and does not take nights off.'],
     ['Is a virtual receptionist for electricians different from a live answering service?', 'A virtual receptionist is always available, always consistent, and costs a fraction of a live answering service. It can handle scheduling and triage the same way — the difference is that it never puts a caller on hold because another call is coming in.'],
@@ -29,6 +29,7 @@ const N: NicheContent = {
     ['Can it tell someone to shut off their breaker?', 'It can relay your standard safety guidance if you want that configured — the goal is reducing risk while help is on the way, not replacing your judgment on-site.'],
     ['Does it replace my dispatcher?', 'No — it answers, qualifies, and captures what your electrician needs. You stay in control of scheduling and who gets sent.'],
     ['How fast can I go live?', 'Usually within a few days. We load your services, hours and booking rules, you test-call the AI yourself, then forward your business line to it. Nothing goes live until you approve it.'],
+    ['What is an AI receptionist for electricians?', 'An AI receptionist for electricians answers your business line 24/7, separates safety calls — sparking outlets, burning smells, total power loss — from routine install and repair requests, captures panel type and breaker details before the truck rolls, and books jobs into Google Calendar. It costs less than a live answering service and never takes a night off.'],
   ],
 }
 

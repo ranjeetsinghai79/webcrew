@@ -3,11 +3,11 @@ import type { BlogPost } from '@/lib/blog/types'
 export const post: BlogPost = {
   slug: 'ai-receptionist-pricing',
   title: 'AI Receptionist Pricing in 2026: What You Actually Pay (and the Fees to Watch)',
-  description: 'AI receptionist pricing for small businesses, from public pricing pages. Compare per-minute, per-call, and flat plans side by side, plus the fees most providers don\'t list upfront.',
+  description: 'AI receptionist pricing for small businesses: compare per-minute, per-call, and flat plans, the fees most providers don\'t list upfront, and WebCrew\'s $99/month rate.',
   date: '2026-10-18',
   category: 'Pricing & comparisons',
   imageQuery: 'calculator invoice desk',
-  keywords: ['AI receptionist pricing', 'AI receptionist cost', 'AI answering service cost', 'virtual receptionist price'],
+  keywords: ['AI receptionist pricing', 'AI receptionist cost', 'AI receptionist setup cost', 'AI answering service cost', 'virtual receptionist price', 'AI receptionist cost per month'],
   body: `
 ## How much does an AI receptionist cost?
 

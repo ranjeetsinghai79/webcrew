@@ -4,7 +4,7 @@ export const metadata = {
   title: 'AI Receptionist & Answering Service for Plumbers | WebCrew',
   description: 'AI answering service for plumbers and plumbing companies. Answers every call 24/7, prioritizes burst pipes and sewage backups, books jobs to Google Calendar. $0 setup, 30-day free trial.',
   alternates: { canonical: 'https://webcrew.app/plumbing' },
-  keywords: ['plumbing answering service', 'virtual receptionist for plumbers', 'plumbing virtual receptionist', 'answering service for plumbers', 'plumber virtual receptionist', '24/7 plumbing call answering', 'plumber AI answering service', 'AI receptionist for plumbing companies', 'answering service for plumbing companies', 'emergency plumbing call answering'],
+  keywords: ['ai receptionist for plumbers', 'plumbing answering service', 'virtual receptionist for plumbers', 'plumbing virtual receptionist', 'answering service for plumbers', 'plumber virtual receptionist', '24/7 plumbing call answering', 'plumber AI answering service', 'AI receptionist for plumbing companies', 'answering service for plumbing companies', 'ai answering service for plumbers', 'ai answering service for plumbing companies', 'emergency plumbing call answering'],
 }
 
 const N: NicheContent = {
@@ -20,8 +20,8 @@ const N: NicheContent = {
     { title: 'Collects what your plumber needs before rolling', body: 'Where the water’s coming from, whether the main shutoff is off, how long it’s been running — captured before dispatch, not radioed in on the way.' },
     { title: 'Never sends an emergency to voicemail', body: 'A call at 3am gets answered at 3am, qualified, and you get the summary the moment you’re up — not a guess at what happened overnight.' },
   ],
-  answer: "WebCrew is a virtual receptionist and answering service for plumbers and plumbing companies. It answers every call 24/7, tells a burst pipe or sewage backup apart from a routine drain question, flags emergencies to your cell, and books jobs into Google Calendar. $99/month for founding clients, 30-day free trial.",
-  aka: ["answering service for plumbers", "plumbing virtual receptionist", "virtual receptionist for plumbers", "plumber virtual receptionist", "answering service for plumbing companies", "virtual receptionist for plumbing companies", "plumbing answering service", "24/7 plumbing call answering"],
+  answer: "WebCrew is an AI receptionist and answering service for plumbers and plumbing companies. It answers every call 24/7, tells a burst pipe or sewage backup apart from a routine drain question, flags emergencies to your cell, and books jobs into Google Calendar. $99/month for founding clients, 30-day free trial.",
+  aka: ["ai receptionist for plumbers", "answering service for plumbers", "ai answering service for plumbers", "plumbing virtual receptionist", "virtual receptionist for plumbers", "plumber virtual receptionist", "answering service for plumbing companies", "virtual receptionist for plumbing companies", "plumbing answering service", "24/7 plumbing call answering"],
   cities: ["Allen", "Arlington", "Birmingham", "Clearwater", "Columbus", "Coral Springs", "Denver", "Duluth", "Hialeah", "Hollywood", "Indianapolis", "Jersey City", "Los Angeles", "Minneapolis", "Norfolk", "Oklahoma City", "Paterson", "Philadelphia", "Port St. Lucie", "San Diego", "San Jose", "Springfield", "St. Petersburg", "Toledo"],
   faq: [
     ['What is a plumbing virtual receptionist?', 'A plumbing virtual receptionist — also called an answering service for plumbers — is an AI that answers your business line 24/7, qualifies each caller, and books or flags the call. You do not need to hire a person. It costs less than a part-time employee.'],
@@ -30,6 +30,8 @@ const N: NicheContent = {
     ['Can it walk someone through shutting off their water?', 'It can relay your standard shutoff instructions if you want that configured — the goal is to reduce damage while help is on the way, not replace your judgment on the job.'],
     ['Does it replace my on-call rotation?', 'No — it answers, qualifies, and captures the details your on-call plumber needs. You stay in control of who gets dispatched.'],
     ['How fast can I go live?', 'Usually within a few days. We load your services, hours and booking rules, you test-call the AI yourself, then forward your business line to it. Nothing goes live until you approve it.'],
+    ['What is an AI receptionist for plumbers?', 'An AI receptionist for plumbers answers your business line 24/7, asks triage questions to separate emergencies from routine drain calls, captures job details before you roll, and books appointments into Google Calendar. It is the same as a plumbing virtual receptionist or answering service for plumbers — just always available, without per-call fees.'],
+    ['What is the best AI answering service for plumbing companies?', 'Look for one that handles emergencies differently from routine calls — recognizes burst pipes and sewage backups, captures shutoff status and location, and flags your on-call person immediately. WebCrew is built for this, with a $0 setup fee and 30-day free trial.'],
   ],
 }
 
